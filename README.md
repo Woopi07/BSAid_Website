@@ -21,6 +21,9 @@ npm run preview  # serve the production build
 
 ## Pages
 
+Clicking **TUTORIAL** on the landing page plays a captioned walkthrough video of the game
+(`public/videos/`, details in `docs/tutorial-video.md`) with a step-by-step guide as a second tab.
+
 - `/` — promotional landing page (`index.html`, `src/`)
 - `/play/` — **Entry Point** web game module (`play/index.html`, `src/game/`): fixed-viewport, app-like case files
   dashboard → level select → visual-novel intro → quiz workstation, with procedural lo-fi BGM and SFX (Web Audio API)
