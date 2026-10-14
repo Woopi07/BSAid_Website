@@ -1,6 +1,4 @@
-import Button from './ui/Button.jsx';
 import PixelSprite from './ui/PixelSprite.jsx';
-import { ANDROID_DOWNLOAD_URL } from '../data/content.js';
 
 export default function DownloadCTA() {
   return (
@@ -23,11 +21,6 @@ export default function DownloadCTA() {
               BSAid is built for Android so you can study anywhere &mdash; between classes, on the commute, or the night
               before a quiz.
             </p>
-            <div className="mt-10 flex justify-center">
-              <Button href={ANDROID_DOWNLOAD_URL} icon="android" className="px-6 py-4 text-xs sm:text-sm">
-                Download for Android
-              </Button>
-            </div>
           </div>
         </div>
       </div>
