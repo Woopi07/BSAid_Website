@@ -15,6 +15,15 @@ export default function Header() {
 
   return (
     <header className="relative flex h-16 shrink-0 items-center gap-3 border-b-4 border-navy-950 bg-navy-900 px-3 sm:gap-6 sm:px-5">
+      <a
+        href="/"
+        className="pixel-btn h-9 shrink-0 gap-1 bg-cream px-2.5 text-navy-950 hover:bg-white sm:px-3"
+        aria-label="Back to the BSAid home page"
+        title="Back to home"
+      >
+        <Icon name="chevronLeft" className="h-5 w-5" strokeWidth={3} />
+        <span className="hidden sm:inline">Back</span>
+      </a>
       <Logo className="shrink-0" />
       <ul className="pixel-scroll flex min-w-0 flex-1 items-center gap-4 overflow-x-auto px-1 py-2" aria-label="Case status summary">
         {pills.map((p) => (
