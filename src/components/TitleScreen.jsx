@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import Button from './ui/Button.jsx';
 import PixelSprite from './ui/PixelSprite.jsx';
 import TutorialModal from './TutorialModal.jsx';
 import QuitScreen from './QuitScreen.jsx';
-import { ANDROID_DOWNLOAD_URL } from '../data/content.js';
 
 const MENU = [
   { id: 'play', label: 'Play', hint: 'Try Case #01 right here' },
@@ -196,14 +194,9 @@ export default function TitleScreen() {
           </p>
         </nav>
 
-        <div className="mt-8 flex flex-col items-center gap-4">
-          <Button href={ANDROID_DOWNLOAD_URL} icon="android" className="px-6 py-4 text-xs sm:text-sm">
-            Download for Android
-          </Button>
-          <p className="hidden font-pixel text-[12px] uppercase tracking-widest text-navy-200 sm:block" aria-hidden="true">
-            <span className="animate-blink text-gold">&#9654;</span> &uarr;&darr; select &middot; enter confirm
-          </p>
-        </div>
+        <p className="mt-6 hidden font-pixel text-[12px] uppercase tracking-widest text-navy-200 sm:block" aria-hidden="true">
+          <span className="animate-blink text-gold">&#9654;</span> &uarr;&darr; select &middot; enter confirm
+        </p>
       </div>
 
       {modal === 'tutorial' && <TutorialModal onClose={closeModal} onPlay={play} />}
