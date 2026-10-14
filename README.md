@@ -21,6 +21,9 @@ npm run preview  # serve the production build
 - `/play/` — **Entry Point** web game module (`play/index.html`, `src/game/`): fixed-viewport, app-like case files
   dashboard → level select → visual-novel intro → quiz workstation, with procedural lo-fi BGM and SFX (Web Audio API)
 
+Both pages share the same retro pixel-arcade art style from `src/styles/pixel.css` (pixel borders, buttons, logotype,
+scanlines, neon grid) and the sprites in `src/components/ui/PixelSprite.jsx`.
+
 ## Entry Point game module
 
 ```
@@ -30,10 +33,11 @@ src/game/
   context/AudioProvider.jsx    # mute/volume state; starts music on the first user gesture (autoplay policy)
   context/GameProvider.jsx     # navigation + progress reducer, ranks, level unlocking (saved to localStorage)
   data/cases.js                # case files, intro dialogue and questions — add levels/questions here
-  components/                  # Header, Sidebar, CaseFilesScreen, LevelModal, DialogueIntro, QuizWorkstation, …
+  components/                  # Header, Sidebar, CaseFilesScreen, LevelModal, Scene, DialogueIntro, QuizWorkstation, …
 ```
 
-To use real artwork, add `image: '/path.png'` to a case (card thumbnail) and pass `src` to `Avatar` for portraits.
+Character portraits are rasterized to 40×40 pixel art at runtime. To use real artwork, add `image: '/path.png'` to a case
+(card thumbnail) and pass `src` to `Avatar` for portraits.
 A level with an empty `questions` array shows as "coming soon" once unlocked.
 
 ## Structure

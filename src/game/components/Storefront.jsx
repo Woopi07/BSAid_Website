@@ -9,8 +9,13 @@ function Awning({ colors, y, scallop = true }) {
         <rect key={i} x={40 + i * 20} y={y} width="20" height="22" fill={colors[i % 2]} />
       ))}
       {scallop &&
-        stripes.map((i) => <circle key={`s${i}`} cx={50 + i * 20} cy={y + 22} r="10" fill={colors[i % 2]} />)}
-      <rect x="36" y={y - 4} width="248" height="6" rx="3" fill="#1F2937" opacity="0.35" />
+        stripes.map((i) => (
+          <g key={`s${i}`} fill={colors[i % 2]}>
+            <rect x={42 + i * 20} y={y + 22} width="16" height="4" />
+            <rect x={46 + i * 20} y={y + 26} width="8" height="4" />
+          </g>
+        ))}
+      <rect x="36" y={y - 4} width="248" height="6" fill="#0A0F2C" opacity="0.5" />
     </g>
   );
 }
@@ -92,19 +97,26 @@ export default function Storefront({ art, className = '' }) {
   const long = sign.length > 10;
 
   return (
-    <svg viewBox="0 0 320 180" className={className} aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <svg viewBox="0 0 320 180" className={className} aria-hidden="true" preserveAspectRatio="xMidYMid slice" shapeRendering="crispEdges">
       <defs>
-        <linearGradient id={`sky${gid}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#FBBF24" />
-          <stop offset="1" stopColor="#F59E0B" />
-        </linearGradient>
         <radialGradient id={`win${gid}`} cx="0.5" cy="0.4" r="0.7">
           <stop offset="0" stopColor={glow} />
           <stop offset="1" stopColor="#92400E" />
         </radialGradient>
       </defs>
-      <rect width="320" height="180" fill={`url(#sky${gid})`} />
-      <circle cx="270" cy="40" r="60" fill="#FDE68A" opacity="0.35" />
+      {['#7F1D1D', '#B91C1C', '#E11D48', '#EA580C', '#FB923C', '#FDBA74'].map((c, i) => (
+        <rect key={c} y={i * 16} width="320" height="16" fill={c} />
+      ))}
+      <rect y="96" width="320" height="84" fill="#FDBA74" />
+      {/* pixel sun */}
+      <rect x="276" y="14" width="28" height="36" fill="#FCD34D" />
+      <rect x="270" y="20" width="40" height="24" fill="#FCD34D" />
+      {/* pixel clouds */}
+      <g fill="#FED7AA">
+        <rect x="12" y="20" width="36" height="8" />
+        <rect x="20" y="12" width="16" height="8" />
+        <rect x="290" y="70" width="28" height="8" />
+      </g>
 
       {/* building */}
       <path d={`M30 52 L160 14 L290 52 Z`} fill={roof} />
@@ -112,39 +124,45 @@ export default function Storefront({ art, className = '' }) {
       <rect x="40" y="50" width="240" height="6" fill="#000" opacity="0.15" />
 
       {/* sign */}
-      <rect x="78" y="22" width="164" height="44" rx="6" fill="#1F2937" stroke="#D97706" strokeWidth="3" />
+      <rect x="74" y="18" width="172" height="52" fill="#0A0F2C" />
+      <rect x="78" y="22" width="164" height="44" fill="#0F1F4D" stroke="#F59E0B" strokeWidth="4" />
       <text
         x="160"
         y={long ? 44 : 47}
         textAnchor="middle"
-        fontFamily="'Lilita One', Nunito, sans-serif"
-        fontSize={long ? 17 : 22}
+        fontFamily="'Pixelify Sans', monospace"
+        fontWeight="700"
+        fontSize={long ? 18 : 24}
         fill="#FDE68A"
       >
         {sign}
       </text>
-      <text x="160" y="59" textAnchor="middle" fontFamily="Nunito, sans-serif" fontWeight="800" fontSize="7" letterSpacing="2" fill="#FCD34D">
+      <text x="160" y="60" textAnchor="middle" fontFamily="'Press Start 2P', monospace" fontSize="5" letterSpacing="1" fill="#FB923C">
         {sub}
       </text>
 
       <Awning colors={awning} y={72} />
 
       {/* windows + door */}
-      <rect x="56" y="104" width="86" height="58" rx="3" fill={`url(#win${gid})`} stroke="#1F2937" strokeWidth="3" />
-      <rect x="178" y="104" width="86" height="58" rx="3" fill={`url(#win${gid})`} stroke="#1F2937" strokeWidth="3" />
-      <rect x="146" y="108" width="28" height="72" rx="2" fill="#3F2A1D" stroke="#1F2937" strokeWidth="3" />
-      <rect x="150" y="116" width="20" height="10" rx="1" fill={glow} opacity="0.8" />
-      <text x="160" y="124" textAnchor="middle" fontFamily="Nunito, sans-serif" fontWeight="900" fontSize="6" fill="#7C2D12">
+      <rect x="56" y="104" width="86" height="58" fill={`url(#win${gid})`} stroke="#0A0F2C" strokeWidth="4" />
+      <rect x="178" y="104" width="86" height="58" fill={`url(#win${gid})`} stroke="#0A0F2C" strokeWidth="4" />
+      <rect x="146" y="108" width="28" height="72" fill="#3F2A1D" stroke="#0A0F2C" strokeWidth="4" />
+      <rect x="150" y="116" width="20" height="10" fill={glow} />
+      <text x="160" y="123.5" textAnchor="middle" fontFamily="'Press Start 2P', monospace" fontSize="3.5" fill="#7C2D12">
         OPEN
       </text>
       <Shelves kind={kind} />
 
       {/* lamps + plants */}
-      <circle cx="44" cy="100" r="5" fill={glow} />
-      <circle cx="276" cy="100" r="5" fill={glow} />
-      <ellipse cx="34" cy="172" rx="16" ry="10" fill="#15803D" />
-      <ellipse cx="288" cy="172" rx="16" ry="10" fill="#15803D" />
-      <rect y="174" width="320" height="6" fill="#000" opacity="0.2" />
+      <rect x="40" y="96" width="8" height="8" fill={glow} />
+      <rect x="272" y="96" width="8" height="8" fill={glow} />
+      <g fill="#15803D">
+        <rect x="20" y="164" width="28" height="16" />
+        <rect x="26" y="158" width="16" height="6" />
+        <rect x="274" y="164" width="28" height="16" />
+        <rect x="280" y="158" width="16" height="6" />
+      </g>
+      <rect y="174" width="320" height="6" fill="#0A0F2C" opacity="0.6" />
     </svg>
   );
 }

@@ -5,12 +5,15 @@ import Storefront from './Storefront.jsx';
 import StatusBadge from './StatusBadge.jsx';
 import Icon from './Icons.jsx';
 
+const SEGMENTS = 10;
+
 export default function CaseCard({ item }) {
   const { dispatch, progressOf } = useGame();
   const { play } = useAudio();
   const [shake, setShake] = useState(false);
   const p = progressOf(item);
   const locked = p.status === 'locked';
+  const filled = Math.round((p.percent / 100) * SEGMENTS);
 
   const open = () => {
     if (locked) {
@@ -28,38 +31,49 @@ export default function CaseCard({ item }) {
       onClick={open}
       onAnimationEnd={() => setShake(false)}
       aria-disabled={locked}
-      className={`group flex h-full w-full flex-col overflow-hidden rounded-2xl bg-ep-paper text-left shadow-md ring-1 ring-ep-line transition ${
-        locked ? 'cursor-not-allowed' : 'hover:-translate-y-1 hover:shadow-xl'
+      className={`pixel-box relative flex h-full w-full flex-col bg-white text-left transition-transform ${
+        locked ? 'cursor-not-allowed bg-slate-100' : 'hover:-translate-y-1'
       } ${shake ? 'animate-shake' : ''}`}
     >
-      <div className="relative aspect-[16/7] w-full overflow-hidden">
+      <span
+        className={`absolute -top-4 left-3 z-10 px-2.5 py-2 font-pixel text-[9px] ${
+          locked ? 'bg-navy-600 text-navy-200' : 'bg-navy-950 text-cream'
+        }`}
+      >
+        CASE #{item.id}
+      </span>
+      <div className="relative aspect-[16/7] w-full overflow-hidden border-b-4 border-navy-900">
         {item.image ? (
           <img src={item.image} alt="" className="h-full w-full object-cover" />
         ) : (
           <Storefront art={item.art} className={`h-full w-full ${locked ? 'grayscale' : ''}`} />
         )}
         {locked && (
-          <div className="absolute inset-0 flex items-center justify-center bg-slate-900/35">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/85 text-slate-700">
-              <Icon name={item.art ? 'lock' : 'truck'} className="h-6 w-6" />
+          <div className="absolute inset-0 flex items-center justify-center bg-navy-950/40">
+            <span className="pixel-box-flat px-dark flex h-12 w-12 items-center justify-center bg-cream text-navy-900">
+              <Icon name={item.art ? 'lock' : 'truck'} className="h-6 w-6" strokeWidth={2.25} />
             </span>
           </div>
         )}
         <StatusBadge status={p.status} className="absolute bottom-3 right-3" />
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <h3 className={`font-rounded text-lg font-extrabold leading-snug ${locked ? 'text-slate-500' : 'text-ep-ink'}`}>
-          {item.name}
-        </h3>
-        <p className="mt-1 font-rounded text-sm font-semibold text-slate-500">
-          CASE #{item.id}
-          {!locked && <> &middot; {item.category}</>}
-        </p>
+        <h3 className={`text-2xl font-semibold leading-tight ${locked ? 'text-slate-500' : 'text-navy-900'}`}>{item.name}</h3>
+        <p className="mt-1 text-sm text-slate-600">{locked ? 'Coming soon' : item.category}</p>
         <div className="mt-auto flex items-center gap-3 pt-4">
-          <span className="h-2 flex-1 overflow-hidden rounded-full bg-ep-line" role="progressbar" aria-valuenow={p.percent} aria-valuemin={0} aria-valuemax={100} aria-label={`${item.name} progress`}>
-            <span className="block h-full rounded-full bg-ep-green transition-all" style={{ width: `${p.percent}%` }} />
+          <span
+            className="flex flex-1 gap-1"
+            role="progressbar"
+            aria-valuenow={p.percent}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={`${item.name} progress`}
+          >
+            {Array.from({ length: SEGMENTS }, (_, i) => (
+              <span key={i} className={`h-3 flex-1 ${i < filled ? 'bg-emerald-500' : locked ? 'bg-slate-300' : 'bg-ember-100'}`} />
+            ))}
           </span>
-          <span className="w-9 text-right font-rounded text-sm font-extrabold text-ep-ink">{p.percent}%</span>
+          <span className="w-12 text-right font-pixel text-[10px] text-navy-900">{p.percent}%</span>
         </div>
       </div>
     </button>

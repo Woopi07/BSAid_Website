@@ -1,3 +1,5 @@
+@import '../styles/pixel.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,23 +13,30 @@
     overflow: hidden;
   }
   body {
-    @apply bg-ep-navy font-rounded text-ep-ink antialiased;
+    @apply bg-navy-950 font-sans text-navy-900 antialiased;
     overscroll-behavior: none;
   }
+  h1, h2, h3, h4 {
+    @apply font-heading;
+  }
+  /* Pixelify Sans ships an "fi" ligature that renders oddly at display sizes. */
+  h1, h2, h3, h4, .font-heading {
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+  }
   :focus-visible {
-    @apply outline-none ring-4 ring-ep-amber/70;
+    @apply outline-none ring-4 ring-gold ring-offset-2 ring-offset-navy-950;
   }
 }
 
 @layer utilities {
-  .no-scrollbar {
+  .pixel-scroll {
     scrollbar-width: thin;
-    scrollbar-color: rgba(30, 58, 138, 0.25) transparent;
+    scrollbar-color: #1e3a8a transparent;
   }
-  .dotted-paper {
-    background-image: radial-gradient(rgba(180, 140, 60, 0.18) 1px, transparent 1px);
-    background-size: 18px 18px;
-  }
+  .pixel-scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+  .pixel-scroll::-webkit-scrollbar-thumb { background: #1e3a8a; border: 2px solid #0a0f2c; }
+  .pixel-scroll::-webkit-scrollbar-track { background: transparent; }
 }
 
 @media (prefers-reduced-motion: reduce) {

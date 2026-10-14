@@ -32,7 +32,7 @@ function Screens() {
       <Header />
       <div className="flex min-h-0 flex-1">
         <Sidebar />
-        <main className="dotted-paper min-w-0 flex-1 overflow-hidden bg-ep-sand p-3 sm:p-5 lg:p-6">
+        <main className="ledger-lines min-w-0 flex-1 overflow-hidden bg-cream p-3 sm:p-5 lg:p-6">
           <Panel />
         </main>
       </div>
@@ -45,7 +45,7 @@ export default function App() {
   return (
     <AudioProvider>
       <GameProvider>
-        <div className="h-[100dvh] w-full overflow-hidden bg-gradient-to-br from-ep-royal/90 via-ep-navy to-ep-deep">
+        <div className="h-[100dvh] w-full overflow-hidden bg-navy-950">
           <Screens />
         </div>
       </GameProvider>

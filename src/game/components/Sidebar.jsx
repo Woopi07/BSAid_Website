@@ -14,7 +14,7 @@ export default function Sidebar() {
   const { play } = useAudio();
 
   return (
-    <nav aria-label="Primary" className="flex w-16 shrink-0 flex-col items-center gap-3 bg-ep-navy py-5 sm:w-20">
+    <nav aria-label="Primary" className="pixel-dots flex w-16 shrink-0 flex-col items-center gap-5 border-r-4 border-navy-950 bg-navy-900 py-6 sm:w-20">
       {items.map((item) => {
         const active = state.panel === item.panel;
         return (
@@ -27,11 +27,11 @@ export default function Sidebar() {
             }}
             aria-current={active ? 'page' : undefined}
             title={item.label}
-            className={`flex h-12 w-12 items-center justify-center rounded-2xl transition sm:h-14 sm:w-14 ${
-              active ? 'bg-ep-amber text-ep-navy shadow-lg shadow-black/20' : 'text-slate-300 hover:bg-white/10 hover:text-white'
+            className={`pixel-btn h-11 w-11 p-0 sm:h-12 sm:w-12 ${
+              active ? 'bg-gold text-navy-950' : 'bg-navy-800 text-navy-200 hover:bg-navy-600 hover:text-cream'
             }`}
           >
-            <Icon name={item.icon} className="h-6 w-6" />
+            <Icon name={item.icon} className="h-6 w-6" strokeWidth={2.25} />
             <span className="sr-only">{item.label}</span>
           </button>
         );

@@ -38,27 +38,11 @@ export default {
           900: '#7F1D1D',
         },
         cream: '#FFF4DE',
-        // Entry Point web game palette
-        ep: {
-          navy: '#1B2A47',
-          deep: '#14203A',
-          royal: '#1E3A8A',
-          cream: '#FAF5E8',
-          paper: '#F9F6EE',
-          sand: '#F3EAD3',
-          line: '#E9DDB8',
-          green: '#15803D',
-          mint: '#10B981',
-          amber: '#F59E0B',
-          ink: '#1F2937',
-        },
         paper: '#F9FAFB',
       },
       fontFamily: {
         pixel: ['"Press Start 2P"', 'monospace'],
         heading: ['"Pixelify Sans"', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Lilita One"', 'Nunito', 'system-ui', 'sans-serif'],
-        rounded: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       keyframes: {

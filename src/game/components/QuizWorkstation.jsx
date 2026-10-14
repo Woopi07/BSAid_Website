@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import PixelSprite from '../../components/ui/PixelSprite.jsx';
 import { useGame } from '../context/GameProvider.jsx';
 import { useAudio } from '../context/AudioProvider.jsx';
 import LevelHeader from './LevelHeader.jsx';
+import Scene from './Scene.jsx';
 import Avatar from './Avatar.jsx';
 import Icon from './Icons.jsx';
 
@@ -9,17 +11,18 @@ const LETTERS = ['A', 'B', 'C', 'D', 'E'];
 
 function ContextCard({ icon, label, tone, children }) {
   const tones = {
-    green: 'bg-ep-cream ring-ep-line text-ep-green',
-    amber: 'bg-orange-50 ring-ep-amber text-orange-600',
-    success: 'bg-green-50 ring-ep-green text-ep-green',
-    danger: 'bg-red-50 ring-red-300 text-red-600',
-  };
+    event: { box: 'px-ember bg-ember-100', label: 'text-ember-800' },
+    challenge: { box: 'px-navy bg-cream', label: 'text-navy' },
+    insight: { box: 'px-gold bg-gold-50', label: 'text-gold-700' },
+    success: { box: 'bg-emerald-50 [--px:#059669]', label: 'text-emerald-700' },
+    danger: { box: 'bg-rose-50 [--px:#E11D48]', label: 'text-rose-700' },
+  }[tone];
   return (
-    <div className={`rounded-2xl p-4 shadow-sm ring-2 transition-colors sm:p-5 ${tones[tone]}`}>
-      <p className="flex items-center gap-1.5 font-rounded text-xs font-black uppercase tracking-wider">
+    <div className={`pixel-box-flat h-full p-4 sm:p-5 ${tones.box}`}>
+      <p className={`flex items-center gap-2 font-pixel text-[9px] uppercase tracking-wide ${tones.label}`}>
         <Icon name={icon} className="h-4 w-4" strokeWidth={2.5} /> {label}
       </p>
-      <div className="mt-2 font-rounded text-[15px] font-bold leading-relaxed text-ep-ink">{children}</div>
+      <div className="mt-3 text-[15px] leading-relaxed text-navy-900">{children}</div>
     </div>
   );
 }
@@ -37,6 +40,7 @@ function Quiz({ onRestart }) {
   const answered = a.result !== null;
   const last = index === questions.length - 1;
   const mistakes = answers.filter((x) => x.result === 'wrong').length;
+  const score = answers.filter((x) => x.result === 'correct').length * 100;
 
   const update = (patch) => setAnswers((all) => all.map((x, i) => (i === index ? { ...x, ...patch } : x)));
 
@@ -71,8 +75,7 @@ function Quiz({ onRestart }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.target.closest?.('input, [role="menu"]') || e.metaKey || e.ctrlKey || e.altKey) return;
-      const key = e.key.toUpperCase();
-      const letter = LETTERS.indexOf(key);
+      const letter = LETTERS.indexOf(e.key.toUpperCase());
       const digit = Number(e.key) - 1;
       const pick = letter >= 0 ? letter : digit >= 0 && digit < 9 ? digit : -1;
       if (pick >= 0 && pick < q.choices.length) {
@@ -97,175 +100,200 @@ function Quiz({ onRestart }) {
   } else if (a.result === 'wrong') {
     insight = (
       <ContextCard icon="close" label="Not quite" tone="danger">
-        <span className="block">
-          Correct answer: <strong>{LETTERS[q.answer]}. {q.choices[q.answer]}</strong>
+        <span className="block font-semibold">
+          Correct answer: {LETTERS[q.answer]}. {q.choices[q.answer]}
         </span>
-        <span className="mt-1 block font-semibold">{q.explanation}</span>
+        <span className="mt-1 block">{q.explanation}</span>
       </ContextCard>
     );
   } else {
     insight = (
-      <ContextCard icon="bulb" label={a.hint ? 'Hint' : 'Insight'} tone="amber">
+      <ContextCard icon="bulb" label={a.hint ? 'Hint' : 'Insight'} tone="insight">
         {a.hint ? q.hint : `Answer the question to reveal ${activeCase.owner}'s explanation here.`}
       </ContextCard>
     );
   }
 
+  const iconBtn = 'pixel-btn h-11 w-11 p-0 disabled:cursor-not-allowed disabled:opacity-40';
+
   return (
     <div className="flex h-full flex-col">
       <LevelHeader onRestart={onRestart} />
-      <main className="no-scrollbar min-h-0 flex-1 overflow-y-auto">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-3 py-5 sm:gap-5 sm:px-5 sm:py-6">
-          <div className="flex flex-col gap-3 rounded-2xl bg-ep-cream p-4 shadow-sm ring-2 ring-ep-line sm:flex-row sm:items-center sm:justify-between sm:p-5">
-            <div>
-              <h2 className="font-rounded text-lg font-black text-ep-ink">{activeLevel.title}</h2>
-              <p className="font-rounded text-sm font-semibold text-slate-500">{activeLevel.summary}</p>
-            </div>
-            <div className="flex shrink-0 items-center gap-3">
-              <div className="hidden gap-1 md:flex" aria-hidden="true">
-                {answers.map((x, i) => (
-                  <span
-                    key={i}
-                    className={`h-2.5 w-2.5 rounded-full ${
-                      x.result === 'correct' ? 'bg-ep-green' : x.result === 'wrong' ? 'bg-red-500' : i === index ? 'bg-ep-amber' : 'bg-ep-line'
-                    }`}
-                  />
-                ))}
+      <Scene sprites={false}>
+        <main className="pixel-scroll min-h-0 flex-1 overflow-y-auto">
+          <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-6 sm:px-6">
+            {/* HUD */}
+            <div className="pixel-box px-dark flex flex-col gap-3 bg-navy-900 p-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="min-w-0">
+                <p className="font-pixel text-[8px] uppercase tracking-widest text-ember-300">
+                  Stage {activeLevel.id} &middot; {activeCase.name}
+                </p>
+                <p className="mt-2 text-sm text-navy-100">{activeLevel.summary}</p>
               </div>
-              <span className="rounded-full bg-amber-200/70 px-4 py-1.5 font-rounded text-sm font-black text-amber-900">
-                Question {index + 1} of {questions.length}
-              </span>
-            </div>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            <ContextCard icon="doc" label="Business event" tone="green">
-              {q.event}
-            </ContextCard>
-            <ContextCard icon="doc" label="Accounting challenge" tone="green">
-              {q.challenge}
-            </ContextCard>
-            <div aria-live="polite">{insight}</div>
-          </div>
-
-          <section className="rounded-2xl bg-white p-4 shadow-lg ring-2 ring-ep-line sm:p-6" aria-labelledby="question-text">
-            <p className="flex items-center gap-2 font-rounded font-black text-ep-green">
-              <Avatar look={activeCase.avatar} className="h-9 w-9" />
-              {activeCase.owner}
-            </p>
-            <p id="question-text" className="mt-3 font-rounded text-base font-semibold leading-relaxed text-ep-ink sm:text-[17px]">
-              {q.prompt}
-            </p>
-
-            <div role="radiogroup" aria-labelledby="question-text" className={`mt-5 flex flex-col gap-3 ${shake ? 'animate-shake' : ''}`} onAnimationEnd={() => setShake(false)}>
-              {q.choices.map((choice, i) => {
-                const isSelected = a.selected === i;
-                const isAnswer = i === q.answer;
-                let style = 'ring-ep-line hover:ring-ep-amber hover:bg-amber-50/50';
-                if (answered && isAnswer) style = 'bg-green-50 ring-ep-green';
-                else if (answered && isSelected) style = 'bg-red-50 ring-red-400';
-                else if (answered) style = 'ring-ep-line opacity-60';
-                else if (isSelected) style = 'bg-amber-50 ring-ep-amber';
-                return (
-                  <button
-                    key={choice}
-                    type="button"
-                    role="radio"
-                    aria-checked={isSelected}
-                    disabled={answered}
-                    onClick={() => choose(i)}
-                    className={`flex items-center gap-4 rounded-2xl px-4 py-3.5 text-left ring-2 transition sm:px-5 ${style}`}
-                  >
+              <div className="flex shrink-0 items-center gap-3">
+                <div className="hidden gap-1 md:flex" aria-hidden="true">
+                  {answers.map((x, i) => (
                     <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-rounded text-sm font-black ${
-                        answered && isAnswer
-                          ? 'bg-ep-green text-white'
-                          : answered && isSelected
-                            ? 'bg-red-500 text-white'
-                            : isSelected
-                              ? 'bg-ep-amber text-white'
-                              : 'bg-amber-100 text-ep-ink'
+                      key={i}
+                      className={`h-3 w-3 ${
+                        x.result === 'correct'
+                          ? 'bg-emerald-500'
+                          : x.result === 'wrong'
+                            ? 'bg-rose-500'
+                            : i === index
+                              ? 'bg-gold'
+                              : 'bg-navy-600'
                       }`}
-                    >
-                      {answered && isAnswer ? <Icon name="check" className="h-4 w-4" strokeWidth={3} /> : answered && isSelected ? <Icon name="close" className="h-4 w-4" strokeWidth={3} /> : LETTERS[i]}
-                    </span>
-                    <span className="font-rounded text-[15px] font-bold text-ep-ink sm:text-base">{choice}</span>
-                  </button>
-                );
-              })}
+                    />
+                  ))}
+                </div>
+                <span className="flex items-center gap-1.5 bg-navy-950 px-2.5 py-2 font-pixel text-[9px] text-cream">
+                  <PixelSprite name="coin" scale={1} className="h-4 w-4" /> {score}
+                </span>
+                <span className="bg-crimson-700 px-2.5 py-2 font-pixel text-[9px] uppercase text-cream">
+                  Q {index + 1}/{questions.length}
+                </span>
+              </div>
             </div>
 
-            {/* Pinned to the bottom of the scroll area on phones so Submit is always reachable. */}
-            <div className="sticky bottom-0 -mx-4 -mb-4 mt-6 flex items-center justify-between gap-3 rounded-b-2xl border-t border-ep-line bg-white/95 px-4 py-3 backdrop-blur sm:static sm:m-0 sm:mt-6 sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    play('click');
-                    update({ hint: true });
-                  }}
-                  disabled={answered || a.hint}
-                  className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-ep-ink ring-2 ring-ep-line transition hover:bg-amber-50 hover:ring-ep-amber disabled:opacity-40"
-                  aria-label="Show hint"
-                  title="Hint"
-                >
-                  <Icon name="bulb" className="h-6 w-6" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    play('click');
-                    update({ selected: null });
-                  }}
-                  disabled={answered || a.selected === null}
-                  className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-ep-ink ring-2 ring-ep-line transition hover:bg-amber-50 hover:ring-ep-amber disabled:opacity-40"
-                  aria-label="Reset answer"
-                  title="Reset"
-                >
-                  <Icon name="refresh" className="h-6 w-6" />
-                </button>
-              </div>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    play('page');
-                    setIndex(index - 1);
-                  }}
-                  disabled={index === 0}
-                  className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-ep-ink ring-2 ring-ep-line hover:bg-ep-sand disabled:opacity-30"
-                  aria-label="Previous question"
-                >
-                  <Icon name="chevronLeft" className="h-5 w-5" strokeWidth={2.5} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    play('page');
-                    setIndex(index + 1);
-                  }}
-                  disabled={last || !answered}
-                  className="hidden h-12 w-12 items-center justify-center rounded-2xl bg-white text-ep-ink ring-2 ring-ep-line hover:bg-ep-sand disabled:opacity-30 sm:flex"
-                  aria-label="Next question"
-                >
-                  <Icon name="chevronRight" className="h-5 w-5" strokeWidth={2.5} />
-                </button>
-                <button
-                  type="button"
-                  onClick={submit}
-                  className="flex h-12 items-center gap-2 rounded-full bg-ep-green px-6 font-rounded text-lg font-black text-white shadow-lg transition hover:bg-green-800 sm:px-8"
-                >
-                  {answered ? (last ? 'Finish' : 'Next') : 'Submit'}
-                  <Icon name="play" className="h-4 w-4" />
-                </button>
-              </div>
+            <div className="grid gap-6 p-1 md:grid-cols-3 md:gap-5">
+              <ContextCard icon="doc" label="Business event" tone="event">
+                {q.event}
+              </ContextCard>
+              <ContextCard icon="doc" label="Challenge" tone="challenge">
+                {q.challenge}
+              </ContextCard>
+              <div aria-live="polite">{insight}</div>
             </div>
-          </section>
-          <p className="hidden text-center font-rounded text-xs font-bold text-blue-200/70 sm:block">
-            Keyboard: press A&ndash;{LETTERS[q.choices.length - 1]} to choose &middot; Enter to submit
-          </p>
-        </div>
-      </main>
+
+            <section className="pixel-box px-dark bg-cream p-4 sm:p-6" aria-labelledby="question-text">
+              <p className="flex items-center gap-3">
+                <span className="pixel-box-flat px-gold">
+                  <Avatar look={activeCase.avatar} round={false} className="block h-10 w-10" />
+                </span>
+                <span className="font-pixel text-[10px] uppercase text-navy">{activeCase.owner}</span>
+              </p>
+              <p id="question-text" className="mt-4 text-base leading-relaxed text-navy-900 sm:text-[17px]">
+                {q.prompt}
+              </p>
+
+              <div
+                role="radiogroup"
+                aria-labelledby="question-text"
+                className={`mt-6 flex flex-col gap-4 p-1 ${shake ? 'animate-shake' : ''}`}
+                onAnimationEnd={() => setShake(false)}
+              >
+                {q.choices.map((choice, i) => {
+                  const isSelected = a.selected === i;
+                  const isAnswer = i === q.answer;
+                  let box = 'px-navy bg-white hover:bg-gold-50';
+                  let chip = 'bg-navy text-cream';
+                  if (answered && isAnswer) {
+                    box = 'bg-emerald-50 [--px:#059669]';
+                    chip = 'bg-emerald-500 text-navy-950';
+                  } else if (answered && isSelected) {
+                    box = 'bg-rose-50 [--px:#E11D48]';
+                    chip = 'bg-rose-500 text-white';
+                  } else if (answered) {
+                    box = 'px-navy bg-white opacity-50';
+                  } else if (isSelected) {
+                    box = 'px-gold bg-gold-50';
+                    chip = 'bg-gold text-navy-950';
+                  }
+                  return (
+                    <button
+                      key={choice}
+                      type="button"
+                      role="radio"
+                      aria-checked={isSelected}
+                      disabled={answered}
+                      onClick={() => choose(i)}
+                      className={`pixel-box-flat flex items-center gap-4 px-4 py-3 text-left transition-colors ${box}`}
+                    >
+                      <span className={`flex h-8 w-8 shrink-0 items-center justify-center font-pixel text-[10px] ${chip}`}>
+                        {answered && isAnswer ? (
+                          <Icon name="check" className="h-4 w-4" strokeWidth={3} />
+                        ) : answered && isSelected ? (
+                          <Icon name="close" className="h-4 w-4" strokeWidth={3} />
+                        ) : (
+                          LETTERS[i]
+                        )}
+                      </span>
+                      <span className="text-[15px] font-medium text-navy-900 sm:text-base">{choice}</span>
+                      {isSelected && !answered && <PixelSprite name="arrow" scale={2} className="ml-auto shrink-0 rotate-180 animate-nudge" />}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Pinned to the bottom of the scroll area on phones so Submit is always reachable. */}
+              <div className="sticky bottom-0 -mx-4 -mb-4 mt-6 flex items-center justify-between gap-3 border-t-4 border-navy-900 bg-cream px-4 py-4 sm:static sm:m-0 sm:mt-8 sm:border-0 sm:p-0">
+                <div className="flex gap-4">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      play('click');
+                      update({ hint: true });
+                    }}
+                    disabled={answered || a.hint}
+                    className={`${iconBtn} bg-gold text-navy-950 hover:bg-gold-300`}
+                    aria-label="Show hint"
+                    title="Hint"
+                  >
+                    <Icon name="bulb" className="h-5 w-5" strokeWidth={2.25} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      play('click');
+                      update({ selected: null });
+                    }}
+                    disabled={answered || a.selected === null}
+                    className={`${iconBtn} bg-white text-navy-950 hover:bg-ember-100`}
+                    aria-label="Reset answer"
+                    title="Reset"
+                  >
+                    <Icon name="refresh" className="h-5 w-5" strokeWidth={2.25} />
+                  </button>
+                </div>
+                <div className="flex gap-4">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      play('page');
+                      setIndex(index - 1);
+                    }}
+                    disabled={index === 0}
+                    className={`${iconBtn} bg-navy text-cream hover:bg-navy-600`}
+                    aria-label="Previous question"
+                  >
+                    <Icon name="chevronLeft" className="h-5 w-5" strokeWidth={3} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      play('page');
+                      setIndex(index + 1);
+                    }}
+                    disabled={last || !answered}
+                    className={`${iconBtn} hidden bg-navy text-cream hover:bg-navy-600 sm:inline-flex`}
+                    aria-label="Next question"
+                  >
+                    <Icon name="chevronRight" className="h-5 w-5" strokeWidth={3} />
+                  </button>
+                  <button type="button" onClick={submit} className="pixel-btn h-11 bg-emerald-500 px-5 text-navy-950 hover:bg-emerald-400 sm:px-7">
+                    {answered ? (last ? 'Finish' : 'Next') : 'Submit'}
+                    <PixelSprite name="arrow" scale={2} />
+                  </button>
+                </div>
+              </div>
+            </section>
+            <p className="hidden pb-2 text-center font-pixel text-[8px] uppercase tracking-widest text-navy-200/80 sm:block">
+              Press A&ndash;{LETTERS[q.choices.length - 1]} to choose &middot; Enter to submit
+            </p>
+          </div>
+        </main>
+      </Scene>
     </div>
   );
 }

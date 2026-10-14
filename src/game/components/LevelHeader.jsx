@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import PixelSprite from '../../components/ui/PixelSprite.jsx';
 import { useGame } from '../context/GameProvider.jsx';
 import { useAudio } from '../context/AudioProvider.jsx';
 import AudioControl from './AudioControl.jsx';
@@ -36,10 +37,10 @@ export default function LevelHeader({ onRestart }) {
   ].filter(Boolean);
 
   return (
-    <header className="relative z-20 grid h-16 shrink-0 grid-cols-[1fr_auto_1fr] items-center gap-3 bg-ep-navy/95 px-3 shadow-md sm:px-5">
+    <header className="relative z-20 grid h-16 shrink-0 grid-cols-[1fr_auto_1fr] items-center gap-3 border-b-4 border-navy-950 bg-navy-900 px-3 sm:px-5">
       <div className="flex min-w-0 items-center gap-3">
-        <span className="shrink-0 rounded-full bg-ep-green px-3 py-1 font-rounded text-xs font-black text-white">LEVEL {activeLevel.id}</span>
-        <h1 className="truncate font-display text-lg tracking-wide text-white sm:text-xl">{activeLevel.title}</h1>
+        <span className="shrink-0 bg-crimson-700 px-2 py-1.5 font-pixel text-[9px] text-cream">LV {activeLevel.id}</span>
+        <h1 className="truncate text-xl font-bold text-cream pixel-text-shadow sm:text-2xl">{activeLevel.title}</h1>
       </div>
 
       <div ref={menuRef} className="relative">
@@ -52,40 +53,41 @@ export default function LevelHeader({ onRestart }) {
           aria-expanded={open}
           aria-haspopup="menu"
           aria-label="Level menu"
-          className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white hover:bg-white/20"
+          className="pixel-btn h-9 w-9 bg-navy-600 p-0 text-cream hover:bg-navy-400"
         >
-          <Icon name="menu" className="h-6 w-6" />
+          <Icon name="menu" className="h-5 w-5" strokeWidth={2.5} />
         </button>
         {open && (
-          <div className="absolute left-1/2 top-12 w-60 -translate-x-1/2">
-          <ul role="menu" className="animate-rise overflow-hidden rounded-2xl bg-ep-cream py-2 shadow-2xl ring-1 ring-ep-line">
-            {items.map((item) => (
-              <li key={item.label} role="none">
-                <button
-                  type="button"
-                  role="menuitem"
-                  onClick={act(item.run)}
-                  className="flex w-full items-center gap-3 px-4 py-2.5 text-left font-rounded font-bold text-ep-ink hover:bg-ep-sand"
-                >
-                  <Icon name={item.icon} className="h-5 w-5 text-ep-green" />
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className="absolute left-1/2 top-14 w-64 -translate-x-1/2">
+            <ul role="menu" className="pixel-box px-dark animate-pop bg-navy-900 py-2">
+              {items.map((item) => (
+                <li key={item.label} role="none">
+                  <button
+                    type="button"
+                    role="menuitem"
+                    onClick={act(item.run)}
+                    className="group flex w-full items-center gap-3 px-4 py-3 text-left font-pixel text-[9px] uppercase text-navy-100 hover:bg-crimson-700 hover:text-cream focus-visible:bg-crimson-700"
+                  >
+                    <PixelSprite name="arrow" scale={2} className="invisible group-hover:visible group-focus-visible:visible" />
+                    <Icon name={item.icon} className="h-4 w-4 text-gold" strokeWidth={2.5} />
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </div>
 
-      <div className="flex items-center justify-end gap-2 sm:gap-3">
+      <div className="flex items-center justify-end gap-3 sm:gap-4">
         <AudioControl />
         <button
           type="button"
           onClick={act(() => dispatch({ type: 'EXIT_TO_DASHBOARD' }))}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/25"
+          className="pixel-btn h-9 w-9 shrink-0 bg-cream p-0 text-navy-950 hover:bg-white"
           aria-label="Exit level"
         >
-          <Icon name="close" className="h-5 w-5" strokeWidth={2.5} />
+          <Icon name="close" className="h-5 w-5" strokeWidth={3} />
         </button>
       </div>
     </header>

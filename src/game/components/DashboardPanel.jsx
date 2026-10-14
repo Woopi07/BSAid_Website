@@ -1,40 +1,45 @@
+import PixelSprite from '../../components/ui/PixelSprite.jsx';
 import { cases } from '../data/cases.js';
 import { useGame } from '../context/GameProvider.jsx';
 import { useAudio } from '../context/AudioProvider.jsx';
 import PanelHeader from './PanelHeader.jsx';
 import Storefront from './Storefront.jsx';
-import Icon from './Icons.jsx';
 
 export default function DashboardPanel() {
   const { dispatch, progressOf, counts } = useGame();
   const { play } = useAudio();
   const available = cases.filter((c) => !c.locked);
-  const next = available.find((c) => progressOf(c).status === 'in-progress') ?? available.find((c) => progressOf(c).status === 'unopened');
+  const next =
+    available.find((c) => progressOf(c).status === 'in-progress') ?? available.find((c) => progressOf(c).status === 'unopened');
   const points = available.reduce(
     (sum, c) => sum + Object.values(progressOf(c).levels).reduce((s, l) => s + l.points, 0),
     0
   );
 
   const stats = [
-    { label: 'Levels cleared', value: available.reduce((s, c) => s + progressOf(c).completed, 0) },
-    { label: 'Points earned', value: points },
-    { label: 'Cases finished', value: counts.finished },
+    { label: 'Levels cleared', value: available.reduce((s, c) => s + progressOf(c).completed, 0), sprite: 'star' },
+    { label: 'Points earned', value: points, sprite: 'coin' },
+    { label: 'Cases finished', value: counts.finished, sprite: 'heart' },
   ];
 
   return (
-    <div className="no-scrollbar flex h-full flex-col gap-5 overflow-y-auto pb-4">
+    <div className="pixel-scroll flex h-full flex-col gap-8 overflow-y-auto p-1 pb-6">
       <PanelHeader icon="home" title="Welcome back!" subtitle="Your accounting adventure continues here." />
-      <div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]">
+      <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
         {next && (
-          <div className="overflow-hidden rounded-2xl bg-ep-paper shadow-md ring-1 ring-ep-line">
-            <Storefront art={next.art} className="aspect-[16/6] w-full" />
-            <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="pixel-box bg-white">
+            <div className="border-b-4 border-navy-900">
+              <Storefront art={next.art} className="block aspect-[16/6] w-full" />
+            </div>
+            <div className="flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="font-rounded text-xs font-extrabold uppercase tracking-wider text-ep-green">
+                <p className="font-pixel text-[9px] uppercase text-ember-600">
                   {progressOf(next).status === 'in-progress' ? 'Continue case' : 'Up next'}
                 </p>
-                <h2 className="mt-1 font-rounded text-xl font-black text-ep-ink">{next.name}</h2>
-                <p className="font-rounded text-sm font-semibold text-slate-500">CASE #{next.id} &middot; {next.category}</p>
+                <h2 className="mt-2 text-3xl font-bold leading-tight">{next.name}</h2>
+                <p className="text-sm text-slate-600">
+                  CASE #{next.id} &middot; {next.category}
+                </p>
               </div>
               <button
                 type="button"
@@ -42,18 +47,21 @@ export default function DashboardPanel() {
                   play('pop');
                   dispatch({ type: 'OPEN_CASE', caseId: next.id });
                 }}
-                className="flex items-center justify-center gap-2 rounded-full bg-ep-green px-6 py-3 font-rounded font-extrabold text-white shadow hover:bg-green-800"
+                className="pixel-btn shrink-0 bg-gold text-navy-950 hover:bg-gold-300"
               >
-                <Icon name="play" className="h-4 w-4" /> Open case
+                Open case <PixelSprite name="arrow" scale={2} />
               </button>
             </div>
           </div>
         )}
-        <ul className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+        <ul className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1">
           {stats.map((s) => (
-            <li key={s.label} className="flex items-center justify-between rounded-2xl bg-ep-cream p-5 ring-1 ring-ep-line">
-              <span className="font-rounded font-bold text-slate-600">{s.label}</span>
-              <span className="font-display text-3xl text-ep-navy">{s.value}</span>
+            <li key={s.label} className="pixel-box px-dark flex items-center justify-between gap-3 bg-navy-900 p-5">
+              <span className="flex items-center gap-3">
+                <PixelSprite name={s.sprite} scale={3} />
+                <span className="font-pixel text-[9px] uppercase leading-relaxed text-navy-100">{s.label}</span>
+              </span>
+              <span className="font-pixel text-xl text-gold">{s.value}</span>
             </li>
           ))}
         </ul>

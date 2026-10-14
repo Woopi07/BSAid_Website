@@ -90,8 +90,8 @@ export default function Icon({ name, className = 'h-5 w-5', strokeWidth = 2, fil
       fill={filled ? 'currentColor' : 'none'}
       stroke="currentColor"
       strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
       className={className}
       aria-hidden="true"
     >
