@@ -10,6 +10,7 @@ export const navLinks = [
   { label: 'Gameplay', href: '#gameplay' },
   { label: 'Case Files', href: '#case-files' },
   { label: 'Help System', href: '#help' },
+  { label: 'Play Online', href: '/play/' },
 ];
 
 export const genres = ['Visual Novel', 'Edutainment', 'Simulation', 'Puzzle', 'RPG'];

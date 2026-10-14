@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* App-like shell: the page itself never scrolls; panels scroll internally. */
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+  body {
+    @apply bg-ep-navy font-rounded text-ep-ink antialiased;
+    overscroll-behavior: none;
+  }
+  :focus-visible {
+    @apply outline-none ring-4 ring-ep-amber/70;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(30, 58, 138, 0.25) transparent;
+  }
+  .dotted-paper {
+    background-image: radial-gradient(rgba(180, 140, 60, 0.18) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

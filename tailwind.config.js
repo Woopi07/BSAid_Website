@@ -38,11 +38,27 @@ export default {
           900: '#7F1D1D',
         },
         cream: '#FFF4DE',
+        // Entry Point web game palette
+        ep: {
+          navy: '#1B2A47',
+          deep: '#14203A',
+          royal: '#1E3A8A',
+          cream: '#FAF5E8',
+          paper: '#F9F6EE',
+          sand: '#F3EAD3',
+          line: '#E9DDB8',
+          green: '#15803D',
+          mint: '#10B981',
+          amber: '#F59E0B',
+          ink: '#1F2937',
+        },
         paper: '#F9FAFB',
       },
       fontFamily: {
         pixel: ['"Press Start 2P"', 'monospace'],
         heading: ['"Pixelify Sans"', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Lilita One"', 'Nunito', 'system-ui', 'sans-serif'],
+        rounded: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       keyframes: {
@@ -74,6 +90,23 @@ export default {
           '0%': { transform: 'scale(0.9)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
+        rise: {
+          '0%': { transform: 'translateY(12px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        fade: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '20%, 60%': { transform: 'translateX(-6px)' },
+          '40%, 80%': { transform: 'translateX(6px)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
       },
       animation: {
         bob: 'bob 3s steps(6) infinite',
@@ -83,6 +116,10 @@ export default {
         nudge: 'nudge 0.8s steps(2) infinite',
         grid: 'grid 2s linear infinite',
         pop: 'pop 0.18s steps(3) both',
+        rise: 'rise 0.35s ease-out both',
+        fade: 'fade 0.25s ease-out both',
+        shake: 'shake 0.4s ease-in-out',
+        float: 'float 3.5s ease-in-out infinite',
       },
     },
   },

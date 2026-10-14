@@ -15,6 +15,27 @@ npm run build    # production build in dist/
 npm run preview  # serve the production build
 ```
 
+## Pages
+
+- `/` — promotional landing page (`index.html`, `src/`)
+- `/play/` — **Entry Point** web game module (`play/index.html`, `src/game/`): fixed-viewport, app-like case files
+  dashboard → level select → visual-novel intro → quiz workstation, with procedural lo-fi BGM and SFX (Web Audio API)
+
+## Entry Point game module
+
+```
+src/game/
+  App.jsx                      # view switch: DASHBOARD → LEVEL_MODAL → DIALOGUE_INTRO → QUIZ_WORKSTATION → LEVEL_RESULTS
+  audio/engine.js              # Web Audio lo-fi loop + click/pop/chime/warning/unlock SFX (no audio files)
+  context/AudioProvider.jsx    # mute/volume state; starts music on the first user gesture (autoplay policy)
+  context/GameProvider.jsx     # navigation + progress reducer, ranks, level unlocking (saved to localStorage)
+  data/cases.js                # case files, intro dialogue and questions — add levels/questions here
+  components/                  # Header, Sidebar, CaseFilesScreen, LevelModal, DialogueIntro, QuizWorkstation, …
+```
+
+To use real artwork, add `image: '/path.png'` to a case (card thumbnail) and pass `src` to `Avatar` for portraits.
+A level with an empty `questions` array shows as "coming soon" once unlocked.
+
 ## Structure
 
 ```
