@@ -36,7 +36,7 @@ export default function Navbar() {
         <ul className="hidden items-center gap-6 lg:gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="font-pixel text-[10px] uppercase tracking-wide text-navy-100 transition hover:text-gold">
+              <a href={link.href} className="font-pixel text-[13px] uppercase tracking-wide text-navy-100 transition hover:text-gold">
                 {link.label}
               </a>
             </li>
@@ -70,7 +70,7 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block px-3 py-3 font-pixel text-xs uppercase text-navy-100 hover:bg-white/5 hover:text-gold"
+                  className="block px-3 py-3 font-pixel text-sm uppercase text-navy-100 hover:bg-white/5 hover:text-gold"
                 >
                   {link.label}
                 </a>

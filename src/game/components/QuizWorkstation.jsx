@@ -19,7 +19,7 @@ function ContextCard({ icon, label, tone, children }) {
   }[tone];
   return (
     <div className={`pixel-box-flat h-full p-4 sm:p-5 ${tones.box}`}>
-      <p className={`flex items-center gap-2 font-pixel text-[9px] uppercase tracking-wide ${tones.label}`}>
+      <p className={`flex items-center gap-2 font-pixel text-[12px] uppercase tracking-wide ${tones.label}`}>
         <Icon name={icon} className="h-4 w-4" strokeWidth={2.5} /> {label}
       </p>
       <div className="mt-3 text-[15px] leading-relaxed text-navy-900">{children}</div>
@@ -125,7 +125,7 @@ function Quiz({ onRestart }) {
             {/* HUD */}
             <div className="pixel-box px-dark flex flex-col gap-3 bg-navy-900 p-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="min-w-0">
-                <p className="font-pixel text-[8px] uppercase tracking-widest text-ember-300">
+                <p className="font-pixel text-[11px] uppercase tracking-widest text-ember-300">
                   Stage {activeLevel.id} &middot; {activeCase.name}
                 </p>
                 <p className="mt-2 text-sm text-navy-100">{activeLevel.summary}</p>
@@ -147,10 +147,10 @@ function Quiz({ onRestart }) {
                     />
                   ))}
                 </div>
-                <span className="flex items-center gap-1.5 bg-navy-950 px-2.5 py-2 font-pixel text-[9px] text-cream">
+                <span className="flex items-center gap-1.5 bg-navy-950 px-2.5 py-2 font-pixel text-[12px] text-cream">
                   <PixelSprite name="coin" scale={1} className="h-4 w-4" /> {score}
                 </span>
-                <span className="bg-crimson-700 px-2.5 py-2 font-pixel text-[9px] uppercase text-cream">
+                <span className="bg-crimson-700 px-2.5 py-2 font-pixel text-[12px] uppercase text-cream">
                   Q {index + 1}/{questions.length}
                 </span>
               </div>
@@ -171,7 +171,7 @@ function Quiz({ onRestart }) {
                 <span className="pixel-box-flat px-gold">
                   <Avatar look={activeCase.avatar} round={false} className="block h-10 w-10" />
                 </span>
-                <span className="font-pixel text-[10px] uppercase text-navy">{activeCase.owner}</span>
+                <span className="font-pixel text-[13px] uppercase text-navy">{activeCase.owner}</span>
               </p>
               <p id="question-text" className="mt-4 text-base leading-relaxed text-navy-900 sm:text-[17px]">
                 {q.prompt}
@@ -210,7 +210,7 @@ function Quiz({ onRestart }) {
                       onClick={() => choose(i)}
                       className={`pixel-box-flat flex items-center gap-4 px-4 py-3 text-left transition-colors ${box}`}
                     >
-                      <span className={`flex h-8 w-8 shrink-0 items-center justify-center font-pixel text-[10px] ${chip}`}>
+                      <span className={`flex h-8 w-8 shrink-0 items-center justify-center font-pixel text-[13px] ${chip}`}>
                         {answered && isAnswer ? (
                           <Icon name="check" className="h-4 w-4" strokeWidth={3} />
                         ) : answered && isSelected ? (
@@ -288,7 +288,7 @@ function Quiz({ onRestart }) {
                 </div>
               </div>
             </section>
-            <p className="hidden pb-2 text-center font-pixel text-[8px] uppercase tracking-widest text-navy-200/80 sm:block">
+            <p className="hidden pb-2 text-center font-pixel text-[11px] uppercase tracking-widest text-navy-200/80 sm:block">
               Press A&ndash;{LETTERS[q.choices.length - 1]} to choose &middot; Enter to submit
             </p>
           </div>

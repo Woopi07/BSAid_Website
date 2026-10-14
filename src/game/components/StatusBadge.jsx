@@ -8,7 +8,7 @@ const labels = { unopened: 'Unopened', 'in-progress': 'In Progress', finished: '
 
 export default function StatusBadge({ status, className = '' }) {
   return (
-    <span className={`pixel-box-flat px-dark px-2 py-1.5 font-pixel text-[8px] uppercase ${styles[status]} ${className}`}>
+    <span className={`pixel-box-flat px-dark px-2 py-1.5 font-pixel text-[11px] uppercase ${styles[status]} ${className}`}>
       {labels[status]}
     </span>
   );

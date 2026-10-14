@@ -16,7 +16,7 @@ export default function About() {
         <ul className="grid gap-8 p-1 sm:grid-cols-2">
           {designGoals.map((goal, i) => (
             <li key={goal.title} className="pixel-box bg-white p-5">
-              <span className="inline-block bg-ember px-2 py-1 font-pixel text-[9px] text-navy-950">0{i + 1}</span>
+              <span className="inline-block bg-ember px-2 py-1 font-pixel text-[12px] text-navy-950">0{i + 1}</span>
               <h3 className="mt-3 text-xl font-semibold leading-snug">{goal.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{goal.body}</p>
             </li>
@@ -28,7 +28,7 @@ export default function About() {
         <div className="pixel-dots absolute inset-0" aria-hidden="true" />
         <div className="relative grid lg:grid-cols-[1fr_1.6fr]">
           <div className="p-8 sm:p-10">
-            <p className="font-pixel text-[10px] uppercase tracking-widest text-gold">The setting</p>
+            <p className="font-pixel text-[13px] uppercase tracking-widest text-gold">The setting</p>
             <h3 className="mt-4 text-3xl font-bold text-cream pixel-text-shadow sm:text-4xl">A campus that feels like yours.</h3>
             <p className="mt-4 leading-relaxed text-navy-100">
               Step into a modern university inspired by{' '}

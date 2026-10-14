@@ -26,7 +26,7 @@ export default function QuitScreen({ onClose }) {
         {!confirmed ? (
           <>
             <PixelSprite name="heart" scale={5} className="mx-auto" />
-            <h2 id="quit-title" className="mt-5 font-pixel text-base uppercase leading-relaxed text-cream sm:text-lg">
+            <h2 id="quit-title" className="mt-5 font-pixel text-lg uppercase leading-relaxed text-cream sm:text-xl">
               Quit game?
             </h2>
             <p className="mt-4 text-navy-100">
@@ -43,8 +43,8 @@ export default function QuitScreen({ onClose }) {
           </>
         ) : (
           <>
-            <p className="font-pixel text-[10px] uppercase tracking-widest text-gold">Thanks for visiting</p>
-            <h2 id="quit-title" className="mt-4 font-pixel text-xl uppercase leading-relaxed text-cream">
+            <p className="font-pixel text-[13px] uppercase tracking-widest text-gold">Thanks for visiting</p>
+            <h2 id="quit-title" className="mt-4 font-pixel text-2xl uppercase leading-relaxed text-cream">
               Continue?
             </h2>
             <p className="mt-4 font-pixel text-6xl text-ember">

@@ -28,7 +28,7 @@ function Portrait({ character }) {
       >
         <span className="pixel-text-shadow">{character.initials}</span>
       </div>
-      <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-navy-950 px-3 py-2 font-pixel text-[9px] uppercase text-gold">
+      <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-navy-950 px-3 py-2 font-pixel text-[12px] uppercase text-gold">
         {character.subject}
       </span>
     </div>
@@ -48,7 +48,7 @@ export default function Characters() {
       </SectionHeading>
 
       <div className="mt-14">
-        <p className="text-center font-pixel text-[10px] uppercase tracking-widest text-navy">Select character</p>
+        <p className="text-center font-pixel text-[13px] uppercase tracking-widest text-navy">Select character</p>
         <div role="tablist" aria-label="Characters" className="mx-auto mt-5 flex max-w-sm gap-5">
           {characters.map((c) => {
             const selected = c.id === activeId;
@@ -81,19 +81,19 @@ export default function Characters() {
             </div>
           </div>
           <div>
-            <p className={`font-pixel text-[10px] uppercase tracking-widest ${t.accent}`}>{active.role}</p>
+            <p className={`font-pixel text-[13px] uppercase tracking-widest ${t.accent}`}>{active.role}</p>
             <h3 className="mt-3 text-4xl font-bold sm:text-5xl">{active.name}</h3>
             <p className="mt-1 text-lg font-medium text-slate-500">{active.tagline}</p>
             <p className="mt-5 leading-relaxed text-slate-700">{active.bio}</p>
             <ul className="mt-5 flex flex-wrap gap-2">
               {active.traits.map((trait) => (
-                <li key={trait} className={`px-2.5 py-1.5 font-pixel text-[9px] uppercase ${t.chip}`}>
+                <li key={trait} className={`px-2.5 py-1.5 font-pixel text-[12px] uppercase ${t.chip}`}>
                   {trait}
                 </li>
               ))}
             </ul>
             <blockquote className="pixel-box-flat px-navy mt-7 bg-navy-950 p-4 text-cream">
-              <span className="font-pixel text-[9px] uppercase text-gold">Story &rsaquo; </span>
+              <span className="font-pixel text-[12px] uppercase text-gold">Story &rsaquo; </span>
               {active.hook}
             </blockquote>
           </div>
@@ -112,7 +112,7 @@ export default function Characters() {
           {branches.map((b) => (
             <article key={b.title} className="pixel-box bg-white p-6">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <span className="bg-navy px-2 py-1.5 font-pixel text-[9px] uppercase text-cream">{b.label}</span>
+                <span className="bg-navy px-2 py-1.5 font-pixel text-[12px] uppercase text-cream">{b.label}</span>
                 <span className="text-xs font-medium text-slate-500">{b.cast}</span>
               </div>
               <h4 className="mt-4 text-2xl font-semibold">{b.title}</h4>

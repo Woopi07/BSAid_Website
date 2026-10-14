@@ -22,12 +22,12 @@ export default function DemoStage() {
           </SectionHeading>
 
           <div className="pixel-box-flat px-navy mt-8 max-w-md bg-navy-950/70 p-5 text-sm">
-            <p className="font-pixel text-[10px] uppercase tracking-widest text-gold">Controls</p>
+            <p className="font-pixel text-[13px] uppercase tracking-widest text-gold">Controls</p>
             <dl className="mt-4 grid grid-cols-[1fr_auto] gap-x-6 gap-y-3">
             {controls.map(([action, command]) => (
               <div key={action} className="contents">
                 <dt className="text-navy-100">{action}</dt>
-                <dd className="font-pixel text-[10px] uppercase text-cream">{command}</dd>
+                <dd className="font-pixel text-[13px] uppercase text-cream">{command}</dd>
               </div>
             ))}
             </dl>
@@ -35,7 +35,7 @@ export default function DemoStage() {
 
           <ul className="mt-8 flex flex-wrap gap-3" aria-label="Genres">
             {genres.map((g) => (
-              <li key={g} className="bg-crimson-700 px-2.5 py-1.5 font-pixel text-[9px] uppercase text-cream">
+              <li key={g} className="bg-crimson-700 px-2.5 py-1.5 font-pixel text-[12px] uppercase text-cream">
                 {g}
               </li>
             ))}

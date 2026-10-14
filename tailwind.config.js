@@ -41,9 +41,9 @@ export default {
         paper: '#F9FAFB',
       },
       fontFamily: {
-        pixel: ['"Press Start 2P"', 'monospace'],
-        heading: ['"Pixelify Sans"', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        pixel: ['"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+        heading: ['"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         bob: {

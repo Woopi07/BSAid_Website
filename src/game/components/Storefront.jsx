@@ -130,14 +130,14 @@ export default function Storefront({ art, className = '' }) {
         x="160"
         y={long ? 44 : 47}
         textAnchor="middle"
-        fontFamily="'Pixelify Sans', monospace"
+        fontFamily="'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontWeight="700"
         fontSize={long ? 18 : 24}
         fill="#FDE68A"
       >
         {sign}
       </text>
-      <text x="160" y="60" textAnchor="middle" fontFamily="'Press Start 2P', monospace" fontSize="5" letterSpacing="1" fill="#FB923C">
+      <text x="160" y="60" textAnchor="middle" fontFamily="Montserrat, sans-serif" fontWeight="700" fontSize="7" letterSpacing="1.5" fill="#FB923C">
         {sub}
       </text>
 
@@ -148,7 +148,7 @@ export default function Storefront({ art, className = '' }) {
       <rect x="178" y="104" width="86" height="58" fill={`url(#win${gid})`} stroke="#0A0F2C" strokeWidth="4" />
       <rect x="146" y="108" width="28" height="72" fill="#3F2A1D" stroke="#0A0F2C" strokeWidth="4" />
       <rect x="150" y="116" width="20" height="10" fill={glow} />
-      <text x="160" y="123.5" textAnchor="middle" fontFamily="'Press Start 2P', monospace" fontSize="3.5" fill="#7C2D12">
+      <text x="160" y="123.6" textAnchor="middle" fontFamily="Montserrat, sans-serif" fontWeight="800" fontSize="5" fill="#7C2D12">
         OPEN
       </text>
       <Shelves kind={kind} />

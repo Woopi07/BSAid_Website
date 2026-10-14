@@ -3,8 +3,12 @@
 Landing page for **BSAid**, a simulation-based visual novel that helps first-year BSA students master
 Financial Accounting and Reporting 1 (FAR1). All content is drawn from `public/Game-Design-Document.pdf`.
 
-Built with React 18, Vite, and Tailwind CSS, in a retro pixel-arcade art style (Pixelify Sans + Press Start 2P
-for display type, Inter for body copy, hand-drawn SVG pixel sprites).
+Built with React 18, Vite, and Tailwind CSS, in a retro pixel-arcade art style (hand-drawn SVG pixel sprites) with
+clean type: **Helvetica Now Display** for headings and labels, **Montserrat** for body copy.
+
+Helvetica Now Display is a licensed Monotype font and is not on Google Fonts. The font stack falls back to
+Helvetica Neue → Helvetica → Arial. To serve it to every visitor, add your licensed `.woff2` files to `public/fonts/`
+and declare them with `@font-face` in `src/styles/pixel.css`.
 
 ## Getting started
 

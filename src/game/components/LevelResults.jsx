@@ -33,7 +33,7 @@ export default function LevelResults() {
         <main className="pixel-scroll flex min-h-0 flex-1 items-start justify-center overflow-y-auto p-4 sm:items-center">
           <div className="pixel-box px-dark my-4 w-full max-w-lg animate-pop bg-navy-900 text-center">
             <div className="border-b-4 border-navy-950 bg-crimson-700 px-4 py-3">
-              <p className="font-pixel text-[10px] uppercase tracking-widest text-cream sm:text-xs">Stage clear!</p>
+              <p className="font-pixel text-[13px] uppercase tracking-widest text-cream sm:text-sm">Stage clear!</p>
             </div>
             <div className="relative p-6 sm:p-8">
               <div className="pixel-dots absolute inset-0" aria-hidden="true" />
@@ -46,7 +46,7 @@ export default function LevelResults() {
                   ))}
                 </div>
 
-                <p className="mt-6 font-pixel text-[9px] uppercase tracking-widest text-ember-200">Rank</p>
+                <p className="mt-6 font-pixel text-[12px] uppercase tracking-widest text-ember-200">Rank</p>
                 <p className="pixel-title mt-2 font-heading text-8xl font-bold leading-none" data-text={result.rank}>
                   {result.rank}
                 </p>
@@ -59,8 +59,8 @@ export default function LevelResults() {
                     ['Points', `+${result.points}`],
                   ].map(([k, v]) => (
                     <div key={k} className="bg-navy-950 p-3">
-                      <dt className="font-pixel text-[8px] uppercase text-navy-200">{k}</dt>
-                      <dd className="mt-2 font-pixel text-sm text-gold">{v}</dd>
+                      <dt className="font-pixel text-[11px] uppercase text-navy-200">{k}</dt>
+                      <dd className="mt-2 font-pixel text-base text-gold">{v}</dd>
                     </div>
                   ))}
                 </dl>
@@ -69,7 +69,7 @@ export default function LevelResults() {
                   <div className="pixel-box-flat mt-7 flex items-center gap-3 bg-emerald-50 p-4 text-left [--px:#059669]">
                     <PixelSprite name="coin" scale={3} className="shrink-0 animate-bob" />
                     <p className="text-navy-900">
-                      <span className="block font-pixel text-[9px] uppercase text-emerald-700">Unlocked!</span>
+                      <span className="block font-pixel text-[12px] uppercase text-emerald-700">Unlocked!</span>
                       <span className="mt-1 block font-heading text-xl font-semibold">
                         Level {next.id}: {next.title}
                       </span>

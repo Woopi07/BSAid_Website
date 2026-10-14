@@ -48,13 +48,13 @@ export default function TutorialModal({ onClose, onPlay }) {
     <Dialog labelledBy="tutorial-title" onClose={onClose} className="bg-navy-950/85">
       <div className="pixel-box px-dark w-full max-w-2xl animate-pop bg-navy-900">
         <div className="flex items-center justify-between gap-3 border-b-4 border-navy-950 bg-crimson-700 px-4 py-3">
-          <p className="font-pixel text-[10px] uppercase tracking-widest text-cream sm:text-xs">
+          <p className="font-pixel text-[13px] uppercase tracking-widest text-cream sm:text-sm">
             Tutorial &middot; {step + 1}/{tutorialSteps.length}
           </p>
           <button
             type="button"
             onClick={onClose}
-            className="flex items-center gap-1 font-pixel text-[10px] uppercase text-cream hover:text-gold"
+            className="flex items-center gap-1 font-pixel text-[13px] uppercase text-cream hover:text-gold"
             aria-label="Close tutorial"
           >
             <Icon name="close" className="h-4 w-4" strokeWidth={3} /> Esc
@@ -69,7 +69,7 @@ export default function TutorialModal({ onClose, onPlay }) {
               <div className="pixel-box px-gold flex h-28 w-28 items-center justify-center bg-gradient-to-b from-gold-300 to-ember-600 sm:h-32 sm:w-32">
                 <span className="font-heading text-5xl font-bold text-navy-950">Fd</span>
               </div>
-              <span className="mt-4 bg-gold px-3 py-1.5 font-pixel text-[10px] uppercase text-navy-950">Faraday</span>
+              <span className="mt-4 bg-gold px-3 py-1.5 font-pixel text-[13px] uppercase text-navy-950">Faraday</span>
             </div>
 
             {/* Dialogue box */}
@@ -77,7 +77,7 @@ export default function TutorialModal({ onClose, onPlay }) {
               onClick={advance}
               className="pixel-box-flat px-cream relative w-full cursor-pointer bg-navy-950 p-5 text-left"
             >
-              <span className="flex items-center gap-2 font-pixel text-[10px] uppercase tracking-wide text-gold sm:text-xs">
+              <span className="flex items-center gap-2 font-pixel text-[13px] uppercase tracking-wide text-gold sm:text-sm">
                 <Icon name={current.icon} className="h-4 w-4" strokeWidth={2.5} />
                 <span id="tutorial-title">{current.title}</span>
               </span>

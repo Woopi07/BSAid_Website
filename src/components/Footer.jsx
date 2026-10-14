@@ -15,7 +15,7 @@ export default function Footer() {
         </div>
 
         <nav aria-label="Footer">
-          <h2 className="font-pixel text-[10px] uppercase tracking-widest text-gold">Explore</h2>
+          <h2 className="font-pixel text-[13px] uppercase tracking-widest text-gold">Explore</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -33,7 +33,7 @@ export default function Footer() {
         </nav>
 
         <div>
-          <h2 className="font-pixel text-[10px] uppercase tracking-widest text-gold">Resources</h2>
+          <h2 className="font-pixel text-[13px] uppercase tracking-widest text-gold">Resources</h2>
           <a
             href={GDD_URL}
             download="Game-Design-Document.pdf"

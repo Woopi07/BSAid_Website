@@ -16,15 +16,15 @@ export default function HelpFeedback() {
 
           {/* Mock of the in-game feedback panel */}
           <div className="pixel-box px-dark mt-10 max-w-md bg-cream p-5">
-            <p className="font-pixel text-[9px] uppercase tracking-wide text-navy">Feedback</p>
+            <p className="font-pixel text-[12px] uppercase tracking-wide text-navy">Feedback</p>
             <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
               <div className="pixel-box-flat bg-rose-50 p-3 [--px:#E11D48]">
-                <p className="font-pixel text-[8px] uppercase text-rose-700">Your answer</p>
+                <p className="font-pixel text-[11px] uppercase text-rose-700">Your answer</p>
                 <p className="mt-2 text-rose-900">Dr Sales</p>
                 <p className="pl-3 text-rose-900">Cr Cash</p>
               </div>
               <div className="pixel-box-flat bg-emerald-50 p-3 [--px:#059669]">
-                <p className="font-pixel text-[8px] uppercase text-emerald-700">Correct</p>
+                <p className="font-pixel text-[11px] uppercase text-emerald-700">Correct</p>
                 <p className="mt-2 text-emerald-900">Dr Cash</p>
                 <p className="pl-3 text-emerald-900">Cr Sales</p>
               </div>

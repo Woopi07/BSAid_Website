@@ -6,7 +6,7 @@ import PanelHeader from './PanelHeader.jsx';
 function Slider({ id, label, value, onChange, disabled }) {
   return (
     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-      <label htmlFor={id} className="font-pixel text-[10px] uppercase text-navy-900">
+      <label htmlFor={id} className="font-pixel text-[13px] uppercase text-navy-900">
         {label}
       </label>
       <div className="flex items-center gap-3">
@@ -21,7 +21,7 @@ function Slider({ id, label, value, onChange, disabled }) {
           onChange={(e) => onChange(Number(e.target.value))}
           className="w-56 cursor-pointer accent-crimson-700 disabled:opacity-40"
         />
-        <span className="w-12 text-right font-pixel text-[10px] text-navy-900">{Math.round(value * 100)}%</span>
+        <span className="w-12 text-right font-pixel text-[13px] text-navy-900">{Math.round(value * 100)}%</span>
       </div>
     </div>
   );
@@ -38,7 +38,7 @@ export default function SettingsPanel() {
       <section className="pixel-box flex flex-col gap-6 bg-white p-6">
         <h2 className="text-2xl font-bold">Sound</h2>
         <div className="flex items-center justify-between gap-4">
-          <span className="font-pixel text-[10px] uppercase text-navy-900">All audio</span>
+          <span className="font-pixel text-[13px] uppercase text-navy-900">All audio</span>
           <button
             type="button"
             role="switch"

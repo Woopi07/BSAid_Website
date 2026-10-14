@@ -36,7 +36,7 @@ export default function CaseCard({ item }) {
       } ${shake ? 'animate-shake' : ''}`}
     >
       <span
-        className={`absolute -top-4 left-3 z-10 px-2.5 py-2 font-pixel text-[9px] ${
+        className={`absolute -top-4 left-3 z-10 px-2.5 py-2 font-pixel text-[12px] ${
           locked ? 'bg-navy-600 text-navy-200' : 'bg-navy-950 text-cream'
         }`}
       >
@@ -73,7 +73,7 @@ export default function CaseCard({ item }) {
               <span key={i} className={`h-3 flex-1 ${i < filled ? 'bg-emerald-500' : locked ? 'bg-slate-300' : 'bg-ember-100'}`} />
             ))}
           </span>
-          <span className="w-12 text-right font-pixel text-[10px] text-navy-900">{p.percent}%</span>
+          <span className="w-12 text-right font-pixel text-[13px] text-navy-900">{p.percent}%</span>
         </div>
       </div>
     </button>

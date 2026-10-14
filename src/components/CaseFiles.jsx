@@ -46,7 +46,7 @@ export default function CaseFiles() {
                 }`}
               >
                 <span
-                  className={`absolute -top-4 left-3 px-2.5 py-2 font-pixel text-[9px] ${
+                  className={`absolute -top-4 left-3 px-2.5 py-2 font-pixel text-[12px] ${
                     selected ? 'bg-gold text-navy-950' : 'bg-navy-950 text-cream'
                   }`}
                 >
@@ -74,14 +74,14 @@ export default function CaseFiles() {
         className="pixel-box mt-12 grid gap-8 bg-white p-6 sm:p-8 lg:grid-cols-[1.5fr_1fr]"
       >
         <div>
-          <p className="font-pixel text-[10px] uppercase leading-relaxed tracking-widest text-ember-600">
+          <p className="font-pixel text-[13px] uppercase leading-relaxed tracking-widest text-ember-600">
             Case #{active.id} &middot; {active.topic}
           </p>
           <h3 className="mt-3 text-3xl font-bold">{active.name}</h3>
           <ol className="mt-6 space-y-4">
             {active.levels.map((lvl, i) => (
               <li key={lvl} className="pixel-box-flat flex gap-4 bg-paper p-4">
-                <span className="flex h-9 w-12 shrink-0 items-center justify-center bg-navy font-pixel text-[9px] text-cream">
+                <span className="flex h-9 w-12 shrink-0 items-center justify-center bg-navy font-pixel text-[12px] text-cream">
                   LV{i + 1}
                 </span>
                 <span className="self-center text-sm text-slate-700">{lvl}</span>
@@ -90,7 +90,7 @@ export default function CaseFiles() {
           </ol>
         </div>
         <aside className="pixel-box-flat px-ember flex flex-col bg-gradient-to-b from-ember-100 to-cream p-6">
-          <p className="flex items-center gap-2 font-pixel text-[9px] uppercase tracking-widest text-ember-800">
+          <p className="flex items-center gap-2 font-pixel text-[12px] uppercase tracking-widest text-ember-800">
             <PixelSprite name="bolt" scale={2} /> Special case
           </p>
           <h4 className="mt-3 text-2xl font-bold">{active.special.name}</h4>

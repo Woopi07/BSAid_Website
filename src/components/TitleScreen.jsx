@@ -128,7 +128,7 @@ export default function TitleScreen() {
       <Scenery />
 
       <div className="relative z-10 flex w-full max-w-3xl flex-col items-center">
-        <p className="font-pixel text-[9px] uppercase leading-relaxed tracking-[0.2em] text-ember-200 sm:text-[11px]">
+        <p className="font-pixel text-[12px] uppercase leading-relaxed tracking-[0.2em] text-ember-200 sm:text-[14px]">
           A FAR1 visual novel adventure
         </p>
 
@@ -153,7 +153,7 @@ export default function TitleScreen() {
           ))}
         </div>
 
-        <h1 className="mt-6 max-w-2xl font-pixel text-[11px] uppercase leading-[2] text-cream pixel-text-shadow sm:text-sm sm:leading-[2]">
+        <h1 className="mt-6 max-w-2xl font-pixel text-[14px] uppercase leading-[2] text-cream pixel-text-shadow sm:text-base sm:leading-[2]">
           Every transaction tells a story. <span className="text-gold">Will you make the right entry?</span>
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-navy-100 sm:text-lg">
@@ -175,7 +175,7 @@ export default function TitleScreen() {
                     onMouseEnter={() => setSelected(i)}
                     onFocus={() => setSelected(i)}
                     aria-describedby={`menu-hint-${item.id}`}
-                    className={`group relative flex w-full items-center justify-center gap-3 px-4 py-2.5 font-pixel text-sm uppercase tracking-widest transition-colors sm:text-base ${
+                    className={`group relative flex w-full items-center justify-center gap-3 px-4 py-2.5 font-pixel text-base uppercase tracking-widest transition-colors sm:text-lg ${
                       active ? 'bg-crimson-700 text-cream' : 'text-navy-200 hover:text-cream'
                     }`}
                   >
@@ -200,7 +200,7 @@ export default function TitleScreen() {
           <Button href={ANDROID_DOWNLOAD_URL} icon="android" className="px-6 py-4 text-xs sm:text-sm">
             Download for Android
           </Button>
-          <p className="hidden font-pixel text-[9px] uppercase tracking-widest text-navy-200 sm:block" aria-hidden="true">
+          <p className="hidden font-pixel text-[12px] uppercase tracking-widest text-navy-200 sm:block" aria-hidden="true">
             <span className="animate-blink text-gold">&#9654;</span> &uarr;&darr; select &middot; enter confirm
           </p>
         </div>

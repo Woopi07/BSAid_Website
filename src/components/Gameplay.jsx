@@ -20,7 +20,7 @@ export default function Gameplay() {
               <span className="inline-flex bg-navy p-2.5 text-cream">
                 <Icon name={m.icon} strokeWidth={2.25} />
               </span>
-              <span className="font-pixel text-lg text-ember-200">{m.step}</span>
+              <span className="font-pixel text-xl text-ember-200">{m.step}</span>
             </div>
             <h3 className="mt-5 text-xl font-semibold leading-snug">{m.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">{m.body}</p>
@@ -48,11 +48,11 @@ export default function Gameplay() {
                 key={r.rank}
                 className={`flex flex-col items-center p-2 text-center sm:p-3 ${r.rank === 'S' ? 'bg-gold' : 'bg-navy-950'}`}
               >
-                <p className={`font-pixel text-xl sm:text-2xl ${r.rank === 'S' ? 'text-navy-950' : 'text-cream'}`}>{r.rank}</p>
+                <p className={`font-pixel text-2xl sm:text-2xl ${r.rank === 'S' ? 'text-navy-950' : 'text-cream'}`}>{r.rank}</p>
                 <p className={`mt-2 text-[10px] leading-tight sm:text-xs ${r.rank === 'S' ? 'text-navy-900' : 'text-navy-200'}`}>
                   {r.mistakes}
                 </p>
-                <p className={`mt-2 font-pixel text-[8px] sm:text-[10px] ${r.rank === 'S' ? 'text-navy-950' : 'text-gold'}`}>
+                <p className={`mt-2 font-pixel text-[11px] sm:text-[13px] ${r.rank === 'S' ? 'text-navy-950' : 'text-gold'}`}>
                   {r.points} pts
                 </p>
               </div>
@@ -66,13 +66,13 @@ export default function Gameplay() {
           <ul className="mt-6 space-y-4">
             {multipliers.map((m, i) => (
               <li key={m} className="flex items-center gap-3">
-                <span className="w-14 font-pixel text-[9px] uppercase text-navy-100">Stg {i + 1}</span>
+                <span className="w-14 font-pixel text-[12px] uppercase text-navy-100">Stg {i + 1}</span>
                 <span className="flex flex-1 gap-1" aria-hidden="true">
                   {Array.from({ length: 8 }, (_, n) => (
                     <span key={n} className={`h-3 flex-1 ${n < (i + 1) * 2 ? 'bg-gold' : 'bg-navy-950'}`} />
                   ))}
                 </span>
-                <span className="w-12 text-right font-pixel text-[10px] text-gold">{m}</span>
+                <span className="w-12 text-right font-pixel text-[13px] text-gold">{m}</span>
               </li>
             ))}
           </ul>

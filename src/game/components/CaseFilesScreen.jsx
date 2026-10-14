@@ -77,7 +77,7 @@ export default function CaseFilesScreen() {
             ))}
           </ul>
         ) : (
-          <div className="pixel-box-flat flex h-48 flex-col items-center justify-center gap-3 bg-white text-center font-pixel text-[10px] uppercase leading-relaxed text-slate-500">
+          <div className="pixel-box-flat flex h-48 flex-col items-center justify-center gap-3 bg-white text-center font-pixel text-[13px] uppercase leading-relaxed text-slate-500">
             <Icon name="search" className="h-8 w-8" strokeWidth={2.25} />
             No cases match &ldquo;{query || FILTERS.find((f) => f.id === filter).label}&rdquo;.
           </div>

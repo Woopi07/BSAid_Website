@@ -13,7 +13,7 @@ export default function AnalyticsPanel() {
       <div className="pixel-box overflow-x-auto bg-white">
         <table className="w-full min-w-[620px] text-sm">
           <thead>
-            <tr className="bg-navy-900 text-left font-pixel text-[9px] uppercase text-cream">
+            <tr className="bg-navy-900 text-left font-pixel text-[12px] uppercase text-cream">
               <th className="px-5 py-4">Case</th>
               {[1, 2, 3, 4].map((n) => (
                 <th key={n} className="px-3 py-4 text-center">
@@ -31,18 +31,18 @@ export default function AnalyticsPanel() {
                 <tr key={c.id} className="border-t-4 border-cream">
                   <th scope="row" className="px-5 py-3 text-left">
                     <span className="block font-heading text-lg font-semibold text-navy-900">{c.name}</span>
-                    <span className="block font-pixel text-[8px] text-slate-500">CASE #{c.id}</span>
+                    <span className="block font-pixel text-[11px] text-slate-500">CASE #{c.id}</span>
                   </th>
                   {c.levels.map((l) => {
                     const r = p.levels[l.id];
                     return (
                       <td key={l.id} className="px-3 py-3 text-center">
                         {r ? (
-                          <span className={`inline-flex h-9 w-9 items-center justify-center font-pixel text-xs ${r.rank === 'S' ? 'bg-gold text-navy-950' : 'bg-navy-950 text-cream'}`}>
+                          <span className={`inline-flex h-9 w-9 items-center justify-center font-pixel text-sm ${r.rank === 'S' ? 'bg-gold text-navy-950' : 'bg-navy-950 text-cream'}`}>
                             {r.rank}
                           </span>
                         ) : (
-                          <span className="font-pixel text-[10px] text-slate-300">--</span>
+                          <span className="font-pixel text-[13px] text-slate-300">--</span>
                         )}
                       </td>
                     );
@@ -54,7 +54,7 @@ export default function AnalyticsPanel() {
                           <span key={i} className={`h-3 w-2.5 ${i < filled ? 'bg-emerald-500' : 'bg-ember-100'}`} />
                         ))}
                       </span>
-                      <span className="w-10 text-right font-pixel text-[9px] text-navy-900">{p.percent}%</span>
+                      <span className="w-10 text-right font-pixel text-[12px] text-navy-900">{p.percent}%</span>
                     </span>
                   </td>
                 </tr>
@@ -72,9 +72,9 @@ export default function AnalyticsPanel() {
           ['D', '8+', 20],
         ].map(([rank, m, pts]) => (
           <div key={rank} className={`flex flex-col items-center p-2 text-center sm:p-3 ${rank === 'S' ? 'bg-gold' : 'bg-navy-950'}`}>
-            <span className={`font-pixel text-lg ${rank === 'S' ? 'text-navy-950' : 'text-cream'}`}>{rank}</span>
+            <span className={`font-pixel text-xl ${rank === 'S' ? 'text-navy-950' : 'text-cream'}`}>{rank}</span>
             <span className={`mt-2 text-[10px] sm:text-xs ${rank === 'S' ? 'text-navy-900' : 'text-navy-200'}`}>{m}</span>
-            <span className={`mt-1 font-pixel text-[8px] ${rank === 'S' ? 'text-navy-950' : 'text-gold'}`}>{pts} pts</span>
+            <span className={`mt-1 font-pixel text-[11px] ${rank === 'S' ? 'text-navy-950' : 'text-gold'}`}>{pts} pts</span>
           </div>
         ))}
       </div>

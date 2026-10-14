@@ -33,7 +33,7 @@ export default function DashboardPanel() {
             </div>
             <div className="flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="font-pixel text-[9px] uppercase text-ember-600">
+                <p className="font-pixel text-[12px] uppercase text-ember-600">
                   {progressOf(next).status === 'in-progress' ? 'Continue case' : 'Up next'}
                 </p>
                 <h2 className="mt-2 text-3xl font-bold leading-tight">{next.name}</h2>
@@ -59,9 +59,9 @@ export default function DashboardPanel() {
             <li key={s.label} className="pixel-box px-dark flex items-center justify-between gap-3 bg-navy-900 p-5">
               <span className="flex items-center gap-3">
                 <PixelSprite name={s.sprite} scale={3} />
-                <span className="font-pixel text-[9px] uppercase leading-relaxed text-navy-100">{s.label}</span>
+                <span className="font-pixel text-[12px] uppercase leading-relaxed text-navy-100">{s.label}</span>
               </span>
-              <span className="font-pixel text-xl text-gold">{s.value}</span>
+              <span className="font-pixel text-2xl text-gold">{s.value}</span>
             </li>
           ))}
         </ul>

@@ -6,7 +6,7 @@ export default function SectionHeading({ eyebrow, title, children, align = 'cent
     <div className={`max-w-2xl ${center ? 'mx-auto text-center' : ''}`}>
       {eyebrow && (
         <p
-          className={`inline-flex items-center gap-2 font-pixel text-[10px] uppercase tracking-widest sm:text-xs ${
+          className={`inline-flex items-center gap-2 font-pixel text-[13px] uppercase tracking-widest sm:text-sm ${
             dark ? 'text-gold' : 'text-ember-600'
           }`}
         >

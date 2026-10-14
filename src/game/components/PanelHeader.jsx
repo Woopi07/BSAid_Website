@@ -9,7 +9,7 @@ export default function PanelHeader({ icon, title, subtitle }) {
       </span>
       <div className="min-w-0">
         <h1 className="text-3xl font-bold leading-none text-navy-900 sm:text-4xl">{title}</h1>
-        <p className="mt-2 font-pixel text-[9px] uppercase leading-relaxed tracking-wide text-ember-600 sm:text-[10px]">{subtitle}</p>
+        <p className="mt-2 font-pixel text-[12px] uppercase leading-relaxed tracking-wide text-ember-600 sm:text-[13px]">{subtitle}</p>
       </div>
       <div className="pointer-events-none absolute -right-3 top-1/2 hidden -translate-y-1/2 opacity-90 md:block" aria-hidden="true">
         <PixelSprite name="cloud" scale={5} />

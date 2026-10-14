@@ -39,7 +39,7 @@ export default function LevelHeader({ onRestart }) {
   return (
     <header className="relative z-20 grid h-16 shrink-0 grid-cols-[1fr_auto_1fr] items-center gap-3 border-b-4 border-navy-950 bg-navy-900 px-3 sm:px-5">
       <div className="flex min-w-0 items-center gap-3">
-        <span className="shrink-0 bg-crimson-700 px-2 py-1.5 font-pixel text-[9px] text-cream">LV {activeLevel.id}</span>
+        <span className="shrink-0 bg-crimson-700 px-2 py-1.5 font-pixel text-[12px] text-cream">LV {activeLevel.id}</span>
         <h1 className="truncate text-xl font-bold text-cream pixel-text-shadow sm:text-2xl">{activeLevel.title}</h1>
       </div>
 
@@ -66,7 +66,7 @@ export default function LevelHeader({ onRestart }) {
                     type="button"
                     role="menuitem"
                     onClick={act(item.run)}
-                    className="group flex w-full items-center gap-3 px-4 py-3 text-left font-pixel text-[9px] uppercase text-navy-100 hover:bg-crimson-700 hover:text-cream focus-visible:bg-crimson-700"
+                    className="group flex w-full items-center gap-3 px-4 py-3 text-left font-pixel text-[12px] uppercase text-navy-100 hover:bg-crimson-700 hover:text-cream focus-visible:bg-crimson-700"
                   >
                     <PixelSprite name="arrow" scale={2} className="invisible group-hover:visible group-focus-visible:visible" />
                     <Icon name={item.icon} className="h-4 w-4 text-gold" strokeWidth={2.5} />

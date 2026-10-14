@@ -19,7 +19,7 @@
   h1, h2, h3, h4 {
     @apply font-heading;
   }
-  /* Pixelify Sans ships an "fi" ligature that renders oddly at display sizes. */
+  /* Keep headings free of "fi"/"fl" ligatures for a clean display look. */
   h1, h2, h3, h4, .font-heading {
     font-variant-ligatures: none;
     font-feature-settings: 'liga' 0, 'clig' 0;

@@ -1,4 +1,7 @@
 /* Shared retro pixel-arcade styles used by the landing page and the Entry Point game. */
+
+/* Labels and buttons use the heading face in bold, set slightly tracked. */
+.font-pixel { font-weight: 700; letter-spacing: 0.04em; }
 @layer components {
   /* Stepped "notched corner" pixel border drawn with box-shadows. Set --px for the border color. */
   .pixel-box {
@@ -28,7 +31,7 @@
 
   /* Chunky arcade button with a bevel. */
   .pixel-btn {
-    @apply relative inline-flex items-center justify-center gap-2 px-5 py-3 font-pixel text-[11px] uppercase leading-none tracking-wide transition-transform sm:text-xs;
+    @apply relative inline-flex items-center justify-center gap-2 px-5 py-3 font-pixel text-sm font-bold uppercase leading-none tracking-wide transition-transform sm:text-[15px];
     box-shadow:
       0 -4px 0 0 #0a0f2c,
       0 4px 0 0 #0a0f2c,

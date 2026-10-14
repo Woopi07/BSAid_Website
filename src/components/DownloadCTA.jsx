@@ -15,7 +15,7 @@ export default function DownloadCTA() {
             <PixelSprite name="cloud" scale={6} className="-scale-x-100" />
           </div>
           <div className="relative">
-            <p className="font-pixel text-[10px] uppercase tracking-widest text-cream">
+            <p className="font-pixel text-[13px] uppercase tracking-widest text-cream">
               <span className="animate-blink">Insert coin</span> &middot; Press start
             </p>
             <h2 className="mt-5 text-4xl font-bold text-cream pixel-text-shadow sm:text-5xl">Your first case file is waiting.</h2>

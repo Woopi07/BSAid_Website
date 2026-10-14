@@ -22,8 +22,8 @@ export default function Header() {
             <span className={`flex h-6 w-6 items-center justify-center ${p.chip}`}>
               <Icon name={p.icon} className="h-4 w-4" strokeWidth={2.5} />
             </span>
-            <span className="font-pixel text-[11px] text-cream">{counts[p.key]}</span>
-            <span className="hidden font-pixel text-[9px] uppercase text-navy-200 md:inline">{p.label}</span>
+            <span className="font-pixel text-[14px] text-cream">{counts[p.key]}</span>
+            <span className="hidden font-pixel text-[12px] uppercase text-navy-200 md:inline">{p.label}</span>
             <span className="sr-only md:hidden">{p.label}</span>
           </li>
         ))}
