@@ -144,8 +144,8 @@ export default function Icon({ name, className = 'h-6 w-6', strokeWidth = 1.75 }
       fill="none"
       stroke="currentColor"
       strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
       className={className}
       aria-hidden="true"
     >

@@ -282,3 +282,37 @@ export const demoTransactions = [
     explanation: 'Supplies increase (debit) while Cash decreases (credit). Total assets stay the same.',
   },
 ];
+
+// Visual-novel style tutorial shown from the title screen's TUTORIAL option.
+export const tutorialSteps = [
+  {
+    title: 'Welcome to BSAid!',
+    line: 'Hey, it’s me, Faraday! You actually joined Accountancy with me — thank you! Let me show you how this works. It’s easier than it looks, promise.',
+    icon: 'book',
+  },
+  {
+    title: 'Refresh with index cards',
+    line: 'Every level opens with a set of index cards. Flip through them first — they’re a quick refresher before the questions start.',
+    icon: 'tips',
+  },
+  {
+    title: 'Analyze the transaction',
+    line: 'Read the transaction carefully. Ask yourself: which accounts go up, which go down? That tells you what to debit and what to credit.',
+    icon: 'analyze',
+  },
+  {
+    title: 'Make your entry',
+    line: 'Pick accounts from the Chart of Accounts, then type the amounts. Need to compute? Tap the calculator. Hit the green SUBMIT button when you’re sure.',
+    icon: 'journal',
+  },
+  {
+    title: 'Hints & feedback',
+    line: 'Stuck? Tap the yellow HINT button. Got it wrong? You’ll see your answer next to the correct solution, with an explanation. Mistakes are part of the lesson!',
+    icon: 'hint',
+  },
+  {
+    title: 'Ranks & rewards',
+    line: 'Finish with zero mistakes for an S rank and 100 points! Later stages multiply your points — spend them on cosmetics for your character and room.',
+    icon: 'review',
+  },
+];

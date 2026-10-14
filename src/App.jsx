@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar.jsx';
-import Hero from './components/Hero.jsx';
+import TitleScreen from './components/TitleScreen.jsx';
+import DemoStage from './components/DemoStage.jsx';
 import About from './components/About.jsx';
 import Characters from './components/Characters.jsx';
 import Gameplay from './components/Gameplay.jsx';
@@ -13,7 +14,8 @@ export default function App() {
     <>
       <Navbar />
       <main>
-        <Hero />
+        <TitleScreen />
+        <DemoStage />
         <About />
         <Characters />
         <Gameplay />

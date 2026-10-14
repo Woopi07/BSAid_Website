@@ -13,6 +13,7 @@ export default {
           DEFAULT: '#1E3A8A',
           800: '#172E6E',
           900: '#0F1F4D',
+          950: '#0A0F2C',
         },
         gold: {
           50: '#FFFBEB',
@@ -22,24 +23,66 @@ export default {
           600: '#D97706',
           700: '#B45309',
         },
+        // Arcade accents taken from the warm sunset palette of the reference poster
+        ember: {
+          100: '#FFEDD5',
+          200: '#FED7AA',
+          300: '#FDBA74',
+          DEFAULT: '#FB923C',
+          600: '#EA580C',
+          800: '#9A3412',
+        },
+        crimson: {
+          DEFAULT: '#E11D48',
+          700: '#B91C1C',
+          900: '#7F1D1D',
+        },
+        cream: '#FFF4DE',
         paper: '#F9FAFB',
       },
       fontFamily: {
-        heading: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        pixel: ['"Press Start 2P"', 'monospace'],
+        heading: ['"Pixelify Sans"', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-      },
-      boxShadow: {
-        card: '0 1px 2px rgba(15,31,77,0.06), 0 8px 24px -12px rgba(15,31,77,0.18)',
-        coin: '0 4px 0 #B45309',
       },
       keyframes: {
         bob: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-6px)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
+        drift: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(14px)' },
+        },
+        blink: {
+          '0%, 49%': { opacity: '1' },
+          '50%, 100%': { opacity: '0' },
+        },
+        twinkle: {
+          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(0.6)', opacity: '0.5' },
+        },
+        nudge: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(4px)' },
+        },
+        grid: {
+          from: { backgroundPosition: '0 0' },
+          to: { backgroundPosition: '0 64px' },
+        },
+        pop: {
+          '0%': { transform: 'scale(0.9)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
         },
       },
       animation: {
-        bob: 'bob 3s ease-in-out infinite',
+        bob: 'bob 3s steps(6) infinite',
+        drift: 'drift 6s steps(8) infinite',
+        blink: 'blink 1s step-end infinite',
+        twinkle: 'twinkle 1.6s steps(4) infinite',
+        nudge: 'nudge 0.8s steps(2) infinite',
+        grid: 'grid 2s linear infinite',
+        pop: 'pop 0.18s steps(3) both',
       },
     },
   },

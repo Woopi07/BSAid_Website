@@ -1,23 +1,33 @@
 import Button from './ui/Button.jsx';
-import Coin from './ui/Coin.jsx';
+import PixelSprite from './ui/PixelSprite.jsx';
 import { ANDROID_DOWNLOAD_URL } from '../data/content.js';
 
 export default function DownloadCTA() {
   return (
-    <section id="download" className="py-20 sm:py-24">
+    <section id="download" className="bg-cream py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-gold px-6 py-14 text-center sm:px-12">
-          <Coin className="absolute -left-6 -top-6 h-28 w-28 opacity-30" />
-          <Coin className="absolute -bottom-8 right-6 h-24 w-24 opacity-30" />
-          <h2 className="relative text-3xl font-bold sm:text-4xl">Your first case file is waiting.</h2>
-          <p className="relative mx-auto mt-4 max-w-xl text-lg text-navy-900/80">
-            BSAid is built for Android so you can study anywhere &mdash; between classes, on the commute, or the night
-            before a quiz.
-          </p>
-          <div className="relative mt-8 flex justify-center">
-            <Button href={ANDROID_DOWNLOAD_URL} icon="android" className="bg-navy text-white shadow-none hover:bg-navy-600">
-              Download for Android
-            </Button>
+        <div className="pixel-box px-dark relative overflow-hidden bg-gradient-to-b from-ember to-crimson px-6 py-14 text-center sm:px-12">
+          <div className="pixel-dots absolute inset-0" aria-hidden="true" />
+          <div className="absolute -left-4 top-6 hidden animate-drift sm:block" aria-hidden="true">
+            <PixelSprite name="cloud" scale={7} />
+          </div>
+          <div className="absolute -right-4 bottom-6 hidden animate-drift [animation-delay:-3s] sm:block" aria-hidden="true">
+            <PixelSprite name="cloud" scale={6} className="-scale-x-100" />
+          </div>
+          <div className="relative">
+            <p className="font-pixel text-[10px] uppercase tracking-widest text-cream">
+              <span className="animate-blink">Insert coin</span> &middot; Press start
+            </p>
+            <h2 className="mt-5 text-4xl font-bold text-cream pixel-text-shadow sm:text-5xl">Your first case file is waiting.</h2>
+            <p className="mx-auto mt-4 max-w-xl text-lg text-cream/90">
+              BSAid is built for Android so you can study anywhere &mdash; between classes, on the commute, or the night
+              before a quiz.
+            </p>
+            <div className="mt-10 flex justify-center">
+              <Button href={ANDROID_DOWNLOAD_URL} icon="android" className="px-6 py-4 text-xs sm:text-sm">
+                Download for Android
+              </Button>
+            </div>
           </div>
         </div>
       </div>

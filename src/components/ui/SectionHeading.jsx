@@ -1,13 +1,23 @@
+import PixelSprite from './PixelSprite.jsx';
+
 export default function SectionHeading({ eyebrow, title, children, align = 'center', dark = false }) {
-  const alignment = align === 'center' ? 'mx-auto text-center' : '';
+  const center = align === 'center';
   return (
-    <div className={`max-w-2xl ${alignment}`}>
+    <div className={`max-w-2xl ${center ? 'mx-auto text-center' : ''}`}>
       {eyebrow && (
-        <p className={`font-heading text-sm font-semibold uppercase tracking-widest ${dark ? 'text-gold' : 'text-gold-700'}`}>
+        <p
+          className={`inline-flex items-center gap-2 font-pixel text-[10px] uppercase tracking-widest sm:text-xs ${
+            dark ? 'text-gold' : 'text-ember-600'
+          }`}
+        >
+          <PixelSprite name="star" scale={2} />
           {eyebrow}
+          <PixelSprite name="star" scale={2} />
         </p>
       )}
-      <h2 className={`mt-3 text-3xl font-bold tracking-tight sm:text-4xl ${dark ? 'text-white' : ''}`}>{title}</h2>
+      <h2 className={`mt-4 text-4xl font-bold leading-tight sm:text-5xl ${dark ? 'text-cream pixel-text-shadow' : ''}`}>
+        {title}
+      </h2>
       {children && (
         <p className={`mt-4 text-lg leading-relaxed ${dark ? 'text-navy-100' : 'text-slate-600'}`}>{children}</p>
       )}
