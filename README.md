@@ -23,6 +23,7 @@ npm run preview  # serve the production build
 
 Clicking **TUTORIAL** on the landing page plays a captioned walkthrough video of the game
 (`public/videos/`, details in `docs/tutorial-video.md`) with a step-by-step guide as a second tab.
+A 28-second teaser with voice-over is in `public/videos/entry-point-teaser.mp4` (script in `docs/teaser-video.md`).
 
 - `/` — promotional landing page (`index.html`, `src/`)
 - `/play/` — **Entry Point** web game module (`play/index.html`, `src/game/`): fixed-viewport, app-like case files
