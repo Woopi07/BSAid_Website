@@ -474,3 +474,32 @@ p { margin: 0 0 1em; }
 .about-grid--single { grid-template-columns: 1fr !important; max-width: 900px; }
 .about-grid--single .about-copy { text-align: center; }
 .about-grid--single .npc-card { text-align: left; }
+
+/* Product brand logos: spaced grid */
+.brand-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); }
+.brand-grid li { display: grid; place-items: center; height: 84px; padding: 12px 16px; background: #fff; border: 1px solid var(--border); border-radius: 12px; transition: transform .3s var(--ease), box-shadow .3s, border-color .3s; }
+.brand-grid li:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); border-color: transparent; }
+.brand-grid img { max-height: 48px; max-width: 100%; width: auto; object-fit: contain; }
+@media (max-width: 600px) { .brand-grid { gap: 10px; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); } .brand-grid li { height: 68px; padding: 10px; } .brand-grid img { max-height: 38px; } }
+@media (min-width: 900px) { .tab-panel { align-items: start; } }
+
+/* Service items as dropdowns */
+.dropdown-list { gap: 4px; }
+.dropdown-list li { padding-left: 0 !important; }
+.dropdown-list li::before { display: none; }
+.dropdown-list details { border-radius: 10px; transition: background .3s; }
+.dropdown-list details[open] { background: var(--bg-alt); }
+.dropdown-list summary {
+  position: relative; list-style: none; cursor: pointer; padding: 7px 10px 7px 34px; border-radius: 10px;
+  font-size: .9rem; font-weight: 600; color: var(--brand-primary); line-height: 1.4; transition: background .25s;
+}
+.dropdown-list summary::-webkit-details-marker { display: none; }
+.dropdown-list summary::before {
+  content: ""; position: absolute; left: 6px; top: 7px; width: 19px; height: 19px; border-radius: 50%;
+  background: var(--brand-accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23002769' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l6 6-6 6'/%3E%3C/svg%3E") center / 12px no-repeat;
+  transition: transform .3s var(--ease);
+}
+.dropdown-list summary:hover { background: var(--bg-alt); }
+.dropdown-list details[open] summary::before { transform: rotate(90deg); }
+.dropdown-list details p { margin: 0; padding: 0 12px 12px 34px; font-size: .86rem; color: var(--text-muted); line-height: 1.6; animation: ddIn .35s var(--ease); }
+@keyframes ddIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }

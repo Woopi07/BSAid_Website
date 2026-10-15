@@ -293,9 +293,10 @@
         v.message,
       ].join('\n');
       const subject = `Website inquiry from ${v.company}`;
-      window.location.href = `mailto:sales@ptsiphil.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=sales@ptsiphil.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(gmail, '_blank', 'noopener');
       note.classList.remove('error');
-      note.textContent = 'Thank you! Your email app should open with your inquiry ready to send.';
+      note.textContent = 'Thank you! A Gmail draft with your inquiry has opened in a new tab — just press Send.';
     });
     form.addEventListener('input', (e) => e.target.classList.remove('invalid'));
   }
@@ -311,6 +312,14 @@
     v.addEventListener('pause', () => aboutVideo.classList.remove('is-playing'));
     v.addEventListener('ended', () => aboutVideo.classList.remove('is-playing'));
   }
+
+  /* Service dropdowns: keep one item open per card */
+  $$('.dropdown-list').forEach((list) => {
+    const items = $$('details', list);
+    items.forEach((d) => d.addEventListener('toggle', () => {
+      if (d.open) items.forEach((o) => { if (o !== d) o.open = false; });
+    }));
+  });
 
   $('#year').textContent = new Date().getFullYear();
 })();
