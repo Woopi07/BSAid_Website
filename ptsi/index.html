@@ -50,6 +50,7 @@
       <div class="hero-grid" data-parallax="0.15" aria-hidden="true"></div>
 
       <div class="container hero-content">
+        <div class="hero-text">
         <p class="eyebrow reveal">Productivity Technologies Services, Inc.</p>
         <h1 class="hero-title">
           <span class="sr-only">Solutions that Transform</span>
@@ -62,6 +63,16 @@
         <div class="hero-actions reveal" style="--d:.35s">
           <a href="#services" class="btn btn-primary">Explore Our Services</a>
           <a href="#contact" class="btn btn-ghost">Inquire Now</a>
+        </div>
+        </div>
+        <div class="about-video hero-video reveal" id="aboutVideo" style="--d:.45s">
+          <video class="about-img" controls playsinline preload="metadata" poster="videos/ptsi-company-poster.jpg">
+            <source src="videos/ptsi-company.mp4" type="video/mp4" />
+            <track kind="captions" src="videos/ptsi-company.vtt" srclang="en" label="English" />
+          </video>
+          <button class="video-play" type="button" aria-label="Play the PTSI company video">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
         </div>
       </div>
 
@@ -109,15 +120,7 @@
     <section class="section about" id="about">
       <div class="container about-grid">
         <div class="about-media reveal from-left">
-          <div class="about-video" id="aboutVideo">
-            <video class="about-img" controls playsinline preload="metadata" poster="videos/ptsi-company-poster.jpg">
-              <source src="videos/ptsi-company.mp4" type="video/mp4" />
-              <track kind="captions" src="videos/ptsi-company.vtt" srclang="en" label="English" />
-            </video>
-            <button class="video-play" type="button" aria-label="Play the PTSI company video">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
+          <img src="images/photos/about-office.jpg" alt="PTSI office — Awesome since 1993" class="about-img" />
           <div class="stat-card" aria-label="32 years of providing solutions">
             <span class="stat-number"><span class="counter" data-target="32">0</span><sup>+</sup></span>
             <span class="stat-label">Years of Providing Solutions</span>
