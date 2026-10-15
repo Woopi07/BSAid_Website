@@ -180,7 +180,7 @@ p { margin: 0 0 1em; }
 .mini-stats { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .mini-stats li { background: #fff; border-radius: 12px; padding: 16px 10px; text-align: center; border: 1px solid var(--border); }
 .mini-stats strong { display: block; font-family: var(--font-heading); font-size: 1.55rem; color: var(--brand-primary); line-height: 1.1; }
-.mini-stats span:last-child { font-size: .78rem; color: var(--text-muted); }
+.mini-stats li > span:last-child { font-size: .78rem; color: var(--text-muted); }
 
 .vm-grid { display: grid; gap: 24px; margin-top: 88px; grid-template-columns: 1fr; }
 @media (min-width: 900px) { .vm-grid { grid-template-columns: 1fr 1fr; } }
@@ -469,3 +469,8 @@ p { margin: 0 0 1em; }
 .hero-video video.about-img { aspect-ratio: 16 / 9; }
 @media (max-width: 1023px) { .hero .scroll-cue { display: none; } }
 @media (min-width: 1024px) { .hero-title { font-size: clamp(2.6rem, 4.4vw, 4rem); } }
+
+/* About without the photo block */
+.about-grid--single { grid-template-columns: 1fr !important; max-width: 900px; }
+.about-grid--single .about-copy { text-align: center; }
+.about-grid--single .npc-card { text-align: left; }
