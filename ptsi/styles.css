@@ -566,3 +566,10 @@ p { margin: 0 0 1em; }
 .job-meta li { font-size: .76rem; font-weight: 700; color: var(--brand-primary); background: var(--bg-alt); border: 1px solid var(--border); padding: 4px 10px; border-radius: 999px; }
 .jobs-note { text-align: center; margin-top: 28px; color: var(--text-muted); }
 .jobs-note a { font-weight: 700; }
+
+/* Inquiry form states */
+.hp-field { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.inquiry-form { position: relative; }
+.inquiry-form button[disabled] { opacity: .7; cursor: wait; transform: none; }
+.form-note.success { color: #12804a; font-weight: 600; }
+.form-note a { font-weight: 700; text-decoration: underline; }

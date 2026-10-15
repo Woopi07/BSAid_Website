@@ -20,5 +20,6 @@ Images live in `images/` (`brand/`, `photos/`, `awards/`, `partners/`, `global/`
 
 - Company video: `videos/ptsi-company.mp4` (60 s, voice-over and captions) was produced from the site's own photos,
   awards and logo. To use an official PTSI video instead, replace that file (and the `.vtt` captions and poster).
-- The inquiry form opens the visitor's email app (mailto) addressed to sales@ptsiphil.com; connect a form service
-  (e.g. Formspree) if submissions should arrive without the visitor's email app.
+- Inquiry form: submissions are emailed to sales@ptsiphil.com through FormSubmit (formsubmit.co). The first
+  submission sends a one-time activation email to that inbox; click "Activate Form" in it, and every later inquiry
+  arrives automatically. If the service is unreachable, the visitor is offered a pre-filled Gmail draft instead.

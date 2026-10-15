@@ -262,27 +262,33 @@
   });
 
   /* ------------------------------------------------------------------
-     Inquiry form: validate, then open the visitor's email app with the
-     inquiry addressed to sales@ptsiphil.com (no backend needed)
+     Inquiry form: validate, then deliver the inquiry straight to the
+     sales@ptsiphil.com inbox through FormSubmit (no backend needed).
+     If the service can't be reached, offer a pre-filled Gmail draft.
      ------------------------------------------------------------------ */
+  const SALES = 'sales@ptsiphil.com';
   const form = $('#inquiryForm');
   if (form) {
     const note = $('#formNote');
-    form.addEventListener('submit', (e) => {
+    const submitBtn = $('button[type="submit"]', form);
+    const fields = $$('input:not([name="_honey"]), textarea', form);
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       let ok = true;
-      $$('input, textarea', form).forEach((f) => {
+      fields.forEach((f) => {
         const bad = !f.checkValidity() || (f.required && !f.value.trim());
         f.classList.toggle('invalid', bad);
         if (bad) ok = false;
       });
       if (!ok) {
         note.textContent = 'Please complete the highlighted fields.';
-        note.classList.add('error');
+        note.className = 'form-note error';
         $('.invalid', form).focus();
         return;
       }
       const v = Object.fromEntries(new FormData(form));
+      if (v._honey) return; // bot trap
+      const subject = `Website inquiry from ${v.company}`;
       const body = [
         `Company Name: ${v.company}`,
         `Name: ${v.first} ${v.last}`,
@@ -292,11 +298,41 @@
         '',
         v.message,
       ].join('\n');
-      const subject = `Website inquiry from ${v.company}`;
-      const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=sales@ptsiphil.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.open(gmail, '_blank', 'noopener');
-      note.classList.remove('error');
-      note.textContent = 'Thank you! A Gmail draft with your inquiry has opened in a new tab — just press Send.';
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      note.className = 'form-note';
+      note.textContent = 'Sending your inquiry to the PTSI sales team…';
+      try {
+        const res = await fetch(`https://formsubmit.co/ajax/${SALES}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            _subject: subject,
+            _template: 'table',
+            _replyto: v.email,
+            'Company Name': v.company,
+            'First Name': v.first,
+            'Last Name': v.last,
+            'Job Title': v.title || '-',
+            'Phone Number': v.phone || '-',
+            Email: v.email,
+            Message: v.message,
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'Send failed');
+        form.reset();
+        note.className = 'form-note success';
+        note.textContent = 'Thank you! Your inquiry has been sent to sales@ptsiphil.com. Our team will get back to you soon.';
+      } catch (err) {
+        const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${SALES}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        note.className = 'form-note error';
+        note.innerHTML = `Sorry, we couldn’t send your inquiry right now. <a href="${gmail}" target="_blank" rel="noopener">Send it with Gmail instead</a> or call 02-8571-7874.`;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit';
+      }
     });
     form.addEventListener('input', (e) => e.target.classList.remove('invalid'));
   }
