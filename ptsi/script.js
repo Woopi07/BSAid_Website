@@ -300,5 +300,17 @@
     form.addEventListener('input', (e) => e.target.classList.remove('invalid'));
   }
 
+  /* ------------------------------------------------------------------
+     About video: custom play button over the native player
+     ------------------------------------------------------------------ */
+  const aboutVideo = $('#aboutVideo');
+  if (aboutVideo) {
+    const v = $('video', aboutVideo);
+    $('.video-play', aboutVideo).addEventListener('click', () => v.play());
+    v.addEventListener('play', () => aboutVideo.classList.add('is-playing'));
+    v.addEventListener('pause', () => aboutVideo.classList.remove('is-playing'));
+    v.addEventListener('ended', () => aboutVideo.classList.remove('is-playing'));
+  }
+
   $('#year').textContent = new Date().getFullYear();
 })();

@@ -109,7 +109,15 @@
     <section class="section about" id="about">
       <div class="container about-grid">
         <div class="about-media reveal from-left">
-          <img src="images/photos/about-office.jpg" alt="PTSI office — Awesome since 1993" class="about-img" />
+          <div class="about-video" id="aboutVideo">
+            <video class="about-img" controls playsinline preload="metadata" poster="videos/ptsi-company-poster.jpg">
+              <source src="videos/ptsi-company.mp4" type="video/mp4" />
+              <track kind="captions" src="videos/ptsi-company.vtt" srclang="en" label="English" />
+            </video>
+            <button class="video-play" type="button" aria-label="Play the PTSI company video">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
           <div class="stat-card" aria-label="32 years of providing solutions">
             <span class="stat-number"><span class="counter" data-target="32">0</span><sup>+</sup></span>
             <span class="stat-label">Years of Providing Solutions</span>
@@ -127,6 +135,16 @@
             <li><strong><span class="counter" data-target="16">0</span>+</strong><span>Industry Awards</span></li>
             <li><strong><span class="counter" data-target="25">0</span>+</strong><span>Technology Partners</span></li>
           </ul>
+
+          <div class="npc-card reveal" style="--d:.5s">
+            <img src="images/npc/dpo-dps-seal.png" alt="National Privacy Commission DPO/DPS Registered seal, validity period until 20 August 2027" class="npc-seal" />
+            <div>
+              <p class="npc-kicker">Data Privacy Compliant</p>
+              <h3>National Privacy Commission DPO/DPS Registered</h3>
+              <p>PTSI complies with the registration requirements of the Data Privacy Act of 2012.</p>
+              <p class="npc-meta">NPC Registration No. <strong>PIC-011-224-2026</strong> · Valid until 20 August 2027</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -168,8 +186,8 @@
             <figcaption><span class="fa-tag">2026</span><strong>Advocate Partner of the Year</strong><em>VST-ECS Fortinet</em></figcaption>
           </figure>
           <figure class="featured-award reveal" style="--d:.2s">
-            <div class="fa-media"><img src="images/npc/dpo-dps-seal.png" alt="National Privacy Commission DPO/DPS Registered seal" /></div>
-            <figcaption><span class="fa-tag">Certified</span><strong>National Privacy Commission DPO/DPS Registered</strong><em>NPC Registration No. PIC-011-224-2026 · valid until 20 August 2027</em></figcaption>
+            <div class="fa-media"><img src="images/awards/award-03.jpg" alt="ESET Partner of the Year - Silver Award trophy" /></div>
+            <figcaption><span class="fa-tag">2026</span><strong>ESET Partner of the Year – Silver Award</strong><em>B1G2 Partner Executive Summit</em></figcaption>
           </figure>
         </div>
       </div>

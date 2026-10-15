@@ -18,6 +18,7 @@ Images live in `images/` (`brand/`, `photos/`, `awards/`, `partners/`, `global/`
 
 ## Still to do
 
-- Company video with voice-over: waiting for the PTSI video file.
+- Company video: `videos/ptsi-company.mp4` (60 s, voice-over and captions) was produced from the site's own photos,
+  awards and logo. To use an official PTSI video instead, replace that file (and the `.vtt` captions and poster).
 - The inquiry form opens the visitor's email app (mailto) addressed to sales@ptsiphil.com; connect a form service
   (e.g. Formspree) if submissions should arrive without the visitor's email app.
