@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         play: resolve(__dirname, 'play/index.html'),
+        ptsi: resolve(__dirname, 'ptsi/index.html'),
       },
     },
   },

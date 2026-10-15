@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PTSI | Productivity Technologies Services, Inc.</title>
+  <meta name="description" content="Productivity Technologies Services, Inc. — 32 years of IT solutions that transform: project management, data migration, IT outsourcing, audiovisual & structured cabling, data center fit-out and maintenance." />
+
+  <!-- BRAND FONTS: replace these families with the exact ones used on ptsiphil.com (see --font-* tokens in styles.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ STICKY SMART HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="PTSI home">
+        <!-- INSERT: original PTSI logo (header) -->
+        <img src="/api/placeholder/160/48" data-label="PTSI Logo" alt="PTSI — Productivity Technologies Services, Inc. logo" class="brand-logo" width="160" height="48" />
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <ul>
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#partners" class="nav-link">Partners &amp; Awards</a></li>
+          <li><a href="#reviews" class="nav-link">Reviews</a></li>
+          <li><a href="#contact" class="nav-link nav-cta">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO (parallax + typing) ============ -->
+    <section class="hero" id="home">
+      <div class="hero-bg" data-parallax="0.35" aria-hidden="true">
+        <!-- INSERT: original hero / banner photo from ptsiphil.com -->
+        <img src="/api/placeholder/1920/1080" data-label="Hero Banner Photo" alt="" />
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-grid" data-parallax="0.15" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <p class="eyebrow reveal">Productivity Technologies Services, Inc.</p>
+        <h1 class="hero-title">
+          <span class="sr-only">Solutions that Transform</span>
+          <span class="typed" id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
+        </h1>
+        <p class="hero-sub reveal" style="--d:.2s">
+          End-to-end IT infrastructure, integration and support for Philippine enterprises — delivered by a team with over three decades of experience.
+        </p>
+        <div class="hero-actions reveal" style="--d:.35s">
+          <a href="#services" class="btn btn-primary">Explore Our Services</a>
+          <a href="#contact" class="btn btn-ghost">Talk to an Expert</a>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About Us"><span></span></a>
+    </section>
+
+    <!-- ============ ABOUT US ============ -->
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div class="about-media reveal from-left">
+          <!-- INSERT: original About Us / team / office photo -->
+          <img src="/api/placeholder/640/480" data-label="About Us Photo" alt="PTSI team at work" class="about-img" />
+          <div class="stat-card" aria-label="32 years of providing solutions">
+            <span class="stat-number"><span class="counter" data-target="32">0</span><sup>+</sup></span>
+            <span class="stat-label">Years of Providing Solutions</span>
+          </div>
+        </div>
+
+        <div class="about-copy">
+          <p class="eyebrow reveal">About Us</p>
+          <h2 class="section-title reveal" style="--d:.1s">32 Years of Service</h2>
+          <!-- REPLACE: paste the original About Us copy from ptsiphil.com here -->
+          <p class="reveal" style="--d:.2s">
+            Since 1993, Productivity Technologies Services, Inc. (PTSI) has helped organizations plan, build and run the technology that keeps them productive. From the server room to the boardroom, we design, deploy and maintain IT infrastructure that scales with your business.
+          </p>
+          <p class="reveal" style="--d:.3s">
+            Backed by certified engineers and long-standing partnerships with the world's leading technology vendors, we deliver solutions that transform — on time, on budget, and built to last.
+          </p>
+
+          <ul class="mini-stats reveal" style="--d:.4s">
+            <li><strong><span class="counter" data-target="1993" data-start="1960">1960</span></strong><span>Established</span></li>
+            <li><strong><span class="counter" data-target="6">0</span></strong><span>Core Service Lines</span></li>
+            <li><strong><span class="counter" data-target="10" >0</span>+</strong><span>Technology Partners</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">What We Do</p>
+          <h2 class="section-title reveal" style="--d:.1s">Our Services</h2>
+          <p class="section-lead reveal" style="--d:.2s">Hover or tap a service to learn more.</p>
+        </div>
+
+        <div class="service-grid">
+          <!-- Each card: replace the icon placeholder with the original service image/icon if desired -->
+          <article class="service-card reveal" style="--d:0s" tabindex="0">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
+            </div>
+            <h3>Project Management</h3>
+            <div class="service-reveal"><div>
+              <p>Certified project managers who scope, schedule and steer every rollout so it lands on time, on budget and to spec.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" style="--d:.08s" tabindex="0">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+            </div>
+            <h3>Data Migration</h3>
+            <div class="service-reveal"><div>
+              <p>Secure, zero-loss transfer of data and workloads between platforms, storage and data centers with minimal downtime.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" style="--d:.16s" tabindex="0">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 15.5c.6-.3 1.3-.5 2-.5 2.2 0 4 1.8 4 4"/></svg>
+            </div>
+            <h3>IT Outsourcing</h3>
+            <div class="service-reveal"><div>
+              <p>Skilled on-site and remote IT professionals who extend your team, so you can focus on running the business.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" style="--d:0s" tabindex="0">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 10h3M14 10h3"/></svg>
+            </div>
+            <h3>Audiovisual &amp; Structured Cabling</h3>
+            <div class="service-reveal"><div>
+              <p>Standards-compliant copper and fiber cabling plus boardroom, training-room and conferencing AV systems.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" style="--d:.08s" tabindex="0">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="6" rx="1"/><rect x="4" y="9" width="16" height="6" rx="1"/><rect x="4" y="16" width="16" height="6" rx="1"/><path d="M8 5h.01M8 12h.01M8 19h.01"/></svg>
+            </div>
+            <h3>Data Center Fit-Out</h3>
+            <div class="service-reveal"><div>
+              <p>Design and build of server rooms and data centers: racks, power, cooling, containment and monitoring.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" style="--d:.16s" tabindex="0">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg>
+            </div>
+            <h3>Maintenance Agreement</h3>
+            <div class="service-reveal"><div>
+              <p>Preventive maintenance and guaranteed-response support contracts that keep your systems healthy year-round.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARTNERS & AWARDS (infinite marquee) ============ -->
+    <section class="section partners" id="partners">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">Trusted Technology Partners</p>
+          <h2 class="section-title reveal" style="--d:.1s">Partners &amp; Awards</h2>
+          <p class="section-lead reveal" style="--d:.2s">Certified expertise across the industry's leading vendors.</p>
+        </div>
+      </div>
+
+      <!-- Marquee 1: partner logos. The JS duplicates the track for a seamless loop. -->
+      <div class="marquee" data-speed="40" aria-label="Partner logos">
+        <ul class="marquee-track">
+          <!-- INSERT: original partner logos (keep alt text = brand name) -->
+          <li><img src="/api/placeholder/180/80" data-label="Fortinet" alt="Fortinet" /></li>
+          <li><img src="/api/placeholder/180/80" data-label="Cisco" alt="Cisco" /></li>
+          <li><img src="/api/placeholder/180/80" data-label="Dell" alt="Dell" /></li>
+          <li><img src="/api/placeholder/180/80" data-label="Lenovo" alt="Lenovo" /></li>
+          <li><img src="/api/placeholder/180/80" data-label="VMware" alt="VMware" /></li>
+          <li><img src="/api/placeholder/180/80" data-label="Acer" alt="Acer" /></li>
+          <li><img src="/api/placeholder/180/80" data-label="Apple" alt="Apple" /></li>
+          <li><img src="/api/placeholder/180/80" data-label="HP" alt="HP" /></li>
+          <li><img src="/api/placeholder/180/80" data-label="Partner Logo 9" alt="Partner logo" /></li>
+          <li><img src="/api/placeholder/180/80" data-label="Partner Logo 10" alt="Partner logo" /></li>
+        </ul>
+      </div>
+
+      <!-- Marquee 2: award graphics, scrolling the other way -->
+      <div class="marquee marquee-reverse marquee-awards" data-speed="55" aria-label="Awards">
+        <ul class="marquee-track">
+          <!-- INSERT: original award graphics -->
+          <li><img src="/api/placeholder/220/140" data-label="Award Graphic 1" alt="PTSI award" /></li>
+          <li><img src="/api/placeholder/220/140" data-label="Award Graphic 2" alt="PTSI award" /></li>
+          <li><img src="/api/placeholder/220/140" data-label="Award Graphic 3" alt="PTSI award" /></li>
+          <li><img src="/api/placeholder/220/140" data-label="Award Graphic 4" alt="PTSI award" /></li>
+          <li><img src="/api/placeholder/220/140" data-label="Award Graphic 5" alt="PTSI award" /></li>
+          <li><img src="/api/placeholder/220/140" data-label="Award Graphic 6" alt="PTSI award" /></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ CLIENT REVIEWS ============ -->
+    <section class="section reviews" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">Client Reviews</p>
+          <h2 class="section-title reveal" style="--d:.1s">What Our Clients Say</h2>
+        </div>
+
+        <!-- REPLACE: every quote, name and company below with the real reviews from ptsiphil.com -->
+        <div class="review-slider reveal" style="--d:.2s" id="reviewSlider">
+          <div class="review-viewport">
+            <div class="review-track">
+              <figure class="review-card">
+                <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote>"[Client review #1 — paste the original testimonial text here.] PTSI's team handled our data center fit-out end to end and finished ahead of schedule."</blockquote>
+                <figcaption>
+                  <img src="/api/placeholder/56/56" data-label="Client 1" alt="" class="avatar" />
+                  <span><strong>[Client Name]</strong><em>[Position, Company]</em></span>
+                </figcaption>
+              </figure>
+              <figure class="review-card">
+                <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote>"[Client review #2 — paste the original testimonial text here.] Responsive, knowledgeable and reliable. Their maintenance agreement gives us real peace of mind."</blockquote>
+                <figcaption>
+                  <img src="/api/placeholder/56/56" data-label="Client 2" alt="" class="avatar" />
+                  <span><strong>[Client Name]</strong><em>[Position, Company]</em></span>
+                </figcaption>
+              </figure>
+              <figure class="review-card">
+                <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote>"[Client review #3 — paste the original testimonial text here.] The migration was seamless; our users never noticed the switch."</blockquote>
+                <figcaption>
+                  <img src="/api/placeholder/56/56" data-label="Client 3" alt="" class="avatar" />
+                  <span><strong>[Client Name]</strong><em>[Position, Company]</em></span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="review-controls">
+            <button class="review-btn" data-dir="-1" aria-label="Previous review">‹</button>
+            <div class="review-dots" role="tablist" aria-label="Choose review"></div>
+            <button class="review-btn" data-dir="1" aria-label="Next review">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT CTA ============ -->
+    <section class="section contact" id="contact">
+      <div class="container contact-inner reveal">
+        <div>
+          <h2 class="section-title light">Ready to transform your IT?</h2>
+          <p>Tell us about your project and a PTSI specialist will get back to you within one business day.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-light" href="mailto:sales@ptsiphil.com">sales@ptsiphil.com</a>
+          <!-- VERIFY: replace with the official phone number -->
+          <a class="btn btn-ghost light" href="tel:+630000000000">+63 (2) 0000-0000</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <!-- INSERT: footer / light version of PTSI logo -->
+        <img src="/api/placeholder/160/48" data-label="PTSI Logo (light)" alt="PTSI logo" class="footer-logo" />
+        <p>Productivity Technologies Services, Inc.<br />Solutions that Transform since 1993.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#partners">Partners &amp; Awards</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <!-- VERIFY: confirm the current office address against ptsiphil.com -->
+        <address>
+          Makati City, Metro Manila, Philippines<br />
+          <a href="mailto:sales@ptsiphil.com">sales@ptsiphil.com</a><br />
+          <a href="tel:+630000000000">+63 (2) 0000-0000</a>
+        </address>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="year"></span> Productivity Technologies Services, Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============ FLOATING ACTION BUTTON ============ -->
+  <div class="fab" id="fab">
+    <div class="fab-menu" id="fabMenu" aria-hidden="true">
+      <a href="mailto:sales@ptsiphil.com" class="fab-item" tabindex="-1">
+        <span class="fab-item-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+        <span class="fab-item-text"><strong>Email us</strong><em>sales@ptsiphil.com</em></span>
+      </a>
+      <a href="tel:+630000000000" class="fab-item" tabindex="-1">
+        <span class="fab-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+        <span class="fab-item-text"><strong>Call us</strong><em>+63 (2) 0000-0000</em></span>
+      </a>
+      <a href="#contact" class="fab-item" tabindex="-1">
+        <span class="fab-item-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="fab-item-text"><strong>Request a quote</strong><em>We reply within 1 business day</em></span>
+      </a>
+    </div>
+    <button class="fab-toggle" id="fabToggle" aria-label="Open quick contact" aria-expanded="false" aria-controls="fabMenu">
+      <svg class="fab-ico-open" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <svg class="fab-ico-close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
