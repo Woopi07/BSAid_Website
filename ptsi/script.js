@@ -238,5 +238,67 @@
     setNav(false);
   });
 
+  /* ------------------------------------------------------------------
+     Product category tabs (click, arrow keys)
+     ------------------------------------------------------------------ */
+  const tabs = $$('.tab-list [role="tab"]');
+  const selectTab = (tab, focus) => {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      $('#' + t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => selectTab(t));
+    t.addEventListener('keydown', (e) => {
+      const d = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 1, ArrowUp: -1 }[e.key];
+      if (d) { e.preventDefault(); selectTab(tabs[(i + d + tabs.length) % tabs.length], true); }
+      if (e.key === 'Home') { e.preventDefault(); selectTab(tabs[0], true); }
+      if (e.key === 'End') { e.preventDefault(); selectTab(tabs[tabs.length - 1], true); }
+    });
+  });
+
+  /* ------------------------------------------------------------------
+     Inquiry form: validate, then open the visitor's email app with the
+     inquiry addressed to sales@ptsiphil.com (no backend needed)
+     ------------------------------------------------------------------ */
+  const form = $('#inquiryForm');
+  if (form) {
+    const note = $('#formNote');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      $$('input, textarea', form).forEach((f) => {
+        const bad = !f.checkValidity() || (f.required && !f.value.trim());
+        f.classList.toggle('invalid', bad);
+        if (bad) ok = false;
+      });
+      if (!ok) {
+        note.textContent = 'Please complete the highlighted fields.';
+        note.classList.add('error');
+        $('.invalid', form).focus();
+        return;
+      }
+      const v = Object.fromEntries(new FormData(form));
+      const body = [
+        `Company Name: ${v.company}`,
+        `Name: ${v.first} ${v.last}`,
+        `Job Title: ${v.title || '-'}`,
+        `Phone Number: ${v.phone || '-'}`,
+        `Email: ${v.email}`,
+        '',
+        v.message,
+      ].join('\n');
+      const subject = `Website inquiry from ${v.company}`;
+      window.location.href = `mailto:sales@ptsiphil.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      note.classList.remove('error');
+      note.textContent = 'Thank you! Your email app should open with your inquiry ready to send.';
+    });
+    form.addEventListener('input', (e) => e.target.classList.remove('invalid'));
+  }
+
   $('#year').textContent = new Date().getFullYear();
 })();

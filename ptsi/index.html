@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PTSI | Productivity Technologies Services, Inc.</title>
-  <meta name="description" content="Productivity Technologies Services, Inc. — 32 years of IT solutions that transform: project management, data migration, IT outsourcing, audiovisual & structured cabling, data center fit-out and maintenance." />
+  <meta name="description" content="Productivity Technologies Services, Inc. (PTSI) — 32 years of providing Solutions that Transform. Multi-vendor IT products, data center technical services, professional services and maintenance agreements in the Philippines." />
+  <link rel="icon" type="image/png" href="images/brand/ptsi-logo.png" />
 
-  <!-- BRAND FONTS: replace these families with the exact ones used on ptsiphil.com (see --font-* tokens in styles.css) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -20,17 +20,16 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="#home" class="brand" aria-label="PTSI home">
-        <!-- INSERT: original PTSI logo (header) -->
-        <img src="/api/placeholder/160/48" data-label="PTSI Logo" alt="PTSI — Productivity Technologies Services, Inc. logo" class="brand-logo" width="160" height="48" />
+        <img src="images/brand/ptsi-logo.png" alt="PTSI — Productivity Technologies Services, Inc." class="brand-logo" width="999" height="309" />
       </a>
 
       <nav class="main-nav" id="mainNav" aria-label="Primary">
         <ul>
           <li><a href="#home" class="nav-link">Home</a></li>
           <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#partners" class="nav-link">Partners</a></li>
+          <li><a href="#products" class="nav-link">Products</a></li>
           <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#partners" class="nav-link">Partners &amp; Awards</a></li>
-          <li><a href="#reviews" class="nav-link">Reviews</a></li>
           <li><a href="#contact" class="nav-link nav-cta">Contact Us</a></li>
         </ul>
       </nav>
@@ -42,11 +41,10 @@
   </header>
 
   <main id="main">
-    <!-- ============ HERO (parallax + typing) ============ -->
+    <!-- ============ HERO ============ -->
     <section class="hero" id="home">
       <div class="hero-bg" data-parallax="0.35" aria-hidden="true">
-        <!-- INSERT: original hero / banner photo from ptsiphil.com -->
-        <img src="/api/placeholder/1920/1080" data-label="Hero Banner Photo" alt="" />
+        <img src="images/photos/hero.jpg" alt="" />
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-grid" data-parallax="0.15" aria-hidden="true"></div>
@@ -57,24 +55,61 @@
           <span class="sr-only">Solutions that Transform</span>
           <span class="typed" id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
         </h1>
-        <p class="hero-sub reveal" style="--d:.2s">
-          End-to-end IT infrastructure, integration and support for Philippine enterprises — delivered by a team with over three decades of experience.
+        <h2 class="hero-kicker reveal" style="--d:.15s">Discover our digital solutions</h2>
+        <p class="hero-sub reveal" style="--d:.25s">
+          Discover our digital solutions—no buzzwords, just tech that works. PTSI offers reliable IT products and services designed to keep your business one step ahead.
         </p>
         <div class="hero-actions reveal" style="--d:.35s">
           <a href="#services" class="btn btn-primary">Explore Our Services</a>
-          <a href="#contact" class="btn btn-ghost">Talk to an Expert</a>
+          <a href="#contact" class="btn btn-ghost">Inquire Now</a>
         </div>
       </div>
 
-      <a href="#about" class="scroll-cue" aria-label="Scroll to About Us"><span></span></a>
+      <a href="#why" class="scroll-cue" aria-label="Scroll to Why Choose Us"><span></span></a>
+    </section>
+
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section class="section why" id="why">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">Why Choose Us?</p>
+          <h2 class="section-title reveal" style="--d:.1s">Trusted IT solutions since 1993</h2>
+          <p class="section-lead reveal" style="--d:.2s">Since 1993, we’ve been delivering trusted IT solutions backed by expertise, reliability, and a commitment to quality. We believe great service should feel personal—so we keep it attentive, customized, and centered on you.</p>
+        </div>
+
+        <div class="pillar-grid">
+          <article class="pillar reveal" style="--d:0s">
+            <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M8.5 7.5l2.2 8M15.5 7.5l-2.2 8M9 6h6"/></svg></span>
+            <h3>Multi-vendor Expertise</h3>
+            <p>Our team has hands-on experience working across multiple platforms and vendors, making sure everything connects, performs, and works seamlessly together.</p>
+          </article>
+          <article class="pillar reveal" style="--d:.1s">
+            <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V14M10 20V9M16 20V4"/><path d="M14 6l2-2 2 2"/><path d="M2 20h20"/></svg></span>
+            <h3>Scalable Solutions</h3>
+            <p>Whether you’re just starting out or scaling fast, our solutions grow with you—no unnecessary upgrades, no overcomplication, just tech that fits where you are now and where you’re headed.</p>
+          </article>
+          <article class="pillar reveal" style="--d:.2s">
+            <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>
+            <h3>Fast, Reliable, and Measurable Outcomes</h3>
+            <p>When you need help, we’re on it. We respond quickly, solve issues efficiently, and focus on results you can actually see, not just promises.</p>
+          </article>
+        </div>
+
+        <div class="longterm reveal">
+          <span class="longterm-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6.3 5.3 5.3 0 0 1 21.3 12C19 16.6 12 21 12 21z"/></svg></span>
+          <div>
+            <h3>Long Term Success Focus</h3>
+            <p>We’re not here for quick fixes. We build partnerships that last, supporting your goals with technology that keeps working long after launch.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ============ ABOUT US ============ -->
     <section class="section about" id="about">
       <div class="container about-grid">
         <div class="about-media reveal from-left">
-          <!-- INSERT: original About Us / team / office photo -->
-          <img src="/api/placeholder/640/480" data-label="About Us Photo" alt="PTSI team at work" class="about-img" />
+          <img src="images/photos/about-office.jpg" alt="PTSI office — Awesome since 1993" class="about-img" />
           <div class="stat-card" aria-label="32 years of providing solutions">
             <span class="stat-number"><span class="counter" data-target="32">0</span><sup>+</sup></span>
             <span class="stat-label">Years of Providing Solutions</span>
@@ -83,14 +118,9 @@
 
         <div class="about-copy">
           <p class="eyebrow reveal">About Us</p>
-          <h2 class="section-title reveal" style="--d:.1s">32 Years of Service</h2>
-          <!-- REPLACE: paste the original About Us copy from ptsiphil.com here -->
-          <p class="reveal" style="--d:.2s">
-            Since 1993, Productivity Technologies Services, Inc. (PTSI) has helped organizations plan, build and run the technology that keeps them productive. From the server room to the boardroom, we design, deploy and maintain IT infrastructure that scales with your business.
-          </p>
-          <p class="reveal" style="--d:.3s">
-            Backed by certified engineers and long-standing partnerships with the world's leading technology vendors, we deliver solutions that transform — on time, on budget, and built to last.
-          </p>
+          <h2 class="section-title reveal" style="--d:.1s">32 Years of Providing Solutions that Transform</h2>
+          <p class="reveal" style="--d:.2s">Since our founding, we’ve dedicated ourselves to not only solving complex challenges but also driving innovation that helps our clients stay ahead in an ever-evolving world.</p>
+          <p class="reveal" style="--d:.3s">PTSI has been in the IT industry since 1993, partnering with global tech leaders to deliver top-tier solutions to the Philippine market. Trusted by clients and recognized by the industry, we focus on results that matter.</p>
 
           <ul class="mini-stats reveal" style="--d:.4s">
             <li><strong><span class="counter" data-target="1993" data-start="1960">1960</span></strong><span>Established</span></li>
@@ -99,100 +129,101 @@
           </ul>
         </div>
       </div>
-    </section>
 
-    <!-- ============ SERVICES ============ -->
-    <section class="section services" id="services">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow reveal">What We Do</p>
-          <h2 class="section-title reveal" style="--d:.1s">Our Services</h2>
-          <p class="section-lead reveal" style="--d:.2s">Hover or tap a service to learn more.</p>
-        </div>
-
-        <div class="service-grid">
-          <!-- Each card: replace the icon placeholder with the original service image/icon if desired -->
-          <article class="service-card reveal" style="--d:0s" tabindex="0">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
-            </div>
-            <h3>Project Management</h3>
-            <div class="service-reveal"><div>
-              <p>Certified project managers who scope, schedule and steer every rollout so it lands on time, on budget and to spec.</p>
-              <a href="#contact" class="link-arrow">Learn More</a></div>
-            </div>
+      <div class="container vm-grid">
+        <article class="vm-card vm-commit reveal">
+          <p>We are committed to helping clients succeed and will proactively assist our clients in growing and improving their business.</p>
+          <p>At PTSI, we’re passionate about delivering ‘Solutions that Transform’ to propel your business forward. That’s why we’re thrilled to extend our <strong>Free Customer Consultancy Program</strong> to you. By joining forces with our expert IT team, we’re confident we can help you overcome any IT challenges hindering your organization’s productivity.</p>
+          <a href="#contact" class="btn btn-primary btn-sm">Get a Free Consultation</a>
+        </article>
+        <div class="vm-stack">
+          <article class="vm-card reveal" style="--d:.1s">
+            <h3>Vision</h3>
+            <p>PTSI will be the leading, preferred and trusted Information Technology solutions provider through its provision of high-quality products, services and solutions.</p>
           </article>
-
-          <article class="service-card reveal" style="--d:.08s" tabindex="0">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
-            </div>
-            <h3>Data Migration</h3>
-            <div class="service-reveal"><div>
-              <p>Secure, zero-loss transfer of data and workloads between platforms, storage and data centers with minimal downtime.</p>
-              <a href="#contact" class="link-arrow">Learn More</a></div>
-            </div>
-          </article>
-
-          <article class="service-card reveal" style="--d:.16s" tabindex="0">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 15.5c.6-.3 1.3-.5 2-.5 2.2 0 4 1.8 4 4"/></svg>
-            </div>
-            <h3>IT Outsourcing</h3>
-            <div class="service-reveal"><div>
-              <p>Skilled on-site and remote IT professionals who extend your team, so you can focus on running the business.</p>
-              <a href="#contact" class="link-arrow">Learn More</a></div>
-            </div>
-          </article>
-
-          <article class="service-card reveal" style="--d:0s" tabindex="0">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 10h3M14 10h3"/></svg>
-            </div>
-            <h3>Audiovisual &amp; Structured Cabling</h3>
-            <div class="service-reveal"><div>
-              <p>Standards-compliant copper and fiber cabling plus boardroom, training-room and conferencing AV systems.</p>
-              <a href="#contact" class="link-arrow">Learn More</a></div>
-            </div>
-          </article>
-
-          <article class="service-card reveal" style="--d:.08s" tabindex="0">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="6" rx="1"/><rect x="4" y="9" width="16" height="6" rx="1"/><rect x="4" y="16" width="16" height="6" rx="1"/><path d="M8 5h.01M8 12h.01M8 19h.01"/></svg>
-            </div>
-            <h3>Data Center Fit-Out</h3>
-            <div class="service-reveal"><div>
-              <p>Design and build of server rooms and data centers: racks, power, cooling, containment and monitoring.</p>
-              <a href="#contact" class="link-arrow">Learn More</a></div>
-            </div>
-          </article>
-
-          <article class="service-card reveal" style="--d:.16s" tabindex="0">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg>
-            </div>
-            <h3>Maintenance Agreement</h3>
-            <div class="service-reveal"><div>
-              <p>Preventive maintenance and guaranteed-response support contracts that keep your systems healthy year-round.</p>
-              <a href="#contact" class="link-arrow">Learn More</a></div>
-            </div>
+          <article class="vm-card reveal" style="--d:.2s">
+            <h3>Mission</h3>
+            <p>To constantly provide a continuous stream of ideas and innovations that would enable Information Technology to achieve its highest potential in making its end users’ lives and businesses run more efficiently and profitably. This we shall achieve by customizing our packages, products and services to be able to meet our customers’ special and unique requirements.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ PARTNERS & AWARDS (infinite marquee) ============ -->
+    <!-- ============ AWARDS ============ -->
+    <section class="section awards" id="awards">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">Celebrating Our Successes</p>
+          <h2 class="section-title reveal" style="--d:.1s">Awards &amp; Recognition</h2>
+          <p class="section-lead reveal" style="--d:.2s">Throughout its history, PTSI has been recognized for its excellent business solutions and world-class service. These awards are a testament to our commitment to delivering high-tech innovations with high-touch service.</p>
+        </div>
+
+        <div class="featured-awards">
+          <figure class="featured-award reveal" style="--d:0s">
+            <div class="fa-media"><img src="images/awards/award-01.jpg" alt="Dell FY26 Top Client Solutions Partner trophy" /></div>
+            <figcaption><span class="fa-tag">2026</span><strong>Dell FY26 Top Client Solutions Partner</strong><em>Dell Technologies</em></figcaption>
+          </figure>
+          <figure class="featured-award reveal" style="--d:.1s">
+            <div class="fa-media"><img src="images/awards/award-02.jpg" alt="Advocate Partner of the Year (VST-ECS Fortinet) trophy" /></div>
+            <figcaption><span class="fa-tag">2026</span><strong>Advocate Partner of the Year</strong><em>VST-ECS Fortinet</em></figcaption>
+          </figure>
+          <figure class="featured-award reveal" style="--d:.2s">
+            <div class="fa-media"><img src="images/npc/dpo-dps-seal.png" alt="National Privacy Commission DPO/DPS Registered seal" /></div>
+            <figcaption><span class="fa-tag">Certified</span><strong>National Privacy Commission DPO/DPS Registered</strong><em>NPC Registration No. PIC-011-224-2026 · valid until 20 August 2027</em></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="marquee marquee-reverse marquee-awards" data-speed="55" aria-label="All awards">
+        <ul class="marquee-track">
+          <li><figure><img src="images/awards/award-01.jpg" alt="Dell FY26 Top Client Solutions Partner" /><figcaption>Dell FY26 Top Client Solutions Partner</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-02.jpg" alt="Advocate Partner of the Year (VST-ECS Fortinet)" /><figcaption>Advocate Partner of the Year (VST-ECS Fortinet)</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-03.jpg" alt="ESET Partner of the Year - Silver Award" /><figcaption>ESET Partner of the Year - Silver Award</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-04.jpg" alt="LG Information Technology Achiever’s Circle Award" /><figcaption>LG Information Technology Achiever’s Circle Award</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-05.jpg" alt="TDI Distinguished Dealer Award 2025" /><figcaption>TDI Distinguished Dealer Award 2025</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-06.jpg" alt="IPSystems Inc’s Champion Partner of the Year 2024" /><figcaption>IPSystems Inc’s Champion Partner of the Year 2024</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-07.jpg" alt="CY2024 Fortinet Advocate Engagement Excellence Award" /><figcaption>CY2024 Fortinet Advocate Engagement Excellence Award</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-08.jpg" alt="Top Omada Contributor for F&amp;B Industry 2024" /><figcaption>Top Omada Contributor for F&amp;B Industry 2024</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-09.jpg" alt="VMware Rising Star Partner of 2023" /><figcaption>VMware Rising Star Partner of 2023</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-10.jpg" alt="FY23 Top Client Solutions Partner" /><figcaption>FY23 Top Client Solutions Partner</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-11.jpg" alt="Lenovo President’s Club 2022" /><figcaption>Lenovo President’s Club 2022</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-12.jpg" alt="FY21 Dell Technologies Medium Business Tier 2" /><figcaption>FY21 Dell Technologies Medium Business Tier 2</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-13.jpg" alt="International Micro Village Inc. Corporate Partner of the Year - 2020" /><figcaption>International Micro Village Inc. Corporate Partner of the Year - 2020</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-14.jpg" alt="FY20 Medium Business Award Tier 2" /><figcaption>FY20 Medium Business Award Tier 2</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-15.jpg" alt="FY19 Hybrid IT Partner of the Year" /><figcaption>FY19 Hybrid IT Partner of the Year</figcaption></figure></li>
+          <li><figure><img src="images/awards/award-16.jpg" alt="Top Focus Partner for Cisco Fiscal Year 2025" /><figcaption>Top Focus Partner for Cisco Fiscal Year 2025</figcaption></figure></li>
+        </ul>
+      </div>
+
+      <p class="tagline-strip reveal"><span>Proven</span> success. <span>Powerful</span> partnerships.</p>
+    </section>
+
+    <!-- ============ PARTNERS ============ -->
     <section class="section partners" id="partners">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow reveal">Trusted Technology Partners</p>
-          <h2 class="section-title reveal" style="--d:.1s">Partners &amp; Awards</h2>
-          <p class="section-lead reveal" style="--d:.2s">Certified expertise across the industry's leading vendors.</p>
+          <p class="eyebrow reveal">Our Partners</p>
+          <h2 class="section-title reveal" style="--d:.1s">Partnering for Your Success</h2>
+          <p class="section-lead reveal" style="--d:.2s">We partner with trusted global technology leaders to deliver innovative solutions in cybersecurity, cloud, and connectivity. Together, we help businesses move faster, work smarter, and accelerate digital transformation.</p>
         </div>
+
+        <h3 class="sub-title reveal">Global Partners</h3>
+        <ul class="logo-grid">
+          <li class="reveal" style="--d:0s"><img src="images/global/vmware.png" alt="VMware by Broadcom" /></li>
+          <li class="reveal" style="--d:.05s"><img src="images/global/dell.png" alt="Dell Technologies" /></li>
+          <li class="reveal" style="--d:.1s"><img src="images/global/cisco.png" alt="Cisco" /></li>
+          <li class="reveal" style="--d:.15s"><img src="images/global/microsoft.png" alt="Microsoft" /></li>
+          <li class="reveal" style="--d:.2s"><img src="images/global/lenovo.png" alt="Lenovo" /></li>
+          <li class="reveal" style="--d:.25s"><img src="images/global/asus.png" alt="ASUS" /></li>
+          <li class="reveal" style="--d:.3s"><img src="images/global/fortinet.png" alt="Fortinet" /></li>
+          <li class="reveal" style="--d:.35s"><img src="images/global/huawei.png" alt="Huawei" /></li>
+          <li class="reveal" style="--d:.4s"><img src="images/global/apple.png" alt="Apple" /></li>
+        </ul>
+
+        <h3 class="sub-title reveal">…and many more technology partners</h3>
       </div>
 
-      <!-- Marquee 1: partner logos. The JS duplicates the track for a seamless loop. -->
-      <div class="marquee" data-speed="60" aria-label="Partner logos">
+      <div class="marquee" data-speed="60" aria-label="Technology partner logos">
         <ul class="marquee-track">
           <li><img src="images/partners/dell.png" alt="Dell Technologies" /></li>
           <li><img src="images/partners/vmware.png" alt="VMware by Broadcom" /></li>
@@ -222,26 +253,230 @@
         </ul>
       </div>
 
-      <!-- Marquee 2: awards, scrolling the other way -->
-      <div class="marquee marquee-reverse marquee-awards" data-speed="55" aria-label="Awards">
-        <ul class="marquee-track">
-          <li><figure><img src="images/awards/award-01.png" alt="Dell FY26 Top Client Solutions Partner" /><figcaption>Dell FY26 Top Client Solutions Partner</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-02.png" alt="Advocate Partner of the Year (VST-ECS Fortinet)" /><figcaption>Advocate Partner of the Year (VST-ECS Fortinet)</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-03.png" alt="ESET Partner of the Year - Silver Award" /><figcaption>ESET Partner of the Year - Silver Award</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-04.png" alt="LG Information Technology Achiever&#x27;s Circle Award" /><figcaption>LG Information Technology Achiever&#x27;s Circle Award</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-05.png" alt="TDI Distinguished Dealer Award 2025" /><figcaption>TDI Distinguished Dealer Award 2025</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-06.png" alt="IPSystems Inc&#x27;s Champion Partner of the Year 2024" /><figcaption>IPSystems Inc&#x27;s Champion Partner of the Year 2024</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-07.png" alt="CY2024 Fortinet Advocate Engagement Excellence Award" /><figcaption>CY2024 Fortinet Advocate Engagement Excellence Award</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-08.png" alt="Top Omada Contributor for F&amp;B Industry 2024" /><figcaption>Top Omada Contributor for F&amp;B Industry 2024</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-09.png" alt="VMware Rising Star Partner of 2023" /><figcaption>VMware Rising Star Partner of 2023</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-10.png" alt="FY23 Top Client Solutions Partner" /><figcaption>FY23 Top Client Solutions Partner</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-11.png" alt="Lenovo President&#x27;s Club 2022" /><figcaption>Lenovo President&#x27;s Club 2022</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-12.png" alt="FY21 Dell Technologies Medium Business Tier 2" /><figcaption>FY21 Dell Technologies Medium Business Tier 2</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-13.png" alt="International Micro Village Inc. Corporate Partner of the Year - 2020" /><figcaption>International Micro Village Inc. Corporate Partner of the Year - 2020</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-14.png" alt="FY20 Medium Business Award Tier 2" /><figcaption>FY20 Medium Business Award Tier 2</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-15.png" alt="FY19 Hybrid IT Partner of the Year" /><figcaption>FY19 Hybrid IT Partner of the Year</figcaption></figure></li>
-          <li><figure><img src="images/awards/award-16.png" alt="Top Focus Partner for Cisco Fiscal Year 2025" /><figcaption>Top Focus Partner for Cisco Fiscal Year 2025</figcaption></figure></li>
-        </ul>
+      <div class="container">
+        <div class="industries reveal">
+          <h3 class="sub-title">Serving Diverse Industries</h3>
+          <p class="section-lead">Trusted by valued clients across industries, building strong and lasting partnerships.</p>
+          <ul class="chips">
+            <li>Business Process Outsourcing</li>
+            <li>Manufacturing</li>
+            <li>Retail</li>
+            <li>Financial Services</li>
+            <li>Education</li>
+            <li>Construction</li>
+            <li>Real Estate</li>
+            <li>Hospitality</li>
+            <li>Corporate Enterprise and SMBs</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRODUCTS ============ -->
+    <section class="section products" id="products">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">Our Products</p>
+          <h2 class="section-title reveal" style="--d:.1s">End-to-end IT solutions</h2>
+          <p class="section-lead reveal" style="--d:.2s">PTSI delivers end-to-end IT solutions for businesses of all sizes and industries. Whether it’s essential tools or advanced technologies, our products help businesses work smarter and perform better.</p>
+        </div>
+
+        <div class="product-tabs reveal" style="--d:.2s">
+          <div class="tab-list" role="tablist" aria-label="Product categories">
+            <button role="tab" id="tab-compute" aria-controls="panel-compute" aria-selected="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Compute
+            </button>
+            <button role="tab" id="tab-datacenter" aria-controls="panel-datacenter" aria-selected="false" tabindex="-1">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="7" rx="1"/><rect x="4" y="14" width="16" height="7" rx="1"/><path d="M8 6.5h.01M8 17.5h.01"/></svg>Data Center
+            </button>
+            <button role="tab" id="tab-networking" aria-controls="panel-networking" aria-selected="false" tabindex="-1">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5L5 16.5M12 11.5l7 5"/></svg>Networking
+            </button>
+            <button role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" tabindex="-1">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg>Security
+            </button>
+          </div>
+
+          <div class="tab-panel" role="tabpanel" id="panel-compute" aria-labelledby="tab-compute">
+            <ul class="check-list">
+              <li>Desktops, Laptops, Tablets</li>
+              <li>Headset and Unified Communication</li>
+              <li>Office Applications</li>
+              <li>POS, Barcode Scanner and Printer</li>
+              <li>Displays</li>
+              <li>Advanced Premises Protection System</li>
+            </ul>
+            <img src="images/products/compute-brands.jpg" alt="Compute brands: Dell, Lenovo, ASUS, HPE, Apple, Acer, Adobe, Hikvision, Jabra, Plantronics, Accutone, Logitech, Grandstream, Autodesk, SketchUp, Microsoft, Zebra, Honeywell, Datalogic, Epson, HP, Canon, Brother, Newline, BenQ, Huawei, LG, Samsung, Axis, Dahua, ZKTeco" class="brand-cloud" />
+          </div>
+          <div class="tab-panel" role="tabpanel" id="panel-datacenter" aria-labelledby="tab-datacenter" hidden>
+            <ul class="check-list">
+              <li>Hyperconverged</li>
+              <li>Server and Storage</li>
+              <li>Virtualization</li>
+              <li>Backup Software</li>
+              <li>Cloud Solutions</li>
+              <li>PACU, Smart Rack Cabinets</li>
+            </ul>
+            <img src="images/products/datacenter-brands.jpg" alt="Data center brands: VxRail, Lenovo ThinkAgile, HPE SimpliVity, Cisco HyperFlex, Nutanix, Dell EMC, Sangfor, Huawei, Vertiv, Microsoft Azure, HPE, Cisco, Lenovo, QNAP, Synology, VMware, Microsoft, Red Hat, Veeam, Acronis, Arcserve, AWS, Veritas, Commvault, Google Workspace, APC, Delta" class="brand-cloud" />
+          </div>
+          <div class="tab-panel" role="tabpanel" id="panel-networking" aria-labelledby="tab-networking" hidden>
+            <ul class="check-list">
+              <li>Network and Communication</li>
+              <li>Infrastructure Monitoring</li>
+              <li>Load Balancer</li>
+              <li>Network Monitoring Software</li>
+              <li>SSE</li>
+              <li>SD-WAN</li>
+            </ul>
+            <img src="images/products/networking-brands.jpg" alt="Networking brands: Cisco Meraki, Aruba, Ruckus, TP-Link, Ruijie, Ubiquiti, Huawei, Progress WhatsUp Gold, Viptela, SolarWinds, Motadata, Splunk, LogRhythm, F5, Progress Kemp LoadMaster, Nagios, OpenText, ManageEngine, Zscaler, HPE, Axis, Cato Networks, Versa Networks" class="brand-cloud" />
+          </div>
+          <div class="tab-panel" role="tabpanel" id="panel-security" aria-labelledby="tab-security" hidden>
+            <ul class="check-list">
+              <li>Network Security</li>
+              <li>Email Security</li>
+              <li>Zero Trust Security</li>
+              <li>Antivirus, DLP, Employee Monitoring</li>
+              <li>IT Security Awareness Training Platform</li>
+            </ul>
+            <img src="images/products/security-brands.jpg" alt="Security brands: Cisco, Fortinet, SonicWall, Sophos, Hornetsecurity, Bluedog, Ridge Security, Nemasis, Palo Alto Networks, Trend Micro, Bitdefender, ESET, Trellix, Kaspersky, KnowBe4, ThriveDX, Proofpoint" class="brand-cloud" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">Our Services</p>
+          <h2 class="section-title reveal" style="--d:.1s">Keeping your IT infrastructure at its best</h2>
+          <p class="section-lead reveal" style="--d:.2s">With data center technical expertise, professional consulting, and dependable maintenance agreements, PTSI helps businesses stay secure, efficient, and ahead of the curve.</p>
+        </div>
+
+        <div class="offering-grid">
+          <article class="offering reveal" style="--d:0s">
+            <span class="offering-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="6" rx="1"/><rect x="4" y="9" width="16" height="6" rx="1"/><rect x="4" y="16" width="16" height="6" rx="1"/><path d="M8 5h.01M8 12h.01M8 19h.01"/></svg></span>
+            <h3>Data Center <span>Technical Services</span></h3>
+            <p>PTSI’s Data Center Technical Services deliver complete solutions to optimize, secure, and manage your IT infrastructure, ensuring reliable performance and business continuity.</p>
+            <ul class="check-list compact">
+              <li>Converged and Hyper-converged Infrastructure</li>
+              <li>Virtualization</li>
+              <li>Servers</li>
+              <li>Storage</li>
+              <li>Backup and Replication</li>
+              <li>Networking and Cybersecurity</li>
+              <li>Network Monitoring and Management</li>
+              <li>IT Asset and Management</li>
+              <li>Endpoint Management</li>
+              <li>Unified Threat Management</li>
+              <li>Vulnerability Assessment</li>
+            </ul>
+          </article>
+          <article class="offering reveal" style="--d:.1s">
+            <span class="offering-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 15.5c.6-.3 1.3-.5 2-.5 2.2 0 4 1.8 4 4"/></svg></span>
+            <h3>Professional <span>Services</span></h3>
+            <p>Our team of experts offers strategic guidance, implementation support, and ongoing management to ensure seamless IT performance.</p>
+            <ul class="check-list compact">
+              <li>Project Management</li>
+              <li>Data Migration</li>
+              <li>IT Outsourcing</li>
+              <li>Audiovisual</li>
+              <li>Structured Cabling</li>
+              <li>Physical Security and Surveillance technology</li>
+              <li>Data Center fit out</li>
+              <li>Mechanical, Electrical, Plumbing, Fire Protection, and Sanitary</li>
+            </ul>
+          </article>
+          <article class="offering reveal" style="--d:.2s">
+            <span class="offering-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></span>
+            <h3>Maintenance <span>Agreement</span></h3>
+            <p>Our service options include 8x5 and 24/7 support, giving you the flexibility to choose the coverage that best fits your business needs.</p>
+            <ul class="check-list compact">
+              <li>Customizable SLA</li>
+              <li>Cost-Effective Support</li>
+              <li>On-site Support</li>
+              <li>Remote Support</li>
+              <li>Phone and Email Support</li>
+              <li>Dedicated Spare Units</li>
+              <li>RMA / Technical Support &amp; Assistance</li>
+              <li>IT Asset and Management</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3 class="sub-title center reveal">Specialized Services</h3>
+        <div class="service-grid">
+          <article class="service-card reveal" style="--d:0s" tabindex="0">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+            <h3>Project Management</h3>
+            <div class="service-reveal"><div>
+              <p>From plan to handover, we scope, schedule and coordinate every rollout so it lands on time and to spec.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+          <article class="service-card reveal" style="--d:.08s" tabindex="0">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+            <h3>Data Migration</h3>
+            <div class="service-reveal"><div>
+              <p>Secure transfer of data and workloads between platforms, storage and data centers with minimal downtime.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+          <article class="service-card reveal" style="--d:.16s" tabindex="0">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 15.5c.6-.3 1.3-.5 2-.5 2.2 0 4 1.8 4 4"/></svg></div>
+            <h3>IT Outsourcing</h3>
+            <div class="service-reveal"><div>
+              <p>Skilled IT professionals who extend your team on-site or remotely, so you can focus on running the business.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+          <article class="service-card reveal" style="--d:0s" tabindex="0">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 10h3M14 10h3"/></svg></div>
+            <h3>Audiovisual &amp; Structured Cabling</h3>
+            <div class="service-reveal"><div>
+              <p>Standards-compliant copper and fiber cabling, plus boardroom and conferencing AV systems.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+          <article class="service-card reveal" style="--d:.08s" tabindex="0">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01"/></svg></div>
+            <h3>Data Center Fit-Out &amp; MEPFS</h3>
+            <div class="service-reveal"><div>
+              <p>Data center build-outs with mechanical, electrical, plumbing, fire protection and sanitary works.</p>
+              <a href="#contact" class="link-arrow">Learn More</a></div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Professional services lifecycle -->
+        <div class="lifecycle reveal">
+          <h3 class="sub-title center">How We Deliver</h3>
+          <ol class="steps">
+            <li><span class="step-no">01</span><strong>Plan</strong><em>Business Consulting · Workflow Analysis</em></li>
+            <li><span class="step-no">02</span><strong>Design</strong><em>Technical Specifications · Workflow Requirements</em></li>
+            <li><span class="step-no">03</span><strong>Implementation</strong><em>Project Management · Installation &amp; Integration</em></li>
+            <li><span class="step-no">04</span><strong>Maintenance</strong><em>Evolutionary Business &amp; System Support</em></li>
+          </ol>
+        </div>
+
+        <div class="value-grid">
+          <article class="value reveal" style="--d:0s">
+            <h4>Technical Expert</h4>
+            <p>Our staff of highly skilled and qualified experts is committed to offering the greatest service possible and has the know-how to tackle even the most challenging technical problem.</p>
+          </article>
+          <article class="value reveal" style="--d:.08s">
+            <h4>Free Consultancy</h4>
+            <p>At PTSI, we’re passionate about delivering ‘Solutions that Transform’ to propel your business forward. That’s why we’re thrilled to extend our Free Customer Consultancy Program to you.</p>
+          </article>
+          <article class="value reveal" style="--d:.16s">
+            <h4>Fast and Reliable Service</h4>
+            <p>Since reducing downtime is crucial, we work hard to deliver prompt, effective service to get your equipment back in working order as quickly as possible.</p>
+          </article>
+          <article class="value reveal" style="--d:.24s">
+            <h4>Customer Satisfaction</h4>
+            <p>At PTSI Technical Center, we put your satisfaction first. Our goal is to provide you with high-quality service that goes above and beyond your expectations.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -253,32 +488,31 @@
           <h2 class="section-title reveal" style="--d:.1s">What Our Clients Say</h2>
         </div>
 
-        <!-- REPLACE: every quote, name and company below with the real reviews from ptsiphil.com -->
         <div class="review-slider reveal" style="--d:.2s" id="reviewSlider">
           <div class="review-viewport">
             <div class="review-track">
               <figure class="review-card">
                 <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote>"[Client review #1 — paste the original testimonial text here.] PTSI's team handled our data center fit-out end to end and finished ahead of schedule."</blockquote>
+                <blockquote>“PTSI was a lifesaver for our IT infrastructure, providing essential services like Dell VxRail and VMware support, SSL setup, and laptop procurement. Their team was incredibly supportive and knowledgeable, resolving our challenges and earning my highest recommendation for anyone needing reliable IT support.”</blockquote>
                 <figcaption>
-                  <img src="/api/placeholder/56/56" data-label="Client 1" alt="" class="avatar" />
-                  <span><strong>[Client Name]</strong><em>[Position, Company]</em></span>
+                  <span class="avatar" aria-hidden="true">RP</span>
+                  <span><strong>Roel P.</strong><em>Database and System Administration Manager</em></span>
                 </figcaption>
               </figure>
               <figure class="review-card">
                 <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote>"[Client review #2 — paste the original testimonial text here.] Responsive, knowledgeable and reliable. Their maintenance agreement gives us real peace of mind."</blockquote>
+                <blockquote>“PTSI is an incredibly resourceful IT partner, providing everything from network equipment and implementation services to specialized products like fire suppression systems, UPS, servers, and teleconferencing gear. They significantly improved our system performance and reduced downtime, making them a highly responsive and technically proficient team to work with.”</blockquote>
                 <figcaption>
-                  <img src="/api/placeholder/56/56" data-label="Client 2" alt="" class="avatar" />
-                  <span><strong>[Client Name]</strong><em>[Position, Company]</em></span>
+                  <span class="avatar" aria-hidden="true">FR</span>
+                  <span><strong>Fred R.</strong><em>Senior Manager I.T. Infrastructure</em></span>
                 </figcaption>
               </figure>
               <figure class="review-card">
                 <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote>"[Client review #3 — paste the original testimonial text here.] The migration was seamless; our users never noticed the switch."</blockquote>
+                <blockquote>“Partnering with Productivity Technologies Services, Inc. was one of the best decisions we've made. Their hands-on approach and deep understanding of our enterprise IT environment allowed them to deliver a custom solution that seamlessly integrated with our existing platforms. They've become a trusted partner, optimizing our workflows and elevating the reliability and scalability of our systems.”</blockquote>
                 <figcaption>
-                  <img src="/api/placeholder/56/56" data-label="Client 3" alt="" class="avatar" />
-                  <span><strong>[Client Name]</strong><em>[Position, Company]</em></span>
+                  <span class="avatar" aria-hidden="true">MT</span>
+                  <span><strong>Mark T.</strong><em>I.T. Infrastructure Supervisor</em></span>
                 </figcaption>
               </figure>
             </div>
@@ -292,17 +526,65 @@
       </div>
     </section>
 
-    <!-- ============ CONTACT CTA ============ -->
+    <!-- ============ CONTACT ============ -->
     <section class="section contact" id="contact">
-      <div class="container contact-inner reveal">
-        <div>
-          <h2 class="section-title light">Ready to transform your IT?</h2>
-          <p>Tell us about your project and a PTSI specialist will get back to you within one business day.</p>
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">Contact Us</p>
+          <h2 class="section-title light reveal" style="--d:.1s">Let’s find the right solution for your business</h2>
+          <p class="section-lead light reveal" style="--d:.2s">Got questions or need IT solutions and support? Our team at PTSI is ready to help—reach out and let’s find the right solutions for your business.</p>
         </div>
-        <div class="contact-actions">
-          <a class="btn btn-light" href="mailto:sales@ptsiphil.com">sales@ptsiphil.com</a>
-          <!-- VERIFY: replace with the official phone number -->
-          <a class="btn btn-ghost light" href="tel:+630000000000">+63 (2) 0000-0000</a>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal from-left">
+            <ul class="info-list">
+              <li>
+                <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+                <span><strong>Address</strong>Unit 101 Building 2 OPVI Center 2295 Chino Roces Ave Ext. Makati City 1232</span>
+              </li>
+              <li>
+                <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+                <span><strong>Phone</strong><a href="tel:+63285717874">02-8571-7874</a></span>
+              </li>
+              <li>
+                <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+                <span><strong>Email</strong><a href="mailto:sales@ptsiphil.com">sales@ptsiphil.com</a></span>
+              </li>
+              <li>
+                <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span>
+                <span><strong>Careers</strong><a href="mailto:human-resources@ptsiphil.com">human-resources@ptsiphil.com</a></span>
+              </li>
+              <li>
+                <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+                <span><strong>Office Hours</strong>Monday to Friday · 8:00 AM - 5:00 PM</span>
+              </li>
+            </ul>
+            <iframe class="map" title="PTSI office location — OPVI Center, Chino Roces Ave Ext., Makati City" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=OPVI%20Center%202295%20Chino%20Roces%20Ave%20Ext%20Makati%20City&z=16&output=embed"></iframe>
+          </div>
+
+          <form class="inquiry-form reveal" id="inquiryForm" novalidate>
+            <h3>Inquire Now!</h3>
+            <div class="form-row">
+              <label>Company Name<input name="company" type="text" autocomplete="organization" required /></label>
+            </div>
+            <div class="form-row two">
+              <label>First Name<input name="first" type="text" autocomplete="given-name" required /></label>
+              <label>Last Name<input name="last" type="text" autocomplete="family-name" required /></label>
+            </div>
+            <div class="form-row two">
+              <label>Job Title<input name="title" type="text" autocomplete="organization-title" /></label>
+              <label>Phone Number<input name="phone" type="tel" autocomplete="tel" /></label>
+            </div>
+            <div class="form-row">
+              <label>Email address<input name="email" type="email" autocomplete="email" required /></label>
+            </div>
+            <div class="form-row">
+              <label>Leave a message<textarea name="message" rows="4" required></textarea></label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <p class="form-note" id="formNote" role="status">Submitting opens your email app with your inquiry addressed to sales@ptsiphil.com.</p>
+          </form>
         </div>
       </div>
     </section>
@@ -311,32 +593,47 @@
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div>
-        <!-- INSERT: footer / light version of PTSI logo -->
-        <img src="/api/placeholder/160/48" data-label="PTSI Logo (light)" alt="PTSI logo" class="footer-logo" />
-        <p>Productivity Technologies Services, Inc.<br />Solutions that Transform since 1993.</p>
+      <div class="footer-brand">
+        <img src="images/brand/ptsi-logo-white.png" alt="PTSI — Productivity Technologies Services, Inc." class="footer-logo" />
+        <p>Delivering trusted IT solutions since 1993.</p>
       </div>
       <div>
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#about">About Us</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#products">Products</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#partners">Partners &amp; Awards</a></li>
-          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
-        <!-- VERIFY: confirm the current office address against ptsiphil.com -->
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#services">Project Management</a></li>
+          <li><a href="#services">Data Migration</a></li>
+          <li><a href="#services">IT Outsourcing</a></li>
+          <li><a href="#services">Audiovisual &amp; Structured Cabling</a></li>
+          <li><a href="#services">Data Center Fit-Out &amp; MEPFS</a></li>
+          <li><a href="#services">Maintenance Agreement</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
         <address>
-          Makati City, Metro Manila, Philippines<br />
-          <a href="mailto:sales@ptsiphil.com">sales@ptsiphil.com</a><br />
-          <a href="tel:+630000000000">+63 (2) 0000-0000</a>
+          Unit 101 Building 2 OPVI Center<br />2295 Chino Roces Ave Ext.<br />Makati City 1232<br />
+          <a href="tel:+63285717874">02-8571-7874</a><br />
+          <a href="mailto:sales@ptsiphil.com">sales@ptsiphil.com</a>
         </address>
+        <a href="#contact" class="btn btn-primary btn-sm">Inquire Now!</a>
+        <h4 class="follow">Follow Us</h4>
+        <a class="social" href="https://www.facebook.com/p/PTSI-Philippines-100063701752372/" target="_blank" rel="noopener" aria-label="PTSI Philippines on Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg>
+        </a>
       </div>
     </div>
-    <div class="container footer-bottom">
-      <p>&copy; <span id="year"></span> Productivity Technologies Services, Inc. All rights reserved.</p>
+    <div class="footer-bottom">
+      <p>Copyright &copy; <span id="year"></span> Productivity Technologies Services, Inc.</p>
     </div>
   </footer>
 
@@ -347,13 +644,13 @@
         <span class="fab-item-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
         <span class="fab-item-text"><strong>Email us</strong><em>sales@ptsiphil.com</em></span>
       </a>
-      <a href="tel:+630000000000" class="fab-item" tabindex="-1">
+      <a href="tel:+63285717874" class="fab-item" tabindex="-1">
         <span class="fab-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
-        <span class="fab-item-text"><strong>Call us</strong><em>+63 (2) 0000-0000</em></span>
+        <span class="fab-item-text"><strong>Call us</strong><em>02-8571-7874 · Mon–Fri 8AM–5PM</em></span>
       </a>
       <a href="#contact" class="fab-item" tabindex="-1">
         <span class="fab-item-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-        <span class="fab-item-text"><strong>Request a quote</strong><em>We reply within 1 business day</em></span>
+        <span class="fab-item-text"><strong>Inquire now</strong><em>Free customer consultancy</em></span>
       </a>
     </div>
     <button class="fab-toggle" id="fabToggle" aria-label="Open quick contact" aria-expanded="false" aria-controls="fabMenu">
