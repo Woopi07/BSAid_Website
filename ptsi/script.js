@@ -196,7 +196,7 @@
     };
     const restart = () => {
       clearInterval(timer);
-      if (!reduceMotion) timer = setInterval(() => go(index + 1), 6000);
+      if (!reduceMotion) timer = setInterval(() => go(index + 1), 3000);
     };
     $$('.review-btn', slider).forEach((b) => b.addEventListener('click', () => { go(index + +b.dataset.dir); restart(); }));
     slider.addEventListener('mouseenter', () => clearInterval(timer));
