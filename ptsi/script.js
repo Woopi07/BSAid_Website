@@ -321,5 +321,32 @@
     }));
   });
 
+  /* News: read more / load more */
+  $$('.news-card').forEach((card) => {
+    const btn = $('.news-more', card);
+    const text = $('.news-text', card);
+    const fits = () => text.scrollHeight <= text.clientHeight + 2 && !card.classList.contains('is-open');
+    btn.addEventListener('click', () => {
+      const open = card.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Show less' : 'Read more';
+    });
+    const check = () => { if (card.offsetParent) btn.hidden = fits(); };
+    check();
+    window.addEventListener('resize', check);
+    card.addEventListener('transitionend', check, { once: true });
+  });
+  const newsToggle = $('#newsToggle');
+  if (newsToggle) {
+    const grid = $('#newsGrid');
+    newsToggle.addEventListener('click', () => {
+      const all = grid.classList.toggle('show-all');
+      newsToggle.setAttribute('aria-expanded', String(all));
+      newsToggle.textContent = all ? 'Show fewer news' : 'Load more news';
+      if (all) $$('.news-card.is-extra', grid).forEach((c) => { const b = $('.news-more', c), t = $('.news-text', c); b.hidden = t.scrollHeight <= t.clientHeight + 2; });
+      else grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
   $('#year').textContent = new Date().getFullYear();
 })();
