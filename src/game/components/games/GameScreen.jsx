@@ -9,6 +9,7 @@ import Scene from '../Scene.jsx';
 import Icon from '../Icons.jsx';
 import { ROUNDS } from './rounds.jsx';
 import { Steps } from './parts.jsx';
+import Calculator from './Calculator.jsx';
 
 const MAX_MULT_STEPS = 4; // combo multiplier caps at x2.0
 
@@ -212,6 +213,7 @@ function Game({ onRestart }) {
   const [hint, setHint] = useState(false);
   const [pop, setPop] = useState(null);
   const [shake, setShake] = useState(false);
+  const [calc, setCalc] = useState(false);
 
   const round = rounds[index];
   const kind = ROUNDS[round.type];
@@ -315,7 +317,7 @@ function Game({ onRestart }) {
       <LevelHeader onRestart={onRestart} />
       <Scene sprites={phase !== 'play' && phase !== 'feedback'}>
         <main className="pixel-scroll min-h-0 flex-1 overflow-y-auto">
-          <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-6 sm:px-6">
+          <div className={`mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-6 sm:px-6 ${calc ? 'pb-[480px] sm:pb-6' : ''}`}>
             {phase === 'ready' && (
               <ReadyCard
                 game={activeCase.game}
@@ -347,6 +349,18 @@ function Game({ onRestart }) {
                   <p className="font-pixel text-[12px] uppercase tracking-widest text-ember-200">
                     {activeCase.game.name} · Level {activeLevel.id} · {activeLevel.title}
                   </p>
+                  <div className="flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      play('click');
+                      setCalc((v) => !v);
+                    }}
+                    aria-pressed={calc}
+                    className={`pixel-btn px-3 py-2 text-[12px] ${calc ? 'bg-navy-400 text-cream' : 'bg-cream text-navy-950 hover:bg-white'}`}
+                  >
+                    <PixelSprite name="calculator" scale={1} className="h-4 w-4" /> Calculator
+                  </button>
                   {phase === 'play' && round.hint && (
                     <button
                       type="button"
@@ -360,6 +374,7 @@ function Game({ onRestart }) {
                       <Icon name="bulb" className="h-4 w-4" strokeWidth={2.5} /> {hint ? 'Hint used' : 'Hint (−50% pts)'}
                     </button>
                   )}
+                  </div>
                 </div>
                 {hint && phase === 'play' && (
                   <p className="pixel-box-flat px-gold flex animate-pop gap-2 bg-gold-50 p-3 text-sm text-navy-900">
@@ -379,6 +394,7 @@ function Game({ onRestart }) {
                     onSubmit={submit}
                   />
                 </div>
+                {calc && <Calculator onClose={() => setCalc(false)} canUse={phase === 'play' && ['entry', 'tbmissing'].includes(round.type)} />}
                 {phase === 'feedback' && entry && (
                   <Feedback entry={entry} round={round} last={last} outOfLives={lives <= 0} onNext={next} Solution={Solution} />
                 )}

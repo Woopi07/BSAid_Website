@@ -8,6 +8,16 @@ import { Card, JournalEntry, NumPad, SubmitButton, TAccount, numKey } from './pa
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
 
+// Receives the in-game calculator's "Use answer" value.
+function useCalcAnswer(done, set) {
+  useEffect(() => {
+    if (done) return undefined;
+    const onUse = (e) => set(String(e.detail));
+    window.addEventListener('calc:use', onUse);
+    return () => window.removeEventListener('calc:use', onUse);
+  }, [done, set]);
+}
+
 function useKeys(handler, deps) {
   useEffect(() => {
     const onKey = (e) => {
@@ -239,6 +249,7 @@ function EntryRound({ round, done, reveal, onSubmit }) {
   const [slots, setSlots] = useState({ debit: null, credit: null });
   const [active, setActive] = useState('debit');
   const [amount, setAmount] = useState('');
+  useCalcAnswer(done, setAmount);
   const pickChip = (acc) => {
     if (done) return;
     setSlots((s) => ({ ...s, [active]: acc }));
@@ -399,6 +410,7 @@ function TBTable({ rows, render, totals, footer }) {
 
 function TBMissingRound({ round, done, reveal, onSubmit }) {
   const [val, setVal] = useState('');
+  useCalcAnswer(done, setVal);
   const submit = () => onSubmit({ correct: Number(val) === round.answer, yours: peso(Number(val)) });
   useKeys((e) => {
     if (done) return;
