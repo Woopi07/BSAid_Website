@@ -161,6 +161,7 @@ export const quiz001L2 = [
     answer: 0,
     hint: 'Subtract the smaller side from the larger side; the balance sits on the larger side.',
     explanation: '\u20B125,000 \u2212 \u20B19,500 = \u20B115,500. Debits are larger, so Cash has a \u20B115,500 debit balance.',
+    steps: ['Total debits (left side): \u20B125,000.', 'Total credits (right side): \u20B19,500.', 'Balance = \u20B125,000 \u2212 \u20B19,500 = \u20B115,500.', 'Debits are larger, so the balance is a \u20B115,500 DEBIT.'],
   },
 ];
 
@@ -179,6 +180,7 @@ export const quiz001L3 = [
     answer: 0,
     hint: 'The full ₱3,000 sale happened today — only part of the money came in.',
     explanation: 'The whole ₱3,000 is earned now, so Sales is credited ₱3,000. ₱1,000 came in as Cash and ₱2,000 is still owed (Accounts Receivable). Total debits ₱3,000 = total credits ₱3,000.',
+    steps: ['Sales earned today = ₱3,000 (the full sale) \u2192 credit Sales ₱3,000.', 'Cash received now = ₱1,000 \u2192 debit Cash ₱1,000.', 'Still owed = ₱3,000 \u2212 ₱1,000 = ₱2,000 \u2192 debit Accounts Receivable ₱2,000.', 'Check: debits ₱1,000 + ₱2,000 = ₱3,000 = credits ₱3,000 \u2714'],
   },
   {
     event: "Nayeom paid her family's home electricity bill of ₱2,500 using store cash.",
@@ -206,6 +208,7 @@ export const quiz001L3 = [
     answer: 0,
     hint: 'What did the store gain, and what does it now owe?',
     explanation: 'Equipment (an asset) goes up ₱15,000 and Accounts Payable (a liability) goes up ₱15,000. Both sides of the equation increase equally.',
+    steps: ['Equipment (asset) +₱15,000.', 'Accounts Payable (liability) +₱15,000 \u2014 nothing was paid yet.', 'Equity is unchanged.', 'Check: Assets +₱15,000 = Liabilities +₱15,000 + Equity ₱0 \u2714'],
   },
   {
     event: 'Nayeom paid ₱6,000 for 3 months of store insurance in advance.',
@@ -224,6 +227,7 @@ export const quiz001L3 = [
     answer: 0,
     hint: 'A return reduces what you owe the supplier.',
     explanation: '₱4,000 owed − ₱500 returned = ₱3,500 still payable. Accounts Payable is debited ₱500 when the goods go back.',
+    steps: ['Owed for the delivery: ₱4,000.', 'Returned damaged goods: \u2212₱500.', 'Still payable = ₱4,000 \u2212 ₱500 = ₱3,500.'],
   },
 ];
 
@@ -237,6 +241,7 @@ export const quiz001L4 = [
     answer: 0,
     hint: 'Equity = Assets − Liabilities.',
     explanation: 'Assets = Liabilities + Equity, so Equity = ₱120,000 − ₱45,000 = ₱75,000.',
+    steps: ['Start with Assets = Liabilities + Equity.', 'Rearrange: Equity = Assets \u2212 Liabilities.', 'Equity = ₱120,000 \u2212 ₱45,000 = ₱75,000.'],
   },
   {
     event: 'Nayeom is checking which transaction leaves total assets unchanged.',
@@ -255,6 +260,7 @@ export const quiz001L4 = [
     answer: 0,
     hint: 'Cash should have gone DOWN ₱1,800, but it went UP ₱1,800 instead.',
     explanation: 'Cash should have been credited (−₱1,800) but was debited (+₱1,800). The gap is ₱3,600, so Cash is overstated by ₱3,600.',
+    steps: ['Correct entry: Cash \u2212₱1,800.', 'Recorded entry: Cash +₱1,800.', 'Difference = ₱1,800 \u2212 (\u2212₱1,800) = ₱3,600.', 'Cash shows ₱3,600 more than it should \u2192 overstated by ₱3,600.'],
   },
   {
     event: 'Nayeom is reviewing normal balances before preparing the trial balance.',
@@ -273,6 +279,7 @@ export const quiz001L4 = [
     answer: 0,
     hint: 'Withdrawals are not expenses — leave them out of net income.',
     explanation: 'Net income = Revenue − Expenses = ₱48,000 − ₱31,500 = ₱16,500. Withdrawals reduce capital, not net income.',
+    steps: ['Net income = Revenue \u2212 Expenses.', '= ₱48,000 \u2212 ₱31,500 = ₱16,500.', 'Withdrawals (₱5,000) are left out \u2014 they reduce capital, not net income.'],
   },
   {
     event: 'Beginning capital ₱60,000, new investment ₱10,000, net income ₱16,500, withdrawals ₱5,000.',
@@ -282,5 +289,6 @@ export const quiz001L4 = [
     answer: 0,
     hint: 'Beginning + investments + net income − withdrawals.',
     explanation: '₱60,000 + ₱10,000 + ₱16,500 − ₱5,000 = ₱81,500.',
+    steps: ['Beginning capital: ₱60,000.', '+ Additional investment: ₱10,000 \u2192 ₱70,000.', '+ Net income: ₱16,500 \u2192 ₱86,500.', '\u2212 Withdrawals: ₱5,000 \u2192 ending capital ₱81,500.'],
   },
 ];

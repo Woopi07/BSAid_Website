@@ -5,6 +5,7 @@ import LevelHeader from './LevelHeader.jsx';
 import Scene from './Scene.jsx';
 import Avatar from './Avatar.jsx';
 import { ROUNDS } from './games/rounds.jsx';
+import { Steps } from './games/parts.jsx';
 
 const MESSAGES = {
   S: 'Flawless! Every entry was spot on.',
@@ -151,6 +152,7 @@ export default function LevelResults() {
                         <div className="mt-3 bg-emerald-50 p-3">
                           <p className="mb-2 font-pixel text-[11px] uppercase text-emerald-700">Solution</p>
                           <Solution round={round} />
+                          <Steps steps={round.steps} />
                         </div>
                         <p className="mt-3 text-sm text-slate-700">{round.explanation}</p>
                       </li>

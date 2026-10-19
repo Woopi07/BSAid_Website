@@ -11,6 +11,12 @@ function shuffleChoices(q, r) {
   return { ...q, choices: order.map((i) => q.choices[i]), answer: order.indexOf(q.answer) };
 }
 
+// A new question order and choice order on every attempt (each attempt gets a new random seed).
+function quizRounds(questions, seed) {
+  const r = rng(seed);
+  return shuffle(r, questions).map((q) => ({ type: 'quiz', ...shuffleChoices(q, r) }));
+}
+
 // Builds a case's four levels from per-level settings.
 function levels(caseId, settings) {
   return settings.map((s, i) => ({
@@ -52,22 +58,22 @@ export const cases = [
           "Here's the tricky part: not everything that happens in the store is an accounting transaction.",
           'As my accounting assistant, help me decide what to record and how it affects our accounts.',
         ],
-        build: (seed) => quiz001L1.map((q) => ({ type: 'quiz', ...shuffleChoices(q, rng(seed + q.prompt.length)) })),
+        build: (seed) => quizRounds(quiz001L1, seed),
       },
       {
         hearts: 3, time: 30, rounds: 6, summary: 'Write journal entries, post them, and compute balances.',
         intro: ['Great sorting! Now we write proper journal entries and post them to the ledger.', 'The timer is a little shorter this time. Ready?'],
-        build: (seed) => quiz001L2.map((q) => ({ type: 'quiz', ...shuffleChoices(q, rng(seed + q.prompt.length)) })),
+        build: (seed) => quizRounds(quiz001L2, seed),
       },
       {
         hearts: 2, time: 30, rounds: 6, summary: 'Split payments, advances, prepayments and the accounting equation.',
         intro: ['Expert level! These are the tricky ones: split payments, money received in advance, and personal spending.', 'You only have 2 hearts now. Think before you tap!'],
-        build: (seed) => quiz001L3.map((q) => ({ type: 'quiz', ...shuffleChoices(q, rng(seed + q.prompt.length)) })),
+        build: (seed) => quizRounds(quiz001L3, seed),
       },
       {
         hearts: 2, time: 25, rounds: 6, summary: 'Boss round: accounting equation, error analysis and capital.',
         intro: ['Boss round! I need you to check my whole month — equity, errors, net income and capital.', 'Two hearts, 25 seconds each. Let’s do this, partner!'],
-        build: (seed) => quiz001L4.map((q) => ({ type: 'quiz', ...shuffleChoices(q, rng(seed + q.prompt.length)) })),
+        build: (seed) => quizRounds(quiz001L4, seed),
       },
     ]),
   },

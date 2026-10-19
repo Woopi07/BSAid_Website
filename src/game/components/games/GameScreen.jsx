@@ -8,6 +8,7 @@ import LevelHeader from '../LevelHeader.jsx';
 import Scene from '../Scene.jsx';
 import Icon from '../Icons.jsx';
 import { ROUNDS } from './rounds.jsx';
+import { Steps } from './parts.jsx';
 
 const MAX_MULT_STEPS = 4; // combo multiplier caps at x2.0
 
@@ -151,6 +152,11 @@ function Feedback({ entry, round, last, outOfLives, onNext, Solution }) {
           </div>
         </div>
       </div>
+      {round.steps?.length > 0 && (
+        <div className="mt-4 bg-white p-4">
+          <Steps steps={round.steps} />
+        </div>
+      )}
       <p className="mt-4 flex gap-2 bg-gold-100 p-3 text-sm text-navy-900">
         <Icon name="bulb" className="h-5 w-5 shrink-0 text-gold-700" strokeWidth={2.25} />
         {round.explanation}
@@ -171,7 +177,7 @@ function GameOver({ onRetry, onLevels, reached, total }) {
         <p className="font-pixel text-[13px] uppercase tracking-widest text-cream">Out of hearts</p>
       </div>
       <div className="p-6 sm:p-8">
-        <p className="pixel-title font-heading text-6xl font-bold" data-text="Game Over">Game Over</p>
+        <p className="font-heading text-6xl font-bold text-ember-300">Game Over</p>
         <p className="mt-6 text-navy-100">
           You reached round {reached} of {total}. Every solution you saw is practice for the next run!
         </p>

@@ -109,3 +109,21 @@ export function Card({ label, tone = 'navy', children }) {
     </div>
   );
 }
+
+// Step-by-step working for a solution, with the real numbers.
+export function Steps({ steps }) {
+  if (!steps?.length) return null;
+  return (
+    <div className="mt-4 border-t-4 border-dashed border-emerald-200 pt-3">
+      <p className="font-pixel text-[11px] uppercase text-emerald-700">How to solve it</p>
+      <ol className="mt-2 space-y-1.5">
+        {steps.map((s, i) => (
+          <li key={i} className="flex gap-2 text-sm text-navy-900">
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-emerald-600 font-pixel text-[10px] text-white">{i + 1}</span>
+            <span className="tabular-nums">{s}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}

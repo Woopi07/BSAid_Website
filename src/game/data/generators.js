@@ -27,6 +27,28 @@ export function shuffle(r, arr) {
 }
 const uniq = (arr) => [...new Set(arr)];
 
+// Accounts whose normal balance is DEBIT (assets, expenses, drawing). Everything else is credit-normal.
+const DEBIT_NORMAL = new Set(['Cash', 'Accounts Receivable', 'Supplies', 'Equipment', 'Delivery Equipment', 'Delivery Trucks',
+  'Prepaid Insurance', 'Prepaid Rent', 'Interest Receivable', 'Rent Expense', 'Salaries Expense', 'Utilities Expense',
+  'Fuel Expense', 'Repairs Expense', 'Interest Expense', 'Supplies Expense', 'Insurance Expense', 'Depreciation Expense',
+  'Owner\u2019s Drawing', 'Surume, Drawing', 'Sanvitog, Drawing']);
+const isDebitNormal = (a) => DEBIT_NORMAL.has(a);
+// "Cash increases" / "Accounts Payable decreases", for an account on a given side of the entry.
+function effect(account, side) {
+  const up = (side === 'debit') === isDebitNormal(account);
+  return `${account} ${up ? 'increases' : 'decreases'}`;
+}
+const plus = (nums) => (nums.length ? nums.map(peso).join(' + ') : '\u20B10');
+// "₱1 + ₱2 = ₱3", or just "₱3" when there is only one amount.
+const sumLine = (nums, total) => (nums.length > 1 ? `${plus(nums)} = ${peso(total)}` : peso(total));
+function entrySteps(dr, cr, amount) {
+  return [
+    `${effect(dr, 'debit')} \u2192 debit ${dr} ${peso(amount)} (left side).`,
+    `${effect(cr, 'credit')} \u2192 credit ${cr} ${peso(amount)} (right side).`,
+    `Check: total debits ${peso(amount)} = total credits ${peso(amount)} \u2714`,
+  ];
+}
+
 // ---------------------------------------------------------------------------------------------
 // Case #002 · Debit or Credit Vault — sort accounts by normal balance
 // ---------------------------------------------------------------------------------------------
@@ -80,6 +102,11 @@ export function genSort(tier, count, seed) {
     kind: KIND_LABEL[kind],
     side: SIDE_OF[kind] ?? 'credit',
     explanation: KIND_WHY[kind](account),
+    steps: [
+      `Classify it: ${account} is ${/^[AEIOU]/i.test(KIND_LABEL[kind]) ? 'an' : 'a'} ${KIND_LABEL[kind].toLowerCase()} account.`,
+      KIND_WHY[kind](account),
+      `Normal balance: ${(SIDE_OF[kind] ?? 'credit').toUpperCase()} \u2192 the ${SIDE_OF[kind] === 'debit' ? 'left' : 'right'} vault.`,
+    ],
     hint: tier >= 3 ? 'Watch for contra accounts: they carry the OPPOSITE balance of the account they reduce.' : 'Asset, liability, equity, revenue or expense? Assets & expenses are debit; the rest are credit.',
   }));
 }
@@ -160,6 +187,7 @@ export function genTAccount(tier, count, seed) {
       postings,
       cards: shuffle(r, [t.dr, t.cr, ...decoys]),
       explanation: `${t.dr} is debited (left side) and ${t.cr} is credited (right side) for ${peso(a)}. Every debit needs an equal credit.`,
+      steps: [...entrySteps(t.dr, t.cr, a), ...(decoys.length ? [`${decoys[0]} is not affected \u2014 leave it empty.`] : [])],
       hint: decoys.length
         ? 'One account card is a decoy — only two accounts are affected. Leave the decoy empty.'
         : 'Which account goes up or down? Debits are always posted on the LEFT, credits on the RIGHT.',
@@ -183,6 +211,12 @@ export function genTAccount(tier, count, seed) {
     choices,
     answer: nums.indexOf(correct),
     explanation: `${target}: debits ${peso(dTot)} − credits ${peso(cTot)} = ${peso(Math.abs(dTot - cTot))} ${side} balance. Subtract the smaller side from the larger one.`,
+    steps: [
+      `Add the debit (left) side: ${sumLine(l.debit, dTot)}.`,
+      `Add the credit (right) side: ${sumLine(l.credit, cTot)}.`,
+      `Subtract the smaller total from the larger: ${peso(Math.max(dTot, cTot))} \u2212 ${peso(Math.min(dTot, cTot))} = ${peso(correct)}.`,
+      `The ${side} side is larger, so ${target} has a ${peso(correct)} ${side} balance.`,
+    ],
     hint: 'Add each side of the T-account, then subtract the smaller total from the larger one.',
   });
   return rounds;
@@ -240,6 +274,7 @@ export function genEntry(tier, count, seed) {
       work,
       chips,
       explanation: `Debit ${t.dr} and credit ${t.cr} for ${peso(a)}.`,
+      steps: [work ? `Compute the amount: ${work}.` : `Amount (given in the ticket): ${peso(a)}.`, ...entrySteps(t.dr, t.cr, Math.round(a))],
       hint: work ? 'Work out the amount first (use the number pad), then ask which account goes up and which goes down.' : 'Which account increases? Which decreases? Assets & expenses go up with a debit.',
     };
   });
@@ -272,6 +307,14 @@ const ADJ = [
   { tier: 4, kind: 'Unearned Revenue', dr: 'Unearned Service Revenue', cr: 'Service Revenue', make: (r) => { const per = int(r, 1500, 5000, 250); const k = pick(r, [6, 8, 10]); const [d, m] = pick(r, MONTHS.filter(([, mm]) => mm < k)); return { a: per * m, wrong: per * (k - m), text: `On ${d}, a client prepaid ${peso(per * k)} for ${k} months of deliveries. Adjust on Dec 31.`, work: `${peso(per * k)} ÷ ${k} = ${peso(per)}/month × ${m} months earned = ${peso(per * m)}` }; } },
 ];
 
+const ADJ_WHY = {
+  'Accrued Expense': 'the expense was incurred this period but not yet paid, so record it and the amount owed.',
+  'Accrued Revenue': 'the revenue was earned this period but not yet collected or billed, so record it and the amount receivable.',
+  'Prepaid Expense': 'cash was paid earlier; move the part used up this period from the asset to an expense.',
+  'Unearned Revenue': 'cash was received earlier; move the part earned this period from the liability to revenue.',
+  Depreciation: 'spread the cost of the equipment over its useful life; record this period\u2019s share.',
+};
+
 const entryText = (dr, cr, a) => `Dr ${dr} ${peso(a)}  /  Cr ${cr} ${peso(a)}`;
 
 export function genAdjust(tier, count, seed) {
@@ -298,6 +341,11 @@ export function genAdjust(tier, count, seed) {
       entry: { dr: t.dr, cr: t.cr, amount: amt },
       work,
       explanation: `This is ${/^[AEIOU]/.test(t.kind) ? 'an' : 'a'} ${t.kind.toLowerCase()} adjustment: debit ${t.dr} and credit ${t.cr} for ${peso(amt)}.`,
+      steps: [
+        `Identify it: ${t.kind} \u2014 ${ADJ_WHY[t.kind]}`,
+        work ? `Compute the amount: ${work}.` : `Amount for this period: ${peso(amt)}.`,
+        ...entrySteps(t.dr, t.cr, amt).slice(0, 2),
+      ],
       hint: 'First ask: did cash already change hands (deferral) or not yet (accrual)? Then find the portion that belongs to this period.',
     };
   });
@@ -348,6 +396,13 @@ export function genTB(tier, count, seed) {
         totals: { debit: dShown, credit: cShown },
         answer: idx,
         explanation: `The columns differ by ${peso(diff)}. Half of that, ${peso(diff / 2)}, is the balance of ${rows[idx].name}, which belongs in the ${rows[idx].side.toUpperCase()} column (its normal balance).`,
+        steps: [
+          `Debit column total = ${peso(dShown)}; credit column total = ${peso(cShown)}.`,
+          `Difference: ${peso(Math.max(dShown, cShown))} \u2212 ${peso(Math.min(dShown, cShown))} = ${peso(diff)}.`,
+          `An account in the wrong column throws the totals off by twice its balance: ${peso(diff)} \u00F7 2 = ${peso(diff / 2)}.`,
+          `${rows[idx].name} has a ${peso(diff / 2)} balance and is a ${rows[idx].side}-balance account \u2192 move it to the ${rows[idx].side.toUpperCase()} column.`,
+          `Corrected totals: ${peso(dShown + (rows[idx].side === 'debit' ? diff / 2 : -diff / 2))} = ${peso(cShown + (rows[idx].side === 'credit' ? diff / 2 : -diff / 2))} \u2714`,
+        ],
         hint: 'When one account is in the wrong column, the difference between the totals is exactly TWICE its balance.',
       });
       continue;
@@ -363,6 +418,17 @@ export function genTB(tier, count, seed) {
       showTotal: tier <= 2,
       answer: hidden.amount,
       explanation: `Total ${hidden.side === 'debit' ? 'credits' : 'debits'} = ${peso(total)}. Other ${hidden.side}s add up to ${peso(sameSide)}. ${peso(total)} − ${peso(sameSide)} = ${peso(hidden.amount)} for ${hidden.name}.`,
+      steps: (() => {
+        const other = hidden.side === 'debit' ? 'credit' : 'debit';
+        const full = rows.filter((x) => x.side === other).map((x) => x.amount);
+        const known = rows.filter((x, j) => x.side === hidden.side && j !== hideIdx).map((x) => x.amount);
+        return [
+          `Add the complete ${other} column: ${sumLine(full, total)}.`,
+          `Debits must equal credits, so the ${hidden.side} column must also total ${peso(total)}.`,
+          `Add the known ${hidden.side}s: ${sumLine(known, sameSide)}.`,
+          `Missing ${hidden.name} = ${peso(total)} \u2212 ${peso(sameSide)} = ${peso(hidden.amount)}.`,
+        ];
+      })(),
       hint: 'In a trial balance, total debits always equal total credits. Find the total of the complete column first.',
     });
   }
