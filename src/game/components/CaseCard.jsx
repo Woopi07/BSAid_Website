@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useGame } from '../context/GameProvider.jsx';
 import { useAudio } from '../context/AudioProvider.jsx';
 import Storefront from './Storefront.jsx';
+import PixelSprite from '../../components/ui/PixelSprite.jsx';
 import StatusBadge from './StatusBadge.jsx';
 import Icon from './Icons.jsx';
 
@@ -59,7 +60,17 @@ export default function CaseCard({ item }) {
       </div>
       <div className="flex flex-1 flex-col p-4">
         <h3 className={`text-2xl font-semibold leading-tight ${locked ? 'text-slate-500' : 'text-navy-900'}`}>{item.name}</h3>
-        <p className="mt-1 text-sm text-slate-600">{locked ? 'Coming soon' : item.category}</p>
+        <p className="mt-1 text-sm text-slate-600">{item.category}</p>
+        {item.game && (
+          <p className="mt-3 flex items-center gap-2 self-start bg-navy-950 px-2.5 py-1.5 font-pixel text-[11px] uppercase text-gold">
+            <PixelSprite name={item.game.sprite} scale={1} className="h-4 w-4" /> {item.game.name}
+          </p>
+        )}
+        <span className="mt-2 flex gap-0.5" aria-label={`Difficulty ${item.difficulty} of 6`}>
+          {[1, 2, 3, 4, 5, 6].map((n) => (
+            <PixelSprite key={n} name="star" scale={1} className={`h-3.5 w-3.5 ${n <= item.difficulty ? '' : 'opacity-25 grayscale'}`} />
+          ))}
+        </span>
         <div className="mt-auto flex items-center gap-3 pt-4">
           <span
             className="flex flex-1 gap-1"

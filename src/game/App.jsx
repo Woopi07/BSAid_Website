@@ -8,7 +8,7 @@ import AnalyticsPanel from './components/AnalyticsPanel.jsx';
 import SettingsPanel from './components/SettingsPanel.jsx';
 import LevelModal from './components/LevelModal.jsx';
 import DialogueIntro from './components/DialogueIntro.jsx';
-import QuizWorkstation from './components/QuizWorkstation.jsx';
+import GameScreen from './components/games/GameScreen.jsx';
 import LevelResults from './components/LevelResults.jsx';
 
 const PANELS = {
@@ -23,7 +23,7 @@ function Screens() {
   const Panel = PANELS[state.panel];
 
   if (state.view === VIEWS.DIALOGUE_INTRO) return <DialogueIntro />;
-  if (state.view === VIEWS.QUIZ_WORKSTATION) return <QuizWorkstation />;
+  if (state.view === VIEWS.QUIZ_WORKSTATION) return <GameScreen />;
   if (state.view === VIEWS.LEVEL_RESULTS) return <LevelResults />;
 
   // DASHBOARD, with the LEVEL_MODAL layered on top when a case is open.

@@ -57,16 +57,33 @@ function reducer(state, action) {
       return { ...state, view: VIEWS.DIALOGUE_INTRO };
     case 'COMPLETE_LEVEL': {
       const cp = caseProgress(state, state.caseId);
-      const result = { mistakes: action.mistakes, ...rankFor(action.mistakes) };
+      const { rank } = rankFor(action.mistakes);
+      const accuracy = (action.total - action.mistakes) / action.total;
+      const stars = action.mistakes === 0 ? 3 : accuracy >= 0.75 ? 2 : 1;
+      const result = { mistakes: action.mistakes, rank, points: action.score, stars, maxCombo: action.maxCombo, total: action.total };
       const previous = cp.levels[state.levelId];
-      const best = previous && previous.points >= result.points ? previous : result;
+      const best = previous && previous.points >= result.points ? { ...previous, stars: Math.max(previous.stars ?? 1, stars) } : result;
       const unlocked = Math.max(cp.unlocked, Math.min(state.levelId + 1, 4));
+      const badges = new Set(state.progress._badges ?? []);
+      const earned = [];
+      const award = (id, ok) => {
+        if (ok && !badges.has(id)) {
+          badges.add(id);
+          earned.push(id);
+        }
+      };
+      award('first-clear', true);
+      award('perfect', action.mistakes === 0);
+      award('combo-5', action.maxCombo >= 5);
+      award('boss', state.levelId === 4);
+      award(`case-${state.caseId}`, Object.keys({ ...cp.levels, [state.levelId]: best }).length === 4);
       return {
         ...state,
         view: VIEWS.LEVEL_RESULTS,
-        lastResult: { ...result, unlockedNext: unlocked > cp.unlocked },
+        lastResult: { ...result, coins: Math.round(action.score / 10), unlockedNext: unlocked > cp.unlocked, earned, review: action.review },
         progress: {
           ...state.progress,
+          _badges: [...badges],
           [state.caseId]: { ...cp, opened: true, unlocked, levels: { ...cp.levels, [state.levelId]: best } },
         },
       };
@@ -112,13 +129,31 @@ export function GameProvider({ children }) {
       { finished: 0, inProgress: 0, pending: 0, locked: 0 }
     );
 
+    const coins = cases.reduce(
+      (sum, c) => sum + Object.values(caseProgress(state, c.id).levels).reduce((s2, l) => s2 + Math.round((l.points ?? 0) / 10), 0),
+      0
+    );
+    const badges = state.progress._badges ?? [];
     const activeCase = cases.find((c) => c.id === state.caseId) ?? null;
     const activeLevel = activeCase?.levels.find((l) => l.id === state.levelId) ?? null;
 
-    return { state, dispatch, progressOf, counts, activeCase, activeLevel };
+    return { state, dispatch, progressOf, counts, coins, badges, activeCase, activeLevel };
   }, [state]);
 
   return <GameCtx.Provider value={value}>{children}</GameCtx.Provider>;
 }
 
 export const useGame = () => useContext(GameCtx);
+
+export const BADGES = {
+  'first-clear': { name: 'First Entry', desc: 'Clear your first level', sprite: 'coin' },
+  perfect: { name: 'Flawless', desc: 'Clear a level with no mistakes', sprite: 'star' },
+  'combo-5': { name: 'On Fire', desc: 'Reach a 5-answer combo', sprite: 'bolt' },
+  boss: { name: 'Boss Slayer', desc: 'Clear a Boss Round', sprite: 'heart' },
+  'case-001': { name: 'Groceria Pro', desc: "Clear all of Nayeom's levels", sprite: 'coin' },
+  'case-002': { name: 'Vault Keeper', desc: "Clear all of Lukas's levels", sprite: 'star' },
+  'case-003': { name: 'Ledger Barista', desc: "Clear all of Surume's levels", sprite: 'heart' },
+  'case-004': { name: 'Express Courier', desc: 'Clear all of SwiftGo’s levels', sprite: 'bolt' },
+  'case-005': { name: 'Master Detective', desc: 'Clear all of Lakwatsa’s levels', sprite: 'calculator' },
+  'case-006': { name: 'Book Balancer', desc: 'Clear all of Sanvitog’s levels', sprite: 'star' },
+};

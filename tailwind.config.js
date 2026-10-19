@@ -87,6 +87,11 @@ export default {
           '20%, 60%': { transform: 'translateX(-6px)' },
           '40%, 80%': { transform: 'translateX(6px)' },
         },
+        floatup: {
+          '0%': { transform: 'translateY(6px)', opacity: '0' },
+          '20%': { transform: 'translateY(0)', opacity: '1' },
+          '100%': { transform: 'translateY(-22px)', opacity: '0' },
+        },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-6px)' },
@@ -104,6 +109,7 @@ export default {
         fade: 'fade 0.25s ease-out both',
         shake: 'shake 0.4s ease-in-out',
         float: 'float 3.5s ease-in-out infinite',
+        floatup: 'floatup 1.1s ease-out forwards',
       },
     },
   },

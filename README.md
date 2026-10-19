@@ -40,9 +40,31 @@ src/game/
   audio/engine.js              # Web Audio lo-fi loop + click/pop/chime/warning/unlock SFX (no audio files)
   context/AudioProvider.jsx    # mute/volume state; starts music on the first user gesture (autoplay policy)
   context/GameProvider.jsx     # navigation + progress reducer, ranks, level unlocking (saved to localStorage)
-  data/cases.js                # case files, intro dialogue and questions — add levels/questions here
+  data/cases.js                # cases, mini-game info and level settings (hearts, timer, rounds)
+  data/generators.js           # procedural rounds for cases #002–#006
+  data/quiz001.js              # hand-written questions for case #001
   components/                  # Header, Sidebar, CaseFilesScreen, LevelModal, Scene, DialogueIntro, QuizWorkstation, …
 ```
+
+### Mini-games and difficulty
+
+Every case has its own mini-game, ordered along the FAR1 sequence so each case is harder than the last.
+Each case has 4 levels (Rookie → Rising Star → Expert → Boss Round) with harder questions, shorter timers and
+fewer hearts. All cases are unlocked; levels inside a case unlock one at a time.
+
+| Case | Mini-game | Topic |
+| --- | --- | --- |
+| #001 Nayeom's Groceria | Record It or Not? | Transaction analysis (hand-written questions) |
+| #002 Alahas ni Lukas | Debit or Credit Vault | Normal balances, contra accounts |
+| #003 Surume's Coffee Shop | T-Account Café | Posting + ending-balance bonus |
+| #004 SwiftGo Delivery | Journal Entry Express | Full entries with computations |
+| #005 Lakwatsa | Adjustment Detective | Adjusting entries |
+| #006 Sanvitog | Balance the Books | Trial balance puzzles |
+
+Cases #002–#006 generate fresh rounds each attempt from accounting templates in `src/game/data/generators.js`.
+Gameplay (`src/game/components/games/`): hearts, per-round timer, combo multiplier, speed bonus, hints (−50%),
+Game Over, stars, coins and badges. A wrong answer (or time running out) shows the player's answer next to the full
+solution; the results screen lists every missed round with its solution.
 
 Character portraits are rasterized to 40×40 pixel art at runtime. To use real artwork, add `image: '/path.png'` to a case
 (card thumbnail) and pass `src` to `Avatar` for portraits.

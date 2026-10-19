@@ -11,25 +11,22 @@ const LEVEL_ICONS = ['search', 'book', 'refresh', 'doc'];
 function LevelTile({ level, state, result, onSelect }) {
   const [shake, setShake] = useState(false);
   const locked = state === 'locked';
-  const soon = state === 'soon';
 
   const box = {
     active: 'px-gold bg-gold-50 hover:-translate-y-1',
     done: 'bg-emerald-50 [--px:#059669] hover:-translate-y-1',
-    soon: 'px-navy bg-white',
     locked: 'px-navy bg-slate-100 cursor-not-allowed',
   }[state];
   const badge = {
     active: 'bg-gold text-navy-950',
     done: 'bg-emerald-500 text-navy-950',
-    soon: 'bg-navy text-cream',
     locked: 'bg-slate-300 text-slate-500',
   }[state];
 
   return (
     <button
       type="button"
-      aria-disabled={locked || soon}
+      aria-disabled={locked}
       onClick={() => (onSelect(level, state) ? null : setShake(true))}
       onAnimationEnd={() => setShake(false)}
       className={`pixel-box-flat relative flex items-center gap-4 p-4 text-left transition-transform ${box} ${shake ? 'animate-shake' : ''}`}
@@ -43,10 +40,22 @@ function LevelTile({ level, state, result, onSelect }) {
           {level.title}
         </span>
         <span className="mt-1 block text-xs text-slate-500">
-          {locked && `Clear Level ${level.id - 1} to unlock`}
-          {soon && 'Coming in the next update'}
-          {state === 'active' && `${level.questions.length} questions`}
-          {state === 'done' && `Best rank ${result.rank} · ${result.points} pts · Play again`}
+          {locked ? `Clear Level ${level.id - 1} to unlock` : level.summary}
+        </span>
+        <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold text-slate-600">
+          <span className="flex items-center gap-1">
+            <PixelSprite name="heart" scale={1} className="h-3.5 w-3.5" /> {level.hearts}
+          </span>
+          <span>{level.time}s / round</span>
+          <span>{level.rounds} rounds</span>
+          {state === 'done' && (
+            <span className="flex items-center gap-1 text-emerald-700">
+              {[1, 2, 3].map((n) => (
+                <PixelSprite key={n} name="star" scale={1} className={`h-3.5 w-3.5 ${n <= (result.stars ?? 1) ? '' : 'opacity-25 grayscale'}`} />
+              ))}
+              Best {result.points} pts
+            </span>
+          )}
         </span>
       </span>
       {state === 'active' && <PixelSprite name="arrow" scale={3} className="shrink-0 animate-nudge" />}
@@ -66,12 +75,11 @@ export default function LevelModal() {
 
   const stateOf = (level) => {
     if (level.id > p.unlocked) return 'locked';
-    if (p.levels[level.id]) return level.questions.length ? 'done' : 'soon';
-    return level.questions.length ? 'active' : 'soon';
+    return p.levels[level.id] ? 'done' : 'active';
   };
 
   const select = (level, state) => {
-    if (state === 'locked' || state === 'soon') {
+    if (state === 'locked') {
       play('locked');
       return false;
     }
@@ -116,13 +124,20 @@ export default function LevelModal() {
                   Owner: {activeCase.owner} &middot; {activeCase.category}
                 </p>
               </div>
-              <span className="hidden gap-1 sm:flex" aria-label={`Difficulty ${activeCase.difficulty} of 5`}>
-                {[1, 2, 3, 4, 5].map((n) => (
+              <span className="hidden gap-1 sm:flex" aria-label={`Difficulty ${activeCase.difficulty} of 6`}>
+                {[1, 2, 3, 4, 5, 6].map((n) => (
                   <PixelSprite key={n} name="star" scale={2} className={n <= activeCase.difficulty ? '' : 'opacity-25 grayscale'} />
                 ))}
               </span>
             </div>
             <p className="mt-5 leading-relaxed text-navy-100">{activeCase.description}</p>
+            <div className="pixel-box-flat px-gold mt-5 flex items-center gap-3 bg-gold-50 p-3">
+              <PixelSprite name={activeCase.game.sprite} scale={3} className="shrink-0" />
+              <p className="text-sm text-navy-900">
+                <span className="block font-pixel text-[12px] uppercase text-gold-700">Mini-game · {activeCase.game.name}</span>
+                {activeCase.game.tagline}
+              </p>
+            </div>
 
             <div className="mt-6 grid gap-6 p-1 sm:grid-cols-2 sm:gap-5">
               {activeCase.levels.map((level) => (

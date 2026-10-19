@@ -2,16 +2,16 @@ import { useGame } from '../context/GameProvider.jsx';
 import AudioControl from './AudioControl.jsx';
 import Icon from './Icons.jsx';
 import Logo from './Logo.jsx';
+import PixelSprite from '../../components/ui/PixelSprite.jsx';
 
 const pills = [
   { key: 'finished', label: 'Finished', icon: 'check', chip: 'bg-emerald-500 text-navy-950' },
   { key: 'inProgress', label: 'In Progress', icon: 'target', chip: 'bg-navy-400 text-cream' },
   { key: 'pending', label: 'Pending', icon: 'hourglass', chip: 'bg-gold text-navy-950' },
-  { key: 'locked', label: 'Locked', icon: 'lock', chip: 'bg-navy-600 text-navy-200' },
 ];
 
 export default function Header() {
-  const { counts } = useGame();
+  const { counts, coins } = useGame();
 
   return (
     <header className="relative flex h-16 shrink-0 items-center gap-3 border-b-4 border-navy-950 bg-navy-900 px-3 sm:gap-6 sm:px-5">
@@ -36,6 +36,11 @@ export default function Header() {
             <span className="sr-only md:hidden">{p.label}</span>
           </li>
         ))}
+        <li className="pixel-box-flat px-gold flex shrink-0 items-center gap-2 bg-navy-950 py-1 pl-1.5 pr-3" title="Coins earned">
+          <PixelSprite name="coin" scale={2} />
+          <span className="font-pixel text-[14px] text-gold">{coins.toLocaleString()}</span>
+          <span className="sr-only">coins</span>
+        </li>
       </ul>
       <AudioControl />
     </header>
