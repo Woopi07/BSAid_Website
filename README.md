@@ -64,7 +64,10 @@ fewer hearts. All cases are unlocked; levels inside a case unlock one at a time.
 Cases #002–#006 generate fresh rounds each attempt from accounting templates in `src/game/data/generators.js`.
 Gameplay (`src/game/components/games/`): hearts, per-round timer, combo multiplier, speed bonus, hints (−50%),
 Game Over, stars, coins and badges. A wrong answer (or time running out) shows the player's answer next to the full
-solution; the results screen lists every missed round with its solution.
+solution; the results screen lists every missed round with its solution. Every mini-game has a calculator.
+
+Achievements (`src/game/data/achievements.js`, trophy tab): three daily goals picked per date, ten tiered milestones
+(bronze / silver / gold) and a career rank from total stars (Accounting Intern → CPA). Claimed rewards add bonus coins.
 
 Character portraits are rasterized to 40×40 pixel art at runtime. To use real artwork, add `image: '/path.png'` to a case
 (card thumbnail) and pass `src` to `Avatar` for portraits.

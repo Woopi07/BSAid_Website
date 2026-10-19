@@ -8,7 +8,7 @@ export default function PanelHeader({ icon, title, subtitle }) {
         <Icon name={icon} className="h-7 w-7" strokeWidth={2.25} />
       </span>
       <div className="min-w-0">
-        <h1 className="text-3xl font-bold leading-none text-navy-900 sm:text-4xl">{title}</h1>
+        <h1 className="text-[1.65rem] font-bold leading-none text-navy-900 sm:text-4xl">{title}</h1>
         <p className="mt-2 font-pixel text-[12px] uppercase leading-relaxed tracking-wide text-ember-600 sm:text-[13px]">{subtitle}</p>
       </div>
       <div className="pointer-events-none absolute -right-3 top-1/2 hidden -translate-y-1/2 opacity-90 md:block" aria-hidden="true">

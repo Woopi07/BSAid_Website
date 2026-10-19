@@ -288,32 +288,42 @@ export const demoTransactions = [
 export const tutorialSteps = [
   {
     title: 'Welcome to BSAid!',
-    line: 'Hey, it’s me, Faraday! You actually joined Accountancy with me — thank you! Let me show you how this works. It’s easier than it looks, promise.',
+    line: 'Hey, it’s me, Faraday! You actually joined Accountancy with me — thank you! Let me show you how Entry Point works. It’s easier than it looks, promise.',
     icon: 'book',
   },
   {
-    title: 'Refresh with index cards',
-    line: 'Every level opens with a set of index cards. Flip through them first — they’re a quick refresher before the questions start.',
-    icon: 'tips',
+    title: 'Pick a case file',
+    line: 'Every business is a case file, and each one has its own mini-game — sorting, T-accounts, journal entries, adjustments and trial balances. All six cases are open from the start!',
+    icon: 'store',
   },
   {
-    title: 'Analyze the transaction',
-    line: 'Read the transaction carefully. Ask yourself: which accounts go up, which go down? That tells you what to debit and what to credit.',
+    title: 'Climb four levels',
+    line: 'Each case has four levels: Rookie, Rising Star, Expert and the Boss Round. Every level is harder — fewer hearts, less time and tougher questions.',
+    icon: 'branch',
+  },
+  {
+    title: 'Hearts, timer & combos',
+    line: 'Answer before the timer runs out. A wrong answer costs a heart, and losing all of them means Game Over. Chain correct answers for a combo that multiplies your points!',
     icon: 'analyze',
   },
   {
-    title: 'Make your entry',
-    line: 'Pick accounts from the Chart of Accounts, then type the amounts. Need to compute? Tap the calculator. Hit the green SUBMIT button when you’re sure.',
-    icon: 'journal',
-  },
-  {
-    title: 'Hints & feedback',
-    line: 'Stuck? Tap the yellow HINT button. Got it wrong? You’ll see your answer next to the correct solution, with an explanation. Mistakes are part of the lesson!',
+    title: 'Hints & calculator',
+    line: 'Stuck? Tap HINT — it halves that round’s points. Need to compute? Open the CALCULATOR, then press “Use answer” to drop the result straight into your entry.',
     icon: 'hint',
   },
   {
-    title: 'Ranks & rewards',
-    line: 'Finish with zero mistakes for an S rank and 100 points! Later stages multiply your points — spend them on cosmetics for your character and room.',
+    title: 'Learn from mistakes',
+    line: 'Got one wrong? You’ll see your answer next to the correct solution, with every computation step. After a Game Over, a retake shuffles in new questions.',
     icon: 'review',
+  },
+  {
+    title: 'Stars, ranks & coins',
+    line: 'Fewer mistakes means more stars and a higher rank — zero mistakes is an S rank! Your score turns into coins, and clearing a level unlocks the next, harder one.',
+    icon: 'gem',
+  },
+  {
+    title: 'Achievements & daily goals',
+    line: 'Open the trophy tab for three new daily goals every day, plus bronze, silver and gold milestones. Claim them for bonus coins and climb from Intern all the way to CPA!',
+    icon: 'tips',
   },
 ];

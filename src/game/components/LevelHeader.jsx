@@ -37,13 +37,24 @@ export default function LevelHeader({ onRestart }) {
   ].filter(Boolean);
 
   return (
-    <header className="relative z-20 grid h-16 shrink-0 grid-cols-[1fr_auto_1fr] items-center gap-3 border-b-4 border-navy-950 bg-navy-900 px-3 sm:px-5">
-      <div className="flex min-w-0 items-center gap-3">
+    <header className="relative z-20 flex h-16 shrink-0 items-center gap-3 border-b-4 border-navy-950 bg-navy-900 px-3 sm:px-5">
+      <button
+        type="button"
+        onClick={act(() => dispatch({ type: 'EXIT_TO_DASHBOARD' }))}
+        className="pixel-btn h-9 shrink-0 gap-1 bg-cream px-2.5 text-navy-950 hover:bg-white sm:px-3"
+        aria-label="Back to case files"
+        title="Back to case files"
+      >
+        <Icon name="chevronLeft" className="h-5 w-5" strokeWidth={3} />
+        <span className="hidden sm:inline">Back</span>
+      </button>
+      <div className="flex min-w-0 flex-1 items-center gap-3">
         <span className="shrink-0 bg-crimson-700 px-2 py-1.5 font-pixel text-[12px] text-cream">LV {activeLevel.id}</span>
         <h1 className="truncate text-xl font-bold text-cream pixel-text-shadow sm:text-2xl">{activeLevel.title}</h1>
       </div>
 
-      <div ref={menuRef} className="relative">
+      <AudioControl />
+      <div ref={menuRef} className="relative shrink-0">
         <button
           type="button"
           onClick={() => {
@@ -58,7 +69,7 @@ export default function LevelHeader({ onRestart }) {
           <Icon name="menu" className="h-5 w-5" strokeWidth={2.5} />
         </button>
         {open && (
-          <div className="absolute left-1/2 top-14 w-64 -translate-x-1/2">
+          <div className="absolute right-0 top-14 w-64">
             <ul role="menu" className="pixel-box px-dark animate-pop bg-navy-900 py-2">
               {items.map((item) => (
                 <li key={item.label} role="none">
@@ -77,18 +88,6 @@ export default function LevelHeader({ onRestart }) {
             </ul>
           </div>
         )}
-      </div>
-
-      <div className="flex items-center justify-end gap-3 sm:gap-4">
-        <AudioControl />
-        <button
-          type="button"
-          onClick={act(() => dispatch({ type: 'EXIT_TO_DASHBOARD' }))}
-          className="pixel-btn h-9 w-9 shrink-0 bg-cream p-0 text-navy-950 hover:bg-white"
-          aria-label="Exit level"
-        >
-          <Icon name="close" className="h-5 w-5" strokeWidth={3} />
-        </button>
       </div>
     </header>
   );

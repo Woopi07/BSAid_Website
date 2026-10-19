@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar.jsx';
 import CaseFilesScreen from './components/CaseFilesScreen.jsx';
 import DashboardPanel from './components/DashboardPanel.jsx';
 import AnalyticsPanel from './components/AnalyticsPanel.jsx';
+import AchievementsPanel from './components/AchievementsPanel.jsx';
 import SettingsPanel from './components/SettingsPanel.jsx';
 import LevelModal from './components/LevelModal.jsx';
 import DialogueIntro from './components/DialogueIntro.jsx';
@@ -14,6 +15,7 @@ import LevelResults from './components/LevelResults.jsx';
 const PANELS = {
   dashboard: DashboardPanel,
   cases: CaseFilesScreen,
+  achievements: AchievementsPanel,
   analytics: AnalyticsPanel,
   settings: SettingsPanel,
 };

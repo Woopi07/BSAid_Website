@@ -249,7 +249,7 @@ function Game({ onRestart }) {
         setLives((l) => l - 1);
         setShake(true);
       }
-      setLog((l) => [...l, { index, correct, yours, timeout, points: pts, combo: nextCombo, round }]);
+      setLog((l) => [...l, { index, correct, yours, timeout, hint, points: pts, combo: nextCombo, round }]);
       setPhase('feedback');
     },
     [phase, combo, timeLeft, limit, hint, play, index, round]
@@ -275,6 +275,7 @@ function Game({ onRestart }) {
   const next = () => {
     play('page');
     if (lives <= 0) {
+      dispatch({ type: 'LEVEL_FAILED', correct: log.filter((l) => l.correct).length, maxCombo });
       setPhase('over');
       return;
     }
@@ -285,6 +286,7 @@ function Game({ onRestart }) {
         mistakes,
         score,
         maxCombo,
+        hints: log.filter((l) => l.hint).length,
         total: rounds.length,
         review: log.filter((l) => !l.correct).map(({ round: rd, yours }) => ({ round: rd, yours })),
       });

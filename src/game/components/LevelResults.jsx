@@ -92,6 +92,27 @@ export default function LevelResults() {
                     </div>
                   )}
 
+                  {result.reached?.length > 0 && (
+                    <div className="mt-7">
+                      <p className="font-pixel text-[12px] uppercase tracking-widest text-gold">Rewards ready to claim!</p>
+                      <ul className="mt-3 flex flex-wrap justify-center gap-3">
+                        {result.reached.map((r) => (
+                          <li key={r.id} className="pixel-box-flat px-gold flex animate-pop items-center gap-2 bg-gold-50 px-3 py-2 text-left">
+                            <PixelSprite name={r.kind === 'goal' ? 'heart' : 'star'} scale={2} />
+                            <span>
+                              <span className="block font-pixel text-[10px] uppercase text-ember-600">{r.kind === 'goal' ? 'Daily goal' : 'Achievement'}</span>
+                              <span className="block font-heading text-sm font-bold text-navy-900">{r.label}</span>
+                            </span>
+                            <span className="ml-1 flex items-center gap-1 font-pixel text-[12px] text-navy-900">
+                              <PixelSprite name="coin" scale={2} /> {r.reward}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="mt-2 text-xs text-navy-200">Claim them in the Achievements tab.</p>
+                    </div>
+                  )}
+
                   {result.unlockedNext && next && (
                     <div className="pixel-box-flat mt-7 flex items-center gap-3 bg-emerald-50 p-4 text-left [--px:#059669]">
                       <PixelSprite name="coin" scale={3} className="shrink-0 animate-bob" />

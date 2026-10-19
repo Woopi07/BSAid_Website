@@ -5,12 +5,13 @@ import Icon from './Icons.jsx';
 const items = [
   { panel: 'dashboard', label: 'Dashboard', icon: 'home' },
   { panel: 'cases', label: 'Case Files', icon: 'briefcase' },
+  { panel: 'achievements', label: 'Achievements', icon: 'trophy' },
   { panel: 'analytics', label: 'Analytics', icon: 'chart' },
   { panel: 'settings', label: 'Settings', icon: 'gear' },
 ];
 
 export default function Sidebar() {
-  const { state, dispatch } = useGame();
+  const { state, dispatch, rewards } = useGame();
   const { play } = useAudio();
 
   return (
@@ -27,12 +28,18 @@ export default function Sidebar() {
             }}
             aria-current={active ? 'page' : undefined}
             title={item.label}
-            className={`pixel-btn h-11 w-11 p-0 sm:h-12 sm:w-12 ${
+            className={`pixel-btn relative h-11 w-11 p-0 sm:h-12 sm:w-12 ${
               active ? 'bg-gold text-navy-950' : 'bg-navy-800 text-navy-200 hover:bg-navy-600 hover:text-cream'
             }`}
           >
             <Icon name={item.icon} className="h-6 w-6" strokeWidth={2.25} />
             <span className="sr-only">{item.label}</span>
+            {item.panel === 'achievements' && rewards.length > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center bg-crimson-700 px-1 font-pixel text-[11px] text-cream">
+                {rewards.length}
+                <span className="sr-only"> rewards to claim</span>
+              </span>
+            )}
           </button>
         );
       })}

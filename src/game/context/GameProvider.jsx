@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
 import { cases } from '../data/cases.js';
 import { load, save } from '../storage.js';
+import { claimable, recordRun } from '../data/achievements.js';
 
 export const VIEWS = {
   DASHBOARD: 'DASHBOARD',
@@ -77,14 +78,39 @@ function reducer(state, action) {
       award('combo-5', action.maxCombo >= 5);
       award('boss', state.levelId === 4);
       award(`case-${state.caseId}`, Object.keys({ ...cp.levels, [state.levelId]: best }).length === 4);
-      return {
-        ...state,
-        view: VIEWS.LEVEL_RESULTS,
-        lastResult: { ...result, coins: Math.round(action.score / 10), unlockedNext: unlocked > cp.unlocked, earned, review: action.review },
-        progress: {
+      const before = new Set(claimable(state.progress).map((r) => r.id));
+      const progress = recordRun(
+        {
           ...state.progress,
           _badges: [...badges],
           [state.caseId]: { ...cp, opened: true, unlocked, levels: { ...cp.levels, [state.levelId]: best } },
+        },
+        { caseId: state.caseId, levelId: state.levelId, cleared: true, correct: action.total - action.mistakes, mistakes: action.mistakes, maxCombo: action.maxCombo, score: action.score, hints: action.hints }
+      );
+      const reached = claimable(progress).filter((r) => !before.has(r.id));
+      return {
+        ...state,
+        view: VIEWS.LEVEL_RESULTS,
+        lastResult: { ...result, coins: Math.round(action.score / 10), unlockedNext: unlocked > cp.unlocked, earned, reached, review: action.review },
+        progress,
+      };
+    }
+    case 'LEVEL_FAILED':
+      return {
+        ...state,
+        progress: recordRun(state.progress, { caseId: state.caseId, levelId: state.levelId, cleared: false, correct: action.correct, maxCombo: action.maxCombo }),
+      };
+    case 'CLAIM': {
+      const reward = claimable(state.progress).find((r) => r.id === action.id);
+      if (!reward) return state;
+      const stats = state.progress._stats ?? {};
+      return {
+        ...state,
+        progress: {
+          ...state.progress,
+          _claimed: [...(state.progress._claimed ?? []), reward.id],
+          _bonus: (state.progress._bonus ?? 0) + reward.reward,
+          _stats: reward.kind === 'goal' ? { ...stats, goals: (stats.goals ?? 0) + 1 } : stats,
         },
       };
     }
@@ -133,11 +159,13 @@ export function GameProvider({ children }) {
       (sum, c) => sum + Object.values(caseProgress(state, c.id).levels).reduce((s2, l) => s2 + Math.round((l.points ?? 0) / 10), 0),
       0
     );
+    const total = coins + (state.progress._bonus ?? 0);
+    const rewards = claimable(state.progress);
     const badges = state.progress._badges ?? [];
     const activeCase = cases.find((c) => c.id === state.caseId) ?? null;
     const activeLevel = activeCase?.levels.find((l) => l.id === state.levelId) ?? null;
 
-    return { state, dispatch, progressOf, counts, coins, badges, activeCase, activeLevel };
+    return { state, dispatch, progressOf, counts, coins: total, rewards, badges, activeCase, activeLevel };
   }, [state]);
 
   return <GameCtx.Provider value={value}>{children}</GameCtx.Provider>;
