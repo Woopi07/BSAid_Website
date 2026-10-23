@@ -41,6 +41,26 @@ export default function LevelResults() {
               <div className="border-b-4 border-navy-950 bg-forest-700 px-4 py-3">
                 <p className="font-pixel text-[13px] uppercase tracking-widest text-cream sm:text-sm">Stage clear!</p>
               </div>
+              {result.caseClosed && (
+                <div className="border-b-4 border-navy-950 bg-gold-50 p-4 sm:p-5">
+                  <div className="flex flex-col items-center gap-4 sm:flex-row sm:text-left">
+                    <span className="pixel-box-flat px-gold flex h-14 w-14 shrink-0 animate-bob items-center justify-center bg-cream">
+                      <PixelSprite name="star" scale={4} />
+                    </span>
+                    <span className="flex-1">
+                      <span className="block font-pixel text-[12px] uppercase tracking-widest text-forest-700">Case closed!</span>
+                      <span className="block font-heading text-xl font-bold text-navy-900">You earned a certificate of achievement</span>
+                    </span>
+                    <button
+                      type="button"
+                      onClick={go({ type: 'OPEN_CERTIFICATE', caseId: activeCase.id })}
+                      className="pixel-btn shrink-0 bg-gold text-navy-950 hover:bg-gold-300"
+                    >
+                      Claim certificate <PixelSprite name="arrow" scale={2} />
+                    </button>
+                  </div>
+                </div>
+              )}
               <div className="relative p-6 sm:p-8">
                 <div className="pixel-dots absolute inset-0" aria-hidden="true" />
                 <div className="relative">

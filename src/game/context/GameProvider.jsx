@@ -9,6 +9,7 @@ export const VIEWS = {
   DIALOGUE_INTRO: 'DIALOGUE_INTRO',
   QUIZ_WORKSTATION: 'QUIZ_WORKSTATION',
   LEVEL_RESULTS: 'LEVEL_RESULTS',
+  CASE_CLOSED: 'CASE_CLOSED',
 };
 
 const KEY = 'entry-point:progress';
@@ -88,10 +89,14 @@ function reducer(state, action) {
         { caseId: state.caseId, levelId: state.levelId, cleared: true, correct: action.total - action.mistakes, mistakes: action.mistakes, maxCombo: action.maxCombo, score: action.score, hints: action.hints }
       );
       const reached = claimable(progress).filter((r) => !before.has(r.id));
+      // Clearing the last remaining level of a case earns its certificate (once).
+      const certs = progress._certs ?? {};
+      const caseClosed = Object.keys(progress[state.caseId].levels).length === 4 && !certs[state.caseId];
+      if (caseClosed) progress._certs = { ...certs, [state.caseId]: { date: new Date().toISOString() } };
       return {
         ...state,
         view: VIEWS.LEVEL_RESULTS,
-        lastResult: { ...result, coins: Math.round(action.score / 10), unlockedNext: unlocked > cp.unlocked, earned, reached, review: action.review },
+        lastResult: { ...result, coins: Math.round(action.score / 10), unlockedNext: unlocked > cp.unlocked, earned, reached, caseClosed, review: action.review },
         progress,
       };
     }
@@ -114,6 +119,12 @@ function reducer(state, action) {
         },
       };
     }
+    case 'OPEN_CERTIFICATE':
+      return { ...state, view: VIEWS.CASE_CLOSED, caseId: action.caseId, certFrom: action.from ?? 'results' };
+    case 'CLOSE_CERTIFICATE':
+      return { ...state, view: VIEWS.DASHBOARD, levelId: null, panel: state.certFrom === 'gallery' ? 'achievements' : 'cases' };
+    case 'SET_PLAYER_NAME':
+      return { ...state, progress: { ...state.progress, _player: action.name.slice(0, 40) } };
     case 'EXIT_TO_DASHBOARD':
       return { ...state, view: VIEWS.DASHBOARD, levelId: null, panel: 'cases' };
     case 'BACK_TO_LEVELS':
@@ -165,7 +176,9 @@ export function GameProvider({ children }) {
     const activeCase = cases.find((c) => c.id === state.caseId) ?? null;
     const activeLevel = activeCase?.levels.find((l) => l.id === state.levelId) ?? null;
 
-    return { state, dispatch, progressOf, counts, coins: total, rewards, badges, activeCase, activeLevel };
+    const certificates = state.progress._certs ?? {};
+    const playerName = state.progress._player ?? '';
+    return { state, dispatch, progressOf, counts, coins: total, rewards, badges, certificates, playerName, activeCase, activeLevel };
   }, [state]);
 
   return <GameCtx.Provider value={value}>{children}</GameCtx.Provider>;

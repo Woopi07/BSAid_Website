@@ -4,6 +4,9 @@ import { useAudio } from '../context/AudioProvider.jsx';
 import { achievements, careerOf, CAREER, dailyGoals, statsOf } from '../data/achievements.js';
 import PanelHeader from './PanelHeader.jsx';
 import Icon from './Icons.jsx';
+import { CertificateCanvas } from './Certificate.jsx';
+import { cases } from '../data/cases.js';
+import { caseReport } from '../data/certificates.js';
 
 const MEDAL = ['bg-[#C2763A]', 'bg-slate-300', 'bg-gold'];
 
@@ -108,6 +111,55 @@ export function CareerCard() {
   );
 }
 
+// Every certificate the player has earned (one per finished case), ready to reopen, rename and save.
+function CertificateGallery() {
+  const { state, certificates, playerName, dispatch } = useGame();
+  const { play } = useAudio();
+  const earned = cases.filter((c) => certificates[c.id]).length;
+  return (
+    <section className="pixel-box bg-white p-5 sm:p-6" aria-labelledby="certs-title">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 id="certs-title" className="text-2xl font-bold">Certificates</h2>
+        <p className="font-pixel text-[12px] uppercase text-wood-600">
+          {earned} / {cases.length} earned
+        </p>
+      </div>
+      <p className="mt-1 text-sm text-slate-600">Clear all four levels of a case to earn its certificate. Open one to change the name or save it to your gallery.</p>
+      <ul className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        {cases.map((c) => {
+          const cert = certificates[c.id];
+          return (
+            <li key={c.id}>
+              {cert ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    play('click');
+                    dispatch({ type: 'OPEN_CERTIFICATE', caseId: c.id, from: 'gallery' });
+                  }}
+                  className="pixel-box-flat px-gold group block w-full bg-gold-50 p-2 text-left transition-transform hover:-translate-y-1"
+                >
+                  <CertificateCanvas caseObj={c} name={playerName} date={cert.date} rating={caseReport(c, state.progress[c.id]?.levels).rating} />
+                  <span className="mt-2 flex items-center justify-between gap-2 px-1 pb-1">
+                    <span className="truncate font-heading font-bold text-navy-900">{c.name}</span>
+                    <span className="shrink-0 font-pixel text-[11px] uppercase text-forest-700 group-hover:text-navy-900">View & save</span>
+                  </span>
+                </button>
+              ) : (
+                <div className="pixel-box-flat px-navy flex aspect-[1500/1180] flex-col items-center justify-center gap-2 bg-slate-100 p-4 text-center">
+                  <Icon name="lock" className="h-7 w-7 text-slate-400" strokeWidth={2.25} />
+                  <span className="font-heading font-bold text-slate-500">{c.name}</span>
+                  <span className="text-xs text-slate-400">Clear all 4 levels to earn</span>
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
 export default function AchievementsPanel() {
   const { state, badges, rewards } = useGame();
   const list = achievements(state.progress);
@@ -115,12 +167,14 @@ export default function AchievementsPanel() {
 
   return (
     <div className="pixel-scroll flex h-full flex-col gap-8 overflow-y-auto p-1 pb-6">
-      <PanelHeader icon="trophy" title="Achievements" subtitle="Daily goals, milestones and your career rank." />
+      <PanelHeader icon="trophy" title="Achievements" subtitle="Daily goals, certificates, milestones and your career rank." />
 
       <div className="grid gap-8 lg:grid-cols-[1fr_1.3fr]">
         <CareerCard />
         <DailyGoals />
       </div>
+
+      <CertificateGallery />
 
       <section className="pixel-box bg-white p-5 sm:p-6" aria-labelledby="ach-title">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
