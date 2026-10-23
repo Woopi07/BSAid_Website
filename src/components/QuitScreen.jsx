@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Dialog from './ui/Dialog.jsx';
 import PixelSprite from './ui/PixelSprite.jsx';
-import { ANDROID_DOWNLOAD_URL } from '../data/content.js';
 
 const COUNTDOWN = 9;
 
@@ -55,9 +54,6 @@ export default function QuitScreen({ onClose }) {
               <button type="button" autoFocus onClick={onClose} className="pixel-btn bg-cream text-navy-950 hover:bg-white">
                 Continue
               </button>
-              <a href={ANDROID_DOWNLOAD_URL} onClick={onClose} className="pixel-btn bg-gold text-navy-950 hover:bg-gold-300">
-                Get the app
-              </a>
             </div>
           </>
         )}

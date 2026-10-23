@@ -4,7 +4,7 @@ import TutorialModal from './TutorialModal.jsx';
 import QuitScreen from './QuitScreen.jsx';
 
 const MENU = [
-  { id: 'play', label: 'Play', hint: 'Try Case #01 right here' },
+  { id: 'play', label: 'Play', hint: 'Open the game online' },
   { id: 'tutorial', label: 'Tutorial', hint: 'Learn the ropes with Faraday' },
   { id: 'quit', label: 'Quit', hint: 'Leave so soon?' },
 ];
@@ -67,10 +67,10 @@ export default function TitleScreen() {
   const sectionRef = useRef(null);
   const buttonsRef = useRef([]);
 
+  // PLAY opens the online game.
   const play = useCallback(() => {
     setModal(null);
-    document.getElementById('play')?.scrollIntoView({ behavior: 'smooth' });
-    setTimeout(() => document.getElementById('demo-debit')?.focus({ preventScroll: true }), 700);
+    window.location.href = '/play/';
   }, []);
 
   const choose = useCallback(
@@ -126,11 +126,7 @@ export default function TitleScreen() {
       <Scenery />
 
       <div className="relative z-10 flex w-full max-w-3xl flex-col items-center">
-        <p className="font-pixel text-[12px] uppercase leading-relaxed tracking-[0.2em] text-wood-200 sm:text-[14px]">
-          A FAR1 visual novel adventure
-        </p>
-
-        <div className="relative mt-6 w-full">
+        <div className="relative w-full">
           <Clouds />
           <p
             className="pixel-title relative font-heading text-[clamp(5rem,22vw,11rem)] font-bold leading-none tracking-tight"

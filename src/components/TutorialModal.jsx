@@ -111,7 +111,7 @@ const VIDEO = {
   poster: '/videos/entry-point-tutorial-poster.jpg',
 };
 
-function VideoTab({ onPlay }) {
+function VideoTab() {
   return (
     <div className="relative p-5 sm:p-6">
       <div className="pixel-box-flat px-cream bg-navy-950">
@@ -135,9 +135,6 @@ function VideoTab({ onPlay }) {
           Play online <PixelSprite name="arrow" scale={2} />
         </a>
       </div>
-      <button type="button" onClick={onPlay} className="mt-4 text-sm text-navy-200 underline-offset-4 hover:text-cream hover:underline">
-        Or try the Case #01 demo on this page
-      </button>
     </div>
   );
 }
@@ -182,7 +179,7 @@ export default function TutorialModal({ onClose, onPlay }) {
             <Icon name="close" className="h-4 w-4" strokeWidth={3} /> Esc
           </button>
         </div>
-        <div role="tabpanel">{tab === 'video' ? <VideoTab onPlay={onPlay} /> : <GuideTab onPlay={onPlay} />}</div>
+        <div role="tabpanel">{tab === 'video' ? <VideoTab /> : <GuideTab onPlay={onPlay} />}</div>
       </div>
     </Dialog>
   );

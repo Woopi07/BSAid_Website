@@ -1,6 +1,6 @@
 import Logo from './Logo.jsx';
 import Icon from './ui/Icon.jsx';
-import { navLinks, GDD_URL, ANDROID_DOWNLOAD_URL } from '../data/content.js';
+import { navLinks, GDD_URL } from '../data/content.js';
 
 export default function Footer() {
   return (
@@ -24,11 +24,6 @@ export default function Footer() {
                 </a>
               </li>
             ))}
-            <li>
-              <a href={ANDROID_DOWNLOAD_URL} className="transition hover:text-gold">
-                Download
-              </a>
-            </li>
           </ul>
         </nav>
 

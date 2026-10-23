@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Icon from './ui/Icon.jsx';
 import Logo from './Logo.jsx';
-import { navLinks, ANDROID_DOWNLOAD_URL } from '../data/content.js';
+import { navLinks } from '../data/content.js';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -43,13 +43,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a
-          href={ANDROID_DOWNLOAD_URL}
-          className="pixel-btn hidden bg-gold px-4 py-2.5 text-[10px] text-navy-950 hover:bg-gold-300 md:inline-flex"
-        >
-          Download
-        </a>
-
         <button
           type="button"
           className="p-2 text-white md:hidden"
@@ -77,13 +70,6 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <a
-            href={ANDROID_DOWNLOAD_URL}
-            onClick={() => setOpen(false)}
-            className="pixel-btn mt-5 flex w-full bg-gold text-navy-950"
-          >
-            <Icon name="android" className="h-5 w-5" /> Download for Android
-          </a>
         </div>
       )}
     </header>
