@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 
 const FILL_TIME = 3000; // ms for the loading bar to fill once the page has loaded
 const LOGO_TIME = 2400; // ms the Entry Point logo stays up before the page appears
-const ART = '/images/loading-screen.webp'; // 1920×1080; the bar's white outline is drawn into the art
-// Inside of the drawn bar, as a share of the art's size (x 744–1261, y 929–960 px).
+const ART = '/images/loading-screen.png'; // 480×270 pixel art (shown scaled up); the bar's outline is drawn into the art
+const SEGMENTS = 18;
+// Inside of the drawn bar, as a share of the art's size.
 const BAR = { left: '38.750%', top: '86.019%', width: '26.927%', height: '2.870%' };
 
 const reducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -88,16 +89,18 @@ export default function LoadingScreen() {
           phase === 'logo' ? 'opacity-60 blur-sm' : 'opacity-100'
         }`}
       >
-        <img src={ART} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-xl" />
+        <img src={ART} alt="" aria-hidden="true" className="crisp absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-md" />
         <div className="relative aspect-video w-[max(100vw,177.8vh)] shrink-0 [@media(max-aspect-ratio:6/5)]:w-[128vw]">
           <img
             src={ART}
             alt="Entry Point — Every transaction tells a story. Will you make the right entry?"
-            className="block h-full w-full select-none"
+            className="crisp block h-full w-full select-none"
             draggable="false"
           />
-          <span className={`absolute overflow-hidden rounded-full transition-opacity duration-300 ${phase === 'logo' ? 'opacity-0' : ''}`} style={BAR} aria-hidden="true">
-            <span className="block h-full rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.7)]" style={{ width: `${progress}%` }} />
+          <span className={`absolute flex gap-[3px] overflow-hidden rounded-full px-[0.4%] py-[0.35%] transition-opacity duration-300 ${phase === 'logo' ? 'opacity-0' : ''}`} style={BAR} aria-hidden="true">
+            {Array.from({ length: SEGMENTS }, (_, i) => (
+              <span key={i} className={`h-full flex-1 ${i < Math.round((progress / 100) * SEGMENTS) ? (i < SEGMENTS * 0.75 ? 'bg-cream' : 'bg-gold') : ''}`} />
+            ))}
           </span>
         </div>
       </div>
@@ -107,11 +110,11 @@ export default function LoadingScreen() {
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-navy-950/55 px-6">
           <div className="splash-rays pointer-events-none absolute left-1/2 top-1/2 h-[160vmax] w-[160vmax] -translate-x-1/2 -translate-y-1/2" aria-hidden="true" />
           <img
-            src="/images/entry-point-logo.svg"
+            src="/images/entry-point-logo.png"
             alt="Entry Point"
-            width="960"
-            height="660"
-            className="splash-logo relative w-[min(640px,88vw)] select-none drop-shadow-[0_18px_30px_rgba(0,0,0,0.45)]"
+            width="336"
+            height="231"
+            className="crisp splash-logo relative w-[min(672px,88vw)] select-none"
             draggable="false"
           />
           <p className="splash-rise relative mt-6 font-pixel text-[12px] uppercase tracking-[0.3em] text-cream pixel-text-shadow sm:text-[13px]">

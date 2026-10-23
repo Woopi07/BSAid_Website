@@ -59,7 +59,7 @@
   background: repeating-conic-gradient(rgba(237, 169, 13, 0.22) 0deg 9deg, transparent 9deg 22.5deg);
   mask-image: radial-gradient(circle, #000 0%, transparent 38%);
   -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 38%);
-  animation: splash-spin 24s linear infinite, splash-fade 0.6s ease-out;
+  animation: splash-spin 24s steps(96) infinite, splash-fade 0.6s ease-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .splash-logo, .splash-rise { animation: none; opacity: 1; }
@@ -88,7 +88,7 @@
   100% { background-position: -60% 0; }
 }
 .logo-pop { animation: logo-pop 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
-.logo-cap { transform-origin: 54.7% 34.3%; animation: logo-cap 4.5s ease-in-out 1s infinite; }
+.logo-cap { transform-origin: 54.7% 34.8%; animation: logo-cap 4.5s ease-in-out 1s infinite; }
 .logo-shine {
   background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.5) 46%, rgba(255, 255, 255, 0.5) 52%, transparent 56%) no-repeat;
   background-size: 250% 100%;
