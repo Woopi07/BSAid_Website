@@ -95,9 +95,8 @@ export default function LoadingScreen() {
       </div>
 
       <div className="relative flex w-full max-w-md flex-col items-center">
-        <p className="splash-rise font-pixel text-[12px] uppercase tracking-[0.2em] text-wood-200 sm:text-[13px]">A FAR1 visual novel adventure</p>
         <p
-          className="splash-logo pixel-title mt-5 font-heading text-[clamp(4.5rem,20vw,8.5rem)] font-bold leading-none tracking-tight"
+          className="splash-logo pixel-title font-heading text-[clamp(4.5rem,20vw,8.5rem)] font-bold leading-none tracking-tight"
           data-text="BSAid"
           role="img"
           aria-label="BSAid"
