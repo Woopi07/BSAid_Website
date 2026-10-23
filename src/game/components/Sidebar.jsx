@@ -35,7 +35,7 @@ export default function Sidebar() {
             <Icon name={item.icon} className="h-6 w-6" strokeWidth={2.25} />
             <span className="sr-only">{item.label}</span>
             {item.panel === 'achievements' && rewards.length > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center bg-crimson-700 px-1 font-pixel text-[11px] text-cream">
+              <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center bg-forest-700 px-1 font-pixel text-[11px] text-cream">
                 {rewards.length}
                 <span className="sr-only"> rewards to claim</span>
               </span>

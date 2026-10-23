@@ -20,7 +20,7 @@ export default function Gameplay() {
               <span className="inline-flex bg-navy p-2.5 text-cream">
                 <Icon name={m.icon} strokeWidth={2.25} />
               </span>
-              <span className="font-pixel text-xl text-ember-200">{m.step}</span>
+              <span className="font-pixel text-xl text-wood-200">{m.step}</span>
             </div>
             <h3 className="mt-5 text-xl font-semibold leading-snug">{m.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">{m.body}</p>

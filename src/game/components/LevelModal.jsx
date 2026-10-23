@@ -35,7 +35,7 @@ function LevelTile({ level, state, result, onSelect }) {
         <Icon name={locked ? 'lock' : state === 'done' ? 'check' : LEVEL_ICONS[level.id - 1]} className="h-7 w-7" strokeWidth={2.25} />
       </span>
       <span className="min-w-0 flex-1">
-        <span className={`block font-pixel text-[12px] uppercase ${locked ? 'text-slate-400' : 'text-ember-600'}`}>Level {level.id}</span>
+        <span className={`block font-pixel text-[12px] uppercase ${locked ? 'text-slate-400' : 'text-wood-600'}`}>Level {level.id}</span>
         <span className={`mt-1 block font-heading text-xl font-semibold leading-tight ${locked ? 'text-slate-400' : 'text-navy-900'}`}>
           {level.title}
         </span>
@@ -91,17 +91,17 @@ export default function LevelModal() {
   return (
     <Dialog labelledBy="level-modal-title" onClose={close} className="animate-fade bg-navy-950/85">
       <div className="pixel-box px-dark flex max-h-full w-full max-w-2xl animate-pop flex-col bg-navy-900">
-        <div className="flex items-start justify-between gap-4 border-b-4 border-navy-950 bg-crimson-700 px-5 py-4">
+        <div className="flex items-start justify-between gap-4 border-b-4 border-navy-950 bg-forest-700 px-5 py-4">
           <div>
             <h2 id="level-modal-title" className="font-pixel text-base uppercase leading-relaxed text-cream sm:text-lg">
               Select a level
             </h2>
-            <p className="mt-1 text-sm text-ember-100">Choose a level to begin your case adventure.</p>
+            <p className="mt-1 text-sm text-wood-100">Choose a level to begin your case adventure.</p>
           </div>
           <button
             type="button"
             onClick={close}
-            className="pixel-btn h-9 w-9 shrink-0 bg-cream p-0 text-crimson-700 hover:bg-white"
+            className="pixel-btn h-9 w-9 shrink-0 bg-cream p-0 text-forest-700 hover:bg-white"
             aria-label="Close level select"
           >
             <Icon name="close" className="h-5 w-5" strokeWidth={3} />

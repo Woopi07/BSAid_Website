@@ -47,7 +47,7 @@ export default function CaseFilesScreen() {
                   play('click');
                   setFilter(f.id);
                 }}
-                className={`pixel-btn shrink-0 ${active ? 'bg-crimson-700 text-cream' : 'bg-white text-navy-900 hover:bg-ember-100'}`}
+                className={`pixel-btn shrink-0 ${active ? 'bg-forest-700 text-cream' : 'bg-white text-navy-900 hover:bg-wood-100'}`}
               >
                 {f.label}
               </button>

@@ -30,7 +30,7 @@ export default function DashboardPanel() {
             </div>
             <div className="flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="font-pixel text-[12px] uppercase text-ember-600">
+                <p className="font-pixel text-[12px] uppercase text-wood-600">
                   {progressOf(next).status === 'in-progress' ? 'Continue case' : 'Up next'}
                 </p>
                 <h2 className="mt-2 text-3xl font-bold leading-tight">{next.name}</h2>

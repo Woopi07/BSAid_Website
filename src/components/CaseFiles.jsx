@@ -52,7 +52,7 @@ export default function CaseFiles() {
                 >
                   CASE #{c.id}
                 </span>
-                <span className={`inline-flex w-fit p-2.5 ${selected ? 'bg-crimson-700 text-cream' : 'bg-ember-100 text-ember-800'}`}>
+                <span className={`inline-flex w-fit p-2.5 ${selected ? 'bg-forest-700 text-cream' : 'bg-wood-100 text-wood-800'}`}>
                   <Icon name={c.icon} strokeWidth={2.25} />
                 </span>
                 <span className={`mt-4 font-heading text-xl font-semibold leading-tight sm:text-2xl ${selected ? 'text-cream' : 'text-navy-900'}`}>
@@ -74,7 +74,7 @@ export default function CaseFiles() {
         className="pixel-box mt-12 grid gap-8 bg-white p-6 sm:p-8 lg:grid-cols-[1.5fr_1fr]"
       >
         <div>
-          <p className="font-pixel text-[13px] uppercase leading-relaxed tracking-widest text-ember-600">
+          <p className="font-pixel text-[13px] uppercase leading-relaxed tracking-widest text-wood-600">
             Case #{active.id} &middot; {active.topic}
           </p>
           <h3 className="mt-3 text-3xl font-bold">{active.name}</h3>
@@ -89,15 +89,15 @@ export default function CaseFiles() {
             ))}
           </ol>
         </div>
-        <aside className="pixel-box-flat px-ember flex flex-col bg-gradient-to-b from-ember-100 to-cream p-6">
-          <p className="flex items-center gap-2 font-pixel text-[12px] uppercase tracking-widest text-ember-800">
+        <aside className="pixel-box-flat px-wood flex flex-col bg-gradient-to-b from-wood-100 to-cream p-6">
+          <p className="flex items-center gap-2 font-pixel text-[12px] uppercase tracking-widest text-wood-800">
             <PixelSprite name="bolt" scale={2} /> Special case
           </p>
           <h4 className="mt-3 text-2xl font-bold">{active.special.name}</h4>
           <ul className="mt-4 space-y-3">
             {active.special.levels.map((lvl, i) => (
               <li key={lvl} className="flex gap-3 text-sm text-slate-700">
-                <Icon name={i === 0 ? 'journal' : 'lock'} className="mt-0.5 h-5 w-5 shrink-0 text-ember-600" strokeWidth={2.25} />
+                <Icon name={i === 0 ? 'journal' : 'lock'} className="mt-0.5 h-5 w-5 shrink-0 text-wood-600" strokeWidth={2.25} />
                 {lvl}
               </li>
             ))}

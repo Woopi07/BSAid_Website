@@ -7,9 +7,9 @@ import { characters, branches } from '../data/content.js';
 
 const themes = {
   gold: {
-    portrait: 'from-gold-300 via-ember to-crimson',
-    accent: 'text-ember-600',
-    chip: 'bg-ember-100 text-ember-800',
+    portrait: 'from-gold-300 via-wood to-forest',
+    accent: 'text-wood-600',
+    chip: 'bg-wood-100 text-wood-800',
   },
   navy: {
     portrait: 'from-navy-400 via-navy to-navy-950',
@@ -60,7 +60,7 @@ export default function Characters() {
                 aria-selected={selected}
                 aria-controls={`panel-${c.id}`}
                 onClick={() => setActiveId(c.id)}
-                className={`pixel-btn flex-1 ${selected ? 'bg-crimson-700 text-cream' : 'bg-white text-navy-900 hover:bg-ember-100'}`}
+                className={`pixel-btn flex-1 ${selected ? 'bg-forest-700 text-cream' : 'bg-white text-navy-900 hover:bg-wood-100'}`}
               >
                 {selected && <PixelSprite name="arrow" scale={2} />}
                 {c.name}
@@ -102,7 +102,7 @@ export default function Characters() {
 
       <div className="mt-20">
         <h3 className="flex items-center gap-3 text-2xl font-semibold">
-          <Icon name="branch" className="h-6 w-6 text-ember-600" strokeWidth={2.25} /> Branching storylines
+          <Icon name="branch" className="h-6 w-6 text-wood-600" strokeWidth={2.25} /> Branching storylines
         </h3>
         <p className="mt-2 max-w-2xl text-slate-600">
           You play a freshman who joined Accountancy because a childhood friend begged you to. Along the way, other
@@ -119,7 +119,7 @@ export default function Characters() {
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{b.body}</p>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {b.themes.map((theme) => (
-                  <li key={theme} className="bg-ember-100 px-2.5 py-1 text-xs font-semibold text-ember-800">
+                  <li key={theme} className="bg-wood-100 px-2.5 py-1 text-xs font-semibold text-wood-800">
                     {theme}
                   </li>
                 ))}

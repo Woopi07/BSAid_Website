@@ -82,7 +82,7 @@ function QuizRound(props) {
   return (
     <div className="flex flex-col gap-5">
       <div className="grid gap-5 p-1 md:grid-cols-2">
-        <Card label="Business event" tone="ember">{round.event}</Card>
+        <Card label="Business event" tone="wood">{round.event}</Card>
         <Card label="Challenge">{round.challenge}</Card>
       </div>
       <section className="pixel-box px-dark bg-cream p-4 sm:p-6">
@@ -108,7 +108,7 @@ function BalanceRound(props) {
   return (
     <div className="flex flex-col gap-5">
       <section className="pixel-box px-dark bg-cream p-4 sm:p-6">
-        <p className="flex items-center gap-2 font-pixel text-[13px] uppercase text-ember-600">
+        <p className="flex items-center gap-2 font-pixel text-[13px] uppercase text-wood-600">
           <PixelSprite name="star" scale={2} /> Bonus round
         </p>
         <p className="mt-3 text-base leading-relaxed text-navy-900 sm:text-[17px]">{round.prompt}</p>
@@ -138,7 +138,7 @@ function SortRound({ round, done, reveal, onSubmit }) {
 
   const vault = (side) => {
     const isRight = side === round.side;
-    let tone = side === 'debit' ? 'bg-navy text-cream hover:bg-navy-600' : 'bg-crimson-700 text-cream hover:bg-crimson';
+    let tone = side === 'debit' ? 'bg-navy text-cream hover:bg-navy-600' : 'bg-forest-700 text-cream hover:bg-forest';
     if (done && isRight && (reveal || pickSide === side)) tone = 'bg-emerald-500 text-navy-950';
     else if (done && pickSide === side) tone = 'bg-rose-500 text-white';
     else if (done) tone += ' opacity-40';
@@ -182,7 +182,7 @@ function TAccountRound({ round, rounds, index, done, reveal, onSubmit }) {
 
   return (
     <div className="flex flex-col gap-5">
-      <Card label="Order ticket" tone="ember">
+      <Card label="Order ticket" tone="wood">
         <span className="block text-base font-semibold">{round.text}</span>
         <span className="mt-2 inline-block bg-navy-950 px-3 py-1.5 font-pixel text-[13px] text-gold">Amount: {peso(round.amount)}</span>
       </Card>
@@ -210,7 +210,7 @@ function TAccountRound({ round, rounds, index, done, reveal, onSubmit }) {
                         onClick={() => toggle(acc, side)}
                         aria-pressed={on}
                         className={`flex h-20 flex-col items-center justify-center gap-1 ${side === 'debit' ? 'border-r-4 border-navy-900' : ''} ${
-                          good ? 'bg-emerald-50' : on && done ? 'bg-rose-50' : on ? 'bg-gold-50' : 'hover:bg-ember-100'
+                          good ? 'bg-emerald-50' : on && done ? 'bg-rose-50' : on ? 'bg-gold-50' : 'hover:bg-wood-100'
                         }`}
                       >
                         <span className="font-pixel text-[11px] uppercase text-slate-500">{side === 'debit' ? 'DR' : 'CR'}</span>
@@ -284,7 +284,7 @@ function EntryRound({ round, done, reveal, onSubmit }) {
 
   return (
     <div className="flex flex-col gap-5">
-      <Card label="Delivery ticket" tone="ember">
+      <Card label="Delivery ticket" tone="wood">
         <span className="block text-base font-semibold">{round.text}</span>
       </Card>
       <section className="pixel-box px-dark bg-cream p-4 sm:p-6">
@@ -303,7 +303,7 @@ function EntryRound({ round, done, reveal, onSubmit }) {
                     type="button"
                     disabled={done}
                     onClick={() => pickChip(c)}
-                    className={`pixel-box-flat px-navy px-3 py-2 text-sm font-semibold ${Object.values(slots).includes(c) ? 'bg-navy text-cream' : 'bg-white text-navy-900 hover:bg-ember-100'}`}
+                    className={`pixel-box-flat px-navy px-3 py-2 text-sm font-semibold ${Object.values(slots).includes(c) ? 'bg-navy text-cream' : 'bg-white text-navy-900 hover:bg-wood-100'}`}
                   >
                     {c}
                   </button>
@@ -340,14 +340,14 @@ function AdjustRound({ round, done, reveal, onSubmit }) {
 
   return (
     <div className="flex flex-col gap-5">
-      <Card label="Year-end clue" tone="ember">
+      <Card label="Year-end clue" tone="wood">
         <span className="block text-base font-semibold">{round.text}</span>
       </Card>
       <section className="pixel-box px-dark bg-cream p-4 sm:p-6">
         <p className="font-pixel text-[12px] uppercase text-navy">Step 1 · What kind of adjustment is it?</p>
         <div className="mt-3 flex flex-wrap gap-3 p-1">
           {ADJ_TYPES.map((t) => {
-            let tone = kind === t ? 'bg-navy text-cream' : 'bg-white text-navy-900 hover:bg-ember-100';
+            let tone = kind === t ? 'bg-navy text-cream' : 'bg-white text-navy-900 hover:bg-wood-100';
             if (done && t === round.kind && (reveal || kind === t)) tone = 'bg-emerald-500 text-navy-950';
             else if (done && kind === t) tone = 'bg-rose-500 text-white';
             return (
@@ -465,20 +465,20 @@ function TBSpotRound({ round, done, reveal, onSubmit }) {
   const submit = () => onSubmit({ correct: sel === round.answer, yours: round.rows[sel].name });
   return (
     <section className="pixel-box px-dark bg-cream p-4 sm:p-6">
-      <p className="font-pixel text-[12px] uppercase text-crimson-700">This trial balance doesn’t balance! Tap the account in the wrong column.</p>
+      <p className="font-pixel text-[12px] uppercase text-forest-700">This trial balance doesn’t balance! Tap the account in the wrong column.</p>
       <div className="pixel-box-flat px-navy mt-4 overflow-x-auto bg-white">
         <TBTable
           rows={round.rows}
           totals={{ debit: peso(round.totals.debit), credit: peso(round.totals.credit) }}
           footer={
             <tr>
-              <td colSpan={3} className="px-3 pb-2 text-right font-pixel text-[11px] uppercase text-crimson-700">
+              <td colSpan={3} className="px-3 pb-2 text-right font-pixel text-[11px] uppercase text-forest-700">
                 Difference: {peso(Math.abs(round.totals.debit - round.totals.credit))}
               </td>
             </tr>
           }
           render={(row, i) => {
-            let tone = sel === i ? 'bg-gold-100' : 'hover:bg-ember-100';
+            let tone = sel === i ? 'bg-gold-100' : 'hover:bg-wood-100';
             if (done && i === round.answer && (reveal || sel === i)) tone = 'bg-emerald-100';
             else if (done && sel === i) tone = 'bg-rose-100';
             return (

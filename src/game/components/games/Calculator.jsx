@@ -126,12 +126,12 @@ export default function Calculator({ onClose, canUse }) {
     >
       <div
         onPointerDown={startDrag}
-        className="flex items-center justify-between border-b-4 border-navy-950 bg-crimson-700 px-3 py-2 sm:cursor-move"
+        className="flex items-center justify-between border-b-4 border-navy-950 bg-forest-700 px-3 py-2 sm:cursor-move"
         title="Drag to move"
       >
         <p className="flex items-center gap-2 font-pixel text-[12px] uppercase tracking-widest text-cream">
           <PixelSprite name="calculator" scale={2} /> Calculator
-          <span className="hidden normal-case tracking-normal text-ember-100 sm:inline">· drag me</span>
+          <span className="hidden normal-case tracking-normal text-wood-100 sm:inline">· drag me</span>
         </p>
         <button type="button" onClick={onClose} className="text-cream hover:text-gold" aria-label="Close calculator">
           <Icon name="close" className="h-5 w-5" strokeWidth={3} />
@@ -148,7 +148,7 @@ export default function Calculator({ onClose, canUse }) {
               key={label}
               type="button"
               onClick={key(fn ?? (() => c.digit(label)))}
-              className={`${btn} ${tone ?? 'bg-white text-navy-950 hover:bg-ember-100'}`}
+              className={`${btn} ${tone ?? 'bg-white text-navy-950 hover:bg-wood-100'}`}
               aria-label={{ '−': 'minus', '×': 'times', '÷': 'divided by', '⌫': 'delete digit', '±': 'change sign' }[label] ?? label}
             >
               {label}

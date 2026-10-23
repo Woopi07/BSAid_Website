@@ -45,3 +45,11 @@
 @media (prefers-reduced-motion: reduce) {
   .splash-logo { animation: none; opacity: 1; }
 }
+@keyframes splash-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.splash-rise { opacity: 0; animation: splash-rise 0.5s ease-out 0.8s forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .splash-rise { animation: none; opacity: 1; }
+}

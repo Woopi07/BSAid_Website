@@ -19,7 +19,7 @@ function Slider({ id, label, value, onChange, disabled }) {
           value={value}
           disabled={disabled}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="w-56 cursor-pointer accent-crimson-700 disabled:opacity-40"
+          className="w-56 cursor-pointer accent-forest-700 disabled:opacity-40"
         />
         <span className="w-12 text-right font-pixel text-[13px] text-navy-900">{Math.round(value * 100)}%</span>
       </div>
@@ -77,13 +77,13 @@ export default function SettingsPanel() {
                 dispatch({ type: 'RESET_PROGRESS' });
                 setConfirm(false);
               }}
-              className="pixel-btn bg-crimson-700 text-cream hover:bg-crimson"
+              className="pixel-btn bg-forest-700 text-cream hover:bg-forest"
             >
               Yes, reset
             </button>
           </div>
         ) : (
-          <button type="button" onClick={() => setConfirm(true)} className="pixel-btn bg-white text-crimson-700 hover:bg-rose-50">
+          <button type="button" onClick={() => setConfirm(true)} className="pixel-btn bg-white text-forest-700 hover:bg-rose-50">
             Reset progress
           </button>
         )}

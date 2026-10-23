@@ -38,13 +38,13 @@ export default function LevelResults() {
         <main className="pixel-scroll flex min-h-0 flex-1 justify-center overflow-y-auto p-4">
           <div className="my-4 flex w-full max-w-2xl flex-col gap-8">
             <div className="pixel-box px-dark animate-pop bg-navy-900 text-center">
-              <div className="border-b-4 border-navy-950 bg-crimson-700 px-4 py-3">
+              <div className="border-b-4 border-navy-950 bg-forest-700 px-4 py-3">
                 <p className="font-pixel text-[13px] uppercase tracking-widest text-cream sm:text-sm">Stage clear!</p>
               </div>
               <div className="relative p-6 sm:p-8">
                 <div className="pixel-dots absolute inset-0" aria-hidden="true" />
                 <div className="relative">
-                  <p className="font-pixel text-[12px] uppercase tracking-widest text-ember-200">
+                  <p className="font-pixel text-[12px] uppercase tracking-widest text-wood-200">
                     {activeCase.game.name} · Level {activeLevel.id}
                   </p>
                   <h2 className="mt-2 text-3xl font-bold text-cream pixel-text-shadow">{activeLevel.title}</h2>
@@ -55,7 +55,7 @@ export default function LevelResults() {
                     ))}
                   </div>
 
-                  <p className="mt-5 font-pixel text-[12px] uppercase tracking-widest text-ember-200">Rank</p>
+                  <p className="mt-5 font-pixel text-[12px] uppercase tracking-widest text-wood-200">Rank</p>
                   <p className="pixel-title mt-2 font-heading text-8xl font-bold leading-none" data-text={result.rank}>
                     {result.rank}
                   </p>
@@ -100,7 +100,7 @@ export default function LevelResults() {
                           <li key={r.id} className="pixel-box-flat px-gold flex animate-pop items-center gap-2 bg-gold-50 px-3 py-2 text-left">
                             <PixelSprite name={r.kind === 'goal' ? 'heart' : 'star'} scale={2} />
                             <span>
-                              <span className="block font-pixel text-[10px] uppercase text-ember-600">{r.kind === 'goal' ? 'Daily goal' : 'Achievement'}</span>
+                              <span className="block font-pixel text-[10px] uppercase text-wood-600">{r.kind === 'goal' ? 'Daily goal' : 'Achievement'}</span>
                               <span className="block font-heading text-sm font-bold text-navy-900">{r.label}</span>
                             </span>
                             <span className="ml-1 flex items-center gap-1 font-pixel text-[12px] text-navy-900">

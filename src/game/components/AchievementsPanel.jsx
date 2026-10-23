@@ -41,7 +41,7 @@ export function DailyGoals({ compact = false }) {
     <section className="pixel-box flex flex-col bg-white p-5 sm:p-6" aria-labelledby="goals-title">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 id="goals-title" className="text-2xl font-bold">Today&rsquo;s goals</h2>
-        <p className="font-pixel text-[12px] uppercase text-ember-600">Resets at midnight</p>
+        <p className="font-pixel text-[12px] uppercase text-wood-600">Resets at midnight</p>
       </div>
       <ul className="mt-5 flex flex-col gap-4">
         {goals.map((g) => (
@@ -86,7 +86,7 @@ export function CareerCard() {
     <section className="pixel-box px-dark relative overflow-hidden bg-navy-900 p-5 text-cream sm:p-6" aria-labelledby="career-title">
       <div className="pixel-dots absolute inset-0" aria-hidden="true" />
       <div className="relative">
-        <p className="font-pixel text-[12px] uppercase tracking-widest text-ember-200">Career rank · {career.level}/{CAREER.length}</p>
+        <p className="font-pixel text-[12px] uppercase tracking-widest text-wood-200">Career rank · {career.level}/{CAREER.length}</p>
         <h2 id="career-title" className="mt-2 text-3xl font-bold leading-tight pixel-text-shadow">{career.title}</h2>
         <div className="mt-5 flex items-center gap-3">
           <PixelSprite name="star" scale={3} />
@@ -125,7 +125,7 @@ export default function AchievementsPanel() {
       <section className="pixel-box bg-white p-5 sm:p-6" aria-labelledby="ach-title">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 id="ach-title" className="text-2xl font-bold">Milestones</h2>
-          <p className="font-pixel text-[12px] uppercase text-ember-600">
+          <p className="font-pixel text-[12px] uppercase text-wood-600">
             {tiersDone} / {list.length * 3} medals{rewards.length > 0 && ` · ${rewards.length} to claim`}
           </p>
         </div>
@@ -159,7 +159,7 @@ export default function AchievementsPanel() {
                 </span>
                 {ready && (
                   <div className="flex items-center justify-between gap-3">
-                    <span className="font-pixel text-[11px] uppercase text-ember-600">{ready.name} reached!</span>
+                    <span className="font-pixel text-[11px] uppercase text-wood-600">{ready.name} reached!</span>
                     <ClaimButton id={ready.id} reward={ready.reward} />
                   </div>
                 )}
@@ -172,7 +172,7 @@ export default function AchievementsPanel() {
       <section className="pixel-box bg-white p-5 sm:p-6" aria-labelledby="badges-title">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 id="badges-title" className="text-2xl font-bold">Badges</h2>
-          <p className="font-pixel text-[12px] uppercase text-ember-600">
+          <p className="font-pixel text-[12px] uppercase text-wood-600">
             {badges.length} / {Object.keys(BADGES).length} collected
           </p>
         </div>

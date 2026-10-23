@@ -69,7 +69,7 @@ export function NumPad({ value, onChange, disabled }) {
           disabled={disabled}
           onClick={() => press(k)}
           aria-label={k === '⌫' ? 'Delete digit' : k === 'C' ? 'Clear' : k}
-          className={`pixel-btn h-11 p-0 text-base ${k === 'C' ? 'bg-rose-100 text-rose-800' : k === '⌫' ? 'bg-gold-100 text-navy-950' : 'bg-white text-navy-950 hover:bg-ember-100'} disabled:opacity-40`}
+          className={`pixel-btn h-11 p-0 text-base ${k === 'C' ? 'bg-rose-100 text-rose-800' : k === '⌫' ? 'bg-gold-100 text-navy-950' : 'bg-white text-navy-950 hover:bg-wood-100'} disabled:opacity-40`}
         >
           {k}
         </button>
@@ -101,7 +101,7 @@ export function SubmitButton({ onClick, disabled, children = 'Submit' }) {
 }
 
 export function Card({ label, tone = 'navy', children }) {
-  const tones = { navy: 'px-navy bg-cream text-navy', ember: 'px-ember bg-ember-100 text-ember-800', gold: 'px-gold bg-gold-50 text-gold-700' };
+  const tones = { navy: 'px-navy bg-cream text-navy', wood: 'px-wood bg-wood-100 text-wood-800', gold: 'px-gold bg-gold-50 text-gold-700' };
   return (
     <div className={`pixel-box-flat p-4 ${tones[tone]}`}>
       <p className="font-pixel text-[12px] uppercase tracking-wide">{label}</p>

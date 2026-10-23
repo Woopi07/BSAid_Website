@@ -1,44 +1,46 @@
 import { useEffect, useState } from 'react';
+import PixelSprite from './ui/PixelSprite.jsx';
 
-const LOGO_TIME = 1900; // ms the BSAid logo is shown before the Entry Point loading art
-const FILL_TIME = 2600; // ms for the loading bar to fill once the page has loaded
-const ART = '/images/loading-screen.webp'; // 898×503; the bar's white outline is drawn into the art
-// Inside of the drawn bar, as a share of the art's size (x 349–590, y 435–449 px).
-const BAR = { left: '38.864%', top: '86.481%', width: '26.837%', height: '2.783%' };
+const FILL_TIME = 3200; // ms for the loading bar to fill once the page has loaded
+const SEGMENTS = 16;
+const TIPS = [
+  'Every debit needs a matching credit.',
+  'Assets = Liabilities + Equity.',
+  'Read the transaction twice, record it once.',
+  'Revenue increases equity, so it is credited.',
+  'Expenses have a normal debit balance.',
+];
 
 const reducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-// Opening splash: the BSAid logo pops in on black, then the Entry Point loading screen fills its bar
-// and fades into the page. Click, tap or press any key to skip.
+// Opening splash in the site's pixel-arcade style: the BSAid logotype pops in over the arcade backdrop
+// while a segmented loading bar fills, then the screen fades into the page. Click, tap or any key skips it.
 export default function LoadingScreen() {
-  const [phase, setPhase] = useState('logo'); // logo | load
   const [progress, setProgress] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const [gone, setGone] = useState(false);
+  const [tip] = useState(() => TIPS[Math.floor(Math.random() * TIPS.length)]);
 
   useEffect(() => {
-    const quick = reducedMotion();
+    const duration = reducedMotion() ? 900 : FILL_TIME;
     let loaded = document.readyState === 'complete';
     const onLoad = () => (loaded = true);
     window.addEventListener('load', onLoad);
     let frame;
     let done;
-    const fill = (start) => (now) => {
-      const pct = Math.min(100, ((now - start) / (quick ? 700 : FILL_TIME)) * 100);
+    const start = performance.now();
+    const tick = (now) => {
+      const pct = Math.min(100, ((now - start) / duration) * 100);
       // Hold at 90% until the page (fonts, images) has finished loading.
       const shown = loaded ? pct : Math.min(pct, 90);
       setProgress(shown);
-      if (shown < 100) frame = requestAnimationFrame(fill(start));
-      else done = setTimeout(() => setLeaving(true), 400);
+      if (shown < 100) frame = requestAnimationFrame(tick);
+      else done = setTimeout(() => setLeaving(true), 450);
     };
-    const toLoad = setTimeout(() => {
-      setPhase('load');
-      frame = requestAnimationFrame((now) => fill(now)(now));
-    }, quick ? 600 : LOGO_TIME);
+    frame = requestAnimationFrame(tick);
     return () => {
-      clearTimeout(toLoad);
-      clearTimeout(done);
       cancelAnimationFrame(frame);
+      clearTimeout(done);
       window.removeEventListener('load', onLoad);
     };
   }, []);
@@ -57,43 +59,85 @@ export default function LoadingScreen() {
   }, [gone]);
 
   if (gone) return null;
+  const filled = Math.round((progress / 100) * SEGMENTS);
+  const ready = progress >= 100;
 
   return (
     <div
       role="status"
-      aria-label={phase === 'logo' ? 'Loading BSAid' : `Loading Entry Point, ${Math.round(progress)}%`}
+      aria-label={`Loading BSAid, ${Math.round(progress)}%`}
       onClick={() => setLeaving(true)}
       onTransitionEnd={(e) => e.target === e.currentTarget && leaving && setGone(true)}
-      className={`fixed inset-0 z-[100] cursor-pointer overflow-hidden bg-black transition-opacity duration-500 ${
+      className={`scanlines fixed inset-0 z-[100] flex cursor-pointer flex-col items-center justify-center overflow-hidden bg-navy-950 px-4 text-center transition-opacity duration-500 ${
         leaving ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
     >
-      {/* 1. BSAid logo */}
-      <div className={`absolute inset-0 flex items-center justify-center px-6 transition-opacity duration-500 ${phase === 'logo' ? 'opacity-100' : 'opacity-0'}`}>
-        <img
-          src="/images/bsaid-logo.png"
-          alt="BSAid — Learn. Practice. Succeed."
-          width="420"
-          height="267"
-          className="splash-logo w-[min(420px,80vw)] select-none"
-          draggable="false"
-        />
+      {/* Arcade backdrop, matching the title screen */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute left-1/2 top-[40%] h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-wood/30 blur-3xl" />
+        <div className="absolute left-1/2 top-[40%] h-[40vmin] w-[40vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/20 blur-3xl" />
+        <div className="pixel-dots absolute inset-0" />
+        <div className="absolute inset-x-[-50%] bottom-0 h-[34%] overflow-hidden">
+          <div className="grid-floor h-[200%] w-full animate-grid" />
+        </div>
+        <div className="absolute left-[6%] top-[14%] animate-drift">
+          <PixelSprite name="cloud" scale={6} className="h-auto w-24 sm:w-36" />
+        </div>
+        <div className="absolute right-[5%] top-[22%] animate-drift [animation-delay:-3s]">
+          <PixelSprite name="cloud" scale={5} className="h-auto w-20 -scale-x-100 sm:w-28" />
+        </div>
+        <div className="absolute bottom-[16%] left-[9%] hidden animate-bob sm:block">
+          <PixelSprite name="calculator" scale={6} className="rotate-[8deg]" />
+        </div>
+        <div className="absolute bottom-[20%] right-[10%] hidden animate-twinkle sm:block">
+          <PixelSprite name="star" scale={5} />
+        </div>
       </div>
 
-      {/* 2. Entry Point loading art (loaded in the background during the logo) */}
-      <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ${phase === 'load' ? 'opacity-100' : 'opacity-0'}`}>
-        <img src={ART} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-xl" />
-        <div className="relative aspect-[898/503] w-[max(100vw,178.6vh)] shrink-0 [@media(max-aspect-ratio:6/5)]:w-[127vw]">
-          <img
-            src={ART}
-            alt="Entry Point — Every transaction tells a story. Will you make the right entry?"
-            className="block h-full w-full select-none"
-            draggable="false"
-          />
-          <span className="absolute overflow-hidden rounded-full" style={BAR} aria-hidden="true">
-            <span className="block h-full rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.7)]" style={{ width: `${progress}%` }} />
-          </span>
+      <div className="relative flex w-full max-w-md flex-col items-center">
+        <p className="splash-rise font-pixel text-[12px] uppercase tracking-[0.2em] text-wood-200 sm:text-[13px]">A FAR1 visual novel adventure</p>
+        <p
+          className="splash-logo pixel-title mt-5 font-heading text-[clamp(4.5rem,20vw,8.5rem)] font-bold leading-none tracking-tight"
+          data-text="BSAid"
+          role="img"
+          aria-label="BSAid"
+        >
+          BSAid
+        </p>
+        <p className="splash-rise mt-6 font-pixel text-[12px] uppercase tracking-[0.3em] text-cream pixel-text-shadow sm:text-[13px]">
+          Learn · Practice · Succeed
+        </p>
+
+        {/* Loading bar */}
+        <div className="splash-rise pixel-box px-dark mt-10 w-full max-w-sm bg-navy-900 p-4">
+          <div className="flex items-center justify-between font-pixel text-[12px] uppercase tracking-widest">
+            <span className="flex items-center gap-2 text-cream">
+              <PixelSprite name="coin" scale={2} className={ready ? '' : 'animate-bob'} />
+              {ready ? (
+                'Ready!'
+              ) : (
+                <span>
+                  Loading<span className="animate-blink">…</span>
+                </span>
+              )}
+            </span>
+            <span className="tabular-nums text-gold">{Math.round(progress)}%</span>
+          </div>
+          <div className="mt-3 flex gap-1 bg-navy-950 p-1.5" aria-hidden="true">
+            {Array.from({ length: SEGMENTS }, (_, i) => (
+              <span key={i} className={`h-4 flex-1 ${i < filled ? (i < SEGMENTS * 0.75 ? 'bg-forest-500' : 'bg-gold') : 'bg-navy-800'}`} />
+            ))}
+          </div>
         </div>
+
+        <div className="splash-rise pixel-box-flat px-cream mt-7 w-full max-w-sm bg-navy-950/90 px-4 py-3 text-left">
+          <p className="font-pixel text-[11px] uppercase tracking-widest text-gold">Faraday&rsquo;s tip</p>
+          <p className="mt-1 text-sm leading-relaxed text-cream">{tip}</p>
+        </div>
+
+        <p className="mt-6 font-pixel text-[11px] uppercase tracking-widest text-navy-200">
+          <span className="animate-blink">Tap or press any key</span> to skip
+        </p>
       </div>
     </div>
   );

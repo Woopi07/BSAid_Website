@@ -68,14 +68,14 @@ export default function JournalDemo() {
       {/* Top bar mirrors the GUI layout: player info, stage indicator, points */}
       <div className="flex items-center justify-between gap-3 border-b-4 border-navy-950 bg-navy-900 px-4 py-3 text-white">
         <div className="min-w-0">
-          <p className="font-pixel text-[11px] uppercase tracking-widest text-ember-300">Stage 1 &middot; Sari-Sari Store</p>
+          <p className="font-pixel text-[11px] uppercase tracking-widest text-wood-300">Stage 1 &middot; Sari-Sari Store</p>
           <p className="mt-1.5 truncate text-sm font-semibold">
             Transaction {index + 1} of {demoTransactions.length}
           </p>
         </div>
         <div className="flex items-center gap-3">
           {streak > 1 && (
-            <span className="bg-crimson-700 px-2 py-1 font-pixel text-[11px] uppercase text-cream">
+            <span className="bg-forest-700 px-2 py-1 font-pixel text-[11px] uppercase text-cream">
               {streak}x streak
             </span>
           )}
@@ -86,8 +86,8 @@ export default function JournalDemo() {
       </div>
 
       <div className="space-y-5 p-5">
-        <div className="pixel-box-flat px-ember bg-ember-100 p-4">
-          <p className="font-pixel text-[12px] uppercase tracking-wide text-ember-800">Transaction</p>
+        <div className="pixel-box-flat px-wood bg-wood-100 p-4">
+          <p className="font-pixel text-[12px] uppercase tracking-wide text-wood-800">Transaction</p>
           <p className="mt-1 font-medium text-navy-900">{tx.text}</p>
           <p className="mt-1 text-2xl font-bold tabular-nums text-navy">{peso(tx.amount)}</p>
         </div>

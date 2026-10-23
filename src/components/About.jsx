@@ -16,7 +16,7 @@ export default function About() {
         <ul className="grid gap-8 p-1 sm:grid-cols-2">
           {designGoals.map((goal, i) => (
             <li key={goal.title} className="pixel-box bg-white p-5">
-              <span className="inline-block bg-ember px-2 py-1 font-pixel text-[12px] text-navy-950">0{i + 1}</span>
+              <span className="inline-block bg-wood px-2 py-1 font-pixel text-[12px] text-navy-950">0{i + 1}</span>
               <h3 className="mt-3 text-xl font-semibold leading-snug">{goal.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{goal.body}</p>
             </li>
@@ -39,7 +39,7 @@ export default function About() {
           </div>
           <ul className="grid gap-1 bg-navy-950 p-1 sm:grid-cols-2 lg:grid-cols-3">
             {locations.map((loc) => (
-              <li key={loc.name} className="bg-navy-800 p-6 transition-colors hover:bg-crimson-700">
+              <li key={loc.name} className="bg-navy-800 p-6 transition-colors hover:bg-forest-700">
                 <span className="inline-flex bg-gold p-2 text-navy-950">
                   <Icon name={loc.icon} strokeWidth={2.25} />
                 </span>

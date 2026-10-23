@@ -35,7 +35,7 @@ export default function DemoStage() {
 
           <ul className="mt-8 flex flex-wrap gap-3" aria-label="Genres">
             {genres.map((g) => (
-              <li key={g} className="bg-crimson-700 px-2.5 py-1.5 font-pixel text-[12px] uppercase text-cream">
+              <li key={g} className="bg-forest-700 px-2.5 py-1.5 font-pixel text-[12px] uppercase text-cream">
                 {g}
               </li>
             ))}

@@ -7,7 +7,7 @@ export default function AudioControl() {
   return (
     <div className="flex items-center gap-3">
       {!started && !muted && (
-        <span className="hidden animate-blink font-pixel text-[11px] uppercase text-ember-200 xl:inline">Click for music</span>
+        <span className="hidden animate-blink font-pixel text-[11px] uppercase text-wood-200 xl:inline">Click for music</span>
       )}
       <label className="hidden items-center sm:flex">
         <span className="sr-only">Music volume</span>

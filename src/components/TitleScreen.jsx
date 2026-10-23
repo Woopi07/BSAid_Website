@@ -13,8 +13,8 @@ const MENU = [
 function Scenery() {
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div className="absolute left-1/2 top-[38%] h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-crimson/30 blur-3xl" />
-      <div className="absolute left-1/2 top-[38%] h-[40vmin] w-[40vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember/30 blur-3xl" />
+      <div className="absolute left-1/2 top-[38%] h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-wood/30 blur-3xl" />
+      <div className="absolute left-1/2 top-[38%] h-[40vmin] w-[40vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/20 blur-3xl" />
       <div className="pixel-dots absolute inset-0" />
       <div className="absolute inset-x-[-50%] bottom-0 h-[38%] overflow-hidden">
         <div className="grid-floor h-[200%] w-full animate-grid" />
@@ -126,7 +126,7 @@ export default function TitleScreen() {
       <Scenery />
 
       <div className="relative z-10 flex w-full max-w-3xl flex-col items-center">
-        <p className="font-pixel text-[12px] uppercase leading-relaxed tracking-[0.2em] text-ember-200 sm:text-[14px]">
+        <p className="font-pixel text-[12px] uppercase leading-relaxed tracking-[0.2em] text-wood-200 sm:text-[14px]">
           A FAR1 visual novel adventure
         </p>
 
@@ -174,7 +174,7 @@ export default function TitleScreen() {
                     onFocus={() => setSelected(i)}
                     aria-describedby={`menu-hint-${item.id}`}
                     className={`group relative flex w-full items-center justify-center gap-3 px-4 py-2.5 font-pixel text-base uppercase tracking-widest transition-colors sm:text-lg ${
-                      active ? 'bg-crimson-700 text-cream' : 'text-navy-200 hover:text-cream'
+                      active ? 'bg-forest-700 text-cream' : 'text-navy-200 hover:text-cream'
                     }`}
                   >
                     <span className={`absolute left-4 ${active ? 'animate-nudge' : 'invisible'}`} aria-hidden="true">

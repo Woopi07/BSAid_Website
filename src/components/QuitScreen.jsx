@@ -36,7 +36,7 @@ export default function QuitScreen({ onClose }) {
               <button type="button" onClick={onClose} className="pixel-btn bg-gold text-navy-950 hover:bg-gold-300">
                 Stay &amp; play
               </button>
-              <button type="button" onClick={() => setConfirmed(true)} className="pixel-btn bg-crimson-700 text-cream hover:bg-crimson">
+              <button type="button" onClick={() => setConfirmed(true)} className="pixel-btn bg-forest-700 text-cream hover:bg-forest">
                 Quit
               </button>
             </div>
@@ -47,7 +47,7 @@ export default function QuitScreen({ onClose }) {
             <h2 id="quit-title" className="mt-4 font-pixel text-2xl uppercase leading-relaxed text-cream">
               Continue?
             </h2>
-            <p className="mt-4 font-pixel text-6xl text-ember">
+            <p className="mt-4 font-pixel text-6xl text-wood">
               {seconds}
             </p>
             <p className="mt-5 text-navy-100">See you around campus, future CPA.</p>

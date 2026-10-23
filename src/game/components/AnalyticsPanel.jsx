@@ -51,7 +51,7 @@ export default function AnalyticsPanel() {
                     <span className="flex items-center justify-end gap-2">
                       <span className="flex gap-0.5" aria-hidden="true">
                         {Array.from({ length: SEGMENTS }, (_, i) => (
-                          <span key={i} className={`h-3 w-2.5 ${i < filled ? 'bg-emerald-500' : 'bg-ember-100'}`} />
+                          <span key={i} className={`h-3 w-2.5 ${i < filled ? 'bg-emerald-500' : 'bg-wood-100'}`} />
                         ))}
                       </span>
                       <span className="w-10 text-right font-pixel text-[12px] text-navy-900">{p.percent}%</span>

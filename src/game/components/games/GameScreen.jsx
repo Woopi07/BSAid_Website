@@ -40,7 +40,7 @@ function Hud({ lives, maxLives, score, combo, index, total, log, timeLeft, limit
         <Hearts lives={lives} max={maxLives} />
         <div className="flex items-center gap-3">
           {combo >= 2 && (
-            <span className="animate-pop bg-crimson-700 px-2.5 py-1.5 font-pixel text-[12px] uppercase text-cream" key={combo}>
+            <span className="animate-pop bg-forest-700 px-2.5 py-1.5 font-pixel text-[12px] uppercase text-cream" key={combo}>
               Combo ×{(1 + 0.25 * Math.min(combo - 1, MAX_MULT_STEPS)).toFixed(2).replace(/0$/, '')}
             </span>
           )}
@@ -50,7 +50,7 @@ function Hud({ lives, maxLives, score, combo, index, total, log, timeLeft, limit
               <span key={pop.id} className="absolute -top-6 right-0 animate-floatup font-pixel text-[13px] text-emerald-400">+{pop.value}</span>
             )}
           </span>
-          <span className="bg-crimson-700 px-2.5 py-1.5 font-pixel text-[12px] uppercase text-cream">
+          <span className="bg-forest-700 px-2.5 py-1.5 font-pixel text-[12px] uppercase text-cream">
             {index + 1}/{total}
           </span>
         </div>
@@ -76,7 +76,7 @@ function Hud({ lives, maxLives, score, combo, index, total, log, timeLeft, limit
 function ReadyCard({ game, level, total, onStart }) {
   return (
     <div className="pixel-box px-dark mx-auto w-full max-w-xl animate-pop bg-navy-900">
-      <div className="border-b-4 border-navy-950 bg-crimson-700 px-5 py-3">
+      <div className="border-b-4 border-navy-950 bg-forest-700 px-5 py-3">
         <p className="font-pixel text-[13px] uppercase tracking-widest text-cream">How to play</p>
       </div>
       <div className="p-6">
@@ -125,7 +125,7 @@ function Feedback({ entry, round, last, outOfLives, onNext, Solution }) {
         <div>
           <p className="font-pixel text-base uppercase text-emerald-700">
             Correct! +{entry.points}
-            {entry.combo >= 2 && <span className="ml-2 text-crimson-700">{entry.combo} in a row!</span>}
+            {entry.combo >= 2 && <span className="ml-2 text-forest-700">{entry.combo} in a row!</span>}
           </p>
           <p className="mt-1 text-sm text-navy-900">{round.explanation}</p>
         </div>
@@ -163,7 +163,7 @@ function Feedback({ entry, round, last, outOfLives, onNext, Solution }) {
         {round.explanation}
       </p>
       <div className="mt-4 flex justify-end">
-        <button type="button" autoFocus onClick={onNext} className={`pixel-btn ${outOfLives ? 'bg-crimson-700 text-cream' : 'bg-cream text-navy-950 hover:bg-white'}`}>
+        <button type="button" autoFocus onClick={onNext} className={`pixel-btn ${outOfLives ? 'bg-forest-700 text-cream' : 'bg-cream text-navy-950 hover:bg-white'}`}>
           {outOfLives ? 'Continue' : last ? 'Finish' : 'Next'} <PixelSprite name="arrow" scale={2} />
         </button>
       </div>
@@ -174,11 +174,11 @@ function Feedback({ entry, round, last, outOfLives, onNext, Solution }) {
 function GameOver({ onRetry, onLevels, reached, total }) {
   return (
     <div className="pixel-box px-dark mx-auto w-full max-w-md animate-pop bg-navy-900 text-center">
-      <div className="border-b-4 border-navy-950 bg-crimson-700 px-4 py-3">
+      <div className="border-b-4 border-navy-950 bg-forest-700 px-4 py-3">
         <p className="font-pixel text-[13px] uppercase tracking-widest text-cream">Out of hearts</p>
       </div>
       <div className="p-6 sm:p-8">
-        <p className="font-heading text-6xl font-bold text-ember-300">Game Over</p>
+        <p className="font-heading text-6xl font-bold text-wood-300">Game Over</p>
         <p className="mt-6 text-navy-100">
           You reached round {reached} of {total}. Every solution you saw is practice for the next run!
         </p>
@@ -348,7 +348,7 @@ function Game({ onRestart }) {
               <>
                 <Hud lives={lives} maxLives={maxLives} score={score} combo={combo} index={index} total={rounds.length} log={log} timeLeft={timeLeft} limit={limit} pop={pop} />
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <p className="font-pixel text-[12px] uppercase tracking-widest text-ember-200">
+                  <p className="font-pixel text-[12px] uppercase tracking-widest text-wood-200">
                     {activeCase.game.name} · Level {activeLevel.id} · {activeLevel.title}
                   </p>
                   <div className="flex flex-wrap gap-3">

@@ -81,7 +81,7 @@ export default function CaseCard({ item }) {
             aria-label={`${item.name} progress`}
           >
             {Array.from({ length: SEGMENTS }, (_, i) => (
-              <span key={i} className={`h-3 flex-1 ${i < filled ? 'bg-emerald-500' : locked ? 'bg-slate-300' : 'bg-ember-100'}`} />
+              <span key={i} className={`h-3 flex-1 ${i < filled ? 'bg-emerald-500' : locked ? 'bg-slate-300' : 'bg-wood-100'}`} />
             ))}
           </span>
           <span className="w-12 text-right font-pixel text-[13px] text-navy-900">{p.percent}%</span>

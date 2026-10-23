@@ -1,18 +1,19 @@
 // Tiny pixel-art sprites drawn from character maps. Each character maps to a palette color; '.' is transparent.
 const palette = {
-  k: '#7F1D1D', // dark outline
-  n: '#0A0F2C', // night outline
-  y: '#F59E0B', // gold
-  Y: '#FCD34D', // light gold
-  o: '#EA580C', // deep ember
-  O: '#FB923C', // ember
-  p: '#FED7AA', // peach highlight
-  w: '#FFF4DE', // cream
-  b: '#1E3A8A', // navy
-  B: '#4B6BC4', // light navy
+  k: '#0E2244', // navy outline
+  n: '#0A1630', // night outline
+  y: '#EDA90D', // gold
+  Y: '#F7C95A', // light gold
+  d: '#C98A08', // deep gold
+  O: '#2E8B4A', // forest green
+  o: '#1B5E35', // dark forest green
+  c: '#F7EEDF', // paper cream
+  s: '#D9C9A9', // cream shade
+  w: '#FFFDF6', // white
+  b: '#163A72', // navy
+  B: '#4A6FA8', // light navy
   g: '#94A3B8', // slate
-  r: '#E11D48', // crimson
-  G: '#10B981', // green
+  G: '#7FB98E', // light green
 };
 
 const sprites = {
@@ -21,13 +22,13 @@ const sprites = {
     '..kkyyyykk..',
     '.kyyYYYYyyk.',
     '.kyYYwwYYyk.',
-    'kyYYwYYYYyok',
-    'kyYwYYYYYyok',
-    'kyYwYYYYYyok',
-    'kyYYYYYYYyok',
-    '.kyYYYYYYok.',
-    '.kyyYYYyyok.',
-    '..kkooookk..',
+    'kyYYwYYYYydk',
+    'kyYwYYYYYydk',
+    'kyYwYYYYYydk',
+    'kyYYYYYYYydk',
+    '.kyYYYYYYdk.',
+    '.kyyYYYyydk.',
+    '..kkddddkk..',
     '....kkkk....',
   ],
   star: [
@@ -45,13 +46,13 @@ const sprites = {
   ],
   cloud: [
     '......kkkk.......',
-    '....kkppppkk.kk..',
-    '...kppOOOOpkkppk.',
-    '..kpOOOOOOOOpOOOk',
-    '.kpOOOOOOOOOOOOOk',
-    'kpOOOOOOOOOOOOOok',
-    'kOOOOOOOOOOOOOook',
-    '.kooOOOOOOooooook',
+    '....kkwwwwkk.kk..',
+    '...kwwccccwkkwwk.',
+    '..kwccccccccwccck',
+    '.kwccccccccccccck',
+    'kwcccccccccccccsk',
+    'kcccccccccccccssk',
+    '.kssccccccssssssk',
     '..kkkkkkkkkkkkkk.',
   ],
   bolt: [

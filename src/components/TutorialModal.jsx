@@ -50,7 +50,7 @@ function GuideTab({ onPlay }) {
       <div className="relative flex flex-col items-center gap-6 sm:flex-row sm:items-end">
         {/* Guide portrait */}
         <div className="flex shrink-0 flex-col items-center">
-          <div className="pixel-box px-gold flex h-28 w-28 items-center justify-center bg-gradient-to-b from-gold-300 to-ember-600 sm:h-32 sm:w-32">
+          <div className="pixel-box px-gold flex h-28 w-28 items-center justify-center bg-gradient-to-b from-gold-300 to-wood-600 sm:h-32 sm:w-32">
             <span className="font-heading text-5xl font-bold text-navy-950">Fd</span>
           </div>
           <span className="mt-4 bg-gold px-3 py-1.5 font-pixel text-[13px] uppercase text-navy-950">Faraday</span>
@@ -153,7 +153,7 @@ export default function TutorialModal({ onClose, onPlay }) {
   return (
     <Dialog labelledBy="tutorial-title" onClose={onClose} className="bg-navy-950/85">
       <div className="pixel-box px-dark w-full max-w-3xl animate-pop bg-navy-900">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b-4 border-navy-950 bg-crimson-700 px-4 py-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b-4 border-navy-950 bg-forest-700 px-4 py-3">
           <h2 id="tutorial-title" className="font-pixel text-[13px] uppercase tracking-widest text-cream sm:text-sm">
             Tutorial
           </h2>
@@ -166,7 +166,7 @@ export default function TutorialModal({ onClose, onPlay }) {
                 aria-selected={tab === t.id}
                 onClick={() => setTab(t.id)}
                 className={`px-3 py-1.5 font-pixel text-[12px] uppercase ${
-                  tab === t.id ? 'bg-cream text-crimson-700' : 'text-cream hover:bg-white/15'
+                  tab === t.id ? 'bg-cream text-forest-700' : 'text-cream hover:bg-white/15'
                 }`}
               >
                 {t.label}

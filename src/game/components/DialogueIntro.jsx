@@ -49,9 +49,9 @@ export default function DialogueIntro() {
         <main className="pixel-scroll flex min-h-0 flex-1 flex-col overflow-y-auto" onClick={(e) => !e.target.closest('button') && advance()}>
           <div className="mx-auto grid w-full max-w-4xl flex-1 items-start gap-8 px-4 py-8 sm:py-12 md:grid-cols-[220px_1fr] md:gap-12">
             <div className="flex flex-col items-center md:sticky md:top-0">
-              <p className="mb-4 font-pixel text-[12px] uppercase tracking-widest text-ember-200">Case #{activeCase.id}</p>
+              <p className="mb-4 font-pixel text-[12px] uppercase tracking-widest text-wood-200">Case #{activeCase.id}</p>
               <div className="animate-bob">
-                <div className="pixel-box px-gold bg-gradient-to-b from-gold-300 to-ember-600 p-2">
+                <div className="pixel-box px-gold bg-gradient-to-b from-gold-300 to-wood-600 p-2">
                   <Avatar look={activeCase.avatar} round={false} className="block h-36 w-36 sm:h-48 sm:w-48" alt={activeCase.owner} />
                 </div>
               </div>

@@ -4,7 +4,7 @@ export default function DownloadCTA() {
   return (
     <section id="download" className="bg-cream py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="pixel-box px-dark relative overflow-hidden bg-gradient-to-b from-ember to-crimson px-6 py-14 text-center sm:px-12">
+        <div className="pixel-box px-dark relative overflow-hidden bg-gradient-to-b from-wood to-forest px-6 py-14 text-center sm:px-12">
           <div className="pixel-dots absolute inset-0" aria-hidden="true" />
           <div className="absolute -left-4 top-6 hidden animate-drift sm:block" aria-hidden="true">
             <PixelSprite name="cloud" scale={7} />

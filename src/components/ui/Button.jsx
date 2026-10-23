@@ -3,7 +3,7 @@ import Icon from './Icon.jsx';
 const variants = {
   primary: 'bg-gold text-navy-950 hover:bg-gold-300',
   secondary: 'bg-navy text-cream hover:bg-navy-600',
-  ember: 'bg-ember text-navy-950 hover:bg-ember-300',
+  wood: 'bg-wood text-navy-950 hover:bg-wood-300',
   light: 'bg-cream text-navy-950 hover:bg-white',
 };
 

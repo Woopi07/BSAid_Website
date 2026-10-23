@@ -49,7 +49,7 @@ export default function LevelHeader({ onRestart }) {
         <span className="hidden sm:inline">Back</span>
       </button>
       <div className="flex min-w-0 flex-1 items-center gap-3">
-        <span className="shrink-0 bg-crimson-700 px-2 py-1.5 font-pixel text-[12px] text-cream">LV {activeLevel.id}</span>
+        <span className="shrink-0 bg-forest-700 px-2 py-1.5 font-pixel text-[12px] text-cream">LV {activeLevel.id}</span>
         <h1 className="truncate text-xl font-bold text-cream pixel-text-shadow sm:text-2xl">{activeLevel.title}</h1>
       </div>
 
@@ -77,7 +77,7 @@ export default function LevelHeader({ onRestart }) {
                     type="button"
                     role="menuitem"
                     onClick={act(item.run)}
-                    className="group flex w-full items-center gap-3 px-4 py-3 text-left font-pixel text-[12px] uppercase text-navy-100 hover:bg-crimson-700 hover:text-cream focus-visible:bg-crimson-700"
+                    className="group flex w-full items-center gap-3 px-4 py-3 text-left font-pixel text-[12px] uppercase text-navy-100 hover:bg-forest-700 hover:text-cream focus-visible:bg-forest-700"
                   >
                     <PixelSprite name="arrow" scale={2} className="invisible group-hover:visible group-focus-visible:visible" />
                     <Icon name={item.icon} className="h-4 w-4 text-gold" strokeWidth={2.5} />

@@ -7,7 +7,7 @@ export default function SectionHeading({ eyebrow, title, children, align = 'cent
       {eyebrow && (
         <p
           className={`inline-flex items-center gap-2 font-pixel text-[13px] uppercase tracking-widest sm:text-sm ${
-            dark ? 'text-gold' : 'text-ember-600'
+            dark ? 'text-gold' : 'text-wood-600'
           }`}
         >
           <PixelSprite name="star" scale={2} />
