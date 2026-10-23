@@ -36,20 +36,32 @@
 
 /* Opening splash (LoadingScreen) */
 @keyframes splash-pop {
-  0% { opacity: 0; transform: scale(0.3); }
-  60% { opacity: 1; transform: scale(1.12); }
-  80% { transform: scale(0.96); }
-  100% { opacity: 1; transform: scale(1); }
-}
-.splash-logo { opacity: 0; animation: splash-pop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s forwards; }
-@media (prefers-reduced-motion: reduce) {
-  .splash-logo { animation: none; opacity: 1; }
+  0% { opacity: 0; transform: scale(0.2) rotate(-8deg); }
+  55% { opacity: 1; transform: scale(1.14) rotate(2deg); }
+  75% { transform: scale(0.95) rotate(-1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
 }
 @keyframes splash-rise {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.splash-rise { opacity: 0; animation: splash-rise 0.5s ease-out 0.8s forwards; }
+@keyframes splash-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes splash-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.splash-logo { opacity: 0; animation: splash-pop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards; }
+.splash-rise { opacity: 0; animation: splash-rise 0.5s ease-out 0.7s forwards; }
+/* Gold light rays behind the logo */
+.splash-rays {
+  background: repeating-conic-gradient(rgba(237, 169, 13, 0.22) 0deg 9deg, transparent 9deg 22.5deg);
+  mask-image: radial-gradient(circle, #000 0%, transparent 38%);
+  -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 38%);
+  animation: splash-spin 24s linear infinite, splash-fade 0.6s ease-out;
+}
 @media (prefers-reduced-motion: reduce) {
-  .splash-rise { animation: none; opacity: 1; }
+  .splash-logo, .splash-rise { animation: none; opacity: 1; }
+  .splash-rays { animation: none; }
 }

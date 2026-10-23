@@ -1,33 +1,29 @@
 import { useEffect, useState } from 'react';
-import PixelSprite from './ui/PixelSprite.jsx';
 
-const FILL_TIME = 3200; // ms for the loading bar to fill once the page has loaded
-const SEGMENTS = 16;
-const TIPS = [
-  'Every debit needs a matching credit.',
-  'Assets = Liabilities + Equity.',
-  'Read the transaction twice, record it once.',
-  'Revenue increases equity, so it is credited.',
-  'Expenses have a normal debit balance.',
-];
+const FILL_TIME = 3000; // ms for the loading bar to fill once the page has loaded
+const LOGO_TIME = 2400; // ms the Entry Point logo stays up before the page appears
+const ART = '/images/loading-screen.webp'; // 1920×1080; the bar's white outline is drawn into the art
+// Inside of the drawn bar, as a share of the art's size (x 744–1261, y 929–960 px).
+const BAR = { left: '38.750%', top: '86.019%', width: '26.927%', height: '2.870%' };
 
 const reducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-// Opening splash in the site's pixel-arcade style: the BSAid logotype pops in over the arcade backdrop
-// while a segmented loading bar fills, then the screen fades into the page. Click, tap or any key skips it.
+// Opening sequence: the Entry Point loading art fills its bar, then the Entry Point logo pops up,
+// then everything fades into the page. Click, tap or press any key to skip ahead.
 export default function LoadingScreen() {
+  const [phase, setPhase] = useState('load'); // load | logo
   const [progress, setProgress] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const [gone, setGone] = useState(false);
-  const [tip] = useState(() => TIPS[Math.floor(Math.random() * TIPS.length)]);
 
+  // Loading bar
   useEffect(() => {
-    const duration = reducedMotion() ? 900 : FILL_TIME;
+    const duration = reducedMotion() ? 800 : FILL_TIME;
     let loaded = document.readyState === 'complete';
     const onLoad = () => (loaded = true);
     window.addEventListener('load', onLoad);
     let frame;
-    let done;
+    let next;
     const start = performance.now();
     const tick = (now) => {
       const pct = Math.min(100, ((now - start) / duration) * 100);
@@ -35,109 +31,87 @@ export default function LoadingScreen() {
       const shown = loaded ? pct : Math.min(pct, 90);
       setProgress(shown);
       if (shown < 100) frame = requestAnimationFrame(tick);
-      else done = setTimeout(() => setLeaving(true), 450);
+      else next = setTimeout(() => setPhase('logo'), 350);
     };
     frame = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(frame);
-      clearTimeout(done);
+      clearTimeout(next);
       window.removeEventListener('load', onLoad);
     };
   }, []);
 
-  // Lock page scroll while the splash is up; skip on any key.
+  // Logo hold, then fade into the page
+  useEffect(() => {
+    if (phase !== 'logo') return undefined;
+    const id = setTimeout(() => setLeaving(true), reducedMotion() ? 1000 : LOGO_TIME);
+    return () => clearTimeout(id);
+  }, [phase]);
+
+  // Skip: during loading jump to the logo, during the logo go straight to the page.
+  const skip = () => (phase === 'load' ? setPhase('logo') : setLeaving(true));
+
+  // Lock page scroll while the splash is up; any key skips ahead.
   useEffect(() => {
     if (gone) return undefined;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    const onKey = () => setLeaving(true);
-    window.addEventListener('keydown', onKey);
+    window.addEventListener('keydown', skip);
     return () => {
       document.body.style.overflow = prev;
-      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('keydown', skip);
     };
-  }, [gone]);
+  });
 
   if (gone) return null;
-  const filled = Math.round((progress / 100) * SEGMENTS);
-  const ready = progress >= 100;
 
   return (
     <div
       role="status"
-      aria-label={`Loading BSAid, ${Math.round(progress)}%`}
-      onClick={() => setLeaving(true)}
+      aria-label={phase === 'load' ? `Loading Entry Point, ${Math.round(progress)}%` : 'Entry Point'}
+      onClick={skip}
       onTransitionEnd={(e) => e.target === e.currentTarget && leaving && setGone(true)}
-      className={`scanlines fixed inset-0 z-[100] flex cursor-pointer flex-col items-center justify-center overflow-hidden bg-navy-950 px-4 text-center transition-opacity duration-500 ${
+      className={`fixed inset-0 z-[100] cursor-pointer overflow-hidden bg-navy-950 transition-opacity duration-500 ${
         leaving ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
     >
-      {/* Arcade backdrop, matching the title screen */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute left-1/2 top-[40%] h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-wood/30 blur-3xl" />
-        <div className="absolute left-1/2 top-[40%] h-[40vmin] w-[40vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/20 blur-3xl" />
-        <div className="pixel-dots absolute inset-0" />
-        <div className="absolute inset-x-[-50%] bottom-0 h-[34%] overflow-hidden">
-          <div className="grid-floor h-[200%] w-full animate-grid" />
-        </div>
-        <div className="absolute left-[6%] top-[14%] animate-drift">
-          <PixelSprite name="cloud" scale={6} className="h-auto w-24 sm:w-36" />
-        </div>
-        <div className="absolute right-[5%] top-[22%] animate-drift [animation-delay:-3s]">
-          <PixelSprite name="cloud" scale={5} className="h-auto w-20 -scale-x-100 sm:w-28" />
-        </div>
-        <div className="absolute bottom-[16%] left-[9%] hidden animate-bob sm:block">
-          <PixelSprite name="calculator" scale={6} className="rotate-[8deg]" />
-        </div>
-        <div className="absolute bottom-[20%] right-[10%] hidden animate-twinkle sm:block">
-          <PixelSprite name="star" scale={5} />
+      {/* 1. Loading art with a live bar laid over the one drawn into it */}
+      <div
+        className={`absolute inset-0 flex items-center justify-center transition-[opacity,filter] duration-700 ${
+          phase === 'logo' ? 'opacity-60 blur-sm' : 'opacity-100'
+        }`}
+      >
+        <img src={ART} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-xl" />
+        <div className="relative aspect-video w-[max(100vw,177.8vh)] shrink-0 [@media(max-aspect-ratio:6/5)]:w-[128vw]">
+          <img
+            src={ART}
+            alt="Entry Point — Every transaction tells a story. Will you make the right entry?"
+            className="block h-full w-full select-none"
+            draggable="false"
+          />
+          <span className={`absolute overflow-hidden rounded-full transition-opacity duration-300 ${phase === 'logo' ? 'opacity-0' : ''}`} style={BAR} aria-hidden="true">
+            <span className="block h-full rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.7)]" style={{ width: `${progress}%` }} />
+          </span>
         </div>
       </div>
 
-      <div className="relative flex w-full max-w-md flex-col items-center">
-        <p
-          className="splash-logo pixel-title font-heading text-[clamp(4.5rem,20vw,8.5rem)] font-bold leading-none tracking-tight"
-          data-text="BSAid"
-          role="img"
-          aria-label="BSAid"
-        >
-          BSAid
-        </p>
-        <p className="splash-rise mt-6 font-pixel text-[12px] uppercase tracking-[0.3em] text-cream pixel-text-shadow sm:text-[13px]">
-          Learn · Practice · Succeed
-        </p>
-
-        {/* Loading bar */}
-        <div className="splash-rise pixel-box px-dark mt-10 w-full max-w-sm bg-navy-900 p-4">
-          <div className="flex items-center justify-between font-pixel text-[12px] uppercase tracking-widest">
-            <span className="flex items-center gap-2 text-cream">
-              <PixelSprite name="coin" scale={2} className={ready ? '' : 'animate-bob'} />
-              {ready ? (
-                'Ready!'
-              ) : (
-                <span>
-                  Loading<span className="animate-blink">…</span>
-                </span>
-              )}
-            </span>
-            <span className="tabular-nums text-gold">{Math.round(progress)}%</span>
-          </div>
-          <div className="mt-3 flex gap-1 bg-navy-950 p-1.5" aria-hidden="true">
-            {Array.from({ length: SEGMENTS }, (_, i) => (
-              <span key={i} className={`h-4 flex-1 ${i < filled ? (i < SEGMENTS * 0.75 ? 'bg-forest-500' : 'bg-gold') : 'bg-navy-800'}`} />
-            ))}
-          </div>
+      {/* 2. Logo pop-up */}
+      {phase === 'logo' && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-navy-950/55 px-6">
+          <div className="splash-rays pointer-events-none absolute left-1/2 top-1/2 h-[160vmax] w-[160vmax] -translate-x-1/2 -translate-y-1/2" aria-hidden="true" />
+          <img
+            src="/images/entry-point-logo.svg"
+            alt="Entry Point"
+            width="960"
+            height="660"
+            className="splash-logo relative w-[min(640px,88vw)] select-none drop-shadow-[0_18px_30px_rgba(0,0,0,0.45)]"
+            draggable="false"
+          />
+          <p className="splash-rise relative mt-6 font-pixel text-[12px] uppercase tracking-[0.3em] text-cream pixel-text-shadow sm:text-[13px]">
+            Every transaction tells a story
+          </p>
         </div>
-
-        <div className="splash-rise pixel-box-flat px-cream mt-7 w-full max-w-sm bg-navy-950/90 px-4 py-3 text-left">
-          <p className="font-pixel text-[11px] uppercase tracking-widest text-gold">Faraday&rsquo;s tip</p>
-          <p className="mt-1 text-sm leading-relaxed text-cream">{tip}</p>
-        </div>
-
-        <p className="mt-6 font-pixel text-[11px] uppercase tracking-widest text-navy-200">
-          <span className="animate-blink">Tap or press any key</span> to skip
-        </p>
-      </div>
+      )}
     </div>
   );
 }
