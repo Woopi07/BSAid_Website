@@ -99,3 +99,10 @@
 @media (prefers-reduced-motion: reduce) {
   .logo-pop, .logo-cap, .logo-shine { animation: none; }
 }
+/* "Balanced!" stamp slams onto the journal when the totals match. */
+@keyframes loading-stamp {
+  0% { opacity: 0; transform: translateY(-50%) scale(2.4) rotate(-14deg); }
+  60% { opacity: 1; transform: translateY(-50%) scale(0.92) rotate(-9deg); }
+  100% { opacity: 1; transform: translateY(-50%) scale(1) rotate(-10deg); }
+}
+.loading-stamp { animation: loading-stamp 0.35s steps(5) forwards; }
