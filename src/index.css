@@ -99,10 +99,42 @@
 @media (prefers-reduced-motion: reduce) {
   .logo-pop, .logo-cap, .logo-shine { animation: none; }
 }
-/* "Balanced!" stamp slams onto the journal when the totals match. */
-@keyframes loading-stamp {
-  0% { opacity: 0; transform: translateY(-50%) scale(2.4) rotate(-14deg); }
-  60% { opacity: 1; transform: translateY(-50%) scale(0.92) rotate(-9deg); }
-  100% { opacity: 1; transform: translateY(-50%) scale(1) rotate(-10deg); }
+/* Animated loading art (LoadingScreen) */
+@keyframes loading-blink {
+  0%, 93%, 96%, 100% { opacity: 0; }
+  94%, 95% { opacity: 1; }
 }
-.loading-stamp { animation: loading-stamp 0.35s steps(5) forwards; }
+@keyframes loading-beam {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+@keyframes loading-mote {
+  0% { transform: translate(0, 0); opacity: 0; }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.7; }
+  100% { transform: translate(1200%, -2600%); opacity: 0; }
+}
+@keyframes loading-glare {
+  0%, 55% { left: -12%; }
+  100% { left: 112%; }
+}
+@keyframes loading-lcd {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.35; }
+}
+.loading-blink { opacity: 0; animation: loading-blink 3.8s step-end infinite; }
+.loading-beam {
+  background: linear-gradient(118deg, transparent 4%, rgba(255, 226, 150, 0.24) 11%, transparent 19%, transparent 24%, rgba(255, 226, 150, 0.18) 31%, transparent 39%, transparent 44%, rgba(255, 226, 150, 0.12) 50%, transparent 57%);
+  filter: blur(10px);
+  -webkit-mask-image: linear-gradient(118deg, #000 10%, transparent 75%);
+  mask-image: linear-gradient(118deg, #000 10%, transparent 75%);
+  mix-blend-mode: screen;
+  animation: loading-beam 3s steps(6) infinite;
+}
+.loading-mote { animation: loading-mote 8s steps(24) infinite; }
+.loading-glare { transform: skewX(-20deg); animation: loading-glare 4.5s steps(16) infinite; }
+.loading-lcd { mix-blend-mode: screen; animation: loading-lcd 1.6s steps(4) infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .loading-blink, .loading-beam, .loading-mote, .loading-glare, .loading-lcd { animation: none; }
+  .loading-mote, .loading-lcd { opacity: 0; }
+}
