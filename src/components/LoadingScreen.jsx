@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import PixelSprite from './ui/PixelSprite.jsx';
 
 const FILL_TIME = 3600; // ms for the loading bar to fill once the page has loaded
 const LOGO_TIME = 2400; // ms the Entry Point logo stays up before the page appears
-const ART_W = 480; // the loading art is 480×270 pixel art, shown scaled up
+const ART = '/images/loading-screen.webp'; // 1920×1080; the bar's outline is drawn into the art
+// Overlay positions below are given on a 480×270 grid (a quarter of the art's size).
+const ART_W = 480;
 const ART_H = 270;
-const SEGMENTS = 18;
 
 // Position in the art's own pixels -> CSS percentages, so overlays stay locked to the picture at any size.
 const at = (x, y, w, h) => ({
@@ -93,7 +93,6 @@ export default function LoadingScreen() {
   }, [gone]);
 
   if (gone) return null;
-  const filled = Math.round((progress / 100) * SEGMENTS);
 
   return (
     <div
@@ -111,12 +110,12 @@ export default function LoadingScreen() {
           phase === 'logo' ? 'opacity-60 blur-sm' : 'opacity-100'
         }`}
       >
-        <img src="/images/loading-screen.png" alt="" aria-hidden="true" className="crisp absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-md" />
+        <img src={ART} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-xl" />
         <div className="relative aspect-video w-[max(100vw,177.8vh)] shrink-0 overflow-hidden [@media(max-aspect-ratio:6/5)]:w-[128vw]">
           <img
-            src="/images/loading-screen.png"
+            src={ART}
             alt="Entry Point — Every transaction tells a story. Will you make the right entry?"
-            className="crisp block h-full w-full select-none"
+            className="block h-full w-full select-none"
             draggable="false"
           />
 
@@ -126,13 +125,13 @@ export default function LoadingScreen() {
             {MOTES.map(([x, y, delay, dur], i) => (
               <span
                 key={i}
-                className="loading-mote absolute aspect-square bg-gold-100"
+                className="loading-mote absolute aspect-square rounded-full bg-gold-100 blur-[0.5px]"
                 style={{ ...at(x, y, i % 3 === 0 ? 2 : 1), animationDelay: `${delay}s`, animationDuration: `${dur}s` }}
               />
             ))}
 
             {/* Faraday blinks */}
-            <img src="/images/loading-blink.png" alt="" className="crisp loading-blink absolute inset-0 h-full w-full" />
+            <img src="/images/loading-blink.png" alt="" className="loading-blink absolute inset-0 h-full w-full" />
 
             {/* Glare sliding over the glass card */}
             <span className="absolute overflow-hidden rounded-[6%/14%]" style={at(56, 63, 374, 146)}>
@@ -152,22 +151,20 @@ export default function LoadingScreen() {
                 className="absolute -translate-x-1/2 -translate-y-1/2"
                 style={at(s.x, s.y, s.size)}
               >
-                <span className="block animate-twinkle" style={{ animationDelay: s.delay }}>
-                  <PixelSprite name="star" scale={1} className="h-auto w-full" />
-                </span>
+                <svg viewBox="-10 -10 20 20" className="loading-sparkle block h-auto w-full" style={{ animationDelay: s.delay }}>
+                  <path d="M0,-10 Q1.6,-1.6 10,0 Q1.6,1.6 0,10 Q-1.6,1.6 -10,0 Q-1.6,-1.6 0,-10 Z" fill="#FFF6D6" />
+                </svg>
               </span>
             ))}
           </div>
 
           {/* Live bar laid over the one drawn into the art */}
           <span
-            className={`absolute flex gap-[3px] overflow-hidden rounded-full px-[0.4%] py-[0.35%] transition-opacity duration-300 ${phase === 'logo' ? 'opacity-0' : ''}`}
+            className={`absolute overflow-hidden rounded-full transition-opacity duration-300 ${phase === 'logo' ? 'opacity-0' : ''}`}
             style={BAR}
             aria-hidden="true"
           >
-            {Array.from({ length: SEGMENTS }, (_, i) => (
-              <span key={i} className={`h-full flex-1 ${i < filled ? (i < SEGMENTS * 0.75 ? 'bg-cream' : 'bg-gold') : ''}`} />
-            ))}
+            <span className="block h-full rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.75)]" style={{ width: `${progress}%` }} />
           </span>
         </div>
       </div>
@@ -177,11 +174,11 @@ export default function LoadingScreen() {
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-navy-950/55 px-6">
           <div className="splash-rays pointer-events-none absolute left-1/2 top-1/2 h-[160vmax] w-[160vmax] -translate-x-1/2 -translate-y-1/2" aria-hidden="true" />
           <img
-            src="/images/entry-point-logo.png"
+            src="/images/entry-point-logo.svg"
             alt="Entry Point"
-            width="336"
-            height="231"
-            className="crisp splash-logo relative w-[min(672px,88vw)] select-none"
+            width="960"
+            height="660"
+            className="splash-logo relative w-[min(640px,88vw)] select-none drop-shadow-[0_18px_30px_rgba(0,0,0,0.45)]"
             draggable="false"
           />
           <p className="splash-rise relative mt-6 font-pixel text-[13px] uppercase tracking-[0.35em] text-cream pixel-text-shadow sm:text-sm">
