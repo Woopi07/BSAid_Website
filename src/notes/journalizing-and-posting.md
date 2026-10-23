@@ -24,6 +24,8 @@ Journalizing creates a complete record of:
 
 ### Parts of a journal entry
 
+A journal entry contains:
+
 1. Date
 2. Account Title
 3. Debit Amount
@@ -88,10 +90,10 @@ A transaction affecting three or more accounts.
 
 ### Journalizing procedure
 
-1. Analyze the transaction
-2. Determine the accounts
-3. Identify the debit and credit
-4. Record the entry
+1. Analyze transaction
+2. Determine accounts
+3. Identify debit and credit
+4. Record entry
 5. Verify equality
 
 > **Mnemonic: ADIRV**
@@ -123,19 +125,19 @@ A **Ledger** is the book used to compute the balance of each account title. It i
 | Category | General Ledger | Subsidiary Ledger |
 | --- | --- | --- |
 | **Nature** | Group of accounts with different characteristics | Group of accounts with similar characteristics |
-| **Use** | Required in recording the accounts | Optional in the recording process |
-| **Link to Trial Balance** | The Trial Balance is made using the General Ledger | The Trial Balance is not prepared using the Subsidiary Ledger |
-| **Relationship** | The General Ledger controls the Subsidiary Ledger | The Subsidiary Ledger is part of the General Ledger |
-| **In case of conflict** | The General Ledger follows the amount in the Subsidiary Ledger | The amount computed in the Subsidiary Ledger is used |
+| **Use** | Required to be used in recording the accounts | Optional in recording process |
+| **Link to Trial Balance** | Trial Balance is made using the General Ledger | Trial Balance is not prepared using the Subsidiary Ledger |
+| **Relationship** | General ledger controls the Subsidiary ledger | Subsidiary ledger is part of the General ledger |
+| **In case of conflict** | General ledger will follow the amount in the Subsidiary ledger | Amount computed in the Subsidiary ledger will be used |
 
 ## 7 · Steps in Posting
 
 1. Prepare each of the account titles in the Chart of Accounts.
 2. Transfer the journal entry to the ledger according to its Posting Reference.
-3. Total the debits and credits — if debits are higher, the account has a debit balance; if credits are higher, it has a credit balance.
-4. Use the computed amounts to make the Trial Balance.
+3. Total the debit and credit — if debit is higher, the account has a debit balance; if credit is higher, the account has a credit balance.
+4. Use the amount computed to make the Trial Balance.
 
-Using the previous journal entries, let's post them in the Ledger.
+Using the previous journal entries made, let's post them in the Ledger.
 
 **Account: Cash** — Account No. 110
 
@@ -192,14 +194,14 @@ Using the previous journal entries, let's post them in the Ledger.
 
 **Example:** The January 10 transaction was posted to Cash and Ohab, Capital. The J.R. is 1 because it is the first journal entry made by the entity. The debit to Cash was posted to the Cash account, and the credit to Capital was posted to the Capital account.
 
-**P.R.** means Posting Reference — it is used to easily post a journal entry. For instance, the January 10 journal entry has a P.R. section: Cash 110 and Ohab, Capital 300. That P.R. is used to easily locate where to post the journal entry.
+**P.R.** means Posting Reference — it is used to easily post a journal entry. For instance, in the January 10 journal entry there is a section for P.R.: Cash 110 and Ohab, Capital 300. That P.R. is used to easily locate where to post the journal entry.
 
 ## 8 · Trial Balance
 
 > **Trial Balance**
 > A list of all accounts with their respective debit or credit balances. It is prepared to verify the equality of debits and credits, and should list the account titles in numerical order.
 
-### Locating errors if the trial balance is unequal
+### Locating errors if there is inequality in trial balance
 
 - Error in posting a transaction in the Ledger
 - Error in determining account balances
@@ -208,7 +210,7 @@ Using the previous journal entries, let's post them in the Ledger.
 ### Discrepancy clues in miscalculation
 
 - **Transposition** — suggested when the discrepancy is divisible by 9. Reversing the order of numbers.
-- **Slide** — moving a decimal point.
+- **Slide** — moving of a decimal point.
 
 ### Errors not detected by an equal trial balance
 

@@ -20,17 +20,18 @@
       - Example: related party transactions
 
 > **Note**
-> All accountable events are required to be recorded in the Journal. A non-accountable event is not necessarily ignored — some are required by the Accounting Standards to be disclosed in the Notes to Financial Statements.
+> All accountable events are required to be recorded in the Journal. A non-accountable event is not necessarily ignored — some are required to be disclosed in the Notes to Financial Statements by the Accounting Standard.
 
 ### How do you analyze a transaction?
 
 The big question is how you will analyze a transaction. Let us use two simple words to explain it.
 
-- **Classifying** — knowing the account titles affected by the transaction. Two or more accounts must be affected because we use the **Double-Entry System** in recording every transaction.
+- **Classifying** — knowing the account titles that are affected by the transaction.
+  - Two or more accounts must be affected because we are using the **Double-Entry System** in recording every transaction.
 - **Measuring** — knowing the monetary value of the transaction.
 
 > **Note**
-> Classification and Measurement must both be present for a transaction to be labeled an accountable event.
+> Classification and Measurement must be both present in order for a transaction to be labeled as an accountable event.
 
 Every transaction must satisfy:
 
@@ -102,8 +103,8 @@ Accounts increase either through debits or credits.
 
 ### Transaction analysis (RAID-NBS)
 
-1. **R**ecordable or not recordable — accounting event or economic business transaction.
-2. **A**ccounts affected — and whether each is an Asset, Liability, Owner's Equity, Income or Expense.
+1. **R**ecordable or not recordable — Accounting Event or Economic Business Transaction
+2. **A**ccounts affected (also if either Assets, Liability, Owner's Equity, Income or Expenses)
 3. **I**ncrease or **D**ecrease effect.
-4. **N**ormal balance of the account (debit or credit).
-5. **S**ide of the account where it should be recorded (debit or credit).
+4. **N**ormal **B**alance of the Account (Debit or Credit)
+5. **S**ide of Account should be recorded (Debit or Credit)

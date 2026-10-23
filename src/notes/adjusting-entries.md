@@ -131,6 +131,8 @@ Salaries are usually paid at regular intervals. Sometimes employees have already
 
 Interest expense is recognized as it is incurred, even if payment will happen later.
 
+**Formula**
+
 <p class="note-formula">Interest = Principal × Rate × Time</p>
 
 - **P** = Principal
@@ -273,13 +275,13 @@ Whenever you encounter a prepaid expense problem, identify:
 2. **Adjustment date** — usually the end of the reporting period.
 3. **Expiration date** — when the prepaid benefit completely expires.
 
+**The timeline**
+
 <p class="note-formula">Transaction Date → Adjustment Date → Expiration Date</p>
 
-| Period | Meaning |
-| --- | --- |
-| Transaction date → expiration date | **Total life** |
-| Transaction date → adjustment date | **Expired portion = Expense** |
-| Adjustment date → expiration date | **Unexpired portion = Asset** |
+- From Transaction Date to Expiration Date: **TOTAL LIFE**
+- From Transaction Date to Adjustment Date: **EXPIRED PORTION = EXPENSE**
+- From Adjustment Date to Expiration Date: **UNEXPIRED PORTION = ASSET**
 
 <p class="note-formula">EXPIRED = EXPENSE &nbsp;·&nbsp; UNEXPIRED = ASSET</p>
 
@@ -379,13 +381,13 @@ The amount is initially a liability because the entity still owes the customer g
 2. **Adjustment date** — end of the reporting period.
 3. **Expiration date** — end of the period covered by the collection.
 
+**The timeline**
+
 <p class="note-formula">Transaction Date → Adjustment Date → Expiration Date</p>
 
-| Period | Meaning |
-| --- | --- |
-| Transaction date → expiration date | **Total life** |
-| Transaction date → adjustment date | **Expired portion = Income earned** |
-| Adjustment date → expiration date | **Unexpired portion = Liability** |
+- From Transaction Date to Expiration Date: **TOTAL LIFE**
+- From Transaction Date to Adjustment Date: **EXPIRED PORTION = INCOME EARNED**
+- From Adjustment Date to Expiration Date: **UNEXPIRED PORTION = LIABILITY**
 
 <p class="note-formula">EXPIRED = INCOME &nbsp;·&nbsp; UNEXPIRED = LIABILITY</p>
 
@@ -571,8 +573,22 @@ When you see an adjustment problem, follow these steps:
 1. **Identify the type**
    - Did it happen but wasn't recorded yet? → **ACCRUAL**
    - Was cash paid/received first, and recognition comes later? → **DEFERRAL**
-2. **Identify the accounts affected** — is it an expense? income? an asset? a liability? a contra-asset?
-3. **Compute the amount** — look for unpaid days, months, interest rate, principal, percentage, useful life, salvage value, expired period, unexpired period.
+2. **Identify the accounts affected** — ask:
+   - Is it an expense?
+   - Is it income?
+   - Is it an asset?
+   - Is it a liability?
+   - Is it a contra-asset?
+3. **Compute the amount** — look for:
+   - unpaid days
+   - months
+   - interest rate
+   - principal
+   - percentage
+   - useful life
+   - salvage value
+   - expired period
+   - unexpired period
 4. **Determine the direction** — what needs to increase? What needs to decrease? Then apply the debit and credit rules.
 5. **Write the adjusting entry.**
 
