@@ -8,10 +8,12 @@ import CaseFiles from './components/CaseFiles.jsx';
 import HelpFeedback from './components/HelpFeedback.jsx';
 import DownloadCTA from './components/DownloadCTA.jsx';
 import Footer from './components/Footer.jsx';
+import LoadingScreen from './components/LoadingScreen.jsx';
 
 export default function App() {
   return (
     <>
+      <LoadingScreen />
       <Navbar />
       <main>
         <TitleScreen />
