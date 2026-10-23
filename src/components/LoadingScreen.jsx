@@ -63,6 +63,13 @@ export default function LoadingScreen() {
     };
   });
 
+  // Let the title screen start its logo animation once the splash is out of the way.
+  useEffect(() => {
+    if (!gone) return;
+    window.__splashDone = true;
+    window.dispatchEvent(new Event('splash:done'));
+  }, [gone]);
+
   if (gone) return null;
 
   return (

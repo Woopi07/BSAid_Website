@@ -61,6 +61,27 @@ function Clouds() {
   );
 }
 
+// Pixel-art BSAid logo: pops in once the loading screen is gone, then floats, the cap wobbles and a shine sweeps across.
+function TitleLogo() {
+  const [shown, setShown] = useState(() => typeof window !== 'undefined' && window.__splashDone === true);
+  useEffect(() => {
+    if (shown) return undefined;
+    const done = () => setShown(true);
+    window.addEventListener('splash:done', done);
+    return () => window.removeEventListener('splash:done', done);
+  }, [shown]);
+
+  return (
+    <div className="relative mx-auto w-[min(720px,92vw)] animate-bob [animation-duration:3.2s]">
+      <div className={`relative aspect-[360/233] ${shown ? 'logo-pop' : 'opacity-0'}`} role="img" aria-label="BSAid — Learn. Practice. Succeed.">
+        <img src="/images/bsaid-logo-base.png" alt="" width="360" height="233" className="crisp absolute inset-0 h-full w-full select-none" draggable="false" />
+        <span className="logo-shine absolute inset-0" aria-hidden="true" />
+        <img src="/images/bsaid-logo-cap.png" alt="" width="360" height="233" className="crisp logo-cap absolute inset-0 h-full w-full select-none" draggable="false" />
+      </div>
+    </div>
+  );
+}
+
 export default function TitleScreen() {
   const [selected, setSelected] = useState(0);
   const [modal, setModal] = useState(null); // 'tutorial' | 'quit' | null
@@ -128,15 +149,8 @@ export default function TitleScreen() {
       <div className="relative z-10 flex w-full max-w-3xl flex-col items-center">
         <div className="relative w-full">
           <Clouds />
-          <p
-            className="pixel-title relative font-heading text-[clamp(5rem,22vw,11rem)] font-bold leading-none tracking-tight"
-            data-text="BSAid"
-            role="img"
-            aria-label="BSAid"
-          >
-            BSAid
-          </p>
-          <div className="absolute -right-1 top-0 hidden animate-nudge sm:block md:right-10" aria-hidden="true">
+          <TitleLogo />
+          <div className="absolute -right-1 top-0 hidden animate-nudge sm:block md:-right-2" aria-hidden="true">
             <PixelSprite name="cursor" scale={5} className="rotate-[-8deg]" />
           </div>
         </div>
