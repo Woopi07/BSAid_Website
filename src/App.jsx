@@ -4,7 +4,7 @@ import DemoStage from './components/DemoStage.jsx';
 import About from './components/About.jsx';
 import Characters from './components/Characters.jsx';
 import Gameplay from './components/Gameplay.jsx';
-import CaseFiles from './components/CaseFiles.jsx';
+import Notes from './components/Notes.jsx';
 import HelpFeedback from './components/HelpFeedback.jsx';
 import DownloadCTA from './components/DownloadCTA.jsx';
 import Footer from './components/Footer.jsx';
@@ -21,7 +21,7 @@ export default function App() {
         <About />
         <Characters />
         <Gameplay />
-        <CaseFiles />
+        <Notes />
         <HelpFeedback />
         <DownloadCTA />
       </main>

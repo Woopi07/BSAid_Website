@@ -143,3 +143,41 @@
   .loading-blink, .loading-beam, .loading-mote, .loading-glare, .loading-lcd, .loading-sparkle { animation: none; }
   .loading-mote, .loading-lcd { opacity: 0; }
 }
+
+/* Study notes reader (NoteReader) */
+@layer components {
+  .note-content { @apply text-[15px] leading-relaxed text-slate-700 sm:text-base; }
+  .note-content h2 { @apply mt-12 border-b-4 border-navy-900 pb-2 font-heading text-2xl font-bold text-navy-900 first:mt-0 sm:text-3xl; scroll-margin-top: 1rem; }
+  .note-content h3 { @apply mt-8 font-heading text-xl font-bold text-forest-700; }
+  .note-content h4 { @apply mt-6 font-pixel text-[13px] uppercase tracking-widest text-wood-600; }
+  .note-content p { @apply mt-3; }
+  .note-content strong { @apply font-semibold text-navy-900; }
+  .note-content em { @apply text-slate-600; }
+  .note-content ul { @apply mt-3 list-none space-y-1.5 pl-0; }
+  .note-content ul ul { @apply mt-1.5 pl-5; }
+  .note-content ul > li { @apply relative pl-5; }
+  .note-content ul > li::before { content: ''; @apply absolute left-0 top-[0.62em] h-2 w-2 bg-gold; }
+  .note-content ul ul > li::before { @apply bg-forest-300; }
+  .note-content ul ul ul > li::before { @apply h-1.5 w-1.5 bg-navy-200; }
+  .note-content ol { @apply mt-3 list-decimal space-y-1.5 pl-6 marker:font-bold marker:text-forest-700; }
+  .note-content ol ul, .note-content ul ol { @apply mt-1.5; }
+  .note-content blockquote { @apply pixel-box-flat px-gold mt-5 bg-gold-50 px-4 py-3 text-navy-900; }
+  .note-content blockquote p:first-child { @apply mt-0; }
+  .note-content blockquote p:first-child > strong:first-child { @apply font-pixel text-[13px] uppercase tracking-wider text-wood-800; }
+  .note-content .note-formula { @apply pixel-box-flat px-navy mx-auto mt-5 w-fit max-w-full bg-navy-900 px-5 py-3 text-center font-heading text-base font-bold tracking-wide text-gold sm:text-lg; }
+  .note-content .note-table { @apply mt-4 overflow-x-auto; }
+  .note-content table { @apply w-full border-collapse bg-white text-sm; }
+  .note-content table:has(th:nth-child(4)) { @apply min-w-[34rem]; }
+  .note-content th { @apply bg-navy-900 px-2 py-2 sm:px-3 text-left font-pixel text-[11px] uppercase tracking-wider text-cream; }
+  .note-content td { @apply border-b border-navy-900/10 px-2 py-2 align-top sm:px-3; }
+  .note-content tr:nth-child(even) td { @apply bg-cream/60; }
+  .note-content td[align='right'], .note-content th[align='right'] { @apply text-right tabular-nums; }
+  .note-content td[align='center'], .note-content th[align='center'] { @apply text-center; }
+  /* Information maps (rebuilt from the diagrams in the PDF) */
+  .note-content .note-map { @apply mt-5 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center; }
+  .note-content .note-map-root { @apply pixel-box-flat px-navy shrink-0 bg-navy-900 px-4 py-3 text-center font-heading text-lg font-bold text-gold; }
+  .note-content .note-map-branches { @apply grid flex-1 gap-3; }
+  .note-content .note-map-branch { @apply pixel-box-flat px-navy bg-white p-3; }
+  .note-content .note-map-node { @apply font-heading font-bold text-forest-700; }
+  .note-content .note-map ul { @apply mt-2 space-y-1 text-sm; }
+}

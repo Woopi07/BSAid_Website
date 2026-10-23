@@ -8,7 +8,7 @@ export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Story', href: '#story' },
   { label: 'Gameplay', href: '#gameplay' },
-  { label: 'Case Files', href: '#case-files' },
+  { label: 'Notes', href: '#notes' },
   { label: 'Help System', href: '#help' },
   { label: 'Play Online', href: '/play/' },
 ];
@@ -130,85 +130,6 @@ export const coreMechanics = [
     title: 'Trial Balances & Worksheets',
     body: 'Build unadjusted and adjusted trial balances, then complete the worksheet to close the books.',
     icon: 'worksheet',
-  },
-];
-
-export const caseFiles = [
-  {
-    id: '01',
-    name: 'Sari-Sari Store',
-    topic: 'Debit-Credit & Journalizing',
-    difficulty: 1,
-    icon: 'store',
-    levels: [
-      'Multiple choice theory on financial transactions, debits & credits, and journalizing',
-      'Identify the normal balance of line items — debit or credit',
-      'Analyze transactions to find which accounts are debited or credited',
-      'Create the journal entry for each given transaction',
-    ],
-    special: {
-      name: 'Journal Jamboree',
-      levels: ['Journalizing questions — medium difficulty', 'Journalizing questions — hard difficulty'],
-    },
-  },
-  {
-    id: '02',
-    name: 'Coffee Shop',
-    topic: 'Posting & Unadjusted Trial Balance',
-    difficulty: 2,
-    icon: 'coffee',
-    levels: [
-      'Multiple choice theory on posting and trial balances',
-      'Post journal entries to T-accounts',
-      'Solve problems using the accounting equation',
-      'Prepare an unadjusted trial balance from T-accounts',
-    ],
-    special: {
-      name: 'Balancing the Books',
-      levels: [
-        'Short comprehensive problem → unadjusted trial balance',
-        'Long comprehensive problem → unadjusted trial balance',
-      ],
-    },
-  },
-  {
-    id: '03',
-    name: 'Jewelry Store',
-    topic: 'Adjusting Entries',
-    difficulty: 3,
-    icon: 'gem',
-    levels: [
-      'Multiple choice theory on adjusting entries',
-      'Analyze accrual transactions — adjust or leave be',
-      'Analyze deferral transactions — adjust or leave be',
-      'Adjust accounts on a given trial balance',
-    ],
-    special: {
-      name: 'Apparent Adjustments',
-      levels: [
-        'Short comprehensive problems on required adjustments',
-        'More comprehensive problems on required adjustments',
-      ],
-    },
-  },
-  {
-    id: '04',
-    name: 'Supermarket',
-    topic: 'Adjusted Trial Balance & Worksheet',
-    difficulty: 4,
-    icon: 'cart',
-    levels: [
-      'Multiple choice theory on adjusted trial balances and worksheets',
-      'Reflect adjustments onto the unadjusted trial balance',
-      'Build a worksheet from adjusted trial balances to close the books',
-    ],
-    special: {
-      name: 'Worksheet Worries',
-      levels: [
-        'Short comprehensive problems → adjusted trial balance & worksheet',
-        'Long comprehensive problems → adjusted trial balance & worksheet',
-      ],
-    },
   },
 ];
 

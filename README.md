@@ -73,6 +73,18 @@ Character portraits are rasterized to 40×40 pixel art at runtime. To use real a
 (card thumbnail) and pass `src` to `Avatar` for portraits.
 A level with an empty `questions` array shows as "coming soon" once unlocked.
 
+
+## Study notes
+
+The landing page's **Notes** section shows the BSAid case notes as text. Each note is a Markdown file in
+`src/notes/` (converted from the PDF case notes), listed in `src/notes/index.js`. To add a note:
+
+1. Convert the PDF's text into a new `src/notes/<id>.md` (`##` sections appear in the reader's contents;
+   `> **Label**` blocks become callouts; `<p class="note-formula">…</p>` is a highlighted formula).
+2. Add an entry to `src/notes/index.js` with its `id`, `part`, `title`, `summary`, `topics`, `icon` and `load`.
+
+A note can be linked directly with `/#note-<id>`.
+
 ## Structure
 
 ```
