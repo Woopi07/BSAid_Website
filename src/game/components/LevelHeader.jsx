@@ -63,10 +63,11 @@ export default function LevelHeader({ onRestart }) {
           }}
           aria-expanded={open}
           aria-haspopup="menu"
-          aria-label="Level menu"
-          className="pixel-btn h-9 w-9 bg-navy-600 p-0 text-cream hover:bg-navy-400"
+          aria-label="Menu"
+          className="pixel-btn h-9 gap-1.5 bg-navy-600 px-2.5 text-cream hover:bg-navy-400 sm:px-3"
         >
           <Icon name="menu" className="h-5 w-5" strokeWidth={2.5} />
+          <span className="hidden sm:inline">Menu</span>
         </button>
         {open && (
           <div className="absolute right-0 top-14 w-64">

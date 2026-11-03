@@ -92,7 +92,7 @@ export function numKey(e, value, onChange) {
   return false;
 }
 
-export function SubmitButton({ onClick, disabled, children = 'Submit' }) {
+export function SubmitButton({ onClick, disabled, children = 'Submit Answer' }) {
   return (
     <button type="button" onClick={onClick} disabled={disabled} className="pixel-btn h-11 bg-emerald-500 px-6 text-navy-950 hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-40">
       {children}

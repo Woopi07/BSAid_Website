@@ -10,6 +10,7 @@ import Icon from '../Icons.jsx';
 import { ROUNDS } from './rounds.jsx';
 import { Steps } from './parts.jsx';
 import Calculator from './Calculator.jsx';
+import { RECALL } from '../../data/recall.js';
 
 const MAX_MULT_STEPS = 4; // combo multiplier caps at x2.0
 
@@ -130,7 +131,7 @@ function Feedback({ entry, round, last, outOfLives, onNext, Solution }) {
           <p className="mt-1 text-sm text-navy-900">{round.explanation}</p>
         </div>
         <button type="button" autoFocus onClick={onNext} className="pixel-btn shrink-0 bg-emerald-500 text-navy-950 hover:bg-emerald-400">
-          {last ? 'Finish' : 'Next'} <PixelSprite name="arrow" scale={2} />
+          {last ? 'Finish stage' : 'Next Question'} <PixelSprite name="arrow" scale={2} />
         </button>
       </div>
     );
@@ -164,7 +165,7 @@ function Feedback({ entry, round, last, outOfLives, onNext, Solution }) {
       </p>
       <div className="mt-4 flex justify-end">
         <button type="button" autoFocus onClick={onNext} className={`pixel-btn ${outOfLives ? 'bg-forest-700 text-cream' : 'bg-cream text-navy-950 hover:bg-white'}`}>
-          {outOfLives ? 'Continue' : last ? 'Finish' : 'Next'} <PixelSprite name="arrow" scale={2} />
+          {outOfLives ? 'Continue' : last ? 'Finish stage' : 'Next Question'} <PixelSprite name="arrow" scale={2} />
         </button>
       </div>
     </div>
@@ -214,12 +215,16 @@ function Game({ onRestart }) {
   const [pop, setPop] = useState(null);
   const [shake, setShake] = useState(false);
   const [calc, setCalc] = useState(false);
+  const [recall, setRecall] = useState(false);
+  const [resetKey, setResetKey] = useState(0);
 
   const round = rounds[index];
   const kind = ROUNDS[round.type];
   const limit = activeLevel.time + (kind.extraTime ?? 0);
   const [timeLeft, setTimeLeft] = useState(limit);
   const last = index === rounds.length - 1;
+  // Computation questions get the calculator and a Reset button.
+  const computation = ['entry', 'tbmissing', 'balance', 'adjust'].includes(round.type) || (round.type === 'quiz' && round.steps?.length > 0);
 
   // 3-2-1 countdown
   useEffect(() => {
@@ -289,6 +294,7 @@ function Game({ onRestart }) {
         hints: log.filter((l) => l.hint).length,
         total: rounds.length,
         review: log.filter((l) => !l.correct).map(({ round: rd, yours }) => ({ round: rd, yours })),
+        answers: log.map(({ round: rd, yours, correct }) => ({ round: rd, yours, correct })),
       });
       return;
     }
@@ -356,13 +362,40 @@ function Game({ onRestart }) {
                     type="button"
                     onClick={() => {
                       play('click');
-                      setCalc((v) => !v);
+                      setRecall((v) => !v);
                     }}
-                    aria-pressed={calc}
-                    className={`pixel-btn px-3 py-2 text-[12px] ${calc ? 'bg-navy-400 text-cream' : 'bg-cream text-navy-950 hover:bg-white'}`}
+                    aria-pressed={recall}
+                    aria-controls="quick-recall"
+                    className={`pixel-btn px-3 py-2 text-[12px] ${recall ? 'bg-wood text-navy-950' : 'bg-white text-navy-950 hover:bg-wood-100'}`}
                   >
-                    <PixelSprite name="calculator" scale={1} className="h-4 w-4" /> Calculator
+                    <Icon name="book" className="h-4 w-4 text-wood-600" strokeWidth={2.5} /> Quick Recall
                   </button>
+                  {computation && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          play('click');
+                          setCalc((v) => !v);
+                        }}
+                        aria-pressed={calc}
+                        className={`pixel-btn px-3 py-2 text-[12px] ${calc ? 'bg-navy-400 text-cream' : 'bg-white text-navy-950 hover:bg-cream'}`}
+                      >
+                        <PixelSprite name="calculator" scale={1} className="h-4 w-4" /> Calculator
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          play('click');
+                          setResetKey((k) => k + 1);
+                        }}
+                        disabled={phase !== 'play'}
+                        className="pixel-btn bg-white px-3 py-2 text-[12px] text-navy-950 hover:bg-cream disabled:opacity-50"
+                      >
+                        <Icon name="refresh" className="h-4 w-4" strokeWidth={2.5} /> Reset
+                      </button>
+                    </>
+                  )}
                   {phase === 'play' && round.hint && (
                     <button
                       type="button"
@@ -384,9 +417,32 @@ function Game({ onRestart }) {
                     {round.hint}
                   </p>
                 )}
+                {recall && RECALL[activeCase.id] && (
+                  <section id="quick-recall" className="pixel-box-flat px-wood animate-pop bg-white p-4" aria-label="Quick Recall">
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="flex items-center gap-2 font-pixel text-[12px] uppercase tracking-widest text-wood-600">
+                        <Icon name="book" className="h-4 w-4" strokeWidth={2.5} /> Quick Recall · {RECALL[activeCase.id].title}
+                      </p>
+                      <button type="button" onClick={() => setRecall(false)} className="text-navy-900 hover:text-forest" aria-label="Close Quick Recall">
+                        <Icon name="close" className="h-4 w-4" strokeWidth={3} />
+                      </button>
+                    </div>
+                    <ul className="mt-3 flex flex-col gap-2 text-sm text-navy-900">
+                      {RECALL[activeCase.id].points.map((pt) => (
+                        <li key={pt} className="flex gap-2">
+                          <span className="mt-1.5 h-2 w-2 shrink-0 bg-wood" aria-hidden="true" />
+                          {pt}
+                        </li>
+                      ))}
+                    </ul>
+                    <a href={`/#note-${RECALL[activeCase.id].note}`} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-forest-700 hover:underline">
+                      Open the full notes <Icon name="chevronRight" className="h-4 w-4" strokeWidth={2.5} />
+                    </a>
+                  </section>
+                )}
                 <div className={shake ? 'animate-shake' : ''} onAnimationEnd={() => setShake(false)}>
                   <Round
-                    key={index}
+                    key={`${index}-${resetKey}`}
                     round={round}
                     rounds={rounds}
                     index={index}

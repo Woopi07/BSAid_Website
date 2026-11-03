@@ -5,10 +5,10 @@ import { certificateId, DEFAULT_NAME } from './data/certificates.js';
 export const CERT_W = 1500;
 export const CERT_H = 1060;
 
-const NAVY = '#0E2244';
-const GOLD = '#EDA90D';
-const GOLD_DARK = '#C98A08';
-const FOREST = '#21733F';
+const NAVY = '#0A1F44';
+const GOLD = '#FFC107';
+const GOLD_DARK = '#E0A800';
+const FOREST = '#2E9E44';
 const INK = '#334155';
 const SANS = '"Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif';
 const BODY = 'Montserrat, "Helvetica Neue", Arial, sans-serif';
@@ -45,7 +45,7 @@ export function drawCertificate(canvas, { name, caseObj, date, rating }) {
 
   // Paper
   const paper = ctx.createRadialGradient(cx, H * 0.45, 100, cx, H * 0.5, W * 0.7);
-  paper.addColorStop(0, '#FFFDF6');
+  paper.addColorStop(0, '#FFFFFF');
   paper.addColorStop(1, '#F3E7CF');
   ctx.fillStyle = paper;
   ctx.fillRect(0, 0, W, H);
@@ -187,11 +187,11 @@ export function drawCertificate(canvas, { name, caseObj, date, rating }) {
   ctx.fillStyle = GOLD;
   ctx.fill();
   ctx.lineWidth = 3;
-  ctx.strokeStyle = '#FFE38A';
+  ctx.strokeStyle = '#FFE082';
   ctx.beginPath();
   ctx.arc(cx, sy, 54, 0, Math.PI * 2);
   ctx.stroke();
-  star(ctx, cx, sy - 8, 28, '#FFF6D6');
+  star(ctx, cx, sy - 8, 28, '#FFF8E1');
   ctx.fillStyle = NAVY;
   ctx.font = `800 16px ${SANS}`;
   ctx.fillText('CASE CLOSED', cx, sy + 38);

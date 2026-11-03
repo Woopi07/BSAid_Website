@@ -5,8 +5,8 @@
 @layer components {
   /* Stepped "notched corner" pixel border drawn with box-shadows. Set --px for the border color. */
   .pixel-box {
-    --px: #0e2244;
-    --px-drop: rgba(14, 34, 68, 0.28);
+    --px: #0a1f44;
+    --px-drop: rgba(10, 31, 68, 0.28);
     box-shadow:
       0 -4px 0 0 var(--px),
       0 4px 0 0 var(--px),
@@ -16,37 +16,37 @@
       8px 4px 0 0 var(--px-drop);
   }
   .pixel-box-flat {
-    --px: #0e2244;
+    --px: #0a1f44;
     box-shadow:
       0 -4px 0 0 var(--px),
       0 4px 0 0 var(--px),
       -4px 0 0 0 var(--px),
       4px 0 0 0 var(--px);
   }
-  .px-gold { --px: #eda90d; }
-  .px-wood { --px: #8a5528; }
-  .px-cream { --px: #f7eedf; }
-  .px-navy { --px: #163a72; }
-  .px-dark { --px: #0a1630; --px-drop: rgba(0, 0, 0, 0.45); }
+  .px-gold { --px: #ffc107; }
+  .px-wood { --px: #c77f0a; }
+  .px-cream { --px: #f5f7fa; }
+  .px-navy { --px: #0f2d63; }
+  .px-dark { --px: #071530; --px-drop: rgba(0, 0, 0, 0.45); }
 
   /* Chunky arcade button with a bevel. */
   .pixel-btn {
     @apply relative inline-flex items-center justify-center gap-2 px-5 py-3 font-pixel text-sm font-bold uppercase leading-none tracking-wide transition-transform sm:text-[15px];
     box-shadow:
-      0 -4px 0 0 #0a1630,
-      0 4px 0 0 #0a1630,
-      -4px 0 0 0 #0a1630,
-      4px 0 0 0 #0a1630,
+      0 -4px 0 0 #071530,
+      0 4px 0 0 #071530,
+      -4px 0 0 0 #071530,
+      4px 0 0 0 #071530,
       inset -4px -4px 0 0 rgba(0, 0, 0, 0.25),
       inset 4px 4px 0 0 rgba(255, 255, 255, 0.35);
   }
   .pixel-btn:active:not(:disabled) {
     transform: translateY(3px);
     box-shadow:
-      0 -4px 0 0 #0a1630,
-      0 4px 0 0 #0a1630,
-      -4px 0 0 0 #0a1630,
-      4px 0 0 0 #0a1630,
+      0 -4px 0 0 #071530,
+      0 4px 0 0 #071530,
+      -4px 0 0 0 #071530,
+      4px 0 0 0 #071530,
       inset 4px 4px 0 0 rgba(0, 0, 0, 0.25);
   }
 
@@ -54,22 +54,22 @@
   .pixel-title {
     position: relative;
     display: inline-block;
-    color: #0a1630;
+    color: #071530;
     text-shadow:
-      -4px 0 0 #0a1630,
-      4px 0 0 #0a1630,
-      0 -4px 0 #0a1630,
-      0 4px 0 #0a1630,
-      4px 8px 0 #21733f,
-      8px 8px 0 #21733f,
-      8px 12px 0 #0a1630,
-      12px 12px 0 #0a1630;
+      -4px 0 0 #071530,
+      4px 0 0 #071530,
+      0 -4px 0 #071530,
+      0 4px 0 #071530,
+      4px 8px 0 #2e9e44,
+      8px 8px 0 #2e9e44,
+      8px 12px 0 #071530,
+      12px 12px 0 #071530;
   }
   .pixel-title::after {
     content: attr(data-text);
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, #fffdf6 0%, #f7eedf 45%, #f7c95a 80%, #eda90d 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 45%, #ffd54f 80%, #ffc107 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -77,7 +77,7 @@
   }
 
   .pixel-text-shadow {
-    text-shadow: 3px 3px 0 #0a1630;
+    text-shadow: 3px 3px 0 #071530;
   }
 }
 
@@ -96,8 +96,8 @@
   /* Retro perspective floor grid, in warm gold. */
   .grid-floor {
     background-image:
-      linear-gradient(rgba(237, 169, 13, 0.32) 2px, transparent 2px),
-      linear-gradient(90deg, rgba(237, 169, 13, 0.32) 2px, transparent 2px);
+      linear-gradient(rgba(255, 193, 7, 0.32) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(255, 193, 7, 0.32) 2px, transparent 2px);
     background-size: 64px 64px;
     transform: perspective(420px) rotateX(62deg);
     transform-origin: center top;
@@ -105,7 +105,7 @@
   }
 
   .pixel-dots {
-    background-image: radial-gradient(rgba(247, 238, 223, 0.14) 1.5px, transparent 1.5px);
+    background-image: radial-gradient(rgba(245, 247, 250, 0.14) 1.5px, transparent 1.5px);
     background-size: 16px 16px;
   }
 
@@ -114,8 +114,8 @@
       to bottom,
       transparent 0,
       transparent 31px,
-      rgba(22, 58, 114, 0.08) 31px,
-      rgba(22, 58, 114, 0.08) 32px
+      rgba(15, 45, 99, 0.08) 31px,
+      rgba(15, 45, 99, 0.08) 32px
     );
   }
 }

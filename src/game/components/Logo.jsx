@@ -8,7 +8,7 @@ export default function Logo({ className = '' }) {
       <span className="flex flex-col leading-[0.9]" aria-hidden="true">
         <span className="font-pixel text-[12px] tracking-widest text-wood-200">ENTRY</span>
         <span
-          className="pixel-title mt-0.5 font-heading text-[22px] font-bold tracking-tight [text-shadow:-2px_0_0_#0a1630,2px_0_0_#0a1630,0_-2px_0_#0a1630,0_2px_0_#0a1630,2px_4px_0_#21733f,4px_4px_0_#0a1630]"
+          className="pixel-title mt-0.5 font-heading text-[22px] font-bold tracking-tight [text-shadow:-2px_0_0_#071530,2px_0_0_#071530,0_-2px_0_#071530,0_2px_0_#071530,2px_4px_0_#2e9e44,4px_4px_0_#071530]"
           data-text="POINT"
         >
           POINT

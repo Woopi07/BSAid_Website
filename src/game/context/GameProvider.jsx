@@ -96,7 +96,7 @@ function reducer(state, action) {
       return {
         ...state,
         view: VIEWS.LEVEL_RESULTS,
-        lastResult: { ...result, coins: Math.round(action.score / 10), unlockedNext: unlocked > cp.unlocked, earned, reached, caseClosed, review: action.review },
+        lastResult: { ...result, coins: Math.round(action.score / 10), unlockedNext: unlocked > cp.unlocked, earned, reached, caseClosed, review: action.review, answers: action.answers },
         progress,
       };
     }

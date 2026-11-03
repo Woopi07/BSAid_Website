@@ -1,16 +1,16 @@
 // Tiny pixel-art sprites drawn from character maps. Each character maps to a palette color; '.' is transparent.
 const palette = {
-  k: '#0E2244', // navy outline
-  n: '#0A1630', // night outline
-  y: '#EDA90D', // gold
-  Y: '#F7C95A', // light gold
-  d: '#C98A08', // deep gold
-  O: '#2E8B4A', // forest green
-  o: '#1B5E35', // dark forest green
-  c: '#F7EEDF', // paper cream
-  s: '#D9C9A9', // cream shade
-  w: '#FFFDF6', // white
-  b: '#163A72', // navy
+  k: '#0A1F44', // navy outline
+  n: '#071530', // night outline
+  y: '#FFC107', // gold
+  Y: '#FFD54F', // light gold
+  d: '#E0A800', // deep gold
+  O: '#2E9E44', // forest green
+  o: '#23803A', // dark forest green
+  c: '#F5F7FA', // paper cream
+  s: '#D5DCE6', // cream shade
+  w: '#FFFFFF', // white
+  b: '#0F2D63', // navy
   B: '#4A6FA8', // light navy
   g: '#94A3B8', // slate
   G: '#7FB98E', // light green

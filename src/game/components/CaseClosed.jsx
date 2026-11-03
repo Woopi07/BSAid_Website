@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import PixelSprite from '../../components/ui/PixelSprite.jsx';
 import { cases } from '../data/cases.js';
 import { caseReport } from '../data/certificates.js';
@@ -8,11 +8,12 @@ import Scene from './Scene.jsx';
 import Avatar from './Avatar.jsx';
 import Icon from './Icons.jsx';
 import { CertificateCanvas, CertificateControls } from './Certificate.jsx';
+import SettingsModal from './SettingsModal.jsx';
 
 const CONFETTI = Array.from({ length: 28 }, (_, i) => ({
   left: (i * 37) % 100,
   delay: (i % 7) * 0.18,
-  color: ['#EDA90D', '#2E8B4A', '#F7EEDF', '#4A6FA8', '#F7C95A'][i % 5],
+  color: ['#FFC107', '#2E9E44', '#F5F7FA', '#4A6FA8', '#FFD54F'][i % 5],
   size: 6 + (i % 3) * 3,
 }));
 
@@ -40,10 +41,14 @@ export default function CaseClosed() {
   const badge = BADGES[`case-${caseObj.id}`];
   const fresh = state.certFrom !== 'gallery';
 
-  const back = () => {
+  const [settings, setSettings] = useState(false);
+  const nextCase = cases[cases.findIndex((c) => c.id === caseObj.id) + 1];
+  const act = (...actions) => () => {
     play('click');
-    dispatch({ type: 'CLOSE_CERTIFICATE' });
+    actions.forEach((a) => dispatch(a));
   };
+  const back = act({ type: 'CLOSE_CERTIFICATE' });
+  const lastStage = caseObj.levels[caseObj.levels.length - 1];
 
   return (
     <div className="flex h-full flex-col">
@@ -53,8 +58,21 @@ export default function CaseClosed() {
           <span className="hidden sm:inline">Back</span>
         </button>
         <span className="shrink-0 bg-forest px-2 py-1.5 font-pixel text-[12px] text-cream">CASE #{caseObj.id}</span>
-        <h1 className="truncate text-xl font-bold text-cream pixel-text-shadow sm:text-2xl">Case closed</h1>
+        <h1 className="min-w-0 flex-1 truncate text-xl font-bold text-cream pixel-text-shadow sm:text-2xl">Case closed</h1>
+        <button
+          type="button"
+          onClick={() => {
+            play('click');
+            setSettings(true);
+          }}
+          className="pixel-btn h-9 shrink-0 gap-1.5 bg-navy-600 px-2.5 text-cream hover:bg-navy-400 sm:px-3"
+          aria-label="Settings"
+        >
+          <Icon name="gear" className="h-5 w-5" strokeWidth={2.25} />
+          <span className="hidden sm:inline">Settings</span>
+        </button>
       </header>
+      {settings && <SettingsModal onClose={() => setSettings(false)} />}
 
       <Scene sprites={false}>
         {fresh && (
@@ -78,7 +96,7 @@ export default function CaseClosed() {
                   <CertificateCanvas caseObj={caseObj} name={playerName} date={date} rating={report.rating} />
                 </div>
                 <div className="cert-ribbon absolute -bottom-6 left-1/2 w-[min(78%,420px)] -translate-x-1/2">
-                  <div className="relative bg-forest px-6 py-2.5 text-center shadow-[0_5px_0_#0D3B22]">
+                  <div className="relative bg-forest px-6 py-2.5 text-center shadow-[0_5px_0_#14532A]">
                     <span className="absolute -left-4 top-2 -z-10 h-full w-8 bg-forest-700 [clip-path:polygon(0_0,100%_0,100%_100%,0_100%,35%_50%)]" />
                     <span className="absolute -right-4 top-2 -z-10 h-full w-8 bg-forest-700 [clip-path:polygon(0_0,100%_0,65%_50%,100%_100%,0_100%)]" />
                     <span className="font-heading text-2xl font-extrabold uppercase tracking-wide text-gold-100 pixel-text-shadow sm:text-3xl">Case closed!</span>
@@ -170,23 +188,29 @@ export default function CaseClosed() {
                 </p>
               </Panel>
 
-              <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row">
-                <button type="button" onClick={back} className="pixel-btn flex-1 bg-cream text-navy-950 hover:bg-white">
-                  {fresh ? 'Case files' : 'Back to gallery'}
+              <div className="grid gap-4 sm:col-span-2 sm:grid-cols-3">
+                <button
+                  type="button"
+                  onClick={act({ type: 'START_LEVEL', levelId: lastStage.id })}
+                  className="pixel-btn bg-navy-600 text-cream hover:bg-navy-400"
+                  title={`Replay ${lastStage.title}`}
+                >
+                  <Icon name="refresh" className="h-4 w-4" strokeWidth={2.5} /> Retry Stage
                 </button>
-                {fresh && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      play('click');
-                      dispatch({ type: 'CLOSE_CERTIFICATE' });
-                      dispatch({ type: 'SET_PANEL', panel: 'achievements' });
-                    }}
-                    className="pixel-btn flex-1 bg-gold text-navy-950 hover:bg-gold-300"
-                  >
-                    My certificates <PixelSprite name="arrow" scale={2} />
-                  </button>
-                )}
+                <button
+                  type="button"
+                  onClick={act(nextCase ? { type: 'OPEN_CASE', caseId: nextCase.id } : { type: 'CLOSE_CERTIFICATE' })}
+                  className="pixel-btn bg-forest text-white hover:bg-forest-700"
+                >
+                  {nextCase ? 'Continue to Next Case' : 'All cases closed!'} <PixelSprite name="arrow" scale={2} />
+                </button>
+                <button
+                  type="button"
+                  onClick={act({ type: 'CLOSE_CERTIFICATE' }, { type: 'SET_PANEL', panel: 'dashboard' })}
+                  className="pixel-btn bg-white text-navy-950 hover:bg-cream"
+                >
+                  <Icon name="home" className="h-4 w-4" strokeWidth={2.5} /> Back to Dashboard
+                </button>
               </div>
             </div>
           </div>

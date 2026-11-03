@@ -1,4 +1,7 @@
+import { useRef, useState } from 'react';
 import PixelSprite from '../../components/ui/PixelSprite.jsx';
+import { cases } from '../data/cases.js';
+import Icon from './Icons.jsx';
 import { BADGES, useGame } from '../context/GameProvider.jsx';
 import { useAudio } from '../context/AudioProvider.jsx';
 import LevelHeader from './LevelHeader.jsx';
@@ -20,11 +23,21 @@ function roundLabel(round) {
 }
 
 export default function LevelResults() {
-  const { state, activeCase, activeLevel, dispatch } = useGame();
+  const { state, activeCase, activeLevel, certificates, dispatch } = useGame();
   const { play } = useAudio();
   const result = state.lastResult;
   const next = activeCase.levels.find((l) => l.id === activeLevel.id + 1);
-  const review = result.review ?? [];
+  const nextCase = cases[cases.findIndex((c) => c.id === activeCase.id) + 1];
+  // Every answer from the stage (older saves only kept the wrong ones).
+  const answers = result.answers ?? (result.review ?? []).map((r) => ({ ...r, correct: false }));
+  const [showReview, setShowReview] = useState(false);
+  const reviewRef = useRef(null);
+
+  const openReview = () => {
+    play('page');
+    setShowReview(true);
+    setTimeout(() => reviewRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+  };
 
   const go = (action) => () => {
     play('pop');
@@ -155,20 +168,29 @@ export default function LevelResults() {
                     <p className="text-sm text-cream">&ldquo;Thank you! The books for {activeCase.name} are looking so much better already.&rdquo;</p>
                   </div>
 
-                  <div className="mt-8 flex flex-col gap-5 sm:flex-row">
-                    <button type="button" onClick={go({ type: 'BACK_TO_LEVELS' })} className="pixel-btn flex-1 bg-cream text-navy-950 hover:bg-white">
-                      Level select
+                  <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                    <button type="button" onClick={go({ type: 'START_LEVEL', levelId: activeLevel.id })} className="pixel-btn bg-navy-600 text-cream hover:bg-navy-400">
+                      <Icon name="refresh" className="h-4 w-4" strokeWidth={2.5} /> Retry Stage
                     </button>
-                    <button type="button" onClick={go({ type: 'START_LEVEL', levelId: activeLevel.id })} className="pixel-btn flex-1 bg-navy-600 text-cream hover:bg-navy-400">
-                      Replay
+                    <button type="button" onClick={openReview} aria-expanded={showReview} aria-controls="review-answers" className="pixel-btn bg-white text-navy-950 hover:bg-cream">
+                      <Icon name="book" className="h-4 w-4 text-wood-600" strokeWidth={2.5} /> Review Answers
                     </button>
                     {next ? (
-                      <button type="button" autoFocus onClick={go({ type: 'START_LEVEL', levelId: next.id })} className="pixel-btn flex-1 bg-gold text-navy-950 hover:bg-gold-300">
-                        Next level <PixelSprite name="arrow" scale={2} />
+                      <button type="button" autoFocus onClick={go({ type: 'START_LEVEL', levelId: next.id })} className="pixel-btn bg-forest text-white hover:bg-forest-700">
+                        Continue to Next Level <PixelSprite name="arrow" scale={2} />
+                      </button>
+                    ) : certificates[activeCase.id] ? (
+                      <button type="button" autoFocus onClick={go({ type: 'OPEN_CERTIFICATE', caseId: activeCase.id })} className="pixel-btn bg-forest text-white hover:bg-forest-700">
+                        Continue to Case Closed <PixelSprite name="arrow" scale={2} />
                       </button>
                     ) : (
-                      <button type="button" autoFocus onClick={go({ type: 'EXIT_TO_DASHBOARD' })} className="pixel-btn flex-1 bg-gold text-navy-950 hover:bg-gold-300">
-                        Next case
+                      <button
+                        type="button"
+                        autoFocus
+                        onClick={go(nextCase ? { type: 'OPEN_CASE', caseId: nextCase.id } : { type: 'EXIT_TO_DASHBOARD' })}
+                        className="pixel-btn bg-forest text-white hover:bg-forest-700"
+                      >
+                        Continue to Next Case <PixelSprite name="arrow" scale={2} />
                       </button>
                     )}
                   </div>
@@ -176,22 +198,35 @@ export default function LevelResults() {
               </div>
             </div>
 
-            {review.length > 0 && (
-              <section className="pixel-box px-dark bg-cream p-5 sm:p-6" aria-labelledby="review-title">
-                <h3 id="review-title" className="text-2xl font-bold">Review your mistakes</h3>
-                <p className="mt-1 text-sm text-slate-600">Here&rsquo;s the solution for every round you missed.</p>
+            {showReview && (
+              <section id="review-answers" ref={reviewRef} className="pixel-box px-dark scroll-mt-4 bg-white p-5 sm:p-6" aria-labelledby="review-title">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 id="review-title" className="text-2xl font-bold">Review answers</h3>
+                  <p className="font-pixel text-[12px] uppercase text-wood-600">
+                    {answers.filter((a) => a.correct).length} / {answers.length} correct
+                  </p>
+                </div>
+                <p className="mt-1 text-sm text-slate-600">Every question from this stage, with the full solution.</p>
                 <ol className="mt-5 flex flex-col gap-5">
-                  {review.map(({ round, yours }, i) => {
+                  {answers.map(({ round, yours, correct }, i) => {
                     const { Solution } = ROUNDS[round.type];
                     return (
-                      <li key={i} className="pixel-box-flat px-navy bg-white p-4">
-                        <p className="font-semibold text-navy-900">{roundLabel(round)}</p>
-                        <p className="mt-2 text-sm text-rose-700">
+                      <li key={i} className={`pixel-box-flat bg-white p-4 ${correct ? '[--px:#2E9E44]' : '[--px:#E11D48]'}`}>
+                        <p className="flex items-start gap-2 font-semibold text-navy-900">
+                          <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center text-white ${correct ? 'bg-forest' : 'bg-rose-600'}`}>
+                            <Icon name={correct ? 'check' : 'close'} className="h-3.5 w-3.5" strokeWidth={4} />
+                          </span>
+                          <span>
+                            <span className="font-pixel text-[11px] uppercase text-slate-500">Question {i + 1} · </span>
+                            {roundLabel(round)}
+                          </span>
+                        </p>
+                        <p className={`mt-2 text-sm ${correct ? 'text-forest-700' : 'text-rose-700'}`}>
                           <span className="font-pixel text-[11px] uppercase">Your answer: </span>
                           {yours}
                         </p>
-                        <div className="mt-3 bg-emerald-50 p-3">
-                          <p className="mb-2 font-pixel text-[11px] uppercase text-emerald-700">Solution</p>
+                        <div className="mt-3 bg-cream p-3">
+                          <p className="mb-2 font-pixel text-[11px] uppercase text-forest-700">Solution</p>
                           <Solution round={round} />
                           <Steps steps={round.steps} />
                         </div>

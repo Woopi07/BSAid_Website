@@ -225,7 +225,7 @@ function TAccountRound({ round, rounds, index, done, reveal, onSubmit }) {
         </div>
         {!done && (
           <div className="mt-6 flex justify-end">
-            <SubmitButton onClick={submit} disabled={!ready}>Post entry</SubmitButton>
+            <SubmitButton onClick={submit} disabled={!ready} />
           </div>
         )}
       </section>
@@ -324,7 +324,7 @@ function EntryRound({ round, done, reveal, onSubmit }) {
         </div>
         {!done && (
           <div className="mt-6 flex justify-end">
-            <SubmitButton onClick={submit} disabled={!ready}>Deliver entry</SubmitButton>
+            <SubmitButton onClick={submit} disabled={!ready} />
           </div>
         )}
       </section>
@@ -374,7 +374,7 @@ function AdjustRound({ round, done, reveal, onSubmit }) {
         </div>
         {!done && (
           <div className="mt-6 flex justify-end">
-            <SubmitButton onClick={submit} disabled={!kind || sel === null}>Solve case</SubmitButton>
+            <SubmitButton onClick={submit} disabled={!kind || sel === null} />
           </div>
         )}
       </section>
@@ -451,7 +451,7 @@ function TBMissingRound({ round, done, reveal, onSubmit }) {
           <NumPad value={val} onChange={setVal} disabled={done} />
           {!done && (
             <div className="mt-5 flex justify-end">
-              <SubmitButton onClick={submit} disabled={!(Number(val) > 0)}>Balance it</SubmitButton>
+              <SubmitButton onClick={submit} disabled={!(Number(val) > 0)} />
             </div>
           )}
         </div>
@@ -495,7 +495,7 @@ function TBSpotRound({ round, done, reveal, onSubmit }) {
       </div>
       {!done && (
         <div className="mt-5 flex justify-end">
-          <SubmitButton onClick={submit} disabled={sel === null}>That one!</SubmitButton>
+          <SubmitButton onClick={submit} disabled={sel === null} />
         </div>
       )}
     </section>

@@ -172,7 +172,7 @@ export default function LoadingScreen() {
           <span key={`l${i}`} className="loading-parallax absolute" style={{ left: `${x}%`, top: `${y}%`, '--depth': 2 }}>
             <svg viewBox="0 0 24 14" width="34" height="20" className="loading-leaf text-forest-300/55" style={{ '--rot': `${rot}deg`, animationDelay: `${delay}s` }}>
               <path d="M1 7C6 0 18 0 23 7 18 14 6 14 1 7Z" fill="currentColor" />
-              <path d="M3 7h18" stroke="#1B5E35" strokeOpacity="0.35" strokeWidth="1.2" />
+              <path d="M3 7h18" stroke="#23803A" strokeOpacity="0.35" strokeWidth="1.2" />
             </svg>
           </span>
         ))}
@@ -193,7 +193,7 @@ export default function LoadingScreen() {
             width="960"
             height="660"
             draggable="false"
-            className={`block w-full drop-shadow-[0_14px_0_rgba(13,59,34,0.35)] ${boing ? 'loading-boing' : 'loading-logo-in'}`}
+            className={`block w-full drop-shadow-[0_14px_0_rgba(20,83,42,0.35)] ${boing ? 'loading-boing' : 'loading-logo-in'}`}
           />
           {bursts.map((c) => (
             <span
@@ -203,8 +203,8 @@ export default function LoadingScreen() {
               aria-hidden="true"
             >
               <svg viewBox="0 0 24 24" width="30" height="30">
-                <circle cx="12" cy="12" r="10.5" fill="#C98A08" />
-                <circle cx="12" cy="11" r="9" fill="#F7C95A" />
+                <circle cx="12" cy="12" r="10.5" fill="#E0A800" />
+                <circle cx="12" cy="11" r="9" fill="#FFD54F" />
                 <path d="M9.6 7.5h3a2 2 0 0 1 0 4h-3V7.5zm0 4V15M8.4 9.3h6.6M8.4 11h6.6" fill="none" stroke="#9C6A06" strokeWidth="1.5" />
               </svg>
             </span>
@@ -232,7 +232,7 @@ export default function LoadingScreen() {
 
       {/* Glossy progress bar */}
       <div className="absolute inset-x-0 bottom-[6%] flex flex-col items-center px-5">
-        <div className="relative h-11 w-full max-w-3xl rounded-full bg-cream p-1.5 shadow-[0_6px_0_#0D3B22,inset_0_-4px_0_#D9C9A9] sm:h-14 sm:p-2" aria-hidden="true">
+        <div className="relative h-11 w-full max-w-3xl rounded-full bg-cream p-1.5 shadow-[0_6px_0_#14532A,inset_0_-4px_0_#D5DCE6] sm:h-14 sm:p-2" aria-hidden="true">
           <div className="relative h-full overflow-hidden rounded-full bg-[#9FB3AA] shadow-[inset_0_4px_0_rgba(0,0,0,0.12)]">
             <div className="loading-liquid relative h-full rounded-full" style={{ width: `${Math.max(progress, 4)}%` }}>
               <span className="loading-edge absolute -right-1 top-1/2 -translate-y-1/2" />
