@@ -3,7 +3,7 @@ import PixelSprite from '../../components/ui/PixelSprite.jsx';
 // Arcade backdrop shared by the in-level screens: warm glow, dot grid, neon floor grid and floating sprites.
 export default function Scene({ children, sprites = true }) {
   return (
-    <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-navy-950">
+    <div className="relative flex min-h-0 flex-1 flex-col overflow-clip bg-navy-950">
       {/* Scanlines live on the backdrop only, so text panels stay crisp. */}
       <div className="scanlines pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-1/2 top-[30%] h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-wood/25 blur-3xl" />

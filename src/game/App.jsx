@@ -12,6 +12,7 @@ import DialogueIntro from './components/DialogueIntro.jsx';
 import GameScreen from './components/games/GameScreen.jsx';
 import LevelResults from './components/LevelResults.jsx';
 import CaseClosed from './components/CaseClosed.jsx';
+import SpecialCase from './components/special/SpecialCase.jsx';
 
 const PANELS = {
   dashboard: DashboardPanel,
@@ -29,6 +30,7 @@ function Screens() {
   if (state.view === VIEWS.QUIZ_WORKSTATION) return <GameScreen />;
   if (state.view === VIEWS.LEVEL_RESULTS) return <LevelResults />;
   if (state.view === VIEWS.CASE_CLOSED) return <CaseClosed />;
+  if (state.view === VIEWS.SPECIAL) return <SpecialCase />;
 
   // DASHBOARD, with the LEVEL_MODAL layered on top when a case is open.
   return (

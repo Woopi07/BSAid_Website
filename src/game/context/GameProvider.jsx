@@ -10,6 +10,7 @@ export const VIEWS = {
   QUIZ_WORKSTATION: 'QUIZ_WORKSTATION',
   LEVEL_RESULTS: 'LEVEL_RESULTS',
   CASE_CLOSED: 'CASE_CLOSED',
+  SPECIAL: 'SPECIAL',
 };
 
 const KEY = 'entry-point:progress';
@@ -123,6 +124,29 @@ function reducer(state, action) {
       return { ...state, view: VIEWS.CASE_CLOSED, caseId: action.caseId, certFrom: action.from ?? 'results' };
     case 'CLOSE_CERTIFICATE':
       return { ...state, view: VIEWS.DASHBOARD, levelId: null, panel: state.certFrom === 'gallery' ? 'achievements' : 'cases' };
+    case 'OPEN_SPECIAL':
+      return { ...state, view: VIEWS.SPECIAL, specialId: action.id };
+    case 'EXIT_SPECIAL':
+      return { ...state, view: VIEWS.DASHBOARD, specialId: null, panel: action.panel ?? 'cases' };
+    case 'COMPLETE_SPECIAL': {
+      // Special case progress: levels unlock one after another; clearing level 3 solves the case.
+      const all = state.progress._special ?? {};
+      const sp = all[action.id] ?? { unlocked: 1, levels: {} };
+      const prev = sp.levels[action.level];
+      const s = action.stats;
+      const best = !prev || s.correct > prev.correct || (s.correct === prev.correct && s.time < prev.time) ? s : prev;
+      const solved = sp.solved || action.level === action.last;
+      const badges = new Set(state.progress._badges ?? []);
+      if (solved) badges.add(`special-${action.id}`);
+      return {
+        ...state,
+        progress: {
+          ...state.progress,
+          _badges: [...badges],
+          _special: { ...all, [action.id]: { unlocked: Math.max(sp.unlocked, Math.min(action.level + 1, action.last)), levels: { ...sp.levels, [action.level]: best }, solved } },
+        },
+      };
+    }
     case 'SET_PLAYER_NAME':
       return { ...state, progress: { ...state.progress, _player: action.name.slice(0, 40) } };
     case 'EXIT_TO_DASHBOARD':
@@ -197,4 +221,6 @@ export const BADGES = {
   'case-004': { name: 'Express Courier', desc: 'Clear all of SwiftGo’s levels', sprite: 'bolt' },
   'case-005': { name: 'Master Detective', desc: 'Clear all of Lakwatsa’s levels', sprite: 'calculator' },
   'case-006': { name: 'Book Balancer', desc: 'Clear all of Sanvitog’s levels', sprite: 'star' },
+  'special-sc4': { name: 'Arson Averted', desc: 'Solve Special Case 4', sprite: 'bolt' },
+  'special-sc6': { name: 'Paper Trail Found', desc: 'Solve Special Case 6', sprite: 'calculator' },
 };

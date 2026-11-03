@@ -5,6 +5,7 @@ import { useAudio } from '../context/AudioProvider.jsx';
 import CaseCard from './CaseCard.jsx';
 import PanelHeader from './PanelHeader.jsx';
 import Icon from './Icons.jsx';
+import { SPECIAL_CASES } from '../data/special.js';
 
 const FILTERS = [
   { id: 'all', label: 'All Cases' },
@@ -14,7 +15,7 @@ const FILTERS = [
 ];
 
 export default function CaseFilesScreen() {
-  const { progressOf } = useGame();
+  const { progressOf, state, dispatch } = useGame();
   const { play } = useAudio();
   const [filter, setFilter] = useState('all');
   const [query, setQuery] = useState('');
@@ -82,6 +83,54 @@ export default function CaseFilesScreen() {
             No cases match &ldquo;{query || FILTERS.find((f) => f.id === filter).label}&rdquo;.
           </div>
         )}
+
+        {/* Special cases: detective investigations with Detective Alex Reyes */}
+        <section className="mt-12" aria-labelledby="special-title">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="special-title" className="flex items-center gap-2 text-2xl font-bold text-navy-900">
+              <Icon name="search" className="h-6 w-6 text-wood-600" strokeWidth={2.5} /> Special Cases
+            </h2>
+            <p className="font-pixel text-[12px] uppercase text-wood-600">Detective investigations · 3 levels each</p>
+          </div>
+          <ul className="mt-6 grid grid-cols-1 gap-x-7 gap-y-8 lg:grid-cols-2">
+            {SPECIAL_CASES.map((sc) => {
+              const sp = state.progress._special?.[sc.id];
+              const cleared = Object.keys(sp?.levels ?? {}).length;
+              return (
+                <li key={sc.id}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      play('pop');
+                      dispatch({ type: 'OPEN_SPECIAL', id: sc.id });
+                    }}
+                    className="pixel-box px-dark group relative flex h-full w-full flex-col overflow-hidden bg-navy-950 p-5 text-left transition-transform hover:-translate-y-1"
+                  >
+                    <span className="sp-confidential absolute -right-2 top-4 border-4 border-rose-500/60 px-2 py-0.5 font-heading text-sm font-extrabold uppercase tracking-widest text-rose-400/80">
+                      {sp?.solved ? 'Solved' : 'Confidential'}
+                    </span>
+                    <span className="font-pixel text-[11px] uppercase tracking-widest text-gold">
+                      Special Case {sc.number} {sc.wip && '· WIP'}
+                    </span>
+                    <span className="mt-2 pr-24 font-heading text-xl font-bold leading-tight text-white sm:text-2xl">{sc.title}</span>
+                    <span className="mt-1 text-sm text-navy-200">{sc.company}</span>
+                    <span className="mt-3 text-sm text-navy-100">{sc.tagline}</span>
+                    <span className="mt-auto flex items-center justify-between gap-3 pt-5">
+                      <span className="flex gap-1.5" aria-label={`${cleared} of ${sc.levels.length} levels cleared`}>
+                        {sc.levels.map((l) => (
+                          <span key={l.id} className={`h-2.5 w-8 ${sp?.levels?.[l.id] ? 'bg-forest' : 'bg-navy-700'}`} />
+                        ))}
+                      </span>
+                      <span className="font-pixel text-[12px] uppercase text-gold group-hover:text-white">
+                        {sp?.solved ? 'Review case' : cleared ? 'Continue' : 'Open file'} ›
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
       </div>
     </div>
   );

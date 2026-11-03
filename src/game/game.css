@@ -64,3 +64,25 @@
   .cert-confetti { display: none; }
   .cert-ribbon { animation: none; }
 }
+
+/* Special cases (detective investigations) */
+@keyframes sp-paper { from { opacity: 0; transform: translateY(24px) rotate(-3deg); } to { opacity: 1; transform: none; } }
+.sp-paper { animation: sp-paper 0.5s ease-out both; box-shadow: 6px 8px 0 rgba(0, 0, 0, 0.35); }
+@keyframes sp-flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+.sp-flash { animation: sp-flash 0.6s steps(2) 4; }
+.sp-breaking { animation: sp-paper 0.5s ease-out both; }
+@keyframes sp-ring { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-14deg); } 40% { transform: rotate(14deg); } 60% { transform: rotate(-10deg); } 80% { transform: rotate(10deg); } }
+.sp-ring { animation: sp-ring 0.6s ease-in-out infinite; }
+@keyframes sp-door { from { transform: perspective(300px) rotateY(0); } to { transform: perspective(300px) rotateY(-70deg); } }
+.sp-vault-door { transform-origin: left center; animation: sp-door 1.2s ease-in-out 0.2s both; }
+@keyframes sp-sending { from { width: 0; } to { width: 100%; } }
+.sp-sending { animation: sp-sending 1.8s ease-in-out both; }
+@keyframes sp-stamp { 0% { opacity: 0; transform: scale(2.4) rotate(-12deg); } 70% { opacity: 1; transform: scale(0.94) rotate(-6deg); } 100% { opacity: 1; transform: scale(1) rotate(-6deg); } }
+.sp-stamp { animation: sp-stamp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+@keyframes sp-letter { from { opacity: 0; transform: scale(0.3); } to { opacity: 1; transform: scale(1); } }
+.sp-letter { display: inline-block; animation: sp-letter 0.3s ease-out both; }
+.sp-dossier { background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0 12px, transparent 12px 24px); }
+.sp-confidential { transform: rotate(8deg); }
+@media (prefers-reduced-motion: reduce) {
+  .sp-paper, .sp-breaking, .sp-flash, .sp-ring, .sp-vault-door, .sp-sending, .sp-stamp, .sp-letter { animation: none; }
+}
