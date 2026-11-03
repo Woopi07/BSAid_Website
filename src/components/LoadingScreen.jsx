@@ -106,11 +106,17 @@ export default function LoadingScreen() {
     if (gone) return undefined;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    const onKey = () => setLeaving(true);
-    window.addEventListener('keydown', onKey);
+    // Capture phase + stopPropagation: the key that dismisses the splash must not also reach the title menu
+    // (Enter there would start PLAY).
+    const onKey = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setLeaving(true);
+    };
+    window.addEventListener('keydown', onKey, true);
     return () => {
       document.body.style.overflow = prev;
-      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('keydown', onKey, true);
     };
   }, [gone]);
 

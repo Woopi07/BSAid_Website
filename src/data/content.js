@@ -1,8 +1,4 @@
-// All copy on the site is sourced from Game-Design-Document.pdf (Version 1, June 4, 2025).
-
-// Replace with the real Play Store / APK link once the build is published.
-export const ANDROID_DOWNLOAD_URL = '#download';
-export const GDD_URL = '/Game-Design-Document.pdf';
+// Copy for the BSAid landing page.
 
 export const navLinks = [
   { label: 'About', href: '#about' },
@@ -62,30 +58,46 @@ export const locations = [
   },
 ];
 
+// The business owners players help in the first case files (avatars match their in-game portraits).
 export const characters = [
   {
-    id: 'faraday',
-    name: 'Faraday',
-    role: 'Your childhood friend',
-    tagline: 'The quirky natural genius',
-    initials: 'Fd',
-    theme: 'gold',
-    subject: 'Inspired by FAR',
-    traits: ['Optimistic', 'Adventurous', 'Born genius', 'Candid'],
-    bio: 'A freshman regarded as a born genius despite his quirkiness. Faraday can master new skills in an incredibly short time, yet he never quite understands why others struggle with things he finds easy. His candid "geniusness" has cost him friends, but he will always try his best to help anyone who asks.',
-    hook: 'He begged you to join him in the Accountancy Program so he could follow in his sister’s footsteps.',
+    id: 'nayeom',
+    name: 'Nayeom',
+    role: "Owner, Nayeom's Groceria",
+    tagline: 'The hardworking sari-sari store owner',
+    business: 'Sari-Sari Store · Retail',
+    caseFile: 'Case #001 · Record It or Not?',
+    topic: 'Transaction Analysis',
+    avatar: { hair: '#1F1A17', hairStyle: 'long', skin: '#F5D0B5', outfit: '#166534', accent: '#FFFFFF' },
+    traits: ['Hardworking', 'Warm', 'Hands-on', 'Always busy'],
+    bio: "Nayeom runs Nayeom's Groceria, the neighborhood sari-sari store, and handles almost everything herself — purchases, sales, deliveries and the regulars who drop by for a chat. As the store gets busier, her records fall behind: some events were never recorded, others were classified incorrectly, and she can't always tell what even counts as a transaction.",
+    hook: 'She hires you as her accounting assistant to decide what to record — and how each event affects her accounts.',
   },
   {
-    id: 'farahnaz',
-    name: 'Farahnaz',
-    role: 'Faraday’s older sister',
-    tagline: 'The strict, top-ranking CPA alumna',
-    initials: 'Fz',
-    theme: 'navy',
-    subject: 'Inspired by AFAR',
-    traits: ['Disciplined', 'Hardworking', 'Never cuts corners', 'Reserved'],
-    bio: 'A well-respected alumna who ranked first in the most recent CPA Licensure Examination and has letters of recruitment from respected firms. Where Faraday learns in a flash, Farahnaz relentlessly hones her skills through rigorous practice — a difference that has quietly pushed the siblings apart.',
-    hook: 'Things take a turn when she finds out her younger brother enrolled in Accountancy.',
+    id: 'lukas',
+    name: 'Lukas',
+    role: 'Owner, Alahas ni Lukas',
+    tagline: 'The meticulous jeweler',
+    business: 'Jewelry Store · Retail',
+    caseFile: 'Case #002 · Debit or Credit Vault',
+    topic: 'Normal Balances',
+    avatar: { hair: '#3F2A1D', hairStyle: 'short', skin: '#E8B996', outfit: '#7F1D1D', accent: '#FCD34D' },
+    traits: ['Meticulous', 'Proud craftsman', 'Particular', 'Growing business'],
+    bio: 'Lukas built Alahas ni Lukas piece by piece, and he treats his books the same way he treats fine jewelry — every account belongs in its proper place. Business is growing, but his new staff keep putting accounts on the wrong side, and the mix-ups are starting to cost him.',
+    hook: 'He keeps his accounts in two vaults, DEBIT and CREDIT, and needs you to sort every one into the right vault.',
+  },
+  {
+    id: 'surume',
+    name: 'Surume',
+    role: "Owner, Surume's Coffee Shop",
+    tagline: 'The café owner every student knows',
+    business: 'Coffee Shop · Food & Beverage',
+    caseFile: 'Case #003 · T-Account Café',
+    topic: 'Posting to T-Accounts',
+    avatar: { hair: '#6B3F1D', hairStyle: 'bob', skin: '#F2C9A8', outfit: '#78350F', accent: '#FDE68A' },
+    traits: ['Friendly', 'Generous', 'Laid-back', 'Student favorite'],
+    bio: "Surume's Coffee Shop is the favorite study spot near campus — and Surume is the kind of owner who slips you a free cold brew during exam week. Behind the counter, though, the ledger is a disaster: transactions pile up unposted and nobody is sure the balances add up.",
+    hook: 'She asks you to post every transaction to its T-accounts and prove the balances are right.',
   },
 ];
 
@@ -110,26 +122,32 @@ export const coreMechanics = [
   {
     step: '01',
     title: 'Analyze Transactions',
-    body: 'Read each business event and decide which accounts are debited and which are credited.',
+    body: 'Read each business event and decide whether it is recorded, which accounts it affects, and which are debited or credited.',
     icon: 'analyze',
   },
   {
     step: '02',
-    title: 'Journalize',
-    body: 'Record complete journal entries with the right accounts and amounts using the in-game calculator.',
+    title: 'Journalize & Post',
+    body: 'Record complete journal entries, then post them to the ledger and T-accounts to get each balance.',
     icon: 'journal',
   },
   {
     step: '03',
-    title: 'Post to T-Accounts',
-    body: 'Carry each entry to its T-account and keep the accounting equation in balance.',
-    icon: 'taccount',
+    title: 'Adjusting Entries',
+    body: 'Update the accounts at period end for accruals, deferrals and depreciation.',
+    icon: 'review',
   },
   {
     step: '04',
-    title: 'Trial Balances & Worksheets',
-    body: 'Build unadjusted and adjusted trial balances, then complete the worksheet to close the books.',
+    title: 'Worksheets',
+    body: 'Build the unadjusted and adjusted trial balances and complete the worksheet.',
     icon: 'worksheet',
+  },
+  {
+    step: '05',
+    title: 'Closing Entries',
+    body: 'Close revenue, expense and drawing accounts to capital so the books are ready for the next period.',
+    icon: 'check',
   },
 ];
 

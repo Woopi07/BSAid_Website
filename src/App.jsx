@@ -6,7 +6,6 @@ import Characters from './components/Characters.jsx';
 import Gameplay from './components/Gameplay.jsx';
 import Notes from './components/Notes.jsx';
 import HelpFeedback from './components/HelpFeedback.jsx';
-import DownloadCTA from './components/DownloadCTA.jsx';
 import Footer from './components/Footer.jsx';
 import LoadingScreen from './components/LoadingScreen.jsx';
 
@@ -23,7 +22,6 @@ export default function App() {
         <Gameplay />
         <Notes />
         <HelpFeedback />
-        <DownloadCTA />
       </main>
       <Footer />
     </>

@@ -13,7 +13,7 @@ export default function Gameplay() {
         work at your Accounting Workstation.
       </SectionHeading>
 
-      <ol className="mt-16 grid gap-10 p-1 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <ol className="mt-16 grid gap-10 p-1 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
         {coreMechanics.map((m, i) => (
           <li key={m.title} className="pixel-box relative bg-white p-6">
             <div className="flex items-center justify-between">

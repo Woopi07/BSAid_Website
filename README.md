@@ -1,7 +1,7 @@
 # BSAid — Promotional Website
 
 Landing page for **BSAid**, a simulation-based visual novel that helps first-year BSA students master
-Financial Accounting and Reporting 1 (FAR1). All content is drawn from `public/Game-Design-Document.pdf`.
+Financial Accounting and Reporting 1 (FAR1).
 
 Built with React 18, Vite, and Tailwind CSS, in a retro pixel-arcade art style (hand-drawn SVG pixel sprites) with
 clean type: **Helvetica Now Display** for headings and labels, **Montserrat** for body copy.
@@ -103,11 +103,9 @@ src/
     Gameplay.jsx          # core mechanics, rank & multiplier system
     CaseFiles.jsx         # selectable Case #01–#04 with level breakdowns
     HelpFeedback.jsx      # Help & Feedback system
-    DownloadCTA.jsx
-    Footer.jsx            # nav, GDD download, copyright
+    Footer.jsx            # nav, copyright
     ui/                   # Button, Icon, Coin, PixelSprite, Dialog, Section, SectionHeading
 ```
 
 ## Configuration
 
-Set `ANDROID_DOWNLOAD_URL` in `src/data/content.js` to the Play Store or APK link once the build is published.
