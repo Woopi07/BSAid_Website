@@ -3,8 +3,12 @@
 // and each case has four levels that ramp up: harder questions, shorter timers and fewer hearts.
 import { genSort, genTAccount, genEntry, genAdjust, genTB, rng, shuffle } from './generators.js';
 import { quiz001L1, quiz001L2, quiz001L3, quiz001L4 } from './quiz001.js';
+import { quiz007L1 } from './quiz007.js';
 
 export const TIERS = ['Rookie', 'Rising Star', 'Expert', 'Boss Round'];
+
+// The mini-game a level uses: its own (mixed-game cases) or the case's.
+export const gameOf = (c, level) => level?.game ?? c.game;
 
 function shuffleChoices(q, r) {
   const order = shuffle(r, q.choices.map((_, i) => i));
@@ -28,6 +32,7 @@ function levels(caseId, settings) {
     rounds: s.rounds,
     intro: s.intro,
     summary: s.summary,
+    ...(s.game && { game: s.game }),
     build: (seed) => s.build(seed),
   }));
 }
@@ -273,6 +278,75 @@ export const cases = [
       {
         hearts: 2, time: 50, rounds: 6, summary: 'Boss: missing amounts plus misplaced accounts.',
         intro: ['Boss level! Some trial balances have an account in the WRONG column. Find it.'],
+        build: (seed) => genTB(4, 6, seed),
+      },
+    ]),
+  },
+  {
+    id: '007',
+    name: 'Panaderya ni Bea',
+    shortType: 'Bakeshop',
+    category: 'Food Manufacturing',
+    owner: 'Bea',
+    difficulty: 7,
+    // Every level of this case is a different mini-game.
+    game: {
+      name: 'Four-Game Gauntlet',
+      sprite: 'heart',
+      tagline: 'A new mini-game every level: multiple choice, debit or credit, adjustments, then a balancing boss.',
+      rules: ['Each level is a different mini-game — read its rules before you start.', 'Correct answers in a row build your COMBO multiplier.', 'Wrong answers cost a heart — and show you the full solution.'],
+    },
+    description:
+      "Bea bakes the best pandesal in the barangay, but her books are as messy as a floured countertop. Four rounds, four different challenges — review everything you've learned to get Panaderya ni Bea ready for its first branch.",
+    avatar: { hair: '#2B1B12', hairStyle: 'bob', skin: '#F0C7A4', outfit: '#C2410C', accent: '#FFF8E1' },
+    art: { sign: 'PANADERYA', sub: 'NI BEA', wall: '#9A3412', roof: '#7C2D12', awning: ['#F5A623', '#FFFFFF'], glow: '#FFD54F', kind: 'bakery' },
+    levels: levels('007', [
+      {
+        hearts: 3, time: 30, rounds: 8, summary: 'Multiple choice: a review from transactions to closing entries.',
+        game: {
+          name: 'Multiple Choice',
+          sprite: 'coin',
+          tagline: 'Read each bakery event and pick the best answer.',
+          rules: ['Read the business event and choose the best answer.', 'Questions cover the whole accounting cycle.', 'Wrong answers cost a heart — and show you the full solution.'],
+        },
+        intro: [
+          "Magandang umaga! I'm Bea. The pandesal sells out every morning — but my books? Not so much.",
+          "I'm opening a second branch soon, so everything has to be in order. Let's start with a quick review of the basics.",
+          'Pick the best answer for each event. Take your time — but not too much!',
+        ],
+        build: (seed) => quizRounds(quiz007L1, seed),
+      },
+      {
+        hearts: 3, time: 7, rounds: 10, summary: 'Debit or credit: send every account to its normal-balance side, fast.',
+        game: {
+          name: 'Debit or Credit',
+          sprite: 'star',
+          tagline: 'Accounts fly in fast — send each one to its DEBIT or CREDIT side.',
+          rules: ['Each card is an account. Send it to the side of its NORMAL balance.', 'Tap a side or use the ← / → arrow keys. Be quick!', 'Contra accounts carry the opposite balance.'],
+        },
+        intro: ['Next: my new cashier keeps mixing up debits and credits.', 'Send each account to its normal-balance side — DEBIT or CREDIT. Only 7 seconds each, and contra accounts are in the mix!'],
+        build: (seed) => genSort(3, 10, seed),
+      },
+      {
+        hearts: 2, time: 50, rounds: 5, summary: 'Adjustment detective: classify each year-end clue and pick the adjusting entry.',
+        game: {
+          name: 'Adjustment Detective',
+          sprite: 'calculator',
+          tagline: 'Crack each year-end clue: name the adjustment, then pick the correct adjusting entry.',
+          rules: ['Step 1: classify the adjustment (accrual, deferral or depreciation).', 'Step 2: choose the adjusting entry with the right amount.', 'Both steps must be correct to solve the clue.'],
+        },
+        intro: ["It's December 31. Expired insurance, unpaid bakers, a new oven losing value — none of it is in the books yet.", 'Investigate each clue: name the adjustment, then choose the right entry. Only 2 hearts from here on!'],
+        build: (seed) => genAdjust(3, 5, seed),
+      },
+      {
+        hearts: 2, time: 50, rounds: 6, summary: 'Boss: balance the trial balances — missing amounts and misplaced accounts.',
+        game: {
+          name: 'Balance the Books',
+          sprite: 'heart',
+          tagline: 'Fix broken trial balances: find missing amounts and misplaced accounts.',
+          rules: ['Total debits must equal total credits.', 'Type the missing balance with the number pad.', 'Some trial balances hide an account in the wrong column — find it.'],
+        },
+        intro: ['Last step before the new branch: my trial balance has to balance.', "Find the missing amounts, and watch for accounts in the wrong column. This is the boss round, partner — let's bake this right!"],
         build: (seed) => genTB(4, 6, seed),
       },
     ]),

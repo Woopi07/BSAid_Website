@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import PixelSprite from '../../components/ui/PixelSprite.jsx';
-import { cases } from '../data/cases.js';
+import { cases, gameOf } from '../data/cases.js';
 import Icon from './Icons.jsx';
 import { BADGES, useGame } from '../context/GameProvider.jsx';
 import { useAudio } from '../context/AudioProvider.jsx';
@@ -78,7 +78,7 @@ export default function LevelResults() {
                 <div className="pixel-dots absolute inset-0" aria-hidden="true" />
                 <div className="relative">
                   <p className="font-pixel text-[12px] uppercase tracking-widest text-wood-200">
-                    {activeCase.game.name} · Level {activeLevel.id}
+                    {gameOf(activeCase, activeLevel).name} · Level {activeLevel.id}
                   </p>
                   <h2 className="mt-2 text-3xl font-bold text-cream pixel-text-shadow">{activeLevel.title}</h2>
 

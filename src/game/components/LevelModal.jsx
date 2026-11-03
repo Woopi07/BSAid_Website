@@ -39,6 +39,11 @@ function LevelTile({ level, state, result, onSelect }) {
         <span className={`mt-1 block font-heading text-xl font-semibold leading-tight ${locked ? 'text-slate-400' : 'text-navy-900'}`}>
           {level.title}
         </span>
+        {level.game && (
+          <span className={`mt-1 flex items-center gap-1.5 self-start font-pixel text-[11px] uppercase ${locked ? 'text-slate-400' : 'text-forest-700'}`}>
+            <PixelSprite name={level.game.sprite} scale={1} className={`h-3.5 w-3.5 ${locked ? 'opacity-40 grayscale' : ''}`} /> {level.game.name}
+          </span>
+        )}
         <span className="mt-1 block text-xs text-slate-500">
           {locked ? `Clear Level ${level.id - 1} to unlock` : level.summary}
         </span>
@@ -124,8 +129,8 @@ export default function LevelModal() {
                   Owner: {activeCase.owner} &middot; {activeCase.category}
                 </p>
               </div>
-              <span className="hidden gap-1 sm:flex" aria-label={`Difficulty ${activeCase.difficulty} of 6`}>
-                {[1, 2, 3, 4, 5, 6].map((n) => (
+              <span className="hidden gap-1 sm:flex" aria-label={`Difficulty ${activeCase.difficulty} of 7`}>
+                {[1, 2, 3, 4, 5, 6, 7].map((n) => (
                   <PixelSprite key={n} name="star" scale={2} className={n <= activeCase.difficulty ? '' : 'opacity-25 grayscale'} />
                 ))}
               </span>
@@ -134,7 +139,9 @@ export default function LevelModal() {
             <div className="pixel-box-flat px-gold mt-5 flex items-center gap-3 bg-gold-50 p-3">
               <PixelSprite name={activeCase.game.sprite} scale={3} className="shrink-0" />
               <p className="text-sm text-navy-900">
-                <span className="block font-pixel text-[12px] uppercase text-gold-700">Mini-game · {activeCase.game.name}</span>
+                <span className="block font-pixel text-[12px] uppercase text-gold-700">
+                  {activeCase.levels.some((l) => l.game) ? 'Mini-games' : 'Mini-game'} · {activeCase.game.name}
+                </span>
                 {activeCase.game.tagline}
               </p>
             </div>

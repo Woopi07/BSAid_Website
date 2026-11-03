@@ -58,14 +58,14 @@ export function recordRun(progress, { caseId, levelId, cleared, correct, mistake
   };
 }
 
-// ---- Career rank (from total stars, max 72 = 6 cases × 4 levels × 3 stars) ----
+// ---- Career rank (from total stars, max 84 = 7 cases × 4 levels × 3 stars) ----
 export const CAREER = [
   { title: 'Accounting Intern', stars: 0 },
   { title: 'Bookkeeper', stars: 6 },
   { title: 'Junior Accountant', stars: 18 },
   { title: 'Senior Accountant', stars: 36 },
   { title: 'Audit Manager', stars: 54 },
-  { title: 'Certified Public Accountant', stars: 72 },
+  { title: 'Certified Public Accountant', stars: 84 },
 ];
 
 export function totalStars(progress) {

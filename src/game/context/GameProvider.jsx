@@ -221,6 +221,7 @@ export const BADGES = {
   'case-004': { name: 'Express Courier', desc: 'Clear all of SwiftGo’s levels', sprite: 'bolt' },
   'case-005': { name: 'Master Detective', desc: 'Clear all of Lakwatsa’s levels', sprite: 'calculator' },
   'case-006': { name: 'Book Balancer', desc: 'Clear all of Sanvitog’s levels', sprite: 'star' },
+  'case-007': { name: 'Master Baker', desc: 'Clear all of Bea’s levels', sprite: 'heart' },
   'special-sc4': { name: 'Arson Averted', desc: 'Solve Special Case 4', sprite: 'bolt' },
   'special-sc6': { name: 'Paper Trail Found', desc: 'Solve Special Case 6', sprite: 'calculator' },
 };

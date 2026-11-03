@@ -7,6 +7,7 @@ export const SKILLS = {
   '004': ['Two-account entries', 'Computing entry amounts', 'Discounts and advance payments', 'Interest and combined costs'],
   '005': ['Accrued expenses and revenue', 'Expired prepayments', 'Depreciation and accrued interest', 'Mixed adjustments'],
   '006': ['Short trial balances', 'Longer trial balances', 'Contra and drawing accounts', 'Missing and misplaced amounts'],
+  '007': ['Accounting cycle review', 'Normal balances and contra accounts', 'Year-end adjusting entries', 'Balancing the trial balance'],
 };
 
 export const DEFAULT_NAME = 'Accounting Explorer';

@@ -63,4 +63,16 @@ export const RECALL = {
       'Not detected by an equal trial balance: Failure to record, Same entry twice, Wrong amount on both sides, Wrong account.',
     ],
   },
+  '007': {
+    title: 'The full accounting cycle',
+    note: 'adjusting-entries',
+    points: [
+      'Assets = Liabilities + Owner’s Equity · Net income = Revenue − Expenses (drawing is not an expense).',
+      'DEA-LER: Drawing, Expenses, Assets → DEBIT · Liabilities, Equity, Revenue → CREDIT. Contra accounts are opposite.',
+      'Cash received before it is earned → Unearned Revenue (a liability).',
+      'Accrual = action first, cash later · Deferral = cash first · Depreciation = (Cost − Salvage) ÷ Life.',
+      'Trial balance: total debits = total credits. A difference divisible by 9 hints at a transposition.',
+      'Closing entries close revenue, expenses and drawing to Capital.',
+    ],
+  },
 };

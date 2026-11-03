@@ -57,6 +57,24 @@ function Shelves({ kind }) {
       </g>
     );
   }
+  if (kind === 'bakery') {
+    // pandesal trays and a cake
+    return (
+      <g>
+        {[0, 1].map((t) => (
+          <g key={t}>
+            <rect x={64 + t * 30} y="148" width="26" height="4" fill="#78350F" />
+            {[0, 1, 2].map((j) => (
+              <ellipse key={j} cx={69 + t * 30 + j * 8} cy="145" rx="4" ry="3" fill="#D97706" />
+            ))}
+          </g>
+        ))}
+        <rect x="206" y="134" width="36" height="16" fill="#FDE68A" />
+        <rect x="206" y="130" width="36" height="5" fill="#FB923C" />
+        <rect x="222" y="122" width="3" height="8" fill="#F8FAFC" />
+      </g>
+    );
+  }
   if (kind === 'bureau') {
     return <path d="M150 128h20v30h-20zM160 120v-6" stroke="#D1D5DB" strokeWidth="2" fill="none" />;
   }

@@ -11,6 +11,7 @@ import { ROUNDS } from './rounds.jsx';
 import { Steps } from './parts.jsx';
 import Calculator from './Calculator.jsx';
 import { RECALL } from '../../data/recall.js';
+import { gameOf } from '../../data/cases.js';
 
 const MAX_MULT_STEPS = 4; // combo multiplier caps at x2.0
 
@@ -328,7 +329,7 @@ function Game({ onRestart }) {
           <div className={`mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-6 sm:px-6 ${calc ? 'pb-[480px] sm:pb-6' : ''}`}>
             {phase === 'ready' && (
               <ReadyCard
-                game={activeCase.game}
+                game={gameOf(activeCase, activeLevel)}
                 level={activeLevel}
                 total={rounds.length}
                 onStart={() => {
@@ -355,7 +356,7 @@ function Game({ onRestart }) {
                 <Hud lives={lives} maxLives={maxLives} score={score} combo={combo} index={index} total={rounds.length} log={log} timeLeft={timeLeft} limit={limit} pop={pop} />
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <p className="font-pixel text-[12px] uppercase tracking-widest text-wood-200">
-                    {activeCase.game.name} · Level {activeLevel.id} · {activeLevel.title}
+                    {gameOf(activeCase, activeLevel).name} · Level {activeLevel.id} · {activeLevel.title}
                   </p>
                   <div className="flex flex-wrap gap-3">
                   <button

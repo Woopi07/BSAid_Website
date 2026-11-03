@@ -66,8 +66,8 @@ export default function CaseCard({ item }) {
             <PixelSprite name={item.game.sprite} scale={1} className="h-4 w-4" /> {item.game.name}
           </p>
         )}
-        <span className="mt-2 flex gap-0.5" aria-label={`Difficulty ${item.difficulty} of 6`}>
-          {[1, 2, 3, 4, 5, 6].map((n) => (
+        <span className="mt-2 flex gap-0.5" aria-label={`Difficulty ${item.difficulty} of 7`}>
+          {[1, 2, 3, 4, 5, 6, 7].map((n) => (
             <PixelSprite key={n} name="star" scale={1} className={`h-3.5 w-3.5 ${n <= item.difficulty ? '' : 'opacity-25 grayscale'}`} />
           ))}
         </span>
