@@ -130,7 +130,7 @@ function VideoTab() {
         </video>
       </div>
       <div className="mt-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
-        <p className="text-sm text-navy-100">A 2½-minute walkthrough of Entry Point: case files, mini-games, hints, the calculator, rewards and achievements.</p>
+        <p className="text-sm text-navy-100">A 1-minute walkthrough with voice-over: case files, Quick Recall, streaks and ranks, the calculator, certificates and special cases.</p>
         <a href="/play/" className="pixel-btn shrink-0 bg-gold text-navy-950 hover:bg-gold-300">
           Play online <PixelSprite name="arrow" scale={2} />
         </a>
